@@ -2255,7 +2255,13 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
             <AtsResumeMaker student={student} />
           )
         ) : activeTab === "interview" ? (
-          (!currentStudentObj?.interviewPermission && !(locks["Global"]?.featureLocks?.interview || locks[student.batch]?.featureLocks?.interview) && !specialPermissionBypass) ? (
+          (() => {
+            const interviewTeacherAuthorized = !!(
+              currentStudentObj?.interviewPermission ||
+              locks["Global"]?.featureLocks?.interview ||
+              locks[student.batch]?.featureLocks?.interview
+            );
+            return !interviewTeacherAuthorized ? (
             <div className="bg-white rounded-xl shadow-md border border-slate-200 p-8 text-center space-y-6 max-w-lg mx-auto py-12">
               <div className="mx-auto w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center border border-rose-100 text-rose-500">
                 <Lock className="w-8 h-8" />
@@ -2280,16 +2286,17 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
                 Sync Authorization Status
               </button>
             </div>
-          ) : (
-            <AiInterviewRoom
-              student={student}
-              submissions={submissions}
-              assessments={assessments}
-              overrides={overrides}
-              onRefreshContext={() => fetchStudentContext()}
-              specialPermissionBypass={specialPermissionBypass}
-            />
-          )
+            ) : (
+              <AiInterviewRoom
+                student={student}
+                submissions={submissions}
+                assessments={assessments}
+                overrides={overrides}
+                onRefreshContext={() => fetchStudentContext()}
+                teacherAuthorized={interviewTeacherAuthorized}
+              />
+            );
+          })()
         ) : (activeTab as any) === "ai-videos" ? (
           <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-6 animate-fade-in text-left">
             <div>
