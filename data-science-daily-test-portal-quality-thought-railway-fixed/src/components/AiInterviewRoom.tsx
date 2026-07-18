@@ -44,7 +44,7 @@ interface AiInterviewRoomProps {
   assessments?: any[];
   overrides?: any[];
   onRefreshContext?: () => void;
-  specialPermissionBypass?: boolean;
+  teacherAuthorized?: boolean;
 }
 
 export default function AiInterviewRoom({
@@ -53,7 +53,7 @@ export default function AiInterviewRoom({
   assessments = [],
   overrides = [],
   onRefreshContext,
-  specialPermissionBypass = false
+  teacherAuthorized = false
 }: AiInterviewRoomProps) {
   const [pastInterviews, setPastInterviews] = useState<AIInterview[]>([]);
   const [loadingPast, setLoadingPast] = useState(true);
@@ -603,7 +603,10 @@ export default function AiInterviewRoom({
     return s === selectedSubject.toLowerCase();
   }).length;
   const maxAttemptsExhausted = currentSubjectAttempts >= 3 && !student?.interviewRewritePermission;
-  const isEligible = (scoreVal !== null && scoreVal >= 60) || matchingOverride?.eligibilityBypass === true || specialPermissionBypass === true;
+  // If a teacher has explicitly granted access (per-student permission, or the
+  // Enterprise Feature Gate for this batch/globally), the 60% score requirement
+  // is waived — the teacher's authorization overrides the automatic score gate.
+  const isEligible = teacherAuthorized === true || (scoreVal !== null && scoreVal >= 60) || matchingOverride?.eligibilityBypass === true;
 
   const handleStartInterview = async () => {
     // Enforce 60% eligibility check
@@ -2152,6 +2155,12 @@ export default function AiInterviewRoom({
                       {matchingOverride?.eligibilityBypass && (
                         <div className="text-[10px] text-purple-850 font-bold bg-purple-100/60 p-2 rounded border border-purple-200/50 flex items-center gap-1 font-mono">
                           ★ ACTIVE OVERRIDE: INSTRUCTOR ELIGIBILITY BYPASS GRANTED
+                        </div>
+                      )}
+
+                      {teacherAuthorized && !(scoreVal !== null && scoreVal >= 60) && !matchingOverride?.eligibilityBypass && (
+                        <div className="text-[10px] text-indigo-850 font-bold bg-indigo-100/60 p-2 rounded border border-indigo-200/50 flex items-center gap-1 font-mono">
+                          ★ TEACHER AUTHORIZED: 60% SCORE REQUIREMENT WAIVED
                         </div>
                       )}
                     </div>
