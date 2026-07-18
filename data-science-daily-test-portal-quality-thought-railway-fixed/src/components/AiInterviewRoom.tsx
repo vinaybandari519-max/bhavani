@@ -685,6 +685,7 @@ export default function AiInterviewRoom({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          studentId: student.id,
           subject: activeSubject,
           difficulty: selectedDifficulty,
           messages: [],
@@ -743,6 +744,7 @@ export default function AiInterviewRoom({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          studentId: student.id,
           subject: activeSubject,
           difficulty: selectedDifficulty,
           messages: updated,
@@ -760,7 +762,8 @@ export default function AiInterviewRoom({
           setSessionFinished(true);
         }
       } else {
-        alert("Failed to process conversation with AI recruiter.");
+        const err = await res.json().catch(() => ({} as any));
+        alert(err.error || "Failed to process conversation with AI recruiter.");
       }
     } catch (e) {
       alert("Network transmission error occurred.");
