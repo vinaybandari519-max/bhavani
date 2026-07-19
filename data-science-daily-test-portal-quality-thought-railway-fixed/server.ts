@@ -1275,7 +1275,7 @@ const FALLBACK_QUESTIONS: Record<string, Record<string, string[]>> = {
   },
   hr: {
     general: [
-      "Hello! Welcome to your HR and Behavioral interview. Let's start: Tell me about yourself, your academic background at Raise Tech Academy, and your primary career aspirations. (Question 1 of 5)",
+      "Hello! Welcome to your HR and Behavioral interview. Let's start: Tell me about yourself, your academic background at Quality Thought Academy, and your primary career aspirations. (Question 1 of 5)",
       "That's lovely to hear. Question 2 of 5: Tell me about a time when you had to work in a team to complete a project under a tight deadline. How did you organize the work, and how did you resolve any differences or conflicts? (Question 2 of 5)",
       "Thank you for sharing that experience. Question 3 of 5: How do you handle pressure, stress, or sudden changes in project specifications? Can you give me a specific real-world example? (Question 3 of 5)",
       "I appreciate your resilience. Question 4 of 5: What are your greatest professional strengths and your biggest areas of improvement, and what steps have you taken recently to address those growth areas? (Question 4 of 5)",
@@ -1429,7 +1429,7 @@ app.post("/api/interview/chat", async (req, res) => {
   let systemInstruction = "";
 
   if (roundType === "hr") {
-    systemInstruction = `You are an elite, warm, highly empathetic and professional Human Resources Director and Chief Talent Officer at "Raise Tech Academy".
+    systemInstruction = `You are an elite, warm, highly empathetic and professional Human Resources Director and Chief Talent Officer at "Quality Thought Academy".
 Your task is to conduct an interactive, step-by-step oral HR and behavioral interview with a student candidate at "${difficulty}" level.
 
 Follow these strict rules:
@@ -1446,7 +1446,7 @@ ${isResume ? `Candidate Resume Details to customize questions:
 ${customMaterial || "General Resume details"}
 --- END RESUME ---` : ""}`;
   } else if (roundType === "combined") {
-    systemInstruction = `You are an elite Senior Director of Engineering and HR Acquisition at "Raise Tech Academy".
+    systemInstruction = `You are an elite Senior Director of Engineering and HR Acquisition at "Quality Thought Academy".
 Your task is to conduct an interactive, step-by-step oral combined (Technical + HR) placement interview with a student candidate on the subject of "${subject}" at "${difficulty}" difficulty.
 
 Follow these strict rules:
@@ -1466,7 +1466,7 @@ ${customMaterial}
   } else {
     // Technical round (standard/resume based)
     if (isResume) {
-      systemInstruction = `You are an elite, highly professional Data Science Technical Recruiter at "Raise Tech Academy".
+      systemInstruction = `You are an elite, highly professional Data Science Technical Recruiter at "Quality Thought Academy".
 Your task is to conduct an interactive, step-by-step oral technical interview with a student candidate on the subject of data science, tailored specifically based on their RESUME at "${difficulty}" difficulty.
 
 Follow these strict rules:
@@ -1483,7 +1483,7 @@ Candidate Resume Details:
 ${customMaterial || "General Placement Resume Content"}
 --- END RESUME ---`;
     } else {
-      systemInstruction = `You are a professional, expert Data Science Technical Recruiter at "Raise Tech Academy".
+      systemInstruction = `You are a professional, expert Data Science Technical Recruiter at "Quality Thought Academy".
 Your task is to conduct an interactive, step-by-step oral technical interview with a student on the subject of "${subject}" at "${difficulty}" difficulty.
 
 Follow these strict rules:
@@ -1614,6 +1614,8 @@ Evaluate the candidate's responses meticulously.
 - Calculate a general cumulative score out of 100.
 - Provide highly descriptive, constructive, human-like pattern feedback, key strengths, improvement areas, specialized HR behavioral suggestions, and technical coding/engineering study guidelines.
 - Generate standard Voice Quality Metrics ('voiceAnalysis') based on their transcript dynamics.
+- Build a per-question breakdown ('questionBreakdown'): for every interviewer question found in the transcript, pair it with what the candidate actually said, write the ideal/model solution a strong candidate would have given, and grade that single answer 0-100.
+  IMPORTANT GRADING RULE: grade each answer by whether it demonstrates correct UNDERSTANDING and captures the same MEANING as the ideal solution — not by whether it contains specific keywords or exact phrases from the ideal solution. A correct answer phrased in the candidate's own words, using synonyms, different terminology, or a different valid approach, must score just as high as one that happens to reuse the ideal solution's wording. Conversely, an answer that repeats keywords from the ideal solution without demonstrating real understanding must score low. Judge conceptual correctness and completeness, never literal word overlap.
 
 Transcript:
 """
@@ -1621,7 +1623,8 @@ ${transcript}
 """`;
 
   const systemInstruction = `You are an expert high-level placement recruitment board panel and executive evaluation system.
-You inspect transcripts of student mock interviews (including HR, Technical, or Combined placement rounds) and output constructive pattern analysis, dual-track scores (Technical and HR), detailed improvement suggestions, and comprehensive speech/voice delivery diagnostics.
+You inspect transcripts of student mock interviews (including HR, Technical, or Combined placement rounds) and output constructive pattern analysis, dual-track scores (Technical and HR), a per-question correctness breakdown, detailed improvement suggestions, and comprehensive speech/voice delivery diagnostics.
+When grading each answer, you evaluate semantic correctness and depth of understanding only. You NEVER grade by matching keywords, exact phrases, or wording overlap against a model answer — a conceptually correct answer in different words scores exactly as well as one using the model answer's own terms.
 You MUST respond with a JSON object strictly conforming to the requested schema.`;
 
   try {
@@ -1678,6 +1681,21 @@ You MUST respond with a JSON object strictly conforming to the requested schema.
               type: Type.STRING,
               description: "In-depth markdown content detailing correctness of replies, conceptual clarity, correct answers where candidate failed, and exact custom recommendations."
             },
+            questionBreakdown: {
+              type: Type.ARRAY,
+              description: "One entry per interviewer question in the transcript, comparing the candidate's given answer against the ideal solution with a percentage grade.",
+              items: {
+                type: Type.OBJECT,
+                properties: {
+                  question: { type: Type.STRING, description: "The interviewer's question, as asked." },
+                  givenAnswer: { type: Type.STRING, description: "A faithful summary of what the candidate actually answered." },
+                  idealSolution: { type: Type.STRING, description: "The correct/ideal model answer a strong candidate would give." },
+                  matchPercentage: { type: Type.INTEGER, description: "0-100 grade for this single answer, based on conceptual/semantic correctness against the ideal solution — never based on keyword or wording overlap." },
+                  verdict: { type: Type.STRING, description: "One of: 'Correct', 'Partially Correct', 'Incorrect'." }
+                },
+                required: ["question", "givenAnswer", "idealSolution", "matchPercentage", "verdict"]
+              }
+            },
             voiceAnalysis: {
               type: Type.OBJECT,
               description: "Comprehensive voice and speech analytics deduced from the transcript content, word choices, length, and flow.",
@@ -1694,7 +1712,7 @@ You MUST respond with a JSON object strictly conforming to the requested schema.
               required: ["paceWpm", "paceStatus", "clarityScore", "modulationStatus", "fillersDetected", "fillerCount", "mistakes", "improvements"]
             }
           },
-          required: ["score", "technicalScore", "hrScore", "patternAnalysis", "summary", "strengths", "improvements", "hrSuggestions", "techSuggestions", "detailedEvaluation", "voiceAnalysis"]
+          required: ["score", "technicalScore", "hrScore", "patternAnalysis", "summary", "strengths", "improvements", "hrSuggestions", "techSuggestions", "detailedEvaluation", "questionBreakdown", "voiceAnalysis"]
         }
       }
     });
@@ -1905,7 +1923,7 @@ app.post("/api/careers/analyze-resume", async (req, res) => {
     return;
   }
 
-  const prompt = `You are an elite Data Science Career Consultant at "Raise Tech Academy".
+  const prompt = `You are an elite Data Science Career Consultant at "Quality Thought Academy".
 Your task is to analyze the following candidate resume text and provide structured career matching insights.
 
 Resume Content:
@@ -2018,7 +2036,7 @@ app.post("/api/careers/live-jobs", async (req, res) => {
   const focusQuery = roleQuery || skillsList || "Python Data Science Entry Level";
   const targetLocation = location || "Hyderabad, India";
 
-  const prompt = `You are a live job-search research assistant for "Raise Tech Academy" students.
+  const prompt = `You are a live job-search research assistant for "Quality Thought Academy" students.
 
 Use Google Search to find 6-8 REAL, currently open job postings that closely match this candidate profile:
 - Target role / keywords: "${focusQuery}"
@@ -2132,7 +2150,7 @@ app.post("/api/careers/build-ats-resume", async (req, res) => {
   if (mlDone >= 2) verifiedTracks.push(`Supervised Machine Learning (Completed ${mlDone}/30 module milestones)`);
 
   const academyStatsText = `
-  Institute: Raise Tech Academy
+  Institute: Quality Thought Academy
   Verified Milestones Completed: ${numCompleted} / 200 Days of daily testing curriculum.
   Academic Evaluation Grade: ${avgScore}% Average accuracy score.
   Earned credentials: ${verifiedTracks.join(", ") || "Data Science Foundations Training Track"}
@@ -2197,7 +2215,7 @@ interface AtsResumeResponse {
     } catch (parseErr) {
       console.warn("[Gemini API] Failed to parse build-resume JSON. Fallback formatting applied.");
       res.json({
-        formattedResume: `${inputs.fullName || student?.name || "Arjun Sharma"}\n${inputs.email || "student@example.com"} | ${inputs.phone || "+91 9000"} | ${inputs.linkedin || "LinkedIn"}\n\nPROFESSIONAL SUMMARY\n${inputs.objective || "Dedicated candidate."}\n\nTECHNICAL SKILLS\n${inputs.topSkills || "Python, NumPy, Pandas, Scikit-Learn"}\n\nEDUCATION & CERTIFICATIONS\n${inputs.educationText || "B.Tech"}\nRaise Tech Academy - Verified Data Science Track (${numCompleted} Completed Milestones).`,
+        formattedResume: `${inputs.fullName || student?.name || "Arjun Sharma"}\n${inputs.email || "student@example.com"} | ${inputs.phone || "+91 9000"} | ${inputs.linkedin || "LinkedIn"}\n\nPROFESSIONAL SUMMARY\n${inputs.objective || "Dedicated candidate."}\n\nTECHNICAL SKILLS\n${inputs.topSkills || "Python, NumPy, Pandas, Scikit-Learn"}\n\nEDUCATION & CERTIFICATIONS\n${inputs.educationText || "B.Tech"}\nQuality Thought Academy - Verified Data Science Track (${numCompleted} Completed Milestones).`,
         optimizedKeywords: ["Python", "Pandas", "Data Science", "Machine Learning"],
         atsTips: ["Use standard font pairings", "Maintain clean plain text layout"]
       });
@@ -2205,7 +2223,7 @@ interface AtsResumeResponse {
   } catch (err: any) {
     console.error("[Gemini API] Build resume error, returning fallback:", err);
     res.json({
-      formattedResume: `${inputs.fullName || student?.name || "Arjun Sharma"}\n${inputs.email || "student@example.com"} | ${inputs.phone || "+91 9000"} | ${inputs.linkedin || "LinkedIn"}\n\nPROFESSIONAL SUMMARY\n${inputs.objective || "Dedicated candidate seeking placement in Data Analytics and Machine Learning engineering."}\n\nTECHNICAL SKILLS\n${inputs.topSkills || "Python, NumPy, Pandas, Scikit-Learn"}\n\nEDUCATION & CERTIFICATIONS\n${inputs.educationText || "B.Tech"}\nRaise Tech Academy - Verified Data Science Track (${numCompleted} Completed Milestones).`,
+      formattedResume: `${inputs.fullName || student?.name || "Arjun Sharma"}\n${inputs.email || "student@example.com"} | ${inputs.phone || "+91 9000"} | ${inputs.linkedin || "LinkedIn"}\n\nPROFESSIONAL SUMMARY\n${inputs.objective || "Dedicated candidate seeking placement in Data Analytics and Machine Learning engineering."}\n\nTECHNICAL SKILLS\n${inputs.topSkills || "Python, NumPy, Pandas, Scikit-Learn"}\n\nEDUCATION & CERTIFICATIONS\n${inputs.educationText || "B.Tech"}\nQuality Thought Academy - Verified Data Science Track (${numCompleted} Completed Milestones).`,
       optimizedKeywords: ["Python", "Pandas", "Data Science", "Machine Learning"],
       atsTips: ["Use standard font pairings", "Maintain clean plain text layout"]
     });
@@ -2246,7 +2264,7 @@ app.post("/api/careers/tailor-resume-for-job", async (req, res) => {
   if (mlDone >= 2) verifiedTracks.push(`Supervised Machine Learning (Completed ${mlDone}/30 module milestones)`);
 
   const academyStatsText = `
-  Institute: Raise Tech Academy
+  Institute: Quality Thought Academy
   Verified Milestones Completed: ${numCompleted} / 200 Days of daily testing curriculum.
   Academic Evaluation Grade: ${avgScore}% Average accuracy score.
   Earned credentials: ${verifiedTracks.join(", ") || "Data Science Foundations Training Track"}
@@ -2317,7 +2335,7 @@ interface TailoredResumeResponse {
     } catch (parseErr) {
       console.warn("[Gemini API] Failed to parse tailor-resume JSON. Fallback formatting applied.");
       res.json({
-        formattedResume: `${inputs.fullName || student?.name || "Arjun Sharma"}\n${inputs.email || "student@example.com"} | ${inputs.phone || "+91 9000"} | ${inputs.linkedin || "LinkedIn"}\n\nPROFESSIONAL SUMMARY\nCandidate targeting the ${job.title} role${job.company ? ` at ${job.company}` : ""}.\n\nTECHNICAL SKILLS\n${inputs.topSkills || "Python, NumPy, Pandas, Scikit-Learn"}\n\nEDUCATION & CERTIFICATIONS\n${inputs.educationText || "B.Tech"}\nRaise Tech Academy - Verified Data Science Track (${numCompleted} Completed Milestones).`,
+        formattedResume: `${inputs.fullName || student?.name || "Arjun Sharma"}\n${inputs.email || "student@example.com"} | ${inputs.phone || "+91 9000"} | ${inputs.linkedin || "LinkedIn"}\n\nPROFESSIONAL SUMMARY\nCandidate targeting the ${job.title} role${job.company ? ` at ${job.company}` : ""}.\n\nTECHNICAL SKILLS\n${inputs.topSkills || "Python, NumPy, Pandas, Scikit-Learn"}\n\nEDUCATION & CERTIFICATIONS\n${inputs.educationText || "B.Tech"}\nQuality Thought Academy - Verified Data Science Track (${numCompleted} Completed Milestones).`,
         optimizedKeywords: ["Python", "Pandas", "Data Science", job.title].filter(Boolean),
         tailoringNotes: [`Resume framed around the "${job.title}" opening.`],
         tailoredFor: `${job.title}${job.company ? ` @ ${job.company}` : ""}`
@@ -2326,7 +2344,7 @@ interface TailoredResumeResponse {
   } catch (err: any) {
     console.error("[Gemini API] Tailor resume error, returning fallback:", err);
     res.json({
-      formattedResume: `${inputs.fullName || student?.name || "Arjun Sharma"}\n${inputs.email || "student@example.com"} | ${inputs.phone || "+91 9000"} | ${inputs.linkedin || "LinkedIn"}\n\nPROFESSIONAL SUMMARY\nCandidate targeting the ${job.title} role${job.company ? ` at ${job.company}` : ""}.\n\nTECHNICAL SKILLS\n${inputs.topSkills || "Python, NumPy, Pandas, Scikit-Learn"}\n\nEDUCATION & CERTIFICATIONS\n${inputs.educationText || "B.Tech"}\nRaise Tech Academy - Verified Data Science Track (${numCompleted} Completed Milestones).`,
+      formattedResume: `${inputs.fullName || student?.name || "Arjun Sharma"}\n${inputs.email || "student@example.com"} | ${inputs.phone || "+91 9000"} | ${inputs.linkedin || "LinkedIn"}\n\nPROFESSIONAL SUMMARY\nCandidate targeting the ${job.title} role${job.company ? ` at ${job.company}` : ""}.\n\nTECHNICAL SKILLS\n${inputs.topSkills || "Python, NumPy, Pandas, Scikit-Learn"}\n\nEDUCATION & CERTIFICATIONS\n${inputs.educationText || "B.Tech"}\nQuality Thought Academy - Verified Data Science Track (${numCompleted} Completed Milestones).`,
       optimizedKeywords: ["Python", "Pandas", "Data Science", job.title].filter(Boolean),
       tailoringNotes: [`Resume framed around the "${job.title}" opening.`],
       tailoredFor: `${job.title}${job.company ? ` @ ${job.company}` : ""}`
