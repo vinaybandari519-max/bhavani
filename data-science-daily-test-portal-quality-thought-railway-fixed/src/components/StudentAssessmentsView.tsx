@@ -1108,7 +1108,7 @@ export default function StudentAssessmentsView({
                 Syllabus Scheduled Evaluations (Weekly / Monthly)
               </h3>
               <p className="text-sm text-slate-500 max-w-2xl leading-relaxed">
-                Assessments and periodic checkpoint testing as assigned directly by your instructor of the <strong>Raise Tech Elite Data Science Master Program</strong>.
+                Assessments and periodic checkpoint testing as assigned directly by your instructor of the <strong>Quality Thought Elite Data Science Master Program</strong>.
               </p>
             </div>
             <div className="bg-amber-50 p-3 rounded-xl border border-amber-150 text-xs shrink-0 font-medium font-mono text-amber-805">
