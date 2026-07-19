@@ -10,6 +10,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, doc, setDoc, getDocFromServer } from "firebase/firestore";
 
 const app = express();
+app.set("trust proxy", true);
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
 
 app.use(express.json({ limit: "20mb" }));
@@ -92,6 +93,9 @@ interface AppDatabase {
   scheduledTests?: any[];
   scheduledSubmissions?: any[];
   recordedVideos?: any[];
+  // Tracks failed teacher-login attempts per client, keyed by IP address, so a
+  // lockout survives server restarts (not just an in-memory counter).
+  teacherLoginSecurity?: Record<string, { attempts: number; lockedUntil: number | null }>;
 }
 
 const DEFAULT_DB: AppDatabase = {
@@ -335,13 +339,78 @@ function writeDB(data: AppDatabase) {
 }
 
 // 1. Teacher password verification
+// Security: after 3 incorrect password attempts from the same client, that
+// client is locked out of the teacher login for 24 hours. The lockout is
+// tracked server-side (per IP, persisted in the DB) so it can't be bypassed
+// by refreshing the page or clearing client-side state.
+const TEACHER_LOGIN_MAX_ATTEMPTS = 3;
+const TEACHER_LOGIN_LOCK_DURATION_MS = 24 * 60 * 60 * 1000; // 24 hours
+
+function getClientKey(req: express.Request): string {
+  const forwarded = (req.headers["x-forwarded-for"] as string | undefined)?.split(",")[0]?.trim();
+  return forwarded || req.ip || "unknown-client";
+}
+
 app.post("/api/auth/teacher", (req, res) => {
   const { password } = req.body;
-  if (password === "vinay@2003") {
-    res.json({ success: true, token: "teacher-valid-token-vinay-2003" });
-  } else {
-    res.status(401).json({ success: false, error: "Incorrect teacher password" });
+  const db = readDB();
+  if (!db.teacherLoginSecurity) db.teacherLoginSecurity = {};
+
+  const clientKey = getClientKey(req);
+  const entry = db.teacherLoginSecurity[clientKey] || { attempts: 0, lockedUntil: null };
+
+  // Still inside an active lockout window -> reject immediately, don't check the password.
+  if (entry.lockedUntil && Date.now() < entry.lockedUntil) {
+    const remainingMs = entry.lockedUntil - Date.now();
+    const remainingHours = Math.max(1, Math.ceil(remainingMs / (60 * 60 * 1000)));
+    res.status(429).json({
+      success: false,
+      locked: true,
+      lockedUntil: entry.lockedUntil,
+      error: `Too many incorrect attempts. Teacher login is locked for approximately ${remainingHours} more hour(s).`
+    });
+    return;
   }
+
+  // Lockout window has expired -> reset the counter before evaluating this attempt.
+  if (entry.lockedUntil && Date.now() >= entry.lockedUntil) {
+    entry.attempts = 0;
+    entry.lockedUntil = null;
+  }
+
+  if (password === "vinay@2003") {
+    entry.attempts = 0;
+    entry.lockedUntil = null;
+    db.teacherLoginSecurity[clientKey] = entry;
+    writeDB(db);
+    res.json({ success: true, token: "teacher-valid-token-vinay-2003" });
+    return;
+  }
+
+  entry.attempts += 1;
+
+  if (entry.attempts >= TEACHER_LOGIN_MAX_ATTEMPTS) {
+    entry.lockedUntil = Date.now() + TEACHER_LOGIN_LOCK_DURATION_MS;
+    db.teacherLoginSecurity[clientKey] = entry;
+    writeDB(db);
+    res.status(429).json({
+      success: false,
+      locked: true,
+      lockedUntil: entry.lockedUntil,
+      error: "Too many incorrect attempts. Teacher login is now locked for 24 hours."
+    });
+    return;
+  }
+
+  db.teacherLoginSecurity[clientKey] = entry;
+  writeDB(db);
+  const remaining = TEACHER_LOGIN_MAX_ATTEMPTS - entry.attempts;
+  res.status(401).json({
+    success: false,
+    locked: false,
+    attemptsRemaining: remaining,
+    error: `Incorrect teacher password. ${remaining} attempt${remaining === 1 ? "" : "s"} remaining before a 24-hour lock.`
+  });
 });
 
 // 2. Fetch complete DB info
@@ -1046,6 +1115,126 @@ async function generateContentWithRetry(ai: any, params: any, retries: number = 
   }
 }
 
+// -----------------------------------------------------------------------
+// AI-based coding/theory answer grading.
+// Replaces plain keyword string-matching with semantic evaluation by Gemini:
+// the model reads the question, the model solution, and the student's actual
+// answer, and judges correctness/understanding rather than checking whether
+// specific substrings appear in the text. Falls back to a conservative
+// length-based heuristic only if the Gemini client isn't configured, so
+// grading never silently fails.
+// -----------------------------------------------------------------------
+interface CodingGradeInput {
+  questionText: string;
+  modelSolution: string;
+  studentAnswer: string;
+}
+interface CodingGradeResult {
+  score: number;       // 0-100 for this question
+  isCorrect: boolean;  // score >= 60
+  feedback: string;    // short, specific, human-readable feedback
+}
+
+async function gradeCodingAnswersWithAI(items: CodingGradeInput[]): Promise<CodingGradeResult[]> {
+  const ai = getAi();
+
+  // Fallback (no Gemini key configured): give partial credit for a
+  // substantive attempt rather than blocking grading entirely. This is
+  // intentionally conservative and only used when AI grading is unavailable.
+  if (!ai) {
+    return items.map((item) => {
+      const attempted = item.studentAnswer.trim().length > 15;
+      return {
+        score: attempted ? 40 : 0,
+        isCorrect: false,
+        feedback: attempted
+          ? "AI grading is temporarily unavailable, so this answer received partial credit for a substantive attempt. Ask your instructor to review it manually."
+          : "No substantive answer was submitted."
+      };
+    });
+  }
+
+  const prompt = `You are grading a student's answers for a technical assessment. For EACH question below, compare the student's answer against the model solution and judge it on SEMANTIC correctness and conceptual understanding — NOT on whether specific keywords or exact code syntax appear in the text. A student can phrase or structure their answer completely differently from the model solution and still be fully correct, and a student can include all the "right words" while fundamentally misunderstanding the concept — grade the actual reasoning and correctness, not surface wording.
+
+Questions:
+${items.map((item, i) => `
+--- Question ${i + 1} ---
+Question: ${item.questionText}
+Model Solution: ${item.modelSolution}
+Student's Answer: ${item.studentAnswer || "(no answer submitted)"}
+`).join("\n")}
+
+Return a JSON array with exactly ${items.length} objects, one per question in order, each with:
+- score: integer 0-100 reflecting how semantically correct and complete the student's answer is
+- isCorrect: boolean, true if score >= 60
+- feedback: one or two sentences of specific, constructive feedback referencing what the student actually wrote`;
+
+  try {
+    const response = await generateContentWithRetry(ai, {
+      model: "gemini-3.5-flash",
+      contents: prompt,
+      config: {
+        systemInstruction: "You are a fair, rigorous technical grader. You evaluate meaning and correctness, never simple keyword/string matching. You MUST respond with a JSON array strictly conforming to the requested schema, with exactly one entry per question, in order.",
+        responseMimeType: "application/json",
+        responseSchema: {
+          type: Type.ARRAY,
+          items: {
+            type: Type.OBJECT,
+            properties: {
+              score: { type: Type.INTEGER, description: "0-100 semantic correctness score" },
+              isCorrect: { type: Type.BOOLEAN, description: "true if score >= 60" },
+              feedback: { type: Type.STRING, description: "Short specific constructive feedback" }
+            },
+            required: ["score", "isCorrect", "feedback"]
+          }
+        }
+      }
+    });
+
+    const text = response.text ?? (response.candidates?.[0]?.content?.parts?.[0]?.text ?? "[]");
+    const parsed = JSON.parse(text);
+    if (Array.isArray(parsed) && parsed.length === items.length) {
+      return parsed.map((r: any) => ({
+        score: Math.max(0, Math.min(100, Math.round(Number(r.score) || 0))),
+        isCorrect: !!r.isCorrect,
+        feedback: String(r.feedback || "")
+      }));
+    }
+    throw new Error("Unexpected AI grading response shape.");
+  } catch (e) {
+    console.error("[AI grading] Failed, falling back to partial credit:", e);
+    return items.map((item) => {
+      const attempted = item.studentAnswer.trim().length > 15;
+      return {
+        score: attempted ? 40 : 0,
+        isCorrect: false,
+        feedback: attempted
+          ? "AI grading service encountered an error, so this answer received partial credit for a substantive attempt. Ask your instructor to review it manually."
+          : "No substantive answer was submitted."
+      };
+    });
+  }
+}
+
+// Grades a set of coding/theory answers semantically and returns per-question
+// scores, correctness, and feedback — used by both the Comprehensive
+// Assessment and Scheduled (Weekly/Monthly) Test submit flows so free-text
+// answers are never graded by simple keyword matching.
+app.post("/api/assessments/grade-coding", async (req, res) => {
+  const { items } = req.body as { items: CodingGradeInput[] };
+  if (!Array.isArray(items) || items.length === 0) {
+    res.status(400).json({ error: "No questions supplied for grading." });
+    return;
+  }
+  try {
+    const results = await gradeCodingAnswersWithAI(items);
+    res.json({ success: true, results });
+  } catch (e) {
+    console.error("[POST /api/assessments/grade-coding] error:", e);
+    res.status(500).json({ error: "Failed to grade coding answers." });
+  }
+});
+
 const FALLBACK_QUESTIONS: Record<string, Record<string, string[]>> = {
   technical: {
     python: [
@@ -1086,7 +1275,7 @@ const FALLBACK_QUESTIONS: Record<string, Record<string, string[]>> = {
   },
   hr: {
     general: [
-      "Hello! Welcome to your HR and Behavioral interview. Let's start: Tell me about yourself, your academic background at Quality Thought Academy, and your primary career aspirations. (Question 1 of 5)",
+      "Hello! Welcome to your HR and Behavioral interview. Let's start: Tell me about yourself, your academic background at Raise Tech Academy, and your primary career aspirations. (Question 1 of 5)",
       "That's lovely to hear. Question 2 of 5: Tell me about a time when you had to work in a team to complete a project under a tight deadline. How did you organize the work, and how did you resolve any differences or conflicts? (Question 2 of 5)",
       "Thank you for sharing that experience. Question 3 of 5: How do you handle pressure, stress, or sudden changes in project specifications? Can you give me a specific real-world example? (Question 3 of 5)",
       "I appreciate your resilience. Question 4 of 5: What are your greatest professional strengths and your biggest areas of improvement, and what steps have you taken recently to address those growth areas? (Question 4 of 5)",
@@ -1240,7 +1429,7 @@ app.post("/api/interview/chat", async (req, res) => {
   let systemInstruction = "";
 
   if (roundType === "hr") {
-    systemInstruction = `You are an elite, warm, highly empathetic and professional Human Resources Director and Chief Talent Officer at "Quality Thought Academy".
+    systemInstruction = `You are an elite, warm, highly empathetic and professional Human Resources Director and Chief Talent Officer at "Raise Tech Academy".
 Your task is to conduct an interactive, step-by-step oral HR and behavioral interview with a student candidate at "${difficulty}" level.
 
 Follow these strict rules:
@@ -1257,7 +1446,7 @@ ${isResume ? `Candidate Resume Details to customize questions:
 ${customMaterial || "General Resume details"}
 --- END RESUME ---` : ""}`;
   } else if (roundType === "combined") {
-    systemInstruction = `You are an elite Senior Director of Engineering and HR Acquisition at "Quality Thought Academy".
+    systemInstruction = `You are an elite Senior Director of Engineering and HR Acquisition at "Raise Tech Academy".
 Your task is to conduct an interactive, step-by-step oral combined (Technical + HR) placement interview with a student candidate on the subject of "${subject}" at "${difficulty}" difficulty.
 
 Follow these strict rules:
@@ -1277,7 +1466,7 @@ ${customMaterial}
   } else {
     // Technical round (standard/resume based)
     if (isResume) {
-      systemInstruction = `You are an elite, highly professional Data Science Technical Recruiter at "Quality Thought Academy".
+      systemInstruction = `You are an elite, highly professional Data Science Technical Recruiter at "Raise Tech Academy".
 Your task is to conduct an interactive, step-by-step oral technical interview with a student candidate on the subject of data science, tailored specifically based on their RESUME at "${difficulty}" difficulty.
 
 Follow these strict rules:
@@ -1294,7 +1483,7 @@ Candidate Resume Details:
 ${customMaterial || "General Placement Resume Content"}
 --- END RESUME ---`;
     } else {
-      systemInstruction = `You are a professional, expert Data Science Technical Recruiter at "Quality Thought Academy".
+      systemInstruction = `You are a professional, expert Data Science Technical Recruiter at "Raise Tech Academy".
 Your task is to conduct an interactive, step-by-step oral technical interview with a student on the subject of "${subject}" at "${difficulty}" difficulty.
 
 Follow these strict rules:
@@ -1716,7 +1905,7 @@ app.post("/api/careers/analyze-resume", async (req, res) => {
     return;
   }
 
-  const prompt = `You are an elite Data Science Career Consultant at "Quality Thought Academy".
+  const prompt = `You are an elite Data Science Career Consultant at "Raise Tech Academy".
 Your task is to analyze the following candidate resume text and provide structured career matching insights.
 
 Resume Content:
@@ -1812,6 +2001,102 @@ interface ResumeAnalysisResult {
   }
 });
 
+// Search the live web (via Gemini + Google Search grounding) for currently open job
+// postings matching the candidate's skills, and return direct apply links pulled from
+// real sources (LinkedIn, Naukri, Indeed, Instahyre, Wellfound, company career pages, etc.)
+// instead of generic search-query URLs.
+app.post("/api/careers/live-jobs", async (req, res) => {
+  const { skills, roleQuery, resumeText, location } = req.body;
+
+  const ai = getAi();
+  if (!ai) {
+    res.status(503).json({ error: "Gemini API key is not configured inside the environment secrets. Please contact the classroom instructor to supply process.env.GEMINI_API_KEY." });
+    return;
+  }
+
+  const skillsList = Array.isArray(skills) && skills.length > 0 ? skills.join(", ") : null;
+  const focusQuery = roleQuery || skillsList || "Python Data Science Entry Level";
+  const targetLocation = location || "Hyderabad, India";
+
+  const prompt = `You are a live job-search research assistant for "Raise Tech Academy" students.
+
+Use Google Search to find 6-8 REAL, currently open job postings that closely match this candidate profile:
+- Target role / keywords: "${focusQuery}"
+- Skills: ${skillsList || "Python, Data Science fundamentals"}
+- Location preference: "${targetLocation}" (include a couple of remote/India-wide roles too if relevant)
+${resumeText ? `- Additional resume context: """${String(resumeText).slice(0, 1500)}"""` : ""}
+
+Search across LinkedIn Jobs, Naukri.com, Indeed, Instahyre, Wellfound (AngelList), and official company career pages.
+
+For every result you include, you MUST have actually found it via search — do not invent postings or URLs. Prefer the most direct link available: the company's own careers-page listing if you can find it, otherwise the specific job-board listing page for that exact posting (never a generic search-results page).
+
+Respond with ONLY a JSON array (no markdown fences, no commentary) where each item strictly matches:
+{
+  "company": string,        // Real hiring company name
+  "title": string,          // Job title as posted
+  "location": string,       // City/Remote as posted
+  "source": string,         // e.g. "LinkedIn", "Naukri", "Indeed", "Company Careers Page", "Instahyre", "Wellfound"
+  "applyUrl": string         // The exact, direct URL to that specific posting/apply page found via search
+}
+
+If you cannot find enough verifiably real postings, return fewer items rather than inventing any.`;
+
+  try {
+    const response = await generateContentWithRetry(ai, {
+      model: "gemini-2.5-flash",
+      contents: prompt,
+      config: {
+        tools: [{ googleSearch: {} }]
+      }
+    });
+
+    const respText = response.text || "";
+    let jsonString = respText.trim();
+    const fenceMatch = jsonString.match(/```(?:json)?([\s\S]*?)```/);
+    if (fenceMatch) {
+      jsonString = fenceMatch[1].trim();
+    }
+    const arrayMatch = jsonString.match(/\[[\s\S]*\]/);
+    if (arrayMatch) {
+      jsonString = arrayMatch[0];
+    }
+
+    // Grounding metadata contains the real URLs Gemini actually retrieved during search —
+    // surface these too so students always have verifiable links even if the structured
+    // job list above is sparse or a URL in it turns out stale.
+    const groundingChunks =
+      response.candidates?.[0]?.groundingMetadata?.groundingChunks ||
+      response.candidates?.[0]?.groundingMetadata?.grounding_chunks ||
+      [];
+    const sources = groundingChunks
+      .map((chunk: any) => ({
+        title: chunk?.web?.title || chunk?.web?.uri,
+        uri: chunk?.web?.uri
+      }))
+      .filter((s: any) => !!s.uri)
+      .slice(0, 10);
+
+    let jobs: any[] = [];
+    try {
+      const parsed = JSON.parse(jsonString);
+      if (Array.isArray(parsed)) {
+        jobs = parsed.filter((j: any) => j && j.applyUrl && j.title && j.company);
+      }
+    } catch (parseErr) {
+      console.warn("[Gemini API] Live jobs: could not parse structured JSON, falling back to sources only.");
+    }
+
+    res.json({ jobs, sources });
+  } catch (err: any) {
+    console.error("[Gemini API] Live jobs search error:", err);
+    res.status(502).json({
+      error: "Live job search is temporarily unavailable (the search-enabled Gemini request failed). Please try again shortly.",
+      jobs: [],
+      sources: []
+    });
+  }
+});
+
 // Compile an ATS-friendly resume based on student detail inputs + their academy training progress
 app.post("/api/careers/build-ats-resume", async (req, res) => {
   const { studentId, inputs } = req.body;
@@ -1847,7 +2132,7 @@ app.post("/api/careers/build-ats-resume", async (req, res) => {
   if (mlDone >= 2) verifiedTracks.push(`Supervised Machine Learning (Completed ${mlDone}/30 module milestones)`);
 
   const academyStatsText = `
-  Institute: Quality Thought Academy
+  Institute: Raise Tech Academy
   Verified Milestones Completed: ${numCompleted} / 200 Days of daily testing curriculum.
   Academic Evaluation Grade: ${avgScore}% Average accuracy score.
   Earned credentials: ${verifiedTracks.join(", ") || "Data Science Foundations Training Track"}
@@ -1912,7 +2197,7 @@ interface AtsResumeResponse {
     } catch (parseErr) {
       console.warn("[Gemini API] Failed to parse build-resume JSON. Fallback formatting applied.");
       res.json({
-        formattedResume: `${inputs.fullName || student?.name || "Arjun Sharma"}\n${inputs.email || "student@example.com"} | ${inputs.phone || "+91 9000"} | ${inputs.linkedin || "LinkedIn"}\n\nPROFESSIONAL SUMMARY\n${inputs.objective || "Dedicated candidate."}\n\nTECHNICAL SKILLS\n${inputs.topSkills || "Python, NumPy, Pandas, Scikit-Learn"}\n\nEDUCATION & CERTIFICATIONS\n${inputs.educationText || "B.Tech"}\nQuality Thought Academy - Verified Data Science Track (${numCompleted} Completed Milestones).`,
+        formattedResume: `${inputs.fullName || student?.name || "Arjun Sharma"}\n${inputs.email || "student@example.com"} | ${inputs.phone || "+91 9000"} | ${inputs.linkedin || "LinkedIn"}\n\nPROFESSIONAL SUMMARY\n${inputs.objective || "Dedicated candidate."}\n\nTECHNICAL SKILLS\n${inputs.topSkills || "Python, NumPy, Pandas, Scikit-Learn"}\n\nEDUCATION & CERTIFICATIONS\n${inputs.educationText || "B.Tech"}\nRaise Tech Academy - Verified Data Science Track (${numCompleted} Completed Milestones).`,
         optimizedKeywords: ["Python", "Pandas", "Data Science", "Machine Learning"],
         atsTips: ["Use standard font pairings", "Maintain clean plain text layout"]
       });
@@ -1920,14 +2205,134 @@ interface AtsResumeResponse {
   } catch (err: any) {
     console.error("[Gemini API] Build resume error, returning fallback:", err);
     res.json({
-      formattedResume: `${inputs.fullName || student?.name || "Arjun Sharma"}\n${inputs.email || "student@example.com"} | ${inputs.phone || "+91 9000"} | ${inputs.linkedin || "LinkedIn"}\n\nPROFESSIONAL SUMMARY\n${inputs.objective || "Dedicated candidate seeking placement in Data Analytics and Machine Learning engineering."}\n\nTECHNICAL SKILLS\n${inputs.topSkills || "Python, NumPy, Pandas, Scikit-Learn"}\n\nEDUCATION & CERTIFICATIONS\n${inputs.educationText || "B.Tech"}\nQuality Thought Academy - Verified Data Science Track (${numCompleted} Completed Milestones).`,
+      formattedResume: `${inputs.fullName || student?.name || "Arjun Sharma"}\n${inputs.email || "student@example.com"} | ${inputs.phone || "+91 9000"} | ${inputs.linkedin || "LinkedIn"}\n\nPROFESSIONAL SUMMARY\n${inputs.objective || "Dedicated candidate seeking placement in Data Analytics and Machine Learning engineering."}\n\nTECHNICAL SKILLS\n${inputs.topSkills || "Python, NumPy, Pandas, Scikit-Learn"}\n\nEDUCATION & CERTIFICATIONS\n${inputs.educationText || "B.Tech"}\nRaise Tech Academy - Verified Data Science Track (${numCompleted} Completed Milestones).`,
       optimizedKeywords: ["Python", "Pandas", "Data Science", "Machine Learning"],
       atsTips: ["Use standard font pairings", "Maintain clean plain text layout"]
     });
   }
 });
 
-// GET: Fetch all learning videos content-wise
+// Generate a resume tailored to ONE specific live job opening (e.g. "Data Analyst" at Company X),
+// re-weighting the candidate's verified academy progress + inputs toward exactly that role,
+// so each job in the Live Job Openings list can produce its own customized resume on demand.
+app.post("/api/careers/tailor-resume-for-job", async (req, res) => {
+  const { studentId, job, resumeText, inputs = {} } = req.body;
+  if (!studentId || !job || !job.title) {
+    res.status(400).json({ error: "Missing required parameters: studentId and job (with a title) are required." });
+    return;
+  }
+
+  const ai = getAi();
+  if (!ai) {
+    res.status(503).json({ error: "Gemini API key is not configured inside the environment secrets. Please contact the classroom instructor to supply process.env.GEMINI_API_KEY." });
+    return;
+  }
+
+  const db = readDB();
+  const student = db.students?.find((s: any) => s.id === studentId || s.rollNumber === studentId);
+  const studentSubmissions = (db.submissions || []).filter((sub: any) => sub.studentId === studentId);
+  const numCompleted = studentSubmissions.length;
+  const sumScores = studentSubmissions.reduce((acc: number, cur: any) => acc + (cur.score || 0), 0);
+  const avgScore = numCompleted > 0 ? Number((sumScores / numCompleted).toFixed(1)) : 0;
+
+  const verifiedTracks: string[] = [];
+  const pyDone = studentSubmissions.filter((sub: any) => sub.dayNumber >= 1 && sub.dayNumber <= 30).length;
+  const numPyDone = studentSubmissions.filter((sub: any) => sub.dayNumber >= 31 && sub.dayNumber <= 45).length;
+  const pandasDone = studentSubmissions.filter((sub: any) => sub.dayNumber >= 46 && sub.dayNumber <= 75).length;
+  const mlDone = studentSubmissions.filter((sub: any) => sub.dayNumber >= 76 && sub.dayNumber <= 105).length;
+  if (pyDone >= 5) verifiedTracks.push(`Core Python (Completed ${pyDone}/30 module milestones)`);
+  if (numPyDone >= 3) verifiedTracks.push(`NumPy Computation (Completed ${numPyDone}/15 module milestones)`);
+  if (pandasDone >= 3) verifiedTracks.push(`Pandas High-Performance Dataframes (Completed ${pandasDone}/30 module milestones)`);
+  if (mlDone >= 2) verifiedTracks.push(`Supervised Machine Learning (Completed ${mlDone}/30 module milestones)`);
+
+  const academyStatsText = `
+  Institute: Raise Tech Academy
+  Verified Milestones Completed: ${numCompleted} / 200 Days of daily testing curriculum.
+  Academic Evaluation Grade: ${avgScore}% Average accuracy score.
+  Earned credentials: ${verifiedTracks.join(", ") || "Data Science Foundations Training Track"}
+  `;
+
+  const prompt = `You are an elite Resume Director and Technical Recruiter.
+Generate an exceptionally structured, ATS-friendly resume for ONE specific job opening — not a generic resume. Every section (summary, skills ordering, project selection/wording, keyword choices) must be re-weighted to target this exact opening as closely as possible using only truthful, verified information from the candidate profile below (never invent employers, dates, or credentials that were not provided).
+
+Target Job Opening:
+- Job Title: ${job.title}
+- Company: ${job.company || "Not specified"}
+- Location: ${job.location || "Not specified"}
+- Source: ${job.source || "Not specified"}
+
+ATS Rules:
+1. Do not use columns, vertical grids, sidebars, horizontal layouts, charts, rating scales, or special graphics.
+2. Use standard clear text blocks separated by clear double line returns.
+3. Every section must have a fully uppercase clear heading (e.g. CONTACT INFORMATION, PROFESSIONAL SUMMARY, CORE COMPETENCIES, PROFESSIONAL EXPERIENCE, PROJECTS, EDUCATION, ACADEMIC CREDENTIALS & CERTIFICATIONS).
+4. The PROFESSIONAL SUMMARY must explicitly reflect readiness for the "${job.title}" role at "${job.company || "the hiring company"}".
+5. Order and phrase CORE COMPETENCIES / PROJECTS to foreground whatever in the candidate's background is most relevant to this specific title (e.g. if the title is "Data Analyst", foreground data analysis, SQL, dashboards, statistics over generic ML claims).
+
+Candidate Inputs:
+- Full Name: ${inputs.fullName || student?.name || "Arjun Sharma"}
+- Email: ${inputs.email || "student@example.com"}
+- Phone: ${inputs.phone || student?.phoneNumber || "+91 90000 00000"}
+- LinkedIn: ${inputs.linkedin || "linkedin.com/in/student"}
+- GitHub: ${inputs.github || "github.com/student"}
+- Professional Objective (candidate's own words, adapt to the role above): ${inputs.objective || "A highly motivated Data Science and Machine Learning enthusiast with concrete training in predictive analytics, vector math, and Python software engineering."}
+- Top Tools/Skills: ${inputs.topSkills || "Python, NumPy, Pandas, Scikit-Learn"}
+- Other Professional Experience (if any): ${inputs.experienceText || "None / Entry-level candidate pursuing rapid placement."}
+- Personal/Academic Projects built: ${inputs.projectsText || "Predictive housing model using Scikit-Learn pipelines, Custom NumPy matrix transformations module."}
+- Formal Education: ${inputs.educationText || "Bachelor of Technology in Computer Science or Equivalent."}
+${resumeText ? `- Additional free-form resume/profile text pasted by the candidate: """${String(resumeText).slice(0, 1500)}"""` : ""}
+
+Verified Academy Progress:
+${academyStatsText}
+
+Return your response strictly as valid, parsable JSON matching this interface (no extra conversation text):
+
+interface TailoredResumeResponse {
+  formattedResume: string; // The complete plain-text resume, tailored specifically to the target job opening above
+  optimizedKeywords: string[]; // 10 ATS keyword tags pulled from the actual job title/context that this resume was tuned to match
+  tailoringNotes: string[]; // 2-3 short bullet notes on what was specifically emphasized/reordered for this job vs. a generic resume
+}
+`;
+
+  try {
+    const response = await generateContentWithRetry(ai, {
+      model: "gemini-3.5-flash",
+      contents: prompt,
+    });
+
+    const respText = response.text || "";
+    let jsonString = respText.trim();
+    if (jsonString.startsWith("```json")) {
+      jsonString = jsonString.slice(7);
+    } else if (jsonString.startsWith("```")) {
+      jsonString = jsonString.slice(3);
+    }
+    if (jsonString.endsWith("```")) {
+      jsonString = jsonString.slice(0, -3);
+    }
+    jsonString = jsonString.trim();
+
+    try {
+      const parsed = JSON.parse(jsonString);
+      res.json({ ...parsed, tailoredFor: `${job.title}${job.company ? ` @ ${job.company}` : ""}` });
+    } catch (parseErr) {
+      console.warn("[Gemini API] Failed to parse tailor-resume JSON. Fallback formatting applied.");
+      res.json({
+        formattedResume: `${inputs.fullName || student?.name || "Arjun Sharma"}\n${inputs.email || "student@example.com"} | ${inputs.phone || "+91 9000"} | ${inputs.linkedin || "LinkedIn"}\n\nPROFESSIONAL SUMMARY\nCandidate targeting the ${job.title} role${job.company ? ` at ${job.company}` : ""}.\n\nTECHNICAL SKILLS\n${inputs.topSkills || "Python, NumPy, Pandas, Scikit-Learn"}\n\nEDUCATION & CERTIFICATIONS\n${inputs.educationText || "B.Tech"}\nRaise Tech Academy - Verified Data Science Track (${numCompleted} Completed Milestones).`,
+        optimizedKeywords: ["Python", "Pandas", "Data Science", job.title].filter(Boolean),
+        tailoringNotes: [`Resume framed around the "${job.title}" opening.`],
+        tailoredFor: `${job.title}${job.company ? ` @ ${job.company}` : ""}`
+      });
+    }
+  } catch (err: any) {
+    console.error("[Gemini API] Tailor resume error, returning fallback:", err);
+    res.json({
+      formattedResume: `${inputs.fullName || student?.name || "Arjun Sharma"}\n${inputs.email || "student@example.com"} | ${inputs.phone || "+91 9000"} | ${inputs.linkedin || "LinkedIn"}\n\nPROFESSIONAL SUMMARY\nCandidate targeting the ${job.title} role${job.company ? ` at ${job.company}` : ""}.\n\nTECHNICAL SKILLS\n${inputs.topSkills || "Python, NumPy, Pandas, Scikit-Learn"}\n\nEDUCATION & CERTIFICATIONS\n${inputs.educationText || "B.Tech"}\nRaise Tech Academy - Verified Data Science Track (${numCompleted} Completed Milestones).`,
+      optimizedKeywords: ["Python", "Pandas", "Data Science", job.title].filter(Boolean),
+      tailoringNotes: [`Resume framed around the "${job.title}" opening.`],
+      tailoredFor: `${job.title}${job.company ? ` @ ${job.company}` : ""}`
+    });
+  }
+});
 app.get("/api/videos", (req, res) => {
   const db = readDB();
   res.json({ success: true, videos: db.videos || [] });
@@ -2292,4 +2697,3 @@ async function startServer() {
 }
 
 startServer();
-
