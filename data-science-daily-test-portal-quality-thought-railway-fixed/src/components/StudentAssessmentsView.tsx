@@ -23,6 +23,60 @@ interface StudentAssessmentsViewProps {
   onProgressSubmit: () => void;
   scheduledTests?: any[];
   scheduledSubmissions?: any[];
+  monthlyTestLocked?: boolean;
+}
+
+// Per-question AI grading result, shown alongside the model solution and the
+// student's own answer in the review screen.
+interface CodingGradeItem {
+  questionText: string;
+  modelSolution: string;
+  studentAnswer: string;
+  score: number;      // 0-100 for this question
+  isCorrect: boolean;
+  feedback: string;
+}
+
+// Converts a 0-100 overall score into a letter grade for display.
+function scoreToLetterGrade(score: number): string {
+  if (score >= 90) return "A+";
+  if (score >= 80) return "A";
+  if (score >= 70) return "B";
+  if (score >= 60) return "C";
+  if (score >= 40) return "D";
+  return "F";
+}
+
+// Sends coding/theory answers to the server for semantic AI grading (NOT
+// keyword string-matching). questionWeight is how many overall points each
+// question is worth (e.g. 25 when there are 2 questions worth 50% total).
+async function gradeCodingWithAI(
+  items: { questionText: string; modelSolution: string; studentAnswer: string }[]
+): Promise<CodingGradeItem[]> {
+  try {
+    const res = await fetch("/api/assessments/grade-coding", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ items })
+    });
+    if (!res.ok) throw new Error("Grading request failed");
+    const data = await res.json();
+    return items.map((item, idx) => ({
+      ...item,
+      score: data.results[idx]?.score ?? 0,
+      isCorrect: data.results[idx]?.isCorrect ?? false,
+      feedback: data.results[idx]?.feedback ?? ""
+    }));
+  } catch (e) {
+    // If the AI grading call itself fails (network issue etc.), give partial
+    // credit for a substantive attempt rather than losing the submission.
+    return items.map((item) => ({
+      ...item,
+      score: item.studentAnswer.trim().length > 15 ? 40 : 0,
+      isCorrect: false,
+      feedback: "Automatic grading was temporarily unavailable; this answer received partial credit for a substantive attempt."
+    }));
+  }
 }
 
 export default function StudentAssessmentsView({
@@ -32,7 +86,8 @@ export default function StudentAssessmentsView({
   overrides,
   onProgressSubmit,
   scheduledTests = [],
-  scheduledSubmissions = []
+  scheduledSubmissions = [],
+  monthlyTestLocked = false
 }: StudentAssessmentsViewProps) {
   const [activeSlug, setActiveSlug] = useState<string | null>(null);
   const [step, setStep] = useState<"list" | "quiz" | "view-answers" | "scheduled-quiz">("list");
@@ -44,7 +99,7 @@ export default function StudentAssessmentsView({
   const [schedMCQAnswers, setSchedMCQAnswers] = useState<Record<number, number>>({});
   const [schedCodingAnswers, setSchedCodingAnswers] = useState<Record<number, string>>({});
   const [schedCurrentMCQIndex, setSchedCurrentMCQIndex] = useState<number>(0);
-  const [schedResult, setSchedResult] = useState<{ score: number; passed: boolean } | null>(null);
+  const [schedResult, setSchedResult] = useState<{ score: number; passed: boolean; grade: string; codingBreakdown: CodingGradeItem[] } | null>(null);
 
   // In-progress test states
   const [currentMCQIndex, setCurrentMCQIndex] = useState(0);
@@ -103,7 +158,10 @@ export default function StudentAssessmentsView({
     passed: boolean;
     mcqScore: number;
     codingScore: number;
+    grade: string;
+    codingBreakdown: CodingGradeItem[];
   } | null>(null);
+  const [isGradingCoding, setIsGradingCoding] = useState(false);
 
   // Simple checks helper
   const getSubjectCompletionStatus = (slug: string) => {
@@ -172,6 +230,7 @@ export default function StudentAssessmentsView({
     }
 
     setIsSubmitting(true);
+    setIsGradingCoding(true);
     setErrorMessage(null);
 
     // Calculate score: 50% max for MCQs, 50% max for coding splits
@@ -189,28 +248,24 @@ export default function StudentAssessmentsView({
       mcqScorePct = 50; // default full marks if no MCQs requested
     }
 
+    // Coding/theory answers graded semantically by AI — comparing meaning
+    // and correctness against the model solution — rather than by checking
+    // for specific keyword substrings.
     let codingScorePct = 0;
+    let schedCodingBreakdown: CodingGradeItem[] = [];
     const codingCount = activeSched.coding?.length || 0;
     if (codingCount > 0) {
-      let acceptedCodingCount = 0;
-      activeSched.coding.forEach((codeQ: any, idx: number) => {
-        const textCode = schedCodingAnswers[idx] || "";
-        if (textCode.length > 15) {
-          const matchedKeywords = (codeQ.expectedKeywords || []).filter((k: string) => textCode.includes(k));
-          const matchRatio = codeQ.expectedKeywords?.length ? (matchedKeywords.length / codeQ.expectedKeywords.length) : 1;
-          if (matchRatio >= 0.75) {
-            acceptedCodingCount += 1;
-          } else if (matchRatio >= 0.25) {
-            acceptedCodingCount += 0.6;
-          } else {
-            acceptedCodingCount += 0.3; // partial attempt
-          }
-        }
-      });
-      codingScorePct = Math.round((acceptedCodingCount / codingCount) * 50);
+      const codingItems = activeSched.coding.map((codeQ: any, idx: number) => ({
+        questionText: codeQ.questionText,
+        modelSolution: codeQ.solutionDescription || "",
+        studentAnswer: schedCodingAnswers[idx] || ""
+      }));
+      schedCodingBreakdown = await gradeCodingWithAI(codingItems);
+      codingScorePct = Math.round(schedCodingBreakdown.reduce((sum, item) => sum + (item.score / 100) * (50 / codingCount), 0));
     } else {
       codingScorePct = 50; // default full marks if no coding exercises
     }
+    setIsGradingCoding(false);
 
     const finalPercent = mcqScorePct + codingScorePct;
     const isPassed = finalPercent >= 60;
@@ -233,7 +288,9 @@ export default function StudentAssessmentsView({
       if (res.ok) {
         setSchedResult({
           score: finalPercent,
-          passed: isPassed
+          passed: isPassed,
+          grade: scoreToLetterGrade(finalPercent),
+          codingBreakdown: schedCodingBreakdown
         });
         onProgressSubmit(); // refresh student context dynamically
       } else {
@@ -260,10 +317,11 @@ export default function StudentAssessmentsView({
     }
 
     setIsSubmitting(true);
+    setIsGradingCoding(true);
     setErrorMessage(null);
 
     // Calculate score
-    // 5 MCQs = 50% max (10% each)
+    // 5 MCQs = 50% max (10% each) — deterministic, exact-match grading.
     let mcqPoints = 0;
     currentPreset.mcqs.forEach((mcq, idx) => {
       if (selectedMCQ[idx] === mcq.correctOption) {
@@ -271,23 +329,17 @@ export default function StudentAssessmentsView({
       }
     });
 
-    // 2 Coding questions = 50% max (25% each)
-    let codingPoints = 0;
-    currentPreset.coding.forEach((codeQ, idx) => {
-      const ans = codingAnswers[idx] || "";
-      if (ans.trim().length > 15) {
-        // basic keyword verification
-        const matchedKeywords = codeQ.expectedKeywords.filter(k => ans.includes(k));
-        const matchRatio = matchedKeywords.length / codeQ.expectedKeywords.length;
-        if (matchRatio >= 0.75) {
-          codingPoints += 25;
-        } else if (matchRatio >= 0.25) {
-          codingPoints += 15;
-        } else {
-          codingPoints += 8; // small credit for attempting
-        }
-      }
-    });
+    // 2 Coding/theory questions = 50% max (25% each). Graded semantically by
+    // AI — comparing meaning and correctness against the model solution —
+    // rather than by checking for specific keyword substrings.
+    const codingItems = currentPreset.coding.map((codeQ, idx) => ({
+      questionText: codeQ.questionText,
+      modelSolution: codeQ.solutionDescription,
+      studentAnswer: codingAnswers[idx] || ""
+    }));
+    const codingBreakdown = await gradeCodingWithAI(codingItems);
+    setIsGradingCoding(false);
+    const codingPoints = Math.round(codingBreakdown.reduce((sum, item) => sum + (item.score / 100) * 25, 0));
 
     const finalScore = mcqPoints + codingPoints;
     const passed = finalScore >= 60;
@@ -311,7 +363,9 @@ export default function StudentAssessmentsView({
           score: finalScore,
           passed,
           mcqScore: mcqPoints,
-          codingScore: codingPoints
+          codingScore: codingPoints,
+          grade: scoreToLetterGrade(finalScore),
+          codingBreakdown
         });
         setStep("quiz");
         onProgressSubmit(); // refresh context
@@ -367,7 +421,7 @@ export default function StudentAssessmentsView({
 
           {/* Part A: MCQs and Correct Answers */}
           <div className="space-y-6">
-            <h5 className="text-xs font-black uppercase tracking-wide text-indigo-950 font-mono border-b pb-2">
+            <h5 className="text-xs font-black uppercase tracking-wide text-amber-950 font-mono border-b pb-2">
               Part A: Multiple Choices - Correct Answers
             </h5>
             <div className="space-y-4">
@@ -404,8 +458,8 @@ export default function StudentAssessmentsView({
                     })}
                   </div>
 
-                  <div className="mt-2 bg-indigo-50/40 p-3.5 rounded-lg border border-indigo-100 text-xs font-sans">
-                    <strong className="text-indigo-950 block mb-1">Explanation:</strong>
+                  <div className="mt-2 bg-amber-50/40 p-3.5 rounded-lg border border-amber-100 text-xs font-sans">
+                    <strong className="text-amber-950 block mb-1">Explanation:</strong>
                     <p className="text-slate-600 leading-relaxed font-sans">{mcq.explanation}</p>
                   </div>
                 </div>
@@ -415,7 +469,7 @@ export default function StudentAssessmentsView({
 
           {/* Part B: Coding and Model Solutions */}
           <div className="space-y-6 pt-6 border-t border-slate-100">
-            <h5 className="text-xs font-black uppercase tracking-wide text-indigo-950 font-mono border-b pb-2">
+            <h5 className="text-xs font-black uppercase tracking-wide text-amber-950 font-mono border-b pb-2">
               Part B: Descriptive Coding Tasks - Model Solutions
             </h5>
 
@@ -476,8 +530,8 @@ export default function StudentAssessmentsView({
     if (schedResult) {
       return (
         <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-md max-w-2xl mx-auto space-y-6 animate-fade-in text-center">
-          <div className="inline-flex p-4 rounded-full bg-indigo-50 text-indigo-650 mb-1">
-            <Award className="w-12 h-12 text-indigo-600" />
+          <div className="inline-flex p-4 rounded-full bg-amber-50 text-amber-650 mb-1">
+            <Award className="w-12 h-12 text-amber-600" />
           </div>
           <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tight">
             Evaluation Exam Recorded!
@@ -486,11 +540,17 @@ export default function StudentAssessmentsView({
             Your custom {activeSched.testType} examination answer script for <strong>{activeSched.title}</strong> was successfully gathered and calculated in databases.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-4 border-y border-slate-100 font-mono text-center max-w-md mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4 border-y border-slate-100 font-mono text-center max-w-2xl mx-auto">
             <div className="bg-slate-50 p-4 rounded-xl border border-slate-150">
               <span className="text-[10px] text-slate-400 block uppercase font-bold tracking-wider mb-1 font-mono">My Score</span>
               <span className={`text-2xl font-black ${schedResult.passed ? "text-emerald-600" : "text-amber-600"}`}>
                 {schedResult.score}%
+              </span>
+            </div>
+            <div className="bg-slate-50 p-4 rounded-xl border border-slate-150">
+              <span className="text-[10px] text-slate-400 block uppercase font-bold tracking-wider mb-1 font-mono">Grade</span>
+              <span className={`text-2xl font-black ${schedResult.passed ? "text-emerald-600" : "text-amber-600"}`}>
+                {schedResult.grade}
               </span>
             </div>
             <div className="bg-slate-50 p-4 rounded-xl border border-slate-150 flex flex-col justify-center items-center">
@@ -500,6 +560,38 @@ export default function StudentAssessmentsView({
               </span>
             </div>
           </div>
+
+          {schedResult.codingBreakdown.length > 0 && (
+            <div className="text-left max-w-2xl mx-auto space-y-4 pt-2">
+              <h5 className="text-xs font-black uppercase tracking-wide text-amber-950 font-mono border-b pb-2">
+                AI-Graded Answer Review (semantic grading, not keyword matching)
+              </h5>
+              {schedResult.codingBreakdown.map((item, idx) => (
+                <div key={idx} className="bg-slate-50/50 p-5 rounded-xl border border-slate-200 space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="font-bold text-slate-900 text-xs">Question {idx + 1}</span>
+                    <span className={`text-xs font-black font-mono px-2 py-0.5 rounded ${item.isCorrect ? "bg-emerald-100 text-emerald-700" : "bg-amber-100 text-amber-700"}`}>
+                      {item.score}%
+                    </span>
+                  </div>
+                  <p className="font-bold text-slate-950 text-sm leading-relaxed">{item.questionText}</p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div className="space-y-1">
+                      <span className="text-[10px] font-bold text-slate-500 block uppercase font-mono">Your Answer</span>
+                      <pre className="w-full bg-white text-slate-700 font-mono text-[11px] p-3 rounded-lg border border-slate-200 overflow-x-auto whitespace-pre-wrap leading-relaxed">{item.studentAnswer || "(no answer submitted)"}</pre>
+                    </div>
+                    <div className="space-y-1">
+                      <span className="text-[10px] font-bold text-emerald-800 block uppercase font-mono">Model Solution</span>
+                      <pre className="w-full bg-slate-900 text-emerald-300 font-mono text-[11px] p-3 rounded-lg border-none overflow-x-auto whitespace-pre-wrap leading-relaxed">{item.modelSolution}</pre>
+                    </div>
+                  </div>
+                  <div className="bg-amber-50 border border-amber-150 rounded-lg p-2.5 text-[11px] text-amber-900 leading-relaxed">
+                    <strong>AI Feedback:</strong> {item.feedback}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
 
           <div className="p-4 rounded-xl border text-xs leading-relaxed max-w-lg mx-auto bg-slate-50 border-slate-200 text-left">
             <h5 className="font-bold text-slate-900 mb-1">Syllabus Evaluation Completion:</h5>
@@ -523,9 +615,9 @@ export default function StudentAssessmentsView({
     return (
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm max-w-4xl mx-auto overflow-hidden animate-fade-in text-left">
         {/* Banner */}
-        <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-indigo-900 p-6 text-white flex justify-between items-center border-b border-indigo-950">
+        <div className="bg-gradient-to-r from-slate-900 via-amber-950 to-amber-900 p-6 text-white flex justify-between items-center border-b border-amber-950">
           <div>
-            <span className="bg-indigo-500/30 text-indigo-300 font-mono text-[9px] font-bold py-1 px-2.5 rounded-full uppercase tracking-wider block w-fit mb-1 border border-indigo-700/40">
+            <span className="bg-amber-500/30 text-amber-300 font-mono text-[9px] font-bold py-1 px-2.5 rounded-full uppercase tracking-wider block w-fit mb-1 border border-amber-700/40">
               Academic Scheduled {activeSched.testType === "weekly" ? "Weekly" : "Monthly"} Evaluation
             </span>
             <h4 className="text-lg font-black tracking-tight text-white font-sans">{activeSched.title}</h4>
@@ -549,7 +641,7 @@ export default function StudentAssessmentsView({
           {activeSched.mcqs && activeSched.mcqs.length > 0 && (
             <div className="space-y-4">
               <div className="flex justify-between items-center border-b border-slate-100 pb-2">
-                <h5 className="text-xs font-black uppercase tracking-widest text-indigo-950 font-mono">
+                <h5 className="text-xs font-black uppercase tracking-widest text-amber-950 font-mono">
                   Part A: Core Theory Evaluation ({activeSched.mcqs.length} MCQs &bull; 50% Weights)
                 </h5>
                 <div className="flex gap-1">
@@ -559,7 +651,7 @@ export default function StudentAssessmentsView({
                       onClick={() => setSchedCurrentMCQIndex(mIdx)}
                       className={`w-6 h-6 rounded-full font-mono text-[10px] font-bold border transition cursor-pointer ${
                         schedCurrentMCQIndex === mIdx
-                          ? "bg-indigo-600 border-indigo-600 text-white"
+                          ? "bg-amber-600 border-amber-600 text-white"
                           : schedMCQAnswers[mIdx] !== undefined
                           ? "bg-slate-100 border-slate-200 text-slate-800"
                           : "bg-white border-slate-150 text-slate-450 hover:border-slate-300"
@@ -587,12 +679,12 @@ export default function StudentAssessmentsView({
                         onClick={() => setSchedMCQAnswers(prev => ({ ...prev, [schedCurrentMCQIndex]: oIdx }))}
                         className={`w-full text-left p-3.5 rounded-lg border transition flex items-center gap-3 font-medium cursor-pointer ${
                           isSelected
-                            ? "bg-indigo-50 border-indigo-400 text-indigo-950 font-bold shadow-xs"
+                            ? "bg-amber-50 border-amber-400 text-amber-950 font-bold shadow-xs"
                             : "bg-white border-slate-200 text-slate-705 hover:bg-slate-50 hover:border-slate-300"
                         }`}
                       >
                         <div className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 font-bold text-[9px] ${
-                          isSelected ? "bg-indigo-600 border-indigo-600 text-white" : "border-slate-300 bg-white"
+                          isSelected ? "bg-amber-600 border-amber-600 text-white" : "border-slate-300 bg-white"
                         }`}>
                           {isSelected && "✓"}
                         </div>
@@ -628,7 +720,7 @@ export default function StudentAssessmentsView({
           {/* Part B: Coding (if present) */}
           {activeSched.coding && activeSched.coding.length > 0 && (
             <div className="space-y-4 pt-4 border-t border-slate-100">
-              <h5 className="text-xs font-black uppercase tracking-widest text-indigo-950 font-mono">
+              <h5 className="text-xs font-black uppercase tracking-widest text-amber-950 font-mono">
                 Part B: Practical Program Compilation ({activeSched.coding.length} tasks &bull; 50% Weights)
               </h5>
 
@@ -647,12 +739,12 @@ export default function StudentAssessmentsView({
                     </p>
 
                     <div className="space-y-1.5">
-                      <span className="text-[10px] font-bold text-indigo-805 text-indigo-850 block uppercase font-mono">
+                      <span className="text-[10px] font-bold text-amber-805 text-amber-850 block uppercase font-mono">
                         Write Python Solution Code:
                       </span>
                       <textarea
                         rows={5}
-                        className="w-full bg-slate-900 text-emerald-350 font-mono text-xs p-4 rounded-lg border-none focus:ring-1 focus:ring-indigo-400 outline-none leading-relaxed"
+                        className="w-full bg-slate-900 text-emerald-350 font-mono text-xs p-4 rounded-lg border-none focus:ring-1 focus:ring-amber-400 outline-none leading-relaxed"
                         value={schedCodingAnswers[idx] || ""}
                         onChange={(e) => {
                           const val = e.target.value;
@@ -682,10 +774,10 @@ export default function StudentAssessmentsView({
               className={`font-black text-xs uppercase tracking-wider text-white px-8 py-3 rounded-lg shadow-sm transition flex items-center gap-2 ${
                 isSubmitting
                   ? "bg-slate-400 cursor-not-allowed"
-                  : "bg-indigo-650 hover:bg-indigo-700 cursor-pointer"
+                  : "bg-amber-650 hover:bg-amber-700 cursor-pointer"
               }`}
             >
-              {isSubmitting ? "Uploading Answers..." : "Submit Finished Script"}
+              {isGradingCoding ? "AI Grading Your Answers..." : isSubmitting ? "Uploading Answers..." : "Submit Finished Script"}
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -703,7 +795,7 @@ export default function StudentAssessmentsView({
       return (
         <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-md max-w-2xl mx-auto space-y-6 animate-fade-in animate-scale-up">
           <div className="text-center space-y-3">
-            <div className="inline-flex p-4 rounded-full bg-indigo-50 text-indigo-600 mb-2">
+            <div className="inline-flex p-4 rounded-full bg-amber-50 text-amber-600 mb-2">
               <Award className="w-12 h-12" />
             </div>
             <h3 className="text-2xl font-black text-slate-900 uppercase tracking-tight">
@@ -714,11 +806,17 @@ export default function StudentAssessmentsView({
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4 border-y border-slate-100 font-mono text-center">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 py-4 border-y border-slate-100 font-mono text-center">
             <div className="bg-slate-50 p-4 rounded-xl border border-slate-150">
               <span className="text-[10px] text-slate-400 block uppercase font-bold tracking-wider mb-1">Total Score</span>
               <span className={`text-2xl font-black ${finishedQuizResult.passed ? "text-emerald-600" : "text-amber-600"}`}>
                 {finishedQuizResult.score}%
+              </span>
+            </div>
+            <div className="bg-slate-50 p-4 rounded-xl border border-slate-150">
+              <span className="text-[10px] text-slate-400 block uppercase font-bold tracking-wider mb-1">Grade</span>
+              <span className={`text-2xl font-black ${finishedQuizResult.passed ? "text-emerald-600" : "text-amber-600"}`}>
+                {finishedQuizResult.grade}
               </span>
             </div>
             <div className="bg-slate-50 p-4 rounded-xl border border-slate-150">
@@ -734,6 +832,38 @@ export default function StudentAssessmentsView({
               </span>
             </div>
           </div>
+
+          {finishedQuizResult.codingBreakdown.length > 0 && (
+            <div className="text-left space-y-4 pt-2">
+              <h5 className="text-xs font-black uppercase tracking-wide text-amber-950 font-mono border-b pb-2">
+                AI-Graded Answer Review (semantic grading, not keyword matching)
+              </h5>
+              {finishedQuizResult.codingBreakdown.map((item, idx) => (
+                <div key={idx} className="bg-slate-50/50 p-5 rounded-xl border border-slate-200 space-y-3">
+                  <div className="flex justify-between items-center">
+                    <span className="font-bold text-slate-900 text-xs">Coding challenge #{idx + 1}</span>
+                    <span className={`text-xs font-black font-mono px-2 py-0.5 rounded ${item.isCorrect ? "bg-emerald-100 text-emerald-700" : "bg-amber-100 text-amber-700"}`}>
+                      {item.score}%
+                    </span>
+                  </div>
+                  <p className="font-bold text-slate-950 text-sm leading-relaxed">{item.questionText}</p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div className="space-y-1">
+                      <span className="text-[10px] font-bold text-slate-500 block uppercase font-mono">Your Answer</span>
+                      <pre className="w-full bg-white text-slate-700 font-mono text-[11px] p-3 rounded-lg border border-slate-200 overflow-x-auto whitespace-pre-wrap leading-relaxed">{item.studentAnswer || "(no answer submitted)"}</pre>
+                    </div>
+                    <div className="space-y-1">
+                      <span className="text-[10px] font-bold text-emerald-800 block uppercase font-mono">Model Solution</span>
+                      <pre className="w-full bg-slate-900 text-emerald-300 font-mono text-[11px] p-3 rounded-lg border-none overflow-x-auto whitespace-pre-wrap leading-relaxed">{item.modelSolution}</pre>
+                    </div>
+                  </div>
+                  <div className="bg-amber-50 border border-amber-150 rounded-lg p-2.5 text-[11px] text-amber-900 leading-relaxed">
+                    <strong>AI Feedback:</strong> {item.feedback}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
 
           <div className="p-4 rounded-xl border flex gap-3 items-center text-xs leading-relaxed max-w-xl mx-auto bg-slate-50 border-slate-200">
             {finishedQuizResult.passed ? (
@@ -775,9 +905,9 @@ export default function StudentAssessmentsView({
     return (
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm max-w-4xl mx-auto overflow-hidden animate-fade-in">
         {/* Banner */}
-        <div className="bg-gradient-to-r from-indigo-900 to-slate-900 p-6 text-white flex justify-between items-center">
+        <div className="bg-gradient-to-r from-amber-900 to-slate-900 p-6 text-white flex justify-between items-center">
           <div>
-            <span className="bg-indigo-500/20 text-indigo-300 font-mono text-[9px] font-bold py-1 px-2.5 rounded-full uppercase tracking-wider block w-fit mb-1">
+            <span className="bg-amber-500/20 text-amber-300 font-mono text-[9px] font-bold py-1 px-2.5 rounded-full uppercase tracking-wider block w-fit mb-1">
               SUBJECT COMPREHENSIVE EXAM
             </span>
             <h4 className="text-lg font-black tracking-tight">{currentPreset.courseName} Assessment</h4>
@@ -799,7 +929,7 @@ export default function StudentAssessmentsView({
           {/* MCQ SECTION (5 questions) */}
           <div className="space-y-4">
             <div className="flex justify-between items-center border-b pb-2">
-              <h5 className="text-xs font-black uppercase tracking-wide text-indigo-900 font-mono">
+              <h5 className="text-xs font-black uppercase tracking-wide text-amber-900 font-mono">
                 Part A: Core Concept Multiple Choices (5 Questions &bull; 50%)
               </h5>
               <div className="flex gap-1">
@@ -809,7 +939,7 @@ export default function StudentAssessmentsView({
                     onClick={() => setCurrentMCQIndex(mIdx)}
                     className={`w-6 h-6 rounded-full font-mono text-[10px] font-bold border transition ${
                       currentMCQIndex === mIdx
-                        ? "bg-indigo-600 border-indigo-600 text-white"
+                        ? "bg-amber-600 border-amber-600 text-white"
                         : selectedMCQ[mIdx] !== undefined
                         ? "bg-slate-100 border-slate-200 text-slate-800"
                         : "bg-white border-slate-150 text-slate-400 hover:border-slate-300"
@@ -837,12 +967,12 @@ export default function StudentAssessmentsView({
                       onClick={() => setSelectedMCQ(prev => ({ ...prev, [currentMCQIndex]: oIdx }))}
                       className={`w-full text-left p-3.5 rounded-lg border transition flex items-center gap-3 font-medium ${
                         isSelected
-                          ? "bg-indigo-50 border-indigo-400 text-indigo-950 font-bold"
+                          ? "bg-amber-50 border-amber-400 text-amber-950 font-bold"
                           : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-350"
                       }`}
                     >
                       <div className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 font-bold text-[9px] ${
-                        isSelected ? "bg-indigo-600 border-indigo-600 text-white" : "border-slate-300 bg-white"
+                        isSelected ? "bg-amber-600 border-amber-600 text-white" : "border-slate-300 bg-white"
                       }`}>
                         {isSelected && "✓"}
                       </div>
@@ -877,7 +1007,7 @@ export default function StudentAssessmentsView({
 
           {/* CODING SECTION (2 questions) */}
           <div className="space-y-4 pt-4 border-t border-slate-100">
-            <h5 className="text-xs font-black uppercase tracking-wide text-indigo-900 font-mono">
+            <h5 className="text-xs font-black uppercase tracking-wide text-amber-900 font-mono">
               Part B: Advanced Descriptive Coding Tasks (2 Questions &bull; 50%)
             </h5>
 
@@ -896,12 +1026,12 @@ export default function StudentAssessmentsView({
                   </p>
 
                   <div className="space-y-1">
-                    <span className="text-[10px] font-bold text-indigo-800 block uppercase font-mono">
+                    <span className="text-[10px] font-bold text-amber-800 block uppercase font-mono">
                       Write Clean Python Code:
                     </span>
                     <textarea
                       rows={4}
-                      className="w-full bg-slate-900 text-indigo-300 font-mono text-xs p-3.5 rounded-lg border-none focus:ring-1 focus:ring-indigo-400 outline-none"
+                      className="w-full bg-slate-900 text-amber-300 font-mono text-xs p-3.5 rounded-lg border-none focus:ring-1 focus:ring-amber-400 outline-none"
                       value={codingAnswers[idx] || ""}
                       onChange={(e) => {
                         const val = e.target.value;
@@ -930,10 +1060,10 @@ export default function StudentAssessmentsView({
               className={`font-bold text-sm text-white px-8 py-3 rounded-lg shadow-md transition flex items-center gap-2 ${
                 isSubmitting
                   ? "bg-slate-400 cursor-not-allowed"
-                  : "bg-indigo-650 hover:bg-indigo-700 cursor-pointer"
+                  : "bg-amber-650 hover:bg-amber-700 cursor-pointer"
               }`}
             >
-              {isSubmitting ? "Evaluating Submissions..." : "Submit Completed Assessment"}
+              {isGradingCoding ? "AI Grading Your Answers..." : isSubmitting ? "Evaluating Submissions..." : "Submit Completed Assessment"}
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -951,7 +1081,7 @@ export default function StudentAssessmentsView({
           onClick={() => setSubTab("scheduled")}
           className={`flex-1 py-3 text-xs uppercase tracking-wider font-extrabold rounded-lg transition-all cursor-pointer ${
             subTab === "scheduled"
-              ? "bg-white text-indigo-700 shadow-sm"
+              ? "bg-white text-amber-700 shadow-sm"
               : "text-slate-500 hover:text-slate-850"
           }`}
         >
@@ -961,7 +1091,7 @@ export default function StudentAssessmentsView({
           onClick={() => setSubTab("comprehensive")}
           className={`flex-1 py-3 text-xs uppercase tracking-wider font-extrabold rounded-lg transition-all cursor-pointer ${
             subTab === "comprehensive"
-              ? "bg-white text-indigo-700 shadow-sm"
+              ? "bg-white text-amber-700 shadow-sm"
               : "text-slate-500 hover:text-slate-850"
           }`}
         >
@@ -974,15 +1104,15 @@ export default function StudentAssessmentsView({
           <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div className="space-y-1 text-left">
               <h3 className="text-lg font-black text-slate-900 flex items-center gap-2">
-                <Award className="w-5 h-5 text-indigo-600" />
+                <Award className="w-5 h-5 text-amber-600" />
                 Syllabus Scheduled Evaluations (Weekly / Monthly)
               </h3>
               <p className="text-sm text-slate-500 max-w-2xl leading-relaxed">
-                Assessments and periodic checkpoint testing as assigned directly by your instructor of the <strong>Quality Thought Elite Data Science Master Program</strong>.
+                Assessments and periodic checkpoint testing as assigned directly by your instructor of the <strong>Raise Tech Elite Data Science Master Program</strong>.
               </p>
             </div>
-            <div className="bg-indigo-50 p-3 rounded-xl border border-indigo-150 text-xs shrink-0 font-medium font-mono text-indigo-805">
-              Passing criteria: <span className="font-extrabold text-indigo-700">60% Clearance</span>
+            <div className="bg-amber-50 p-3 rounded-xl border border-amber-150 text-xs shrink-0 font-medium font-mono text-amber-805">
+              Passing criteria: <span className="font-extrabold text-amber-700">60% Clearance</span>
             </div>
           </div>
 
@@ -1086,10 +1216,14 @@ export default function StudentAssessmentsView({
                             </span>
                             <span className="text-[10px] text-slate-400 italic">Submitted {new Date(sub.submittedAt).toLocaleDateString()}</span>
                           </div>
+                        ) : test.testType === "monthly" && monthlyTestLocked ? (
+                          <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-rose-600 bg-rose-50 border border-rose-200 px-3 py-1.5 rounded-lg">
+                            <Lock className="w-3.5 h-3.5" /> Locked by instructor
+                          </span>
                         ) : test.isActive ? (
                           <button
                             onClick={() => startScheduledAssessment(test)}
-                            className="text-xs font-mono font-bold py-2 px-5 rounded-lg bg-indigo-600 hover:bg-indigo-750 text-white shadow-xs transition-all flex items-center gap-1 cursor-pointer"
+                            className="text-xs font-mono font-bold py-2 px-5 rounded-lg bg-amber-600 hover:bg-amber-750 text-white shadow-xs transition-all flex items-center gap-1 cursor-pointer"
                           >
                             ✍️ Start Baseline Exam
                           </button>
@@ -1109,7 +1243,7 @@ export default function StudentAssessmentsView({
           <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
             <div className="space-y-1 text-left">
               <h3 className="text-lg font-black text-slate-900 flex items-center gap-2">
-                <Award className="w-5 h-5 text-indigo-600" />
+                <Award className="w-5 h-5 text-amber-600" />
                 Comprehensive Chapter Milestone Exams
               </h3>
               <p className="text-sm text-slate-500 max-w-2xl leading-relaxed">
@@ -1117,7 +1251,7 @@ export default function StudentAssessmentsView({
               </p>
             </div>
             <div className="bg-slate-100 p-3 rounded-xl border border-slate-200 text-xs shrink-0 font-medium">
-              Passing Threshold: <span className="font-extrabold text-indigo-700 font-mono">60 / 100 PTS</span>
+              Passing Threshold: <span className="font-extrabold text-amber-700 font-mono">60 / 100 PTS</span>
             </div>
           </div>
 
@@ -1160,7 +1294,7 @@ export default function StudentAssessmentsView({
               : "text-amber-700 border-amber-200 bg-amber-50";
           } else if (isUnlocked) {
             statusText = "Ready to Take Exam";
-            statusColor = "text-indigo-700 border-indigo-200 bg-indigo-50 animate-pulse-slow";
+            statusColor = "text-amber-700 border-amber-200 bg-amber-50 animate-pulse-slow";
           } else if (!isPythonCompleted && course.slug !== "python" && !hasPythonBypass) {
             statusText = "Blocked: Complete Python";
             statusColor = "text-rose-700 border-rose-200 bg-rose-50";
@@ -1182,7 +1316,7 @@ export default function StudentAssessmentsView({
                 <div className="flex justify-between items-start">
                   <div className="space-y-1">
                     <h4 className="font-extrabold text-slate-900 text-sm flex items-center gap-1.5">
-                      <BookOpen className="w-4 h-4 text-indigo-600" />
+                      <BookOpen className="w-4 h-4 text-amber-600" />
                       {course.name} Assessment
                     </h4>
                     <span className="text-[10px] text-slate-400 font-mono block">
@@ -1245,7 +1379,7 @@ export default function StudentAssessmentsView({
                       <button
                         onClick={() => startAssessment(course.slug)}
                         disabled={!hasPreset}
-                        className="text-xs font-bold py-2 px-5 rounded-lg bg-indigo-600 hover:bg-indigo-750 text-white border border-transparent shadow-sm transition-all flex items-center gap-1.5 cursor-pointer disabled:bg-slate-300 disabled:cursor-not-allowed"
+                        className="text-xs font-bold py-2 px-5 rounded-lg bg-amber-600 hover:bg-amber-750 text-white border border-transparent shadow-sm transition-all flex items-center gap-1.5 cursor-pointer disabled:bg-slate-300 disabled:cursor-not-allowed"
                       >
                         <Play className="w-3 h-3 fill-current shrink-0" />
                         <span>Start Assessment</span>
