@@ -2065,13 +2065,17 @@ app.post("/api/careers/live-jobs", async (req, res) => {
 
   const prompt = `You are a live job-search research assistant for "Quality Thought Academy" students.
 
-Use Google Search to find 6-8 REAL, currently open job postings that closely match this candidate profile:
+Use Google Search to find 6-8 REAL job postings that were posted or updated WITHIN THE LAST 48 HOURS ONLY, matching this candidate profile:
 - Target role / keywords: "${focusQuery}"
 - Skills: ${skillsList || "Python, Data Science fundamentals"}
 - Location preference: "${targetLocation}" (include a couple of remote/India-wide roles too if relevant)
 ${resumeText ? `- Additional resume context: """${String(resumeText).slice(0, 1500)}"""` : ""}
 
+STRICT FRESHNESS RULE: Only include postings explicitly dated, or clearly indicated by the search result, as posted within the last 48 hours (e.g. "Posted today", "Posted yesterday", "1 day ago", "2 days ago", or an explicit date within that window). If you cannot verify a posting is that recent, DO NOT include it — return fewer results instead of including anything older or undated.
+
 Search across these portals the student has active profiles on${filledPortals.length > 0 ? "" : " (default set, since the student hasn't listed specific profiles yet)"}: ${portalsToSearch.join(", ")}, plus official company career pages. It is completely fine if the student only listed one or two portals — search thoroughly across exactly the ones given rather than expecting a full list.
+
+AVOID aggregator/mirror sites that frequently show stale or already-expired listings even when they rank well in search (examples: bebee.com, jooble, jobrapido, and similar third-party re-posting aggregators). Prefer the original source: the company's own careers page, or the primary job board (LinkedIn, Naukri, Indeed, Instahyre, Wellfound) where the listing was actually first posted.
 
 For every result you include, you MUST have actually found it via search — do not invent postings or URLs. Prefer the most direct link available: the company's own careers-page listing if you can find it, otherwise the specific job-board listing page for that exact posting (never a generic search-results page).
 
@@ -2081,10 +2085,11 @@ Respond with ONLY a JSON array (no markdown fences, no commentary) where each it
   "title": string,          // Job title as posted
   "location": string,       // City/Remote as posted
   "source": string,         // e.g. "LinkedIn", "Naukri", "Indeed", "Company Careers Page", "Instahyre", "Wellfound"
-  "applyUrl": string         // The exact, direct URL to that specific posting/apply page found via search
+  "applyUrl": string,        // The exact, direct URL to that specific posting/apply page found via search
+  "postedWithin": string     // How recent, exactly as indicated by the source, e.g. "Posted today", "1 day ago", "2 days ago"
 }
 
-If you cannot find enough verifiably real postings, return fewer items rather than inventing any.`;
+If you cannot find enough verifiably real postings from the last 48 hours, return fewer items rather than inventing any or including older ones.`;
 
   try {
     const response = await generateContentWithRetry(ai, {
