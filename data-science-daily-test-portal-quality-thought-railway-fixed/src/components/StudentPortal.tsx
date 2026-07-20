@@ -82,6 +82,17 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
   const [compilingResume, setCompilingResume] = useState<boolean>(false);
   const [atsResult, setAtsResult] = useState<any | null>(null);
   const [atsError, setAtsError] = useState<string | null>(null);
+
+  // Live Job Search (real postings pulled from LinkedIn/Naukri/Indeed/etc via Gemini + Google Search)
+  const [liveJobs, setLiveJobs] = useState<any[]>([]);
+  const [loadingLiveJobs, setLoadingLiveJobs] = useState<boolean>(false);
+  const [liveJobsError, setLiveJobsError] = useState<string | null>(null);
+  const [liveJobsFetchedFor, setLiveJobsFetchedFor] = useState<string | null>(null);
+
+  // Job-tailored resume (rewrites the resume to match a specific job's skills/description)
+  const [tailoringJobKey, setTailoringJobKey] = useState<string | null>(null);
+  const [tailoredResumeResult, setTailoredResumeResult] = useState<any | null>(null);
+  const [tailoredResumeError, setTailoredResumeError] = useState<string | null>(null);
   const [copiedAts, setCopiedAts] = useState<boolean>(false);
 
   // Content-wise Video Attachment States
@@ -564,6 +575,72 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
       setResumeError(err.message || "An unexpected error occurred while analyzing your resume.");
     } finally {
       setAnalyzingResume(false);
+    }
+  };
+
+  // Extracts real, currently open job postings from LinkedIn, Naukri, Indeed, Instahyre,
+  // Wellfound, and company career pages (via Gemini + Google Search grounding on the backend)
+  // for the given skills/role, and returns direct apply links instead of generic search URLs.
+  const handleFetchLiveJobs = async (roleQuery: string, skills?: string[]) => {
+    setLoadingLiveJobs(true);
+    setLiveJobsError(null);
+    setLiveJobs([]);
+    setLiveJobsFetchedFor(roleQuery);
+    try {
+      const res = await fetch("/api/careers/live-jobs", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          roleQuery,
+          skills: skills && skills.length > 0 ? skills : undefined,
+          resumeText: resumeText || undefined,
+          location: jobLocation,
+        }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setLiveJobs(data.jobs || []);
+        if ((data.jobs || []).length === 0) {
+          setLiveJobsError("No verified live postings were found for this search right now. Try a different role or location.");
+        }
+      } else {
+        setLiveJobsError(data.error || "Live job search failed. Please try again.");
+      }
+    } catch (err: any) {
+      setLiveJobsError(err.message || "An unexpected error occurred while searching for live jobs.");
+    } finally {
+      setLoadingLiveJobs(false);
+    }
+  };
+
+  // Rewrites the ATS resume so it foregrounds the exact skills/keywords mentioned in a
+  // specific job posting's title/description, rather than a generic one-size-fits-all resume.
+  const handleTailorResumeForJob = async (job: any) => {
+    const jobKey = `${job.title}-${job.company}`;
+    setTailoringJobKey(jobKey);
+    setTailoredResumeError(null);
+    setTailoredResumeResult(null);
+    try {
+      const res = await fetch("/api/careers/tailor-resume-for-job", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          studentId: student.id,
+          job,
+          resumeText: resumeText || undefined,
+          inputs: atsInputs,
+        }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setTailoredResumeResult(data);
+      } else {
+        setTailoredResumeError(data.error || "Failed to tailor resume for this job.");
+      }
+    } catch (err: any) {
+      setTailoredResumeError(err.message || "An unexpected error occurred while tailoring your resume.");
+    } finally {
+      setTailoringJobKey(null);
     }
   };
 
@@ -2735,6 +2812,29 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
                                     <span>Google Careers Results</span>
                                     <Search className="w-2.5 h-2.5 shrink-0" />
                                   </a>
+                                  <button
+                                    type="button"
+                                    onClick={() =>
+                                      handleFetchLiveJobs(
+                                        role.searchQuery,
+                                        role.skillsRequired ? String(role.skillsRequired).split(",").map((s: string) => s.trim()) : undefined
+                                      )
+                                    }
+                                    disabled={loadingLiveJobs && liveJobsFetchedFor === role.searchQuery}
+                                    className="bg-emerald-600 hover:bg-emerald-550 border border-emerald-500/30 text-white text-[9px] font-extrabold py-1.5 px-2.5 rounded-lg flex items-center justify-center gap-1.5 transition w-full focus:outline-none disabled:opacity-60 cursor-pointer"
+                                  >
+                                    {loadingLiveJobs && liveJobsFetchedFor === role.searchQuery ? (
+                                      <>
+                                        <Loader2 className="w-2.5 h-2.5 shrink-0 animate-spin" />
+                                        <span>Extracting Real Postings...</span>
+                                      </>
+                                    ) : (
+                                      <>
+                                        <Briefcase className="w-2.5 h-2.5 shrink-0" />
+                                        <span>Find Real Job Openings</span>
+                                      </>
+                                    )}
+                                  </button>
                                 </div>
                               ) : (
                                 <div className="mt-4 bg-white/5 border border-white/5 text-slate-400 font-bold font-mono text-[9px] py-1.5 px-2 rounded-lg text-center select-none">
@@ -2745,6 +2845,141 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
                           );
                         })}
                       </div>
+
+                      {/* Extracted Live Job Postings: real listings pulled from LinkedIn, Naukri, Indeed,
+                          Instahyre, Wellfound & company career pages, with direct apply links per posting. */}
+                      {(loadingLiveJobs || liveJobs.length > 0 || liveJobsError) && (
+                        <div className="bg-emerald-950/30 border border-emerald-700/40 rounded-2xl p-4 space-y-3">
+                          <div className="flex items-center justify-between gap-2">
+                            <h5 className="text-xs font-extrabold text-emerald-300 uppercase tracking-wide font-mono flex items-center gap-1.5">
+                              <Briefcase className="w-3.5 h-3.5" />
+                              Live Job Openings{liveJobsFetchedFor ? ` — "${liveJobsFetchedFor}"` : ""}
+                            </h5>
+                            {liveJobs.length > 0 && (
+                              <span className="text-[10px] font-mono text-emerald-400">{liveJobs.length} found</span>
+                            )}
+                          </div>
+
+                          {loadingLiveJobs && (
+                            <div className="text-xs text-emerald-200 italic py-4 text-center flex items-center justify-center gap-2">
+                              <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                              Searching LinkedIn, Naukri, Indeed & company career pages for real openings...
+                            </div>
+                          )}
+
+                          {!loadingLiveJobs && liveJobsError && (
+                            <div className="text-xs text-amber-300 bg-amber-950/30 border border-amber-700/30 rounded-lg p-3">
+                              {liveJobsError}
+                            </div>
+                          )}
+
+                          {!loadingLiveJobs && liveJobs.length > 0 && (
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                              {liveJobs.map((job: any, jIdx: number) => {
+                                const jobKey = `${job.title}-${job.company}`;
+                                const isTailoring = tailoringJobKey === jobKey;
+                                return (
+                                  <div key={jIdx} className="bg-white/5 border border-white/10 rounded-xl p-3 space-y-2">
+                                    <div>
+                                      <h6 className="text-xs font-extrabold text-white leading-snug">{job.title}</h6>
+                                      <p className="text-[10px] text-emerald-300 font-bold">{job.company}</p>
+                                      <p className="text-[10px] text-slate-400 mt-0.5">
+                                        {job.location || "Location not specified"} &bull; via {job.source || "Web"}
+                                      </p>
+                                    </div>
+                                    <div className="flex flex-col gap-1.5 pt-1 border-t border-white/5">
+                                      <a
+                                        href={job.applyUrl}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="bg-indigo-600 hover:bg-indigo-550 text-white text-[9px] font-extrabold py-1.5 px-2.5 rounded-lg flex items-center justify-center gap-1.5 transition focus:outline-none"
+                                      >
+                                        <span>View & Apply</span>
+                                        <ExternalLink className="w-2.5 h-2.5 shrink-0" />
+                                      </a>
+                                      <button
+                                        type="button"
+                                        onClick={() => handleTailorResumeForJob(job)}
+                                        disabled={isTailoring}
+                                        className="bg-white/10 hover:bg-white/15 border border-white/15 text-white text-[9px] font-bold py-1.5 px-2.5 rounded-lg flex items-center justify-center gap-1.5 transition focus:outline-none disabled:opacity-60 cursor-pointer"
+                                      >
+                                        {isTailoring ? (
+                                          <>
+                                            <Loader2 className="w-2.5 h-2.5 shrink-0 animate-spin" />
+                                            <span>Tailoring Resume...</span>
+                                          </>
+                                        ) : (
+                                          <>
+                                            <FileText className="w-2.5 h-2.5 shrink-0" />
+                                            <span>Tailor Resume for This Job</span>
+                                          </>
+                                        )}
+                                      </button>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Job-Tailored Resume Result: rewritten resume that foregrounds the exact
+                          skills mentioned in the selected job's title/description */}
+                      {(tailoredResumeResult || tailoredResumeError) && (
+                        <div className="bg-indigo-950/40 border border-indigo-500/30 rounded-2xl p-4 space-y-3">
+                          <div className="flex items-center justify-between gap-2">
+                            <h5 className="text-xs font-extrabold text-indigo-300 uppercase tracking-wide font-mono flex items-center gap-1.5">
+                              <FileText className="w-3.5 h-3.5" />
+                              Job-Tailored Resume{tailoredResumeResult?.tailoredFor ? ` — ${tailoredResumeResult.tailoredFor}` : ""}
+                            </h5>
+                            {tailoredResumeResult && (
+                              <button
+                                type="button"
+                                onClick={() => navigator.clipboard.writeText(tailoredResumeResult.formattedResume)}
+                                className="text-[9px] font-bold text-indigo-300 hover:text-white flex items-center gap-1 cursor-pointer"
+                              >
+                                <Copy className="w-2.5 h-2.5" />
+                                Copy
+                              </button>
+                            )}
+                          </div>
+
+                          {tailoredResumeError && (
+                            <div className="text-xs text-amber-300 bg-amber-950/30 border border-amber-700/30 rounded-lg p-3">
+                              {tailoredResumeError}
+                            </div>
+                          )}
+
+                          {tailoredResumeResult && (
+                            <>
+                              <textarea
+                                readOnly
+                                value={tailoredResumeResult.formattedResume}
+                                rows={10}
+                                className="w-full bg-black/20 border border-white/10 rounded-lg p-3 text-[10px] font-mono text-slate-200 leading-relaxed resize-y"
+                              />
+                              {tailoredResumeResult.optimizedKeywords && tailoredResumeResult.optimizedKeywords.length > 0 && (
+                                <div className="flex flex-wrap gap-1.5">
+                                  <span className="text-[9px] font-mono font-bold text-slate-400 uppercase mr-1">Keywords matched from job:</span>
+                                  {tailoredResumeResult.optimizedKeywords.map((kw: string, kIdx: number) => (
+                                    <span key={kIdx} className="bg-indigo-600/30 border border-indigo-500/40 text-indigo-200 text-[9px] font-bold px-2 py-0.5 rounded-full">
+                                      {kw}
+                                    </span>
+                                  ))}
+                                </div>
+                              )}
+                              {tailoredResumeResult.tailoringNotes && tailoredResumeResult.tailoringNotes.length > 0 && (
+                                <ul className="text-[10px] text-slate-300 space-y-1 list-disc pl-4">
+                                  {tailoredResumeResult.tailoringNotes.map((note: string, nIdx: number) => (
+                                    <li key={nIdx}>{note}</li>
+                                  ))}
+                                </ul>
+                              )}
+                            </>
+                          )}
+                        </div>
+                      )}
 
                       {/* Display customizable helper query below the matches */}
                       {isResumeMode && (
