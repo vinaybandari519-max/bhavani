@@ -2024,7 +2024,7 @@ interface ResumeAnalysisResult {
 // real sources (LinkedIn, Naukri, Indeed, Instahyre, Wellfound, company career pages, etc.)
 // instead of generic search-query URLs.
 app.post("/api/careers/live-jobs", async (req, res) => {
-  const { skills, roleQuery, resumeText, location } = req.body;
+  const { skills, roleQuery, resumeText, location, placementDetails } = req.body;
 
   const ai = getAi();
   if (!ai) {
@@ -2036,6 +2036,33 @@ app.post("/api/careers/live-jobs", async (req, res) => {
   const focusQuery = roleQuery || skillsList || "Python Data Science Entry Level";
   const targetLocation = location || "Hyderabad, India";
 
+  // Map the student's saved placement-portal profile links to friendly portal names.
+  // A student may have filled in only 1 or 2 of these (or all 10) — whatever they've
+  // provided is exactly what gets searched. There is no minimum count required.
+  const PORTAL_LABELS: Record<string, string> = {
+    linkedin: "LinkedIn",
+    indeed: "Indeed",
+    naukri: "Naukri.com",
+    glassdoor: "Glassdoor",
+    foundit: "Foundit",
+    shine: "Shine.com",
+    timesjobs: "TimesJobs",
+    internshala: "Internshala",
+    wellfound: "Wellfound (AngelList)",
+    apna: "Apna App",
+  };
+  const filledPortals: string[] = placementDetails && typeof placementDetails === "object"
+    ? Object.entries(placementDetails)
+        .filter(([key, val]) => typeof val === "string" && val.trim().length > 0 && PORTAL_LABELS[key])
+        .map(([key]) => PORTAL_LABELS[key])
+    : [];
+
+  // If the student hasn't filled in any portal profiles yet, fall back to a broad default
+  // set so the search still works — filled-in portals are simply prioritized, never required.
+  const portalsToSearch = filledPortals.length > 0
+    ? filledPortals
+    : ["LinkedIn", "Naukri.com", "Indeed", "Instahyre", "Wellfound (AngelList)"];
+
   const prompt = `You are a live job-search research assistant for "Quality Thought Academy" students.
 
 Use Google Search to find 6-8 REAL, currently open job postings that closely match this candidate profile:
@@ -2044,7 +2071,7 @@ Use Google Search to find 6-8 REAL, currently open job postings that closely mat
 - Location preference: "${targetLocation}" (include a couple of remote/India-wide roles too if relevant)
 ${resumeText ? `- Additional resume context: """${String(resumeText).slice(0, 1500)}"""` : ""}
 
-Search across LinkedIn Jobs, Naukri.com, Indeed, Instahyre, Wellfound (AngelList), and official company career pages.
+Search across these portals the student has active profiles on${filledPortals.length > 0 ? "" : " (default set, since the student hasn't listed specific profiles yet)"}: ${portalsToSearch.join(", ")}, plus official company career pages. It is completely fine if the student only listed one or two portals — search thoroughly across exactly the ones given rather than expecting a full list.
 
 For every result you include, you MUST have actually found it via search — do not invent postings or URLs. Prefer the most direct link available: the company's own careers-page listing if you can find it, otherwise the specific job-board listing page for that exact posting (never a generic search-results page).
 
