@@ -2856,7 +2856,7 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
                           <div className="flex items-center justify-between gap-2">
                             <h5 className="text-xs font-extrabold text-emerald-300 uppercase tracking-wide font-mono flex items-center gap-1.5">
                               <Briefcase className="w-3.5 h-3.5" />
-                              Live Job Openings{liveJobsFetchedFor ? ` — "${liveJobsFetchedFor}"` : ""}
+                              Live Job Openings (Last 48 Hours){liveJobsFetchedFor ? ` — "${liveJobsFetchedFor}"` : ""}
                             </h5>
                             {liveJobs.length > 0 && (
                               <span className="text-[10px] font-mono text-emerald-400">{liveJobs.length} found</span>
@@ -2877,6 +2877,12 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
                           )}
 
                           {!loadingLiveJobs && liveJobs.length > 0 && (
+                            <p className="text-[10px] text-emerald-400/70 italic -mt-1">
+                              Filtered to postings from the last 48 hours. Since hiring pages update in real time, a listing can occasionally close between when it was found and when you click — if that happens, try refreshing this search.
+                            </p>
+                          )}
+
+                          {!loadingLiveJobs && liveJobs.length > 0 && (
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                               {liveJobs.map((job: any, jIdx: number) => {
                                 const jobKey = `${job.title}-${job.company}`;
@@ -2889,6 +2895,11 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
                                       <p className="text-[10px] text-slate-400 mt-0.5">
                                         {job.location || "Location not specified"} &bull; via {job.source || "Web"}
                                       </p>
+                                      {job.postedWithin && (
+                                        <span className="inline-block mt-1 text-[9px] font-mono font-bold text-emerald-300 bg-emerald-500/10 border border-emerald-500/30 px-1.5 py-0.5 rounded-full">
+                                          🕒 {job.postedWithin}
+                                        </span>
+                                      )}
                                     </div>
                                     <div className="flex flex-col gap-1.5 pt-1 border-t border-white/5">
                                       <a
