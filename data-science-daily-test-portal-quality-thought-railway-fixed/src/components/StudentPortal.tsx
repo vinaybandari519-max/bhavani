@@ -595,6 +595,9 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
           skills: skills && skills.length > 0 ? skills : undefined,
           resumeText: resumeText || undefined,
           location: jobLocation,
+          // Send whichever portal profiles the student has filled in — could be just 1 or 2,
+          // or all 10. The backend uses exactly the ones provided; it never requires a minimum.
+          placementDetails: currentStudentObj?.placementDetails || undefined,
         }),
       });
       const data = await res.json();
@@ -3777,6 +3780,9 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
                 <p className="text-xs text-slate-500 font-sans mt-0.5">
                   Your updated profiles list is sent directly to management to expedite active job matches.
                 </p>
+                <p className="text-[10px] text-emerald-700 font-bold font-mono mt-1">
+                  ✓ No minimum required — fill in even just 1 or 2 portals and job search will still work with those.
+                </p>
               </div>
               <button
                 type="button"
@@ -3916,7 +3922,7 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
               <button
                 type="submit"
                 disabled={savingPlacementDetails}
-                className="bg-indigo-650 hover:bg-indigo-700 disabled:opacity-50 text-white font-bold font-mono text-xs py-2.5 px-6 rounded-lg transition-all flex items-center gap-1 cursor-pointer shadow-sm"
+                className="bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white font-bold font-mono text-xs py-2.5 px-6 rounded-lg transition-all flex items-center gap-1 cursor-pointer shadow-sm"
               >
                 {savingPlacementDetails ? (
                   <span>Saving...</span>
