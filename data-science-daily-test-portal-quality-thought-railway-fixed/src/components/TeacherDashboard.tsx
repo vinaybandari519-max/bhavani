@@ -5038,6 +5038,30 @@ function TeacherInterviewsView({ selectedBatch }: { selectedBatch: string }) {
 
   const filtered = interviews.filter((item) => item.batch === selectedBatch);
 
+  // Group interviews by calendar date so teachers can see "how many students
+  // attended the AI Mock Interview on each date" at a glance, similar to a
+  // daily attendance register.
+  const dailyAttendance = (() => {
+    const map: Record<string, { dateLabel: string; students: Set<string>; count: number; sortKey: number }> = {};
+    filtered.forEach((item) => {
+      const d = new Date(item.createdAt || Date.now());
+      const key = d.toDateString(); // e.g. "Sat Jul 18 2026" -> stable per-day bucket
+      if (!map[key]) {
+        map[key] = {
+          dateLabel: d.toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" }),
+          students: new Set<string>(),
+          count: 0,
+          sortKey: new Date(key).getTime(),
+        };
+      }
+      // Count unique students per day (a student retaking the same day only counts once)
+      map[key].students.add(item.studentId);
+    });
+    return Object.values(map)
+      .map((entry) => ({ ...entry, count: entry.students.size }))
+      .sort((a, b) => b.sortKey - a.sortKey);
+  })();
+
   // Simple Markdown styling renderer
   function renderMarkdown(text: string) {
     if (!text) return null;
@@ -5070,6 +5094,33 @@ function TeacherInterviewsView({ selectedBatch }: { selectedBatch: string }) {
         >
           Refresh Tracker
         </button>
+      </div>
+
+      {/* Daily Attendance Summary: how many students attended the AI Mock Interview on each date */}
+      <div className="space-y-2">
+        <h5 className="text-xs font-bold text-slate-400 uppercase tracking-wide font-mono">
+          Daily AI Interview Attendance
+        </h5>
+        {dailyAttendance.length === 0 ? (
+          <div className="text-xs italic text-slate-400 py-3 px-4 bg-slate-50/50 border border-dashed border-slate-200 rounded-lg">
+            No AI Mock Interview attendance recorded yet for {selectedBatch}.
+          </div>
+        ) : (
+          <div className="flex flex-wrap gap-2">
+            {dailyAttendance.map((day) => (
+              <div
+                key={day.sortKey}
+                className="flex items-center gap-2 bg-indigo-50 border border-indigo-150 rounded-lg px-3 py-1.5"
+                title={`${day.count} student${day.count === 1 ? "" : "s"} attended on ${day.dateLabel}`}
+              >
+                <span className="text-[10px] font-mono font-bold text-indigo-700">{day.dateLabel}</span>
+                <span className="text-[10px] font-mono font-black text-indigo-900 bg-indigo-200/60 px-1.5 py-0.5 rounded">
+                  {day.count} attended
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
