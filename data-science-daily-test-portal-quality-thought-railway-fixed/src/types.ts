@@ -262,6 +262,14 @@ export interface VoiceAnalysis {
   improvements: string[];
 }
 
+export interface QuestionBreakdownItem {
+  question: string;
+  givenAnswer: string;
+  idealSolution: string;
+  matchPercentage: number;
+  verdict: string; // "Correct" | "Partially Correct" | "Incorrect"
+}
+
 export interface AIInterviewReport {
   score: number; // out of 100
   technicalScore?: number; // out of 100
@@ -273,6 +281,7 @@ export interface AIInterviewReport {
   strengths: string[];
   improvements: string[];
   detailedEvaluation: string; // Markdown text
+  questionBreakdown?: QuestionBreakdownItem[];
   voiceAnalysis?: VoiceAnalysis;
 }
 
