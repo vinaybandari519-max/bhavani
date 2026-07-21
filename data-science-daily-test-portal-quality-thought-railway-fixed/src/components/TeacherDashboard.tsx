@@ -5040,7 +5040,7 @@ function TeacherInterviewsView({ selectedBatch }: { selectedBatch: string }) {
 
   // Group interviews by calendar date so teachers can see "how many students
   // attended the AI Mock Interview on each date" at a glance, similar to a
-  // daily attendance register.
+  // daily attendance register — e.g. "Jul 20, 2026 — 45 attended".
   const dailyAttendance = (() => {
     const map: Record<string, { dateLabel: string; students: Set<string>; count: number; sortKey: number }> = {};
     filtered.forEach((item) => {
