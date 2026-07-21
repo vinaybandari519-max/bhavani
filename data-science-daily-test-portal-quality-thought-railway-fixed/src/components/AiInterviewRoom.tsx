@@ -1776,6 +1776,48 @@ export default function AiInterviewRoom({
                   </div>
                 </div>
 
+                {/* QUESTION-BY-QUESTION BREAKDOWN: candidate's actual answer vs. the ideal/model answer,
+                    with a per-question grade — pulled directly from the structured questionBreakdown data. */}
+                {activeReport.report?.questionBreakdown && activeReport.report.questionBreakdown.length > 0 && (
+                  <div className="border border-slate-200 rounded-2xl p-5 bg-white space-y-4">
+                    <div className="flex items-center gap-1.5 border-b border-slate-100 pb-2 mb-1">
+                      <FileText className="w-4 h-4 text-indigo-600" />
+                      <h4 className="text-xs font-extrabold text-slate-900 uppercase font-sans">
+                        Question-by-Question Breakdown
+                      </h4>
+                    </div>
+
+                    {activeReport.report.questionBreakdown.map((qb, qbIdx) => {
+                      const verdict = (qb.verdict || "").toLowerCase();
+                      const isCorrect = verdict.includes("correct") && !verdict.includes("partial") && !verdict.includes("incorrect");
+                      const isPartial = verdict.includes("partial");
+                      const badgeClasses = isCorrect
+                        ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+                        : isPartial
+                        ? "bg-amber-50 text-amber-700 border-amber-200"
+                        : "bg-rose-50 text-rose-700 border-rose-200";
+                      return (
+                        <div key={qbIdx} className="border border-slate-150 rounded-xl p-4 space-y-2 bg-slate-50/40">
+                          <div className="flex items-center justify-between gap-2 flex-wrap">
+                            <h5 className="text-xs font-extrabold text-slate-900 font-mono uppercase">
+                              # Question {qbIdx + 1}: {qb.question}
+                            </h5>
+                            <span className={`text-[9px] font-bold font-mono uppercase px-2 py-0.5 rounded-full border shrink-0 ${badgeClasses}`}>
+                              {qb.verdict} ({qb.matchPercentage}%)
+                            </span>
+                          </div>
+                          <p className="text-[11px] text-slate-700 leading-relaxed">
+                            <span className="font-bold text-slate-900">Candidate Answer:</span> {qb.givenAnswer || "No answer given."}
+                          </p>
+                          <p className="text-[11px] text-slate-700 leading-relaxed">
+                            <span className="font-bold text-slate-900">Correct Concept:</span> {qb.idealSolution}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+
                 {/* SHOW DIALOG TRANSCRIPT CONVERSATION LOGS */}
                 <div className="border border-slate-200 rounded-2xl p-5 bg-slate-50/60 overflow-hidden">
                   <h4 className="text-xs font-extrabold text-slate-800 uppercase font-sans mb-3 flex items-center gap-1">
