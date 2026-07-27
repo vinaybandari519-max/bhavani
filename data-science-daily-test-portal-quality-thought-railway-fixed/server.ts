@@ -740,6 +740,67 @@ app.post("/api/quiz/:day/override", (req, res) => {
   res.json({ success: true, quiz: quizData });
 });
 
+// Bulk import an entire syllabus of quizzes in one shot (Teacher panel "Import All Syllabus" action).
+// Accepts either:
+//   { quizzes: { "1": {dayNumber, courseSlug, topicTitle, mcqs, coding}, "2": {...}, ... } }
+//   { quizzes: [ {dayNumber: 1, ...}, {dayNumber: 2, ...}, ... ] }
+app.post("/api/quiz/bulk-import", (req, res) => {
+  const payload = req.body?.quizzes ?? req.body;
+
+  if (!payload || typeof payload !== "object") {
+    res.status(400).json({ error: "Request body must contain a 'quizzes' map or array of day quiz objects." });
+    return;
+  }
+
+  // Normalize input (object keyed by day, or array of quiz objects) into a list of [day, quiz] entries.
+  const entries: [number, any][] = Array.isArray(payload)
+    ? payload.map((quiz: any) => [parseInt(quiz?.dayNumber, 10), quiz])
+    : Object.entries(payload).map(([key, quiz]: [string, any]) => [
+        parseInt(quiz?.dayNumber ?? key, 10),
+        quiz
+      ]);
+
+  const imported: number[] = [];
+  const skipped: { day: any; reason: string }[] = [];
+
+  const db = readDB();
+  if (!db.quizzes) db.quizzes = {};
+
+  for (const [day, quiz] of entries) {
+    if (isNaN(day) || day < 1 || day > 200) {
+      skipped.push({ day: quiz?.dayNumber, reason: "Day number missing or out of range (1-200)." });
+      continue;
+    }
+    if (!quiz || !Array.isArray(quiz.mcqs) || !Array.isArray(quiz.coding)) {
+      skipped.push({ day, reason: "Entry is missing required 'mcqs' or 'coding' arrays." });
+      continue;
+    }
+
+    db.quizzes[day] = {
+      dayNumber: day,
+      courseSlug: quiz.courseSlug || "python",
+      topicTitle: quiz.topicTitle || `Day ${day}`,
+      mcqs: quiz.mcqs,
+      coding: quiz.coding
+    };
+    imported.push(day);
+  }
+
+  if (imported.length === 0) {
+    res.status(400).json({ error: "No valid quiz entries found to import.", skipped });
+    return;
+  }
+
+  writeDB(db);
+  res.json({
+    success: true,
+    importedCount: imported.length,
+    importedDays: imported.sort((a, b) => a - b),
+    skippedCount: skipped.length,
+    skipped
+  });
+});
+
 // Dynamic generation of 10 questions from user course material document
 app.post("/api/quiz/generate-from-material", async (req, res) => {
   const { materialText, dayNumber, courseSlug, topicTitle } = req.body;
