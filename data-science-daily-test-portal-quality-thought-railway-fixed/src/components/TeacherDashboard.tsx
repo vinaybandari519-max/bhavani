@@ -742,14 +742,6 @@ export default function TeacherDashboard({ onLogout }: TeacherDashboardProps) {
   const [quizLoading, setQuizLoading] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
 
-  // Bulk "Import All Syllabus" states (Teacher panel one-click full syllabus + quiz import)
-  const [showBulkImportModal, setShowBulkImportModal] = useState(false);
-  const [bulkImportText, setBulkImportText] = useState("");
-  const [bulkImportFileName, setBulkImportFileName] = useState("");
-  const [bulkImporting, setBulkImporting] = useState(false);
-  const [bulkImportError, setBulkImportError] = useState("");
-  const [syllabusBulkImportResult, setSyllabusBulkImportResult] = useState<{ importedCount: number; skippedCount: number } | null>(null);
-
   const fetchQuizToOverride = async (day: number, forceRegen = false) => {
     setQuizLoading(true);
     setSaveSuccess(false);
@@ -823,68 +815,6 @@ export default function TeacherDashboard({ onLogout }: TeacherDashboardProps) {
     } finally {
       setQuizLoading(false);
     }
-  };
-
-  const handleBulkImportFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    setBulkImportFileName(file.name);
-    setBulkImportError("");
-    setSyllabusBulkImportResult(null);
-    const reader = new FileReader();
-    reader.onload = (evt) => {
-      const text = (evt.target?.result as string) || "";
-      setBulkImportText(text);
-    };
-    reader.onerror = () => setBulkImportError("Could not read that file. Please try again.");
-    reader.readAsText(file);
-  };
-
-  const handleBulkImportSyllabus = async () => {
-    if (!bulkImportText.trim()) {
-      setBulkImportError("Paste the syllabus JSON or choose a file first.");
-      return;
-    }
-
-    let parsed: any;
-    try {
-      parsed = JSON.parse(bulkImportText);
-    } catch (e) {
-      setBulkImportError("That file/text isn't valid JSON. Double-check the format and try again.");
-      return;
-    }
-
-    setBulkImporting(true);
-    setBulkImportError("");
-    setSyllabusBulkImportResult(null);
-    try {
-      const res = await fetch("/api/quiz/bulk-import", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ quizzes: parsed })
-      });
-      const data = await res.json();
-      if (res.ok && data.success) {
-        setSyllabusBulkImportResult({ importedCount: data.importedCount, skippedCount: data.skippedCount });
-        // Refresh whichever day is currently open so the editor reflects the newly imported content
-        fetchQuizToOverride(selectedDayToOverride);
-      } else {
-        setBulkImportError(data.error || "Failed to import syllabus. Please check the JSON structure.");
-      }
-    } catch (e) {
-      console.error("Bulk syllabus import error:", e);
-      setBulkImportError("A network error occurred while importing the syllabus.");
-    } finally {
-      setBulkImporting(false);
-    }
-  };
-
-  const closeBulkImportModal = () => {
-    setShowBulkImportModal(false);
-    setBulkImportText("");
-    setBulkImportFileName("");
-    setBulkImportError("");
-    setSyllabusBulkImportResult(null);
   };
 
   const handleGenerateQuizFromMaterial = async () => {
@@ -2594,138 +2524,23 @@ export default function TeacherDashboard({ onLogout }: TeacherDashboardProps) {
                         View, alter, and add custom exam sheets for daily testing. Overrides apply instantly for student portal exams.
                       </p>
                     </div>
-                    <div className="flex items-center gap-3">
-                      {saveSuccess && (
-                        <div className="bg-emerald-950 text-emerald-300 border border-emerald-800 px-4 py-2 rounded text-xs flex items-center gap-2 animate-bounce">
-                          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                          Persistent override synced to database successfully!
-                        </div>
-                      )}
-                      <button
-                        type="button"
-                        onClick={() => setShowBulkImportModal(true)}
-                        className="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded text-xs font-bold inline-flex items-center gap-1.5 transition shadow-sm"
-                        title="Import the full 200-day syllabus & quizzes in one go from a JSON file"
-                      >
-                        <Upload className="w-3.5 h-3.5" />
-                        Import All Syllabus
-                      </button>
-                    </div>
+                    {saveSuccess && (
+                      <div className="bg-emerald-950 text-emerald-300 border border-emerald-800 px-4 py-2 rounded text-xs flex items-center gap-2 animate-bounce">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                        Persistent override synced to database successfully!
+                      </div>
+                    )}
                   </div>
                 </div>
-
-                {/* BULK "IMPORT ALL SYLLABUS" MODAL */}
-                {showBulkImportModal && (
-                  <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
-                    <div className="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[85vh] flex flex-col">
-                      <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4">
-                        <div>
-                          <h3 className="text-base font-extrabold text-slate-900 flex items-center gap-2">
-                            <Upload className="w-4 h-4 text-indigo-600" />
-                            Import All Syllabus at Once
-                          </h3>
-                          <p className="text-xs text-slate-500 mt-0.5">
-                            Upload or paste one JSON file containing every day's syllabus topic &amp; quiz (MCQs + coding) to overwrite them all in a single click.
-                          </p>
-                        </div>
-                        <button
-                          type="button"
-                          onClick={closeBulkImportModal}
-                          className="text-slate-400 hover:text-slate-700 p-1.5 rounded hover:bg-slate-100 transition"
-                        >
-                          <X className="w-5 h-5" />
-                        </button>
-                      </div>
-
-                      <div className="px-6 py-4 space-y-4 overflow-y-auto">
-                        <div className="bg-slate-50 border border-slate-200 rounded-lg p-3 text-[11px] text-slate-600 font-mono leading-relaxed">
-                          {"{ \"1\": { \"courseSlug\": \"python\", \"topicTitle\": \"Intro to Python\", \"mcqs\": [ ... ], \"coding\": [ ... ] }, \"2\": { ... } }"}
-                        </div>
-
-                        <div>
-                          <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
-                            Choose Syllabus JSON File
-                          </label>
-                          <div className="flex items-center gap-3">
-                            <label className="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded text-xs font-semibold cursor-pointer transition inline-flex items-center gap-1.5">
-                              <FileText className="w-3.5 h-3.5" />
-                              Browse File
-                              <input type="file" accept=".json,application/json" className="hidden" onChange={handleBulkImportFileSelect} />
-                            </label>
-                            {bulkImportFileName && (
-                              <span className="text-xs text-slate-500 font-medium truncate">{bulkImportFileName}</span>
-                            )}
-                          </div>
-                        </div>
-
-                        <div>
-                          <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
-                            Or Paste Syllabus JSON Directly
-                          </label>
-                          <textarea
-                            value={bulkImportText}
-                            onChange={(e) => { setBulkImportText(e.target.value); setBulkImportError(""); setSyllabusBulkImportResult(null); }}
-                            rows={8}
-                            placeholder='{"1": {"courseSlug":"python","topicTitle":"...","mcqs":[...],"coding":[...]}, "2": {...}}'
-                            className="w-full bg-white border border-slate-200 rounded px-3.5 py-2 text-xs font-mono focus:outline-none focus:ring-1 focus:ring-indigo-500"
-                          />
-                        </div>
-
-                        {bulkImportError && (
-                          <div className="bg-red-50 border border-red-200 text-red-700 rounded px-3.5 py-2.5 text-xs font-medium flex items-start gap-2">
-                            <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                            {bulkImportError}
-                          </div>
-                        )}
-
-                        {syllabusBulkImportResult && (
-                          <div className="bg-emerald-50 border border-emerald-200 text-emerald-700 rounded px-3.5 py-2.5 text-xs font-medium flex items-start gap-2">
-                            <CheckCircle2 className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                            Imported {syllabusBulkImportResult.importedCount} day{syllabusBulkImportResult.importedCount === 1 ? "" : "s"} successfully.
-                            {syllabusBulkImportResult.skippedCount > 0 && ` ${syllabusBulkImportResult.skippedCount} entr${syllabusBulkImportResult.skippedCount === 1 ? "y" : "ies"} skipped (missing/invalid data).`}
-                          </div>
-                        )}
-                      </div>
-
-                      <div className="flex items-center justify-end gap-2 border-t border-slate-100 px-6 py-4">
-                        <button
-                          type="button"
-                          onClick={closeBulkImportModal}
-                          className="px-4 py-2 rounded text-xs font-semibold text-slate-600 hover:bg-slate-100 transition"
-                        >
-                          Close
-                        </button>
-                        <button
-                          type="button"
-                          onClick={handleBulkImportSyllabus}
-                          disabled={bulkImporting}
-                          className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 disabled:cursor-not-allowed text-white rounded text-xs font-bold inline-flex items-center gap-1.5 transition"
-                        >
-                          <Upload className="w-3.5 h-3.5" />
-                          {bulkImporting ? "Importing..." : "Import Syllabus"}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                )}
 
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
                   {/* LEFT RAIL: 200-DAYS ACCORDION LOOKUP */}
                   <div className="bg-white rounded-xl border border-slate-200 p-4 shadow-sm h-[720px] flex flex-col">
                     <h4 className="font-bold text-slate-950 text-sm mb-3 border-b border-slate-100 pb-2">
-                      Syllabus Phases (200 Days)
+                      Syllabus Phases ({SYLLABUS[SYLLABUS.length - 1].endDay} Days)
                     </h4>
                     <div className="overflow-y-auto flex-1 space-y-3 pr-1 text-xs text-slate-705">
-                      {[
-                        { name: "Python Programming", slug: "python", range: [1, 30] },
-                        { name: "NumPy Essentials", slug: "numpy", range: [31, 45] },
-                        { name: "Pandas Data Wrangling", slug: "pandas", range: [46, 75] },
-                        { name: "Machine Learning (ML)", slug: "ml", range: [76, 105] },
-                        { name: "Deep Learning (DL)", slug: "dl", range: [106, 135] },
-                        { name: "Natural Language Processing (NLP)", slug: "nlp", range: [136, 165] },
-                        { name: "Generative AI Labs", slug: "genai", range: [166, 195] },
-                        { name: "EDA & Visualization", slug: "eda", range: [196, 200] },
-                      ].map((phase, idx) => (
+                      {SYLLABUS.map((course) => ({ name: course.name, slug: course.slug, range: [course.startDay, course.endDay] })).map((phase, idx) => (
                         <div key={idx} className="border border-slate-100 rounded p-2.5 bg-slate-50">
                           <div className="font-bold text-slate-900 mb-1.5 flex items-center justify-between">
                             <span>{phase.name}</span>
@@ -5214,30 +5029,6 @@ function TeacherInterviewsView({ selectedBatch }: { selectedBatch: string }) {
 
   const filtered = interviews.filter((item) => item.batch === selectedBatch);
 
-  // Group interviews by calendar date so teachers can see "how many students
-  // attended the AI Mock Interview on each date" at a glance, similar to a
-  // daily attendance register — e.g. "Jul 20, 2026 — 45 attended".
-  const dailyAttendance = (() => {
-    const map: Record<string, { dateLabel: string; students: Set<string>; count: number; sortKey: number }> = {};
-    filtered.forEach((item) => {
-      const d = new Date(item.createdAt || Date.now());
-      const key = d.toDateString(); // e.g. "Sat Jul 18 2026" -> stable per-day bucket
-      if (!map[key]) {
-        map[key] = {
-          dateLabel: d.toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" }),
-          students: new Set<string>(),
-          count: 0,
-          sortKey: new Date(key).getTime(),
-        };
-      }
-      // Count unique students per day (a student retaking the same day only counts once)
-      map[key].students.add(item.studentId);
-    });
-    return Object.values(map)
-      .map((entry) => ({ ...entry, count: entry.students.size }))
-      .sort((a, b) => b.sortKey - a.sortKey);
-  })();
-
   // Simple Markdown styling renderer
   function renderMarkdown(text: string) {
     if (!text) return null;
@@ -5270,33 +5061,6 @@ function TeacherInterviewsView({ selectedBatch }: { selectedBatch: string }) {
         >
           Refresh Tracker
         </button>
-      </div>
-
-      {/* Daily Attendance Summary: how many students attended the AI Mock Interview on each date */}
-      <div className="space-y-2">
-        <h5 className="text-xs font-bold text-slate-400 uppercase tracking-wide font-mono">
-          Daily AI Interview Attendance
-        </h5>
-        {dailyAttendance.length === 0 ? (
-          <div className="text-xs italic text-slate-400 py-3 px-4 bg-slate-50/50 border border-dashed border-slate-200 rounded-lg">
-            No AI Mock Interview attendance recorded yet for {selectedBatch}.
-          </div>
-        ) : (
-          <div className="flex flex-wrap gap-2">
-            {dailyAttendance.map((day) => (
-              <div
-                key={day.sortKey}
-                className="flex items-center gap-2 bg-indigo-50 border border-indigo-150 rounded-lg px-3 py-1.5"
-                title={`${day.count} student${day.count === 1 ? "" : "s"} attended on ${day.dateLabel}`}
-              >
-                <span className="text-[10px] font-mono font-bold text-indigo-700">{day.dateLabel}</span>
-                <span className="text-[10px] font-mono font-black text-indigo-900 bg-indigo-200/60 px-1.5 py-0.5 rounded">
-                  {day.count} attended
-                </span>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
