@@ -7,6 +7,101 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Skulpt: real, in-browser Python 3 interpreter used for both the Python Online Sandbox
+         and grading daily coding-question submissions.
+
+         Loading a two-part JS engine from a single third-party CDN mirror with no timeout or
+         fallback means that if that one source is ever slow/blocked (common on school/office
+         networks), the "Run Code" button is stuck saying "still loading" forever with no way
+         to recover. This loader tries multiple independent mirrors in sequence, times each one
+         out, and exposes window.__skulptStatus ('loading' | 'ready' | 'failed') plus
+         window.__skulptRetry() so the app can show a real error and a working retry button
+         instead of an infinite spinner. -->
+    <script>
+      (function () {
+        window.__skulptStatus = "loading";
+
+        var MIRRORS = [
+          {
+            core: "https://cdn.jsdelivr.net/gh/Tezumie/Skulpt-CDN/skulpt.min.js",
+            stdlib: "https://cdn.jsdelivr.net/gh/Tezumie/Skulpt-CDN/skulpt-stdlib.js",
+          },
+          {
+            core: "https://raw.githack.com/Tezumie/Skulpt-CDN/main/skulpt.min.js",
+            stdlib: "https://raw.githack.com/Tezumie/Skulpt-CDN/main/skulpt-stdlib.js",
+          },
+          {
+            core: "https://cdn.statically.io/gh/Tezumie/Skulpt-CDN/main/skulpt.min.js",
+            stdlib: "https://cdn.statically.io/gh/Tezumie/Skulpt-CDN/main/skulpt-stdlib.js",
+          },
+        ];
+
+        var MIRROR_TIMEOUT_MS = 7000;
+
+        function loadScript(src, timeoutMs) {
+          return new Promise(function (resolve, reject) {
+            var script = document.createElement("script");
+            var done = false;
+            var timer = setTimeout(function () {
+              if (done) return;
+              done = true;
+              script.remove();
+              reject(new Error("Timed out loading " + src));
+            }, timeoutMs);
+            script.src = src;
+            script.onload = function () {
+              if (done) return;
+              done = true;
+              clearTimeout(timer);
+              resolve();
+            };
+            script.onerror = function () {
+              if (done) return;
+              done = true;
+              clearTimeout(timer);
+              reject(new Error("Failed to load " + src));
+            };
+            document.body.appendChild(script);
+          });
+        }
+
+        function tryMirror(mirror) {
+          // Remove any partially-loaded Sk from a previous failed attempt so we start clean.
+          delete window.Sk;
+          return loadScript(mirror.core, MIRROR_TIMEOUT_MS)
+            .then(function () { return loadScript(mirror.stdlib, MIRROR_TIMEOUT_MS); })
+            .then(function () {
+              if (!window.Sk || !window.Sk.builtinFiles) {
+                throw new Error("Engine loaded but did not initialize correctly");
+              }
+            });
+        }
+
+        function attemptAllMirrors(mirrorIndex) {
+          if (mirrorIndex >= MIRRORS.length) {
+            window.__skulptStatus = "failed";
+            window.dispatchEvent(new Event("skulpt-status-change"));
+            return;
+          }
+          tryMirror(MIRRORS[mirrorIndex])
+            .then(function () {
+              window.__skulptStatus = "ready";
+              window.dispatchEvent(new Event("skulpt-status-change"));
+            })
+            .catch(function () {
+              attemptAllMirrors(mirrorIndex + 1);
+            });
+        }
+
+        window.__skulptRetry = function () {
+          window.__skulptStatus = "loading";
+          window.dispatchEvent(new Event("skulpt-status-change"));
+          attemptAllMirrors(0);
+        };
+
+        attemptAllMirrors(0);
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
