@@ -248,7 +248,7 @@ export default function App() {
               <div className="h-1 w-20 bg-indigo-600 mx-auto md:mx-0 rounded-full"></div>
 
               <p className="text-sm md:text-base text-slate-500 leading-relaxed max-w-lg font-sans">
-                A highly comprehensive, structured daily test system comprising over 200 Days of intensive assessments and programming. Master complete Python constructs, NumPy, Pandas operations, and production Machine Learning pipelines.
+                A highly comprehensive, structured daily test system comprising over 200 Days of intensive assessments and programming. Master complete Python, NumPy, Pandas, Machine Learning, Deep Learning, NLP, and Generative AI pipelines.
               </p>
 
               <div className="space-y-3 pt-2 text-left max-w-md mx-auto md:mx-0">
