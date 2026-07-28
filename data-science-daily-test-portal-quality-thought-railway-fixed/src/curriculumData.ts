@@ -7,9 +7,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     mcqs: [
       {
         questionText: "Which command checks the installed Python version from the terminal?",
-        options: ["python --version", "python install", "python setup", "py check"],
+        options: ["'python --version'", "'python install'", "'python setup'", "'py check'"],
         correctOption: 0,
-        explanation: "The correct answer is: python --version",
+        explanation: "The correct answer is: 'python --version'",
       },
       {
         questionText: "Which website is the official source to download Python?",
@@ -19,9 +19,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which command opens the interactive Python shell (REPL)?",
-        options: ["python", "pyrun", "pyshell", "startpy"],
+        options: ["'python'", "'pyrun'", "'pyshell'", "'startpy'"],
         correctOption: 0,
-        explanation: "The correct answer is: python",
+        explanation: "The correct answer is: 'python'",
       },
       {
         questionText: "'pip' is:",
@@ -31,9 +31,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which command upgrades pip to the latest version?",
-        options: ["pip upgrade", "python -m pip install --upgrade pip", "pip update --all", "pip refresh"],
+        options: ["'pip upgrade'", "'python -m pip install --upgrade pip'", "'pip update --all'", "'pip refresh'"],
         correctOption: 1,
-        explanation: "The correct answer is: python -m pip install --upgrade pip",
+        explanation: "The correct answer is: 'python -m pip install --upgrade pip'",
       },
       {
         questionText: "Which of these is a popular IDE/editor for writing Python code?",
@@ -43,9 +43,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "On Windows, adding Python to \"PATH\" during installation allows you to:",
-        options: ["Run python from any directory in Command Prompt", "Install Python faster", "Skip pip installation", "Automatically write code"],
+        options: ["Run 'python' from any directory in Command Prompt", "Install Python faster", "Skip pip installation", "Automatically write code"],
         correctOption: 0,
-        explanation: "The correct answer is: Run python from any directory in Command Prompt",
+        explanation: "The correct answer is: Run 'python' from any directory in Command Prompt",
       },
       {
         questionText: "Which is true about virtual environments?",
@@ -57,15 +57,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Write the terminal commands to verify Python and pip are installed, then create and activate a virtual environment named 'venv'.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write the terminal commands to verify Python and pip are installed, then create ...",
+        starterCode: "# Write the terminal commands to verify Python and pip are ins\n\ndef solution():\n    pass",
+        expectedKeywords: ["def"],
+        solutionDescription: "```python\\n# Terminal commands (run in shell, not Python):\npython --version\npip --version\npython -m venv venv\n# Activate:\n# Windows:\nvenv\\Scripts\\activate\n# macOS/Linux:\nsource venv/bin/activate\\n```",
       },
       {
         questionText: "Write a one-line Python command (run via 'python -c') that prints the currently active Python version.",
-        starterCode: "def command():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a one-line Python command (run via 'python -c') that prints the currently ...",
+        starterCode: "# Write a one-line Python command (run via 'python -c') that p\n\ndef command():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\npython -c \"import sys; print(sys.version)\"\\n```",
       },
     ],
   },
@@ -86,9 +86,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Python files typically use which extension?",
-        options: [".py", ".pt", ".python", ".pyt"],
+        options: ["'.py'", "'.pt'", "'.python'", "'.pyt'"],
         correctOption: 0,
-        explanation: "The correct answer is: .py",
+        explanation: "The correct answer is: '.py'",
       },
       {
         questionText: "Python is known for being:",
@@ -124,15 +124,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Write a program that prints \"Welcome to Python Programming\" and displays the Python version using the 'sys' module.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program that prints \"Welcome to Python Programming\" and displays the Pyt...",
+        starterCode: "# Write a program that prints \"Welcome to Python Programming\" \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport sys\nprint(\"Welcome to Python Programming\")\nprint(\"Python version:\", sys.version)\\n```",
       },
       {
         questionText: "Write a program that takes the user's name as input and prints a personalized greeting.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program that takes the user's name as input and prints a personalized gr...",
+        starterCode: "# Write a program that takes the user's name as input and prin\n\ndef solution():\n    pass",
+        expectedKeywords: ["def"],
+        solutionDescription: "```python\\nname = input(\"Enter your name: \")\nprint(f\"Hello, {name}! Welcome aboard.\")\\n```",
       },
     ],
   },
@@ -141,39 +141,39 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     mcqs: [
       {
         questionText: "Which of these is a Python keyword?",
-        options: ["value", "def", "print_data", "myVar"],
+        options: ["'value'", "'def'", "'print_data'", "'myVar'"],
         correctOption: 1,
-        explanation: "The correct answer is: def",
+        explanation: "The correct answer is: 'def'",
       },
       {
         questionText: "Which module lists all Python keywords?",
-        options: ["keyword.kwlist", "list_keywords()", "sys.keywords", "python.keywords()"],
+        options: ["'keyword.kwlist'", "'list_keywords()'", "'sys.keywords'", "'python.keywords()'"],
         correctOption: 0,
-        explanation: "The correct answer is: keyword.kwlist",
+        explanation: "The correct answer is: 'keyword.kwlist'",
       },
       {
         questionText: "Which of these IS a reserved keyword?",
-        options: ["None", "none", "Null", "nil"],
+        options: ["'None'", "'none'", "'Null'", "'nil'"],
         correctOption: 0,
-        explanation: "The correct answer is: None",
+        explanation: "The correct answer is: 'None'",
       },
       {
         questionText: "Which keyword creates a conditional statement?",
-        options: ["if", "cond", "check", "when"],
+        options: ["'if'", "'cond'", "'check'", "'when'"],
         correctOption: 0,
-        explanation: "The correct answer is: if",
+        explanation: "The correct answer is: 'if'",
       },
       {
         questionText: "Which keyword defines a loop that repeats while a condition is true?",
-        options: ["repeat", "while", "loopif", "until"],
+        options: ["'repeat'", "'while'", "'loopif'", "'until'"],
         correctOption: 1,
-        explanation: "The correct answer is: while",
+        explanation: "The correct answer is: 'while'",
       },
       {
         questionText: "Which keyword is used for exception handling?",
-        options: ["except", "catch", "rescue", "trap"],
+        options: ["'except'", "'catch'", "'rescue'", "'trap'"],
         correctOption: 0,
-        explanation: "The correct answer is: except",
+        explanation: "The correct answer is: 'except'",
       },
       {
         questionText: "Can a keyword be used as a variable name?",
@@ -183,23 +183,23 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which keyword imports a module?",
-        options: ["include", "import", "require", "using"],
+        options: ["'include'", "'import'", "'require'", "'using'"],
         correctOption: 1,
-        explanation: "The correct answer is: import",
+        explanation: "The correct answer is: 'import'",
       },
     ],
     coding: [
       {
         questionText: "Write a program that imports the 'keyword' module and prints the total number of keywords along with the full list.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program that imports the 'keyword' module and prints the total number of...",
+        starterCode: "# Write a program that imports the 'keyword' module and prints\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport keyword\nprint(\"Total keywords:\", len(keyword.kwlist))\nprint(keyword.kwlist)\\n```",
       },
       {
         questionText: "Write a program that checks whether a user-input string is a Python keyword, using 'keyword.iskeyword()'.",
-        starterCode: "def iskeyword():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program that checks whether a user-input string is a Python keyword, usi...",
+        starterCode: "# Write a program that checks whether a user-input string is a\n\ndef iskeyword():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport keyword\nword = input(\"Enter a word: \")\nif keyword.iskeyword(word):\n    print(f\"'{word}' is a Python keyword.\")\nelse:\n    print(f\"'{word}' is not a Python keyword.\")\\n```",
       },
     ],
   },
@@ -208,9 +208,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     mcqs: [
       {
         questionText: "Correct syntax to print \"Hello World\" in Python 3:",
-        options: ["echo(\"Hello World\")", "print(\"Hello World\")", "printf(\"Hello World\")", "System.out.print(\"Hello World\")"],
+        options: ["'echo(\"Hello World\")'", "'print(\"Hello World\")'", "'printf(\"Hello World\")'", "'System.out.print(\"Hello World\")'"],
         correctOption: 1,
-        explanation: "The correct answer is: print(\"Hello World\")",
+        explanation: "The correct answer is: 'print(\"Hello World\")'",
       },
       {
         questionText: "What does 'print('Hello', 'World')' output by default?",
@@ -220,15 +220,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which parameter of 'print()' changes the separator between arguments?",
-        options: ["sep", "delimiter", "split", "join"],
+        options: ["'sep'", "'delimiter'", "'split'", "'join'"],
         correctOption: 0,
-        explanation: "The correct answer is: sep",
+        explanation: "The correct answer is: 'sep'",
       },
       {
         questionText: "Which parameter changes what's printed at the end (default newline)?",
-        options: ["end", "terminator", "final", "close"],
+        options: ["'end'", "'terminator'", "'final'", "'close'"],
         correctOption: 0,
-        explanation: "The correct answer is: end",
+        explanation: "The correct answer is: 'end'",
       },
       {
         questionText: "Output of 'print(\"Hello\" + \"World\")'?",
@@ -238,15 +238,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Comments in Python start with:",
-        options: ["//", "#", "/*", "--"],
+        options: ["'//'", "'#'", "'/*'", "'--'"],
         correctOption: 1,
-        explanation: "The correct answer is: #",
+        explanation: "The correct answer is: '#'",
       },
       {
         questionText: "Which correctly writes a multi-line string/comment?",
-        options: ["Triple quotes ''' ... '''", "Double slash", "Angle brackets <!-- -->", "Curly braces"],
+        options: ["Triple quotes '''' ... ''''", "Double slash", "Angle brackets '<!-- -->'", "Curly braces"],
         correctOption: 0,
-        explanation: "The correct answer is: Triple quotes ''' ... '''",
+        explanation: "The correct answer is: Triple quotes '''' ... ''''",
       },
       {
         questionText: "What happens with 'print \"Hello\"' (missing parentheses) in Python 3?",
@@ -258,15 +258,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Write a \"Hello World\" program that also prints your name and today's task number using a single 'print()' with '\\n'.",
-        starterCode: "def print():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a \"Hello World\" program that also prints your name and today's task number...",
+        starterCode: "# Write a \"Hello World\" program that also prints your name and\n\ndef print():\n    pass",
+        expectedKeywords: ["def"],
+        solutionDescription: "```python\\nprint(f\"Hello World\\nMy name is Alex\\nTask number: 4\")\\n```",
       },
       {
         questionText: "Write a program using 'print()''s 'sep' and 'end' parameters to print \"Python-is-Fun\" from \"Python\", \"is\", \"Fun\" joined by hyphens, ending with \"!!\".",
-        starterCode: "def print():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program using 'print()''s 'sep' and 'end' parameters to print \"Python-is...",
+        starterCode: "# Write a program using 'print()''s 'sep' and 'end' parameters\n\ndef print():\n    pass",
+        expectedKeywords: ["def"],
+        solutionDescription: "```python\\nprint(\"Python\", \"is\", \"Fun\", sep=\"-\", end=\"!!\\n\")\\n```",
       },
     ],
   },
@@ -275,15 +275,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     mcqs: [
       {
         questionText: "Which is a valid Python variable name?",
-        options: ["2value", "my_value", "my-value", "class"],
+        options: ["'2value'", "'my_value'", "'my-value'", "'class'"],
         correctOption: 1,
-        explanation: "The correct answer is: my_value",
+        explanation: "The correct answer is: 'my_value'",
       },
       {
         questionText: "Python variable names are case-sensitive, meaning:",
-        options: ["age and Age are the same", "age and Age are different variables", "Case doesn't matter", "Only uppercase is allowed"],
+        options: ["'age' and 'Age' are the same", "'age' and 'Age' are different variables", "Case doesn't matter", "Only uppercase is allowed"],
         correctOption: 1,
-        explanation: "The correct answer is: age and Age are different variables",
+        explanation: "The correct answer is: 'age' and 'Age' are different variables",
       },
       {
         questionText: "Recommended naming for functions/variables (PEP 8):",
@@ -305,9 +305,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which variable name is invalid?",
-        options: ["_temp", "temp1", "1temp", "temp_1"],
+        options: ["'_temp'", "'temp1'", "'1temp'", "'temp_1'"],
         correctOption: 2,
-        explanation: "The correct answer is: 1temp",
+        explanation: "The correct answer is: '1temp'",
       },
       {
         questionText: "A name starting with a single underscore (e.g., '_value') conventionally indicates:",
@@ -325,15 +325,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Write code declaring variables using proper PEP 8 conventions for a student's name, total marks, and a constant for max possible marks.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write code declaring variables using proper PEP 8 conventions for a student's na...",
+        starterCode: "# Write code declaring variables using proper PEP 8 convention\n\ndef solution():\n    pass",
+        expectedKeywords: ["def"],
+        solutionDescription: "```python\\nstudent_name = \"Aisha\"\ntotal_marks = 452\nMAX_MARKS = 500\nprint(student_name, total_marks, MAX_MARKS)\\n```",
       },
       {
         questionText: "Write a program with a PascalCase class (e.g., 'StudentRecord') whose '__init__' sets snake_case attributes, then print them.",
-        starterCode: "def class():\n    pass",
-        expectedKeywords: ["class", "def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program with a PascalCase class (e.g., 'StudentRecord') whose '__init__'...",
+        starterCode: "# Write a program with a PascalCase class (e.g., 'StudentRecor\n\ndef class():\n    pass",
+        expectedKeywords: ["class", "def"],
+        solutionDescription: "```python\\nclass StudentRecord:\n    def __init__(self, student_name, total_marks):\n        self.student_name = student_name\n        self.total_marks = total_marks\n\nrecord = StudentRecord(\"Aisha\", 452)\nprint(record.student_name, record.total_marks)\\n```",
       },
     ],
   },
@@ -342,7 +342,7 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     mcqs: [
       {
         questionText: "In Python, a variable is created:",
-        options: ["By declaring its type before use", "Simply by assigning a value to a name", "Only inside a class", "Using the var keyword"],
+        options: ["By declaring its type before use", "Simply by assigning a value to a name", "Only inside a class", "Using the 'var' keyword"],
         correctOption: 1,
         explanation: "The correct answer is: Simply by assigning a value to a name",
       },
@@ -354,9 +354,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which demonstrates multiple assignment in one line?",
-        options: ["a, b, c = 1, 2, 3", "a = 1; b = 2; c = 3 only", "a == 1, b == 2", "assign a, b, c = 1, 2, 3"],
+        options: ["'a, b, c = 1, 2, 3'", "'a = 1; b = 2; c = 3' only", "'a == 1, b == 2'", "'assign a, b, c = 1, 2, 3'"],
         correctOption: 0,
-        explanation: "The correct answer is: a, b, c = 1, 2, 3",
+        explanation: "The correct answer is: 'a, b, c = 1, 2, 3'",
       },
       {
         questionText: "Global variables are:",
@@ -366,9 +366,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "To modify a global variable inside a function you must use:",
-        options: ["global", "public", "extern", "static"],
+        options: ["'global'", "'public'", "'extern'", "'static'"],
         correctOption: 0,
-        explanation: "The correct answer is: global",
+        explanation: "The correct answer is: 'global'",
       },
       {
         questionText: "Output of: ''' x = 10 def foo(): x = 20 print(x) foo() print(x) '''",
@@ -392,15 +392,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Write a program that swaps two variables without a third/temporary variable.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program that swaps two variables without a third/temporary variable....",
+        starterCode: "# Write a program that swaps two variables without a third/tem\n\ndef solution():\n    pass",
+        expectedKeywords: ["def"],
+        solutionDescription: "```python\\na, b = 5, 10\na, b = b, a\nprint(a, b)\\n```",
       },
       {
         questionText: "Write a program demonstrating scope: a global variable modified inside a function using 'global', printing its value before and after.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program demonstrating scope: a global variable modified inside a functio...",
+        starterCode: "# Write a program demonstrating scope: a global variable modif\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\ncounter = 0\n\ndef increment():\n    global counter\n    counter += 1\n\nprint(\"Before:\", counter)\nincrement()\nprint(\"After:\", counter)\\n```",
       },
     ],
   },
@@ -421,9 +421,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which function checks a variable's data type?",
-        options: ["typeof()", "type()", "datatype()", "kind()"],
+        options: ["'typeof()'", "'type()'", "'datatype()'", "'kind()'"],
         correctOption: 1,
-        explanation: "The correct answer is: type()",
+        explanation: "The correct answer is: 'type()'",
       },
       {
         questionText: "Which is a mutable data type?",
@@ -433,9 +433,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Result of 'type(True)'?",
-        options: ["<class 'int'>", "<class 'bool'>", "<class 'str'>", "<class 'float'>"],
+        options: ["'<class 'int'>'", "'<class 'bool'>'", "'<class 'str'>'", "'<class 'float'>'"],
         correctOption: 1,
-        explanation: "The correct answer is: <class 'bool'>",
+        explanation: "The correct answer is: '<class 'bool'>'",
       },
       {
         questionText: "Which stores unique, unordered items?",
@@ -451,23 +451,23 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which correctly converts '\"123\"' to an integer?",
-        options: ["int(\"123\")", "str(123)", "float(\"123\") only", "\"123\".toInt()"],
+        options: ["'int(\"123\")'", "'str(123)'", "'float(\"123\")' only", "'\"123\".toInt()'"],
         correctOption: 0,
-        explanation: "The correct answer is: int(\"123\")",
+        explanation: "The correct answer is: 'int(\"123\")'",
       },
     ],
     coding: [
       {
         questionText: "Write a program that takes a value, determines its type with 'type()', and prints an appropriate message for int, float, or string.",
-        starterCode: "def type():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program that takes a value, determines its type with 'type()', and print...",
+        starterCode: "# Write a program that takes a value, determines its type with\n\ndef type():\n    pass",
+        expectedKeywords: ["def", "try"],
+        solutionDescription: "```python\\nvalue = input(\"Enter a value: \")\ntry:\n    v = int(value)\n    print(f\"'{value}' is an integer\")\nexcept ValueError:\n    try:\n        v = float(value)\n        print(f\"'{value}' is a float\")\n    except ValueError:\n        print(f\"'{value}' is a string\")\\n```",
       },
       {
         questionText: "Write a program demonstrating type conversion: string\u2192int, add 10, convert back to string and concatenate.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program demonstrating type conversion: string\u2192int, add 10, convert back ...",
+        starterCode: "# Write a program demonstrating type conversion: string\u2192int, a\n\ndef solution():\n    pass",
+        expectedKeywords: ["def"],
+        solutionDescription: "```python\\ns = \"25\"\nn = int(s)\nn += 10\nresult = str(n) + \" total\"\nprint(result)\\n```",
       },
     ],
   },
@@ -494,9 +494,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Logical AND operator in Python:",
-        options: ["&&", "and", "& only", "AND"],
+        options: ["'&&'", "'and'", "'&' only", "'AND'"],
         correctOption: 1,
-        explanation: "The correct answer is: and",
+        explanation: "The correct answer is: 'and'",
       },
       {
         questionText: "What does 'is' check?",
@@ -512,9 +512,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which has the highest precedence?",
-        options: ["+", "**", "==", "and"],
+        options: ["'+'", "'**'", "'=='", "'and'"],
         correctOption: 1,
-        explanation: "The correct answer is: **",
+        explanation: "The correct answer is: '**'",
       },
       {
         questionText: "What does 'not True' evaluate to?",
@@ -526,15 +526,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Write a program that takes two numbers and prints results of '+ - * / // % **'.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program that takes two numbers and prints results of '+ - * / // % **'....",
+        starterCode: "# Write a program that takes two numbers and prints results of\n\ndef solution():\n    pass",
+        expectedKeywords: ["def"],
+        solutionDescription: "```python\\na = float(input(\"Enter a: \"))\nb = float(input(\"Enter b: \"))\nprint(\"+:\", a + b)\nprint(\"-:\", a - b)\nprint(\"*:\", a * b)\nprint(\"/:\", a / b)\nprint(\"//:\", a // b)\nprint(\"%:\", a % b)\nprint(\"**:\", a ** b)\\n```",
       },
       {
         questionText: "Write a program to check leap years using logical/comparison operators.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program to check leap years using logical/comparison operators....",
+        starterCode: "# Write a program to check leap years using logical/comparison\n\ndef solution():\n    pass",
+        expectedKeywords: ["def"],
+        solutionDescription: "```python\\nyear = int(input(\"Enter a year: \"))\nis_leap = (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)\nprint(f\"{year} is a leap year\" if is_leap else f\"{year} is not a leap year\")\\n```",
       },
     ],
   },
@@ -543,9 +543,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     mcqs: [
       {
         questionText: "Which function reads user input in Python 3?",
-        options: ["input()", "scan()", "read()", "get_input()"],
+        options: ["'input()'", "'scan()'", "'read()'", "'get_input()'"],
         correctOption: 0,
-        explanation: "The correct answer is: input()",
+        explanation: "The correct answer is: 'input()'",
       },
       {
         questionText: "Return type of 'input()'?",
@@ -555,21 +555,21 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which correctly reads an integer from user input?",
-        options: ["x = int(input())", "x = input(int())", "x = integer(input())", "x = input.int()"],
+        options: ["'x = int(input())'", "'x = input(int())'", "'x = integer(input())'", "'x = input.int()'"],
         correctOption: 0,
-        explanation: "The correct answer is: x = int(input())",
+        explanation: "The correct answer is: 'x = int(input())'",
       },
       {
         questionText: "'print(f\"My age is {age}\")' demonstrates:",
-        options: ["String concatenation with +", "An f-string", "A syntax error", "A list comprehension"],
+        options: ["String concatenation with '+'", "An f-string", "A syntax error", "A list comprehension"],
         correctOption: 1,
         explanation: "The correct answer is: An f-string",
       },
       {
         questionText: "Which method formats a string using '{}' placeholders?",
-        options: ["str.format()", "str.printf()", "str.template()", "str.insert()"],
+        options: ["'str.format()'", "'str.printf()'", "'str.template()'", "'str.insert()'"],
         correctOption: 0,
-        explanation: "The correct answer is: str.format()",
+        explanation: "The correct answer is: 'str.format()'",
       },
       {
         questionText: "'print(\"A\", \"B\", \"C\", sep=\"-\")' outputs:",
@@ -579,9 +579,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Correct way to read two space-separated integers on one line:",
-        options: ["a, b = map(int, input().split())", "a, b = input().split(int)", "a, b = int(input().split())", "a, b = split(input())"],
+        options: ["'a, b = map(int, input().split())'", "'a, b = input().split(int)'", "'a, b = int(input().split())'", "'a, b = split(input())'"],
         correctOption: 0,
-        explanation: "The correct answer is: a, b = map(int, input().split())",
+        explanation: "The correct answer is: 'a, b = map(int, input().split())'",
       },
       {
         questionText: "Purpose of the 'end' parameter in 'print()':",
@@ -593,15 +593,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Write a program that takes name and age as input, printing a formatted sentence via f-string.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program that takes name and age as input, printing a formatted sentence ...",
+        starterCode: "# Write a program that takes name and age as input, printing a\n\ndef solution():\n    pass",
+        expectedKeywords: ["def"],
+        solutionDescription: "```python\\nname = input(\"Name: \")\nage = input(\"Age: \")\nprint(f\"{name} is {age} years old.\")\\n```",
       },
       {
         questionText: "Write a program reading two integers from one line (space-separated) and printing their sum and product.",
-        starterCode: "def line():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program reading two integers from one line (space-separated) and printin...",
+        starterCode: "# Write a program reading two integers from one line (space-se\n\ndef line():\n    pass",
+        expectedKeywords: ["def"],
+        solutionDescription: "```python\\na, b = map(int, input(\"Enter two integers: \").split())\nprint(\"Sum:\", a + b)\nprint(\"Product:\", a * b)\\n```",
       },
     ],
   },
@@ -610,15 +610,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     mcqs: [
       {
         questionText: "Which statement skips the current loop iteration?",
-        options: ["break", "continue", "pass", "skip"],
+        options: ["'break'", "'continue'", "'pass'", "'skip'"],
         correctOption: 1,
-        explanation: "The correct answer is: continue",
+        explanation: "The correct answer is: 'continue'",
       },
       {
         questionText: "Which statement terminates the nearest enclosing loop?",
-        options: ["continue", "break", "return", "exit"],
+        options: ["'continue'", "'break'", "'return'", "'exit'"],
         correctOption: 1,
-        explanation: "The correct answer is: break",
+        explanation: "The correct answer is: 'break'",
       },
       {
         questionText: "What does 'pass' do?",
@@ -628,7 +628,7 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which loop is guaranteed to execute at least once by default in Python?",
-        options: ["for", "while", "None \u2014 Python has no built-in do-while", "if"],
+        options: ["'for'", "'while'", "None \u2014 Python has no built-in do-while", "'if'"],
         correctOption: 2,
         explanation: "The correct answer is: None \u2014 Python has no built-in do-while",
       },
@@ -660,15 +660,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Write a program to print all primes between 1 and 50 using loops/conditions/break.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program to print all primes between 1 and 50 using loops/conditions/brea...",
+        starterCode: "# Write a program to print all primes between 1 and 50 using l\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\nfor num in range(2, 51):\n    is_prime = True\n    for i in range(2, int(num ** 0.5) + 1):\n        if num % i == 0:\n            is_prime = False\n            break\n    if is_prime:\n        print(num, end=\" \")\\n```",
       },
       {
         questionText: "Write a number-guessing game using a 'while' loop with \"too high\"/\"too low\" hints.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return", "while"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a number-guessing game using a 'while' loop with \"too high\"/\"too low\" hint...",
+        starterCode: "# Write a number-guessing game using a 'while' loop with \"too \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import", "while"],
+        solutionDescription: "```python\\nimport random\ntarget = random.randint(1, 100)\nguess = None\nwhile guess != target:\n    guess = int(input(\"Guess a number (1-100): \"))\n    if guess < target:\n        print(\"Too low!\")\n    elif guess > target:\n        print(\"Too high!\")\nprint(\"Correct!\")\\n```",
       },
     ],
   },
@@ -677,7 +677,7 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     mcqs: [
       {
         questionText: "Which creates a string?",
-        options: ["'Hello'", "\"Hello\"", "\"\"\"Hello\"\"\"", "All of the above"],
+        options: ["''Hello''", "'\"Hello\"'", "'\"\"\"Hello\"\"\"'", "All of the above"],
         correctOption: 3,
         explanation: "The correct answer is: All of the above",
       },
@@ -689,9 +689,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which converts a string to uppercase?",
-        options: ["str.upper()", "str.toUpper()", "str.capitalize_all()", "str.UPPER()"],
+        options: ["'str.upper()'", "'str.toUpper()'", "'str.capitalize_all()'", "'str.UPPER()'"],
         correctOption: 0,
-        explanation: "The correct answer is: str.upper()",
+        explanation: "The correct answer is: 'str.upper()'",
       },
       {
         questionText: "'\"Hello World\"[0:5]' returns:",
@@ -701,9 +701,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which splits a string based on a delimiter?",
-        options: ["str.split()", "str.divide()", "str.break()", "str.chunk()"],
+        options: ["'str.split()'", "'str.divide()'", "'str.break()'", "'str.chunk()'"],
         correctOption: 0,
-        explanation: "The correct answer is: str.split()",
+        explanation: "The correct answer is: 'str.split()'",
       },
       {
         questionText: "Are strings mutable or immutable?",
@@ -713,29 +713,29 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "'\" Hello \".strip()' returns:",
-        options: ["\"  Hello  \"", "\"Hello\"", "\" Hello\"", "\"Hello  \""],
+        options: ["'\"  Hello  \"'", "'\"Hello\"'", "'\" Hello\"'", "'\"Hello  \"'"],
         correctOption: 1,
-        explanation: "The correct answer is: \"Hello\"",
+        explanation: "The correct answer is: '\"Hello\"'",
       },
       {
         questionText: "Which method checks if a string is purely alphabetic?",
-        options: ["str.isalpha()", "str.isalnum()", "str.isdigit()", "str.isupper()"],
+        options: ["'str.isalpha()'", "'str.isalnum()'", "'str.isdigit()'", "'str.isupper()'"],
         correctOption: 0,
-        explanation: "The correct answer is: str.isalpha()",
+        explanation: "The correct answer is: 'str.isalpha()'",
       },
     ],
     coding: [
       {
         questionText: "Write a program to reverse a string using a loop (no slicing shortcuts or 'reversed()').",
-        starterCode: "def loop():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program to reverse a string using a loop (no slicing shortcuts or 'rever...",
+        starterCode: "# Write a program to reverse a string using a loop (no slicing\n\ndef loop():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\ns = \"hello world\"\nreversed_s = \"\"\nfor ch in s:\n    reversed_s = ch + reversed_s\nprint(reversed_s)\\n```",
       },
       {
         questionText: "Write a program counting vowels, consonants, digits, and special characters in a string.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program counting vowels, consonants, digits, and special characters in a...",
+        starterCode: "# Write a program counting vowels, consonants, digits, and spe\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\ns = input(\"Enter a string: \")\nvowels = consonants = digits = special = 0\nfor ch in s:\n    if ch.isalpha():\n        if ch.lower() in \"aeiou\":\n            vowels += 1\n        else:\n            consonants += 1\n    elif ch.isdigit():\n        digits += 1\n    else:\n        special += 1\nprint(f\"Vowels: {vowels}, Consonants: {consonants}, Digits: {digits}, Special: {special}\")\\n```",
       },
     ],
   },
@@ -744,9 +744,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     mcqs: [
       {
         questionText: "Which keyword defines a function?",
-        options: ["function", "def", "func", "define"],
+        options: ["'function'", "'def'", "'func'", "'define'"],
         correctOption: 1,
-        explanation: "The correct answer is: def",
+        explanation: "The correct answer is: 'def'",
       },
       {
         questionText: "Purpose of 'return':",
@@ -756,15 +756,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "What happens if a function has no explicit 'return'?",
-        options: ["It raises an error", "It returns None", "It returns 0", "It cannot be called"],
+        options: ["It raises an error", "It returns 'None'", "It returns 0", "It cannot be called"],
         correctOption: 1,
-        explanation: "The correct answer is: It returns None",
+        explanation: "The correct answer is: It returns 'None'",
       },
       {
         questionText: "Which correctly defines a default parameter?",
-        options: ["def greet(name=\"Guest\"):", "def greet(name = default \"Guest\"):", "def greet(name): default=\"Guest\"", "def greet(default name=\"Guest\"):"],
+        options: ["'def greet(name=\"Guest\"):'", "'def greet(name = default \"Guest\"):'", "'def greet(name): default=\"Guest\"'", "'def greet(default name=\"Guest\"):'"],
         correctOption: 0,
-        explanation: "The correct answer is: def greet(name=\"Guest\"):",
+        explanation: "The correct answer is: 'def greet(name=\"Guest\"):'",
       },
       {
         questionText: "Arguments passed by position are called:",
@@ -786,7 +786,7 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Local variables inside a function:",
-        options: ["Are accessible outside the function", "Exist only within that function's scope", "Overwrite globals automatically", "Must use global"],
+        options: ["Are accessible outside the function", "Exist only within that function's scope", "Overwrite globals automatically", "Must use 'global'"],
         correctOption: 1,
         explanation: "The correct answer is: Exist only within that function's scope",
       },
@@ -794,15 +794,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Write 'calculate_area(shape, **kwargs)' computing the area of a circle, rectangle, or triangle based on 'shape' and matching keyword args.",
-        starterCode: "def calculate_area():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write 'calculate_area(shape, **kwargs)' computing the area of a circle, rectangl...",
+        starterCode: "# Write 'calculate_area(shape, **kwargs)' computing the area o\n\ndef calculate_area():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport math\n\ndef calculate_area(shape, **kwargs):\n    if shape == \"circle\":\n        return math.pi * kwargs[\"radius\"] ** 2\n    elif shape == \"rectangle\":\n        return kwargs[\"length\"] * kwargs[\"width\"]\n    elif shape == \"triangle\":\n        return 0.5 * kwargs[\"base\"] * kwargs[\"height\"]\n    else:\n        raise ValueError(\"Unknown shape\")\n\nprint(calculate_area(\"circle\", radius=3))\nprint(calculate_area(\"rectangle\", length=4, width=5))\nprint(calculate_area(\"triangle\", base=6, height=2))\\n```",
       },
       {
         questionText: "Write 'factorial(n)' returning the factorial of a non-negative integer using a loop.",
-        starterCode: "def factorial():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write 'factorial(n)' returning the factorial of a non-negative integer using a l...",
+        starterCode: "# Write 'factorial(n)' returning the factorial of a non-negati\n\ndef factorial():\n    pass",
+        expectedKeywords: ["def", "for", "return"],
+        solutionDescription: "```python\\ndef factorial(n):\n    result = 1\n    for i in range(2, n + 1):\n        result *= i\n    return result\n\nprint(factorial(5))\\n```",
       },
     ],
   },
@@ -817,15 +817,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "A lambda function is:",
-        options: ["A multi-line named function", "A small anonymous function defined with lambda", "A function that can't take arguments", "A built-in module"],
+        options: ["A multi-line named function", "A small anonymous function defined with 'lambda'", "A function that can't take arguments", "A built-in module"],
         correctOption: 1,
-        explanation: "The correct answer is: A small anonymous function defined with lambda",
+        explanation: "The correct answer is: A small anonymous function defined with 'lambda'",
       },
       {
         questionText: "Which correctly defines a lambda squaring a number?",
-        options: ["lambda x: x**2", "lambda(x) = x**2", "def lambda x: x**2", "x => x**2"],
+        options: ["'lambda x: x**2'", "'lambda(x) = x**2'", "'def lambda x: x**2'", "'x => x**2'"],
         correctOption: 0,
-        explanation: "The correct answer is: lambda x: x**2",
+        explanation: "The correct answer is: 'lambda x: x**2'",
       },
       {
         questionText: "'**kwargs' allows a function to accept:",
@@ -835,9 +835,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which applies a function to every item of an iterable?",
-        options: ["map()", "filter()", "reduce()", "apply()"],
+        options: ["'map()'", "'filter()'", "'reduce()'", "'apply()'"],
         correctOption: 0,
-        explanation: "The correct answer is: map()",
+        explanation: "The correct answer is: 'map()'",
       },
       {
         questionText: "'filter(lambda x: x % 2 == 0, [1,2,3,4])' returns (as a list):",
@@ -861,15 +861,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Write a recursive 'fibonacci(n)' function.",
-        starterCode: "def fibonacci():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a recursive 'fibonacci(n)' function....",
+        starterCode: "# Write a recursive 'fibonacci(n)' function.\n\ndef fibonacci():\n    pass",
+        expectedKeywords: ["def", "for", "return"],
+        solutionDescription: "```python\\ndef fibonacci(n):\n    if n <= 1:\n        return n\n    return fibonacci(n - 1) + fibonacci(n - 2)\n\nprint([fibonacci(i) for i in range(10)])\\n```",
       },
       {
         questionText: "Write a program combining 'map()', 'filter()', and 'lambda' to filter even numbers from a list, then square the odd ones.",
-        starterCode: "def map():\n    pass",
-        expectedKeywords: ["def", "lambda", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program combining 'map()', 'filter()', and 'lambda' to filter even numbe...",
+        starterCode: "# Write a program combining 'map()', 'filter()', and 'lambda' \n\ndef map():\n    pass",
+        expectedKeywords: ["def"],
+        solutionDescription: "```python\\nnums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nevens = list(filter(lambda x: x % 2 == 0, nums))\nodds_squared = list(map(lambda x: x ** 2, filter(lambda x: x % 2 != 0, nums)))\nprint(\"Evens:\", evens)\nprint(\"Odds squared:\", odds_squared)\\n```",
       },
     ],
   },
@@ -884,33 +884,33 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which statement imports the 'math' module?",
-        options: ["import math", "include math", "using math", "require math"],
+        options: ["'import math'", "'include math'", "'using math'", "'require math'"],
         correctOption: 0,
-        explanation: "The correct answer is: import math",
+        explanation: "The correct answer is: 'import math'",
       },
       {
         questionText: "How to import only 'sqrt' from 'math'?",
-        options: ["from math import sqrt", "import math.sqrt", "include sqrt from math", "math.import(sqrt)"],
+        options: ["'from math import sqrt'", "'import math.sqrt'", "'include sqrt from math'", "'math.import(sqrt)'"],
         correctOption: 0,
-        explanation: "The correct answer is: from math import sqrt",
+        explanation: "The correct answer is: 'from math import sqrt'",
       },
       {
         questionText: "What does 'import math as m' do?",
-        options: ["Causes an error", "Imports math with alias m", "Imports only part of math", "Deletes math"],
+        options: ["Causes an error", "Imports math with alias 'm'", "Imports only part of math", "Deletes math"],
         correctOption: 1,
-        explanation: "The correct answer is: Imports math with alias m",
+        explanation: "The correct answer is: Imports math with alias 'm'",
       },
       {
         questionText: "Which variable holds a module's name when run directly?",
-        options: ["__module__", "__name__", "__main__ only", "__file__"],
+        options: ["'__module__'", "'__name__'", "'__main__' only", "'__file__'"],
         correctOption: 1,
-        explanation: "The correct answer is: __name__",
+        explanation: "The correct answer is: '__name__'",
       },
       {
         questionText: "Where does Python search for modules?",
-        options: ["Only the current directory", "sys.path (current dir, installed packages, stdlib)", "Only stdlib", "Nowhere by default"],
+        options: ["Only the current directory", "'sys.path' (current dir, installed packages, stdlib)", "Only stdlib", "Nowhere by default"],
         correctOption: 1,
-        explanation: "The correct answer is: sys.path (current dir, installed packages, stdlib)",
+        explanation: "The correct answer is: 'sys.path' (current dir, installed packages, stdlib)",
       },
       {
         questionText: "Difference between a module and a script:",
@@ -920,23 +920,23 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which function lists names defined in a module?",
-        options: ["dir(module_name)", "list(module_name)", "show(module_name)", "names(module_name)"],
+        options: ["'dir(module_name)'", "'list(module_name)'", "'show(module_name)'", "'names(module_name)'"],
         correctOption: 0,
-        explanation: "The correct answer is: dir(module_name)",
+        explanation: "The correct answer is: 'dir(module_name)'",
       },
     ],
     coding: [
       {
         questionText: "Create a module 'mymath.py' with 'add()'/'subtract()', then import and use it from another script.",
-        starterCode: "def add():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Create a module 'mymath.py' with 'add()'/'subtract()', then import and use it fr...",
+        starterCode: "# Create a module 'mymath.py' with 'add()'/'subtract()', then \n\ndef add():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\n# mymath.py\ndef add(a, b):\n    return a + b\n\ndef subtract(a, b):\n    return a - b\n\n# main.py\nimport mymath\nprint(mymath.add(5, 3))\nprint(mymath.subtract(5, 3))\\n```",
       },
       {
         questionText: "Write a script demonstrating the 'if __name__ == \"__main__\":' idiom.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a script demonstrating the 'if __name__ == \"__main__\":' idiom....",
+        starterCode: "# Write a script demonstrating the 'if __name__ == \"__main__\":\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\ndef main():\n    print(\"Running as the main program\")\n\nif __name__ == \"__main__\":\n    main()\nelse:\n    print(\"Imported as a module\")\\n```",
       },
     ],
   },
@@ -945,9 +945,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     mcqs: [
       {
         questionText: "A Python package is:",
-        options: ["A single .py file", "A directory of related modules with __init__.py", "A variable", "A built-in type"],
+        options: ["A single .py file", "A directory of related modules with '__init__.py'", "A variable", "A built-in type"],
         correctOption: 1,
-        explanation: "The correct answer is: A directory of related modules with __init__.py",
+        explanation: "The correct answer is: A directory of related modules with '__init__.py'",
       },
       {
         questionText: "Purpose of '__init__.py':",
@@ -963,9 +963,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "File listing dependencies for 'pip install -r':",
-        options: ["requirements.txt", "package.json", "dependencies.yaml", "setup.cfg only"],
+        options: ["'requirements.txt'", "'package.json'", "'dependencies.yaml'", "'setup.cfg' only"],
         correctOption: 0,
-        explanation: "The correct answer is: requirements.txt",
+        explanation: "The correct answer is: 'requirements.txt'",
       },
       {
         questionText: "What does 'pip install package_name==1.2.3' do?",
@@ -987,23 +987,23 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "How do you import a 'utils' module from a 'mypackage' package?",
-        options: ["from mypackage import utils", "include mypackage.utils", "import utils from mypackage", "package mypackage.utils"],
+        options: ["'from mypackage import utils'", "'include mypackage.utils'", "'import utils from mypackage'", "'package mypackage.utils'"],
         correctOption: 0,
-        explanation: "The correct answer is: from mypackage import utils",
+        explanation: "The correct answer is: 'from mypackage import utils'",
       },
     ],
     coding: [
       {
         questionText: "Create a package 'shapes' with 'circle.py' and 'square.py' area functions and an '__init__.py'; write a script using both.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Create a package 'shapes' with 'circle.py' and 'square.py' area functions and an...",
+        starterCode: "# Create a package 'shapes' with 'circle.py' and 'square.py' a\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\n# shapes/__init__.py\n# (can be empty)\n\n# shapes/circle.py\ndef area(radius):\n    return 3.14159 * radius ** 2\n\n# shapes/square.py\ndef area(side):\n    return side ** 2\n\n# main.py\nfrom shapes import circle, square\nprint(circle.area(3))\nprint(square.area(4))\\n```",
       },
       {
         questionText: "Write a script that reads a sample 'requirements.txt' and prints each listed package name (simulate parsing, don't actually pip install).",
-        starterCode: "def name():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a script that reads a sample 'requirements.txt' and prints each listed pac...",
+        starterCode: "# Write a script that reads a sample 'requirements.txt' and pr\n\ndef name():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\nrequirements_text = \"numpy==1.26.0\\npandas>=2.0\\nscikit-learn\"\nfor line in requirements_text.splitlines():\n    package = line.split(\"==\")[0].split(\">=\")[0].strip()\n    if package:\n        print(package)\\n```",
       },
     ],
   },
@@ -1012,9 +1012,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     mcqs: [
       {
         questionText: "Which creates an empty list?",
-        options: ["list = ()", "list = []", "list = {}", "list = \"\""],
+        options: ["'list = ()'", "'list = []'", "'list = {}'", "'list = \"\"'"],
         correctOption: 1,
-        explanation: "The correct answer is: list = []",
+        explanation: "The correct answer is: 'list = []'",
       },
       {
         questionText: "Output of '[1,2,3] + [4,5]'?",
@@ -1024,15 +1024,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which adds a single element to the end of a list?",
-        options: ["list.append()", "list.extend()", "list.insert(0, x)", "list.add()"],
+        options: ["'list.append()'", "'list.extend()'", "'list.insert(0, x)'", "'list.add()'"],
         correctOption: 0,
-        explanation: "The correct answer is: list.append()",
+        explanation: "The correct answer is: 'list.append()'",
       },
       {
         questionText: "Difference between 'append()' and 'extend()':",
-        options: ["Identical behavior", "append() adds one element (even a list, as one item); extend() adds each element individually", "extend() only works on strings", "append() removes elements"],
+        options: ["Identical behavior", "'append()' adds one element (even a list, as one item); 'extend()' adds each element individually", "'extend()' only works on strings", "'append()' removes elements"],
         correctOption: 1,
-        explanation: "The correct answer is: append() adds one element (even a list, as one item); extend() adds each element individually",
+        explanation: "The correct answer is: 'append()' adds one element (even a list, as one item); 'extend()' adds each element individually",
       },
       {
         questionText: "What does 'list.pop()' do with no arguments?",
@@ -1054,23 +1054,23 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which list comprehension squares even numbers from 0-9?",
-        options: ["[x**2 for x in range(10) if x % 2 == 0]", "for x in range(10): x**2 if x%2==0", "[x**2 if x % 2 == 0]", "{x**2 for x in range(10)}"],
+        options: ["'[x**2 for x in range(10) if x % 2 == 0]'", "'for x in range(10): x**2 if x%2==0'", "'[x**2 if x % 2 == 0]'", "'{x**2 for x in range(10)}'"],
         correctOption: 0,
-        explanation: "The correct answer is: [x**2 for x in range(10) if x % 2 == 0]",
+        explanation: "The correct answer is: '[x**2 for x in range(10) if x % 2 == 0]'",
       },
     ],
     coding: [
       {
         questionText: "Write a program to remove duplicates from a list while preserving order.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return", "while"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program to remove duplicates from a list while preserving order....",
+        starterCode: "# Write a program to remove duplicates from a list while prese\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "return"],
+        solutionDescription: "```python\\ndef dedupe(lst):\n    seen = set()\n    result = []\n    for x in lst:\n        if x not in seen:\n            seen.add(x)\n            result.append(x)\n    return result\n\nprint(dedupe([1, 2, 2, 3, 1, 4]))\\n```",
       },
       {
         questionText: "Write a program using list comprehension to generate squares of numbers 1-20 divisible by 3.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program using list comprehension to generate squares of numbers 1-20 div...",
+        starterCode: "# Write a program using list comprehension to generate squares\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\nsquares = [x ** 2 for x in range(1, 21) if x % 3 == 0]\nprint(squares)\\n```",
       },
     ],
   },
@@ -1079,9 +1079,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     mcqs: [
       {
         questionText: "Which creates a single-element tuple?",
-        options: ["(5)", "(5,)", "[5]", "{5}"],
+        options: ["'(5)'", "'(5,)'", "'[5]'", "'{5}'"],
         correctOption: 1,
-        explanation: "The correct answer is: (5,)",
+        explanation: "The correct answer is: '(5,)'",
       },
       {
         questionText: "Tuples are:",
@@ -1103,9 +1103,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which method returns occurrence count of a value in a tuple?",
-        options: ["tuple.count(value)", "tuple.find(value)", "tuple.index(value)", "tuple.occurrences(value)"],
+        options: ["'tuple.count(value)'", "'tuple.find(value)'", "'tuple.index(value)'", "'tuple.occurrences(value)'"],
         correctOption: 0,
-        explanation: "The correct answer is: tuple.count(value)",
+        explanation: "The correct answer is: 'tuple.count(value)'",
       },
       {
         questionText: "Can a tuple contain a mutable object like a list?",
@@ -1121,23 +1121,23 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which function converts a list to a tuple?",
-        options: ["tuple()", "totuple()", "list_to_tuple()", "tup()"],
+        options: ["'tuple()'", "'totuple()'", "'list_to_tuple()'", "'tup()'"],
         correctOption: 0,
-        explanation: "The correct answer is: tuple()",
+        explanation: "The correct answer is: 'tuple()'",
       },
     ],
     coding: [
       {
         questionText: "Write a program that returns a new tuple with only even numbers from an input tuple.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program that returns a new tuple with only even numbers from an input tu...",
+        starterCode: "# Write a program that returns a new tuple with only even numb\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "return"],
+        solutionDescription: "```python\\ndef evens_only(t):\n    return tuple(x for x in t if x % 2 == 0)\n\nt = (1, 2, 3, 4, 5, 6)\nprint(evens_only(t))\\n```",
       },
       {
         questionText: "Write a program that \"swaps\" two tuple values (creating a new tuple), printing both tuples' 'id()' to show a new object was created.",
-        starterCode: "def values():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program that \"swaps\" two tuple values (creating a new tuple), printing b...",
+        starterCode: "# Write a program that \"swaps\" two tuple values (creating a ne\n\ndef values():\n    pass",
+        expectedKeywords: ["def"],
+        solutionDescription: "```python\\nt1 = (1, 2)\nt2 = (t1[1], t1[0])\nprint(t1, id(t1))\nprint(t2, id(t2))\\n```",
       },
     ],
   },
@@ -1146,9 +1146,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     mcqs: [
       {
         questionText: "Which creates an empty set?",
-        options: ["s = {}", "s = set()", "s = []", "s = ()"],
+        options: ["'s = {}'", "'s = set()'", "'s = []'", "'s = ()'"],
         correctOption: 1,
-        explanation: "The correct answer is: s = set()",
+        explanation: "The correct answer is: 's = set()'",
       },
       {
         questionText: "Key property of sets:",
@@ -1158,9 +1158,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which method adds a single element to a set?",
-        options: ["set.append()", "set.add()", "set.insert()", "set.push()"],
+        options: ["'set.append()'", "'set.add()'", "'set.insert()'", "'set.push()'"],
         correctOption: 1,
-        explanation: "The correct answer is: set.add()",
+        explanation: "The correct answer is: 'set.add()'",
       },
       {
         questionText: "'{1,2,3} & {2,3,4}' returns:",
@@ -1182,29 +1182,29 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Why isn't '{}' used for an empty set?",
-        options: ["It's actually valid", "{} creates an empty dictionary", "Sets don't support curly braces", "It's a syntax error"],
+        options: ["It's actually valid", "'{}' creates an empty dictionary", "Sets don't support curly braces", "It's a syntax error"],
         correctOption: 1,
-        explanation: "The correct answer is: {} creates an empty dictionary",
+        explanation: "The correct answer is: '{}' creates an empty dictionary",
       },
       {
         questionText: "Which method removes an element without raising an error if absent?",
-        options: ["set.remove()", "set.discard()", "set.pop()", "set.delete()"],
+        options: ["'set.remove()'", "'set.discard()'", "'set.pop()'", "'set.delete()'"],
         correctOption: 1,
-        explanation: "The correct answer is: set.discard()",
+        explanation: "The correct answer is: 'set.discard()'",
       },
     ],
     coding: [
       {
         questionText: "Write a program that converts two lists to sets and prints their union, intersection, and difference.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program that converts two lists to sets and prints their union, intersec...",
+        starterCode: "# Write a program that converts two lists to sets and prints t\n\ndef solution():\n    pass",
+        expectedKeywords: ["def"],
+        solutionDescription: "```python\\nlist1 = [1, 2, 3, 4]\nlist2 = [3, 4, 5, 6]\ns1, s2 = set(list1), set(list2)\nprint(\"Union:\", s1 | s2)\nprint(\"Intersection:\", s1 & s2)\nprint(\"Difference:\", s1 - s2)\\n```",
       },
       {
         questionText: "Write a program that removes duplicates from a list using a set and prints unique elements sorted ascending.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program that removes duplicates from a list using a set and prints uniqu...",
+        starterCode: "# Write a program that removes duplicates from a list using a \n\ndef solution():\n    pass",
+        expectedKeywords: ["def"],
+        solutionDescription: "```python\\nlst = [4, 1, 3, 1, 2, 4, 5]\nunique_sorted = sorted(set(lst))\nprint(unique_sorted)\\n```",
       },
     ],
   },
@@ -1213,15 +1213,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     mcqs: [
       {
         questionText: "Which creates a dictionary?",
-        options: ["d = {}", "d = []", "d = ()", "d = set()"],
+        options: ["'d = {}'", "'d = []'", "'d = ()'", "'d = set()'"],
         correctOption: 0,
-        explanation: "The correct answer is: d = {}",
+        explanation: "The correct answer is: 'd = {}'",
       },
       {
         questionText: "Safe access returning 'None' if key '\"name\"' is missing:",
-        options: ["d[\"name\"]", "d.get(\"name\")", "d.find(\"name\")", "d->name"],
+        options: ["'d[\"name\"]'", "'d.get(\"name\")'", "'d.find(\"name\")'", "'d->name'"],
         correctOption: 1,
-        explanation: "The correct answer is: d.get(\"name\")",
+        explanation: "The correct answer is: 'd.get(\"name\")'",
       },
       {
         questionText: "What does 'd.keys()' return?",
@@ -1237,9 +1237,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which method removes a key and returns its value?",
-        options: ["dict.remove(key)", "dict.pop(key)", "dict.delete(key)", "dict.clear(key)"],
+        options: ["'dict.remove(key)'", "'dict.pop(key)'", "'dict.delete(key)'", "'dict.clear(key)'"],
         correctOption: 1,
-        explanation: "The correct answer is: dict.pop(key)",
+        explanation: "The correct answer is: 'dict.pop(key)'",
       },
       {
         questionText: "Since which Python version do dicts guarantee insertion order?",
@@ -1263,15 +1263,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Write a program that builds a word-frequency dictionary from a list of words.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program that builds a word-frequency dictionary from a list of words....",
+        starterCode: "# Write a program that builds a word-frequency dictionary from\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\nwords = [\"apple\", \"banana\", \"apple\", \"cherry\", \"banana\", \"apple\"]\nfreq = {}\nfor w in words:\n    freq[w] = freq.get(w, 0) + 1\nprint(freq)\\n```",
       },
       {
         questionText: "Write a program that merges two dictionaries, summing values for keys present in both.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program that merges two dictionaries, summing values for keys present in...",
+        starterCode: "# Write a program that merges two dictionaries, summing values\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\nd1 = {\"a\": 1, \"b\": 2}\nd2 = {\"b\": 3, \"c\": 4}\nmerged = d1.copy()\nfor k, v in d2.items():\n    merged[k] = merged.get(k, 0) + v\nprint(merged)\\n```",
       },
     ],
   },
@@ -1292,9 +1292,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which special method is the constructor?",
-        options: ["__init__", "__new__ only", "__create__", "__start__"],
+        options: ["'__init__'", "'__new__' only", "'__create__'", "'__start__'"],
         correctOption: 0,
-        explanation: "The correct answer is: __init__",
+        explanation: "The correct answer is: '__init__'",
       },
       {
         questionText: "Inheritance is:",
@@ -1316,9 +1316,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "How is a \"private\" attribute indicated by convention?",
-        options: ["Prefix with single/double underscore, e.g., _x/__x", "The private keyword", "Declared inside __init__ only", "All uppercase letters"],
+        options: ["Prefix with single/double underscore, e.g., '_x'/'__x'", "The 'private' keyword", "Declared inside '__init__' only", "All uppercase letters"],
         correctOption: 0,
-        explanation: "The correct answer is: Prefix with single/double underscore, e.g., _x/__x",
+        explanation: "The correct answer is: Prefix with single/double underscore, e.g., '_x'/'__x'",
       },
       {
         questionText: "What does 'super().__init__()' typically do?",
@@ -1330,15 +1330,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Create class 'Animal' ('name', 'sound', 'make_sound()'); create child 'Dog' overriding 'make_sound()'.",
-        starterCode: "def make_sound():\n    pass",
-        expectedKeywords: ["class", "def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Create class 'Animal' ('name', 'sound', 'make_sound()'); create child 'Dog' over...",
+        starterCode: "# Create class 'Animal' ('name', 'sound', 'make_sound()'); cre\n\ndef make_sound():\n    pass",
+        expectedKeywords: ["class", "def"],
+        solutionDescription: "```python\\nclass Animal:\n    def __init__(self, name, sound):\n        self.name = name\n        self.sound = sound\n\n    def make_sound(self):\n        print(f\"{self.name} says {self.sound}\")\n\nclass Dog(Animal):\n    def make_sound(self):\n        print(f\"{self.name} barks: Woof!\")\n\nAnimal(\"Cat\", \"Meow\").make_sound()\nDog(\"Rex\", \"Bark\").make_sound()\\n```",
       },
       {
         questionText: "Write a program demonstrating encapsulation: 'Employee' class with private '__salary' and getter/setter (setter rejects negative values).",
-        starterCode: "def setter():\n    pass",
+        starterCode: "# Write a program demonstrating encapsulation: 'Employee' clas\n\ndef setter():\n    pass",
         expectedKeywords: ["class", "def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program demonstrating encapsulation: 'Employee' class with private '__sa...",
+        solutionDescription: "```python\\nclass Employee:\n    def __init__(self, name, salary):\n        self.name = name\n        self.__salary = salary\n\n    def get_salary(self):\n        return self.__salary\n\n    def set_salary(self, new_salary):\n        if new_salary < 0:\n            print(\"Salary cannot be negative\")\n        else:\n            self.__salary = new_salary\n\ne = Employee(\"Sam\", 50000)\ne.set_salary(-100)\nprint(e.get_salary())\\n```",
       },
     ],
   },
@@ -1359,9 +1359,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which raises a custom exception?",
-        options: ["throw Exception(\"msg\")", "raise Exception(\"msg\")", "error Exception(\"msg\")", "except Exception(\"msg\")"],
+        options: ["'throw Exception(\"msg\")'", "'raise Exception(\"msg\")'", "'error Exception(\"msg\")'", "'except Exception(\"msg\")'"],
         correctOption: 1,
-        explanation: "The correct answer is: raise Exception(\"msg\")",
+        explanation: "The correct answer is: 'raise Exception(\"msg\")'",
       },
       {
         questionText: "Purpose of the 'else' clause in try-except:",
@@ -1377,15 +1377,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Catching multiple exception types in one block:",
-        options: ["except (TypeError, ValueError):", "except TypeError, ValueError:", "except TypeError and ValueError:", "except [TypeError, ValueError]:"],
+        options: ["'except (TypeError, ValueError):'", "'except TypeError, ValueError:'", "'except TypeError and ValueError:'", "'except [TypeError, ValueError]:'"],
         correctOption: 0,
-        explanation: "The correct answer is: except (TypeError, ValueError):",
+        explanation: "The correct answer is: 'except (TypeError, ValueError):'",
       },
       {
         questionText: "Custom exceptions typically inherit from:",
-        options: ["object directly", "The built-in Exception class (or subclass)", "BaseError", "dict"],
+        options: ["'object' directly", "The built-in 'Exception' class (or subclass)", "'BaseError'", "'dict'"],
         correctOption: 1,
-        explanation: "The correct answer is: The built-in Exception class (or subclass)",
+        explanation: "The correct answer is: The built-in 'Exception' class (or subclass)",
       },
       {
         questionText: "What happens if an exception has no matching 'except'?",
@@ -1397,19 +1397,622 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Write a program dividing two user-input numbers using try-except-else-finally to handle 'ZeroDivisionError'/'ValueError'.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "except", "return", "try"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a program dividing two user-input numbers using try-except-else-finally to...",
+        starterCode: "# Write a program dividing two user-input numbers using try-ex\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "try"],
+        solutionDescription: "```python\\ntry:\n    a = float(input(\"Enter first number: \"))\n    b = float(input(\"Enter second number: \"))\n    result = a / b\nexcept ZeroDivisionError:\n    print(\"Cannot divide by zero\")\nexcept ValueError:\n    print(\"Invalid number entered\")\nelse:\n    print(\"Result:\", result)\nfinally:\n    print(\"Execution complete\")\\n```",
       },
       {
         questionText: "Create a custom exception 'InsufficientBalanceError' used in a withdrawal function raising it when amount exceeds balance.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "except", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Create a custom exception 'InsufficientBalanceError' used in a withdrawal functi...",
+        starterCode: "# Create a custom exception 'InsufficientBalanceError' used in\n\ndef solution():\n    pass",
+        expectedKeywords: ["class", "def", "return", "try"],
+        solutionDescription: "```python\\nclass InsufficientBalanceError(Exception):\n    pass\n\ndef withdraw(balance, amount):\n    if amount > balance:\n        raise InsufficientBalanceError(\"Withdrawal amount exceeds balance\")\n    return balance - amount\n\ntry:\n    withdraw(100, 150)\nexcept InsufficientBalanceError as e:\n    print(\"Error:\", e)\\n```",
       },
     ],
   },
   22: {
+    topicTitle: "Python: Python Lambda Functions",
+    mcqs: [
+      {
+        questionText: "A lambda function in Python is:",
+        options: ["A named function defined with 'def'", "An anonymous, single-expression function defined with the 'lambda' keyword", "A class constructor", "A loop construct"],
+        correctOption: 1,
+        explanation: "The correct answer is: An anonymous, single-expression function defined with the 'lambda' keyword",
+      },
+      {
+        questionText: "What is the correct syntax for a lambda that squares a number?",
+        options: ["'lambda x: x**2'", "'lambda(x) x**2'", "'def lambda x: x**2'", "'x => x**2'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'lambda x: x**2'",
+      },
+      {
+        questionText: "Lambda functions can contain:",
+        options: ["Multiple statements and loops", "Only a single expression", "'try/except' blocks", "Class definitions"],
+        correctOption: 1,
+        explanation: "The correct answer is: Only a single expression",
+      },
+      {
+        questionText: "Which built-in function commonly uses a lambda as its first argument to sort a list of tuples by the second element?",
+        options: ["'sorted(data, key=lambda x: x[1])'", "'sorted(data, sort=lambda x: x[1])'", "'sort(data, by=lambda)'", "'order(data)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'sorted(data, key=lambda x: x[1])'",
+      },
+      {
+        questionText: "What does 'list(map(lambda x: x*2, [1,2,3]))' return?",
+        options: ["'[1,2,3]'", "'[2,4,6]'", "'[1,4,9]'", "An error"],
+        correctOption: 1,
+        explanation: "The correct answer is: '[2,4,6]'",
+      },
+      {
+        questionText: "What does 'list(filter(lambda x: x%2==0, [1,2,3,4]))' return?",
+        options: ["'[1,3]'", "'[2,4]'", "'[1,2,3,4]'", "'[]'"],
+        correctOption: 1,
+        explanation: "The correct answer is: '[2,4]'",
+      },
+      {
+        questionText: "Can a lambda function be assigned to a variable and called later?",
+        options: ["No, lambdas cannot be assigned", "Yes, e.g. 'f = lambda x: x+1; f(2)'", "Only inside classes", "Only in Python 2"],
+        correctOption: 1,
+        explanation: "The correct answer is: Yes, e.g. 'f = lambda x: x+1; f(2)'",
+      },
+      {
+        questionText: "Which statement about lambda functions is TRUE?",
+        options: ["They can have default argument values just like regular functions", "They cannot take any arguments", "They must always take exactly one argument", "They cannot be passed to other functions"],
+        correctOption: 0,
+        explanation: "The correct answer is: They can have default argument values just like regular functions",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a lambda function 'is_palindrome' that takes a string and returns 'True' if it reads the same forwards and backwards, ignoring case.",
+        starterCode: "# Write a lambda function 'is_palindrome' that takes a string \n\ndef solution():\n    pass",
+        expectedKeywords: ["def"],
+        solutionDescription: "```python\\nis_palindrome = lambda s: s.lower() == s.lower()[::-1]\nprint(is_palindrome(\"Racecar\"))\nprint(is_palindrome(\"Hello\"))\\n```",
+      },
+      {
+        questionText: "Given a list of dictionaries representing people ('{\"name\": ..., \"age\": ...}'), use 'sorted()' with a lambda to sort the list by age in descending order.",
+        starterCode: "# Given a list of dictionaries representing people ('{\"name\": \n\ndef people():\n    pass",
+        expectedKeywords: ["def"],
+        solutionDescription: "```python\\npeople = [{\"name\": \"A\", \"age\": 30}, {\"name\": \"B\", \"age\": 25}, {\"name\": \"C\", \"age\": 40}]\nsorted_people = sorted(people, key=lambda p: p[\"age\"], reverse=True)\nprint(sorted_people)\\n```",
+      },
+    ],
+  },
+  23: {
+    topicTitle: "Python: Python List Comprehensions",
+    mcqs: [
+      {
+        questionText: "A list comprehension is:",
+        options: ["A concise syntax to create a list by applying an expression to each item in an iterable", "A way to delete items from a list", "A special type of dictionary", "A sorting algorithm"],
+        correctOption: 0,
+        explanation: "The correct answer is: A concise syntax to create a list by applying an expression to each item in an iterable",
+      },
+      {
+        questionText: "What does '[x**2 for x in range(5)]' produce?",
+        options: ["'[0,1,2,3,4]'", "'[0,1,4,9,16]'", "'[1,4,9,16,25]'", "An error"],
+        correctOption: 1,
+        explanation: "The correct answer is: '[0,1,4,9,16]'",
+      },
+      {
+        questionText: "How do you add a conditional filter to a list comprehension?",
+        options: ["'[x for x in range(10) if x%2==0]'", "'[x for x in range(10) when x%2==0]'", "'[x if x%2==0 for x in range(10)]'", "'filter[x for x in range(10)]'"],
+        correctOption: 0,
+        explanation: "The correct answer is: '[x for x in range(10) if x%2==0]'",
+      },
+      {
+        questionText: "What does '[x if x%2==0 else -x for x in range(5)]' demonstrate?",
+        options: ["Nested comprehension", "Conditional (ternary) expression inside a comprehension", "A syntax error", "A generator expression only"],
+        correctOption: 1,
+        explanation: "The correct answer is: Conditional (ternary) expression inside a comprehension",
+      },
+      {
+        questionText: "Nested list comprehensions such as '[x*y for x in range(3) for y in range(3)]' are equivalent to:",
+        options: ["A single for loop", "Nested for loops (outer 'for x', inner 'for y')", "A while loop", "Not valid Python"],
+        correctOption: 1,
+        explanation: "The correct answer is: Nested for loops (outer 'for x', inner 'for y')",
+      },
+      {
+        questionText: "Compared to an equivalent explicit 'for' loop with '.append()', list comprehensions are generally:",
+        options: ["Slower and less readable", "Faster and more concise for simple transformations", "Identical in every way with no differences", "Only usable with strings"],
+        correctOption: 1,
+        explanation: "The correct answer is: Faster and more concise for simple transformations",
+      },
+      {
+        questionText: "What does '[[x for x in range(3)] for y in range(2)]' create?",
+        options: ["A flat list of 6 numbers", "A list of two lists, each '[0,1,2]'", "An error", "A tuple of tuples"],
+        correctOption: 1,
+        explanation: "The correct answer is: A list of two lists, each '[0,1,2]'",
+      },
+      {
+        questionText: "Which of the following correctly flattens a list of lists 'matrix' using a comprehension?",
+        options: ["'[num for row in matrix for num in row]'", "'[row for num in matrix for row in num]'", "'[matrix for num in row]'", "'flatten(matrix)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: '[num for row in matrix for num in row]'",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a list comprehension that returns the squares of all odd numbers between 1 and 20 (inclusive).",
+        starterCode: "# Write a list comprehension that returns the squares of all o\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\nsquares = [x ** 2 for x in range(1, 21) if x % 2 != 0]\nprint(squares)\\n```",
+      },
+      {
+        questionText: "Given a matrix (list of lists) of integers, write a list comprehension that flattens it into a single list containing only the even numbers.",
+        starterCode: "# Given a matrix (list of lists) of integers, write a list com\n\ndef matrix():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\nmatrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]\nevens = [x for row in matrix for x in row if x % 2 == 0]\nprint(evens)\\n```",
+      },
+    ],
+  },
+  24: {
+    topicTitle: "Python: Python Dictionary & Set Comprehensions",
+    mcqs: [
+      {
+        questionText: "What is the correct syntax for a dictionary comprehension?",
+        options: ["'{k: v for k, v in items}'", "'[k: v for k, v in items]'", "'(k: v for k, v in items)'", "'{k, v for k, v in items}'"],
+        correctOption: 0,
+        explanation: "The correct answer is: '{k: v for k, v in items}'",
+      },
+      {
+        questionText: "What does '{x: x**2 for x in range(4)}' produce?",
+        options: ["'{0:0, 1:1, 2:4, 3:9}'", "'[0,1,4,9]'", "'{0,1,4,9}'", "An error"],
+        correctOption: 0,
+        explanation: "The correct answer is: '{0:0, 1:1, 2:4, 3:9}'",
+      },
+      {
+        questionText: "What is the correct syntax for a set comprehension?",
+        options: ["'{x for x in iterable}'", "'[x for x in iterable]'", "'(x for x in iterable)'", "'<x for x in iterable>'"],
+        correctOption: 0,
+        explanation: "The correct answer is: '{x for x in iterable}'",
+      },
+      {
+        questionText: "What does '{x%3 for x in range(10)}' return?",
+        options: ["A list with duplicates", "A set with unique remainders only, e.g. '{0, 1, 2}'", "A dictionary", "A syntax error"],
+        correctOption: 1,
+        explanation: "The correct answer is: A set with unique remainders only, e.g. '{0, 1, 2}'",
+      },
+      {
+        questionText: "How would you swap the keys and values of a dictionary 'd' using a comprehension?",
+        options: ["'{v: k for k, v in d.items()}'", "'{k: v for v, k in d}'", "'{d[k]: d[v]}'", "Not possible with comprehensions"],
+        correctOption: 0,
+        explanation: "The correct answer is: '{v: k for k, v in d.items()}'",
+      },
+      {
+        questionText: "Dictionary comprehensions are most useful when:",
+        options: ["You need to build a dictionary from an iterable with a transformation or filter", "You need an unordered list", "You need to sort a list", "You want to remove duplicates from a string"],
+        correctOption: 0,
+        explanation: "The correct answer is: You need to build a dictionary from an iterable with a transformation or filter",
+      },
+      {
+        questionText: "What does '{k: v for k, v in original.items() if v > 10}' do?",
+        options: ["Creates a new dict with only key-value pairs where the value exceeds 10", "Deletes items from 'original'", "Raises an error since dicts can't be filtered", "Sorts the dictionary"],
+        correctOption: 0,
+        explanation: "The correct answer is: Creates a new dict with only key-value pairs where the value exceeds 10",
+      },
+      {
+        questionText: "Can you nest a set comprehension inside a dictionary comprehension?",
+        options: ["No, comprehensions cannot be nested", "Yes, e.g. '{k: {x for x in v} for k, v in d.items()}'", "Only with 'for' loops, not comprehensions", "Only in Python 2"],
+        correctOption: 1,
+        explanation: "The correct answer is: Yes, e.g. '{k: {x for x in v} for k, v in d.items()}'",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Given a list of words, write a dictionary comprehension that maps each word to its length.",
+        starterCode: "# Given a list of words, write a dictionary comprehension that\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\nwords = [\"cat\", \"elephant\", \"dog\", \"butterfly\"]\nlengths = {w: len(w) for w in words}\nprint(lengths)\\n```",
+      },
+      {
+        questionText: "Given a string, write a set comprehension that returns the set of all unique vowels (a, e, i, o, u) present in it, case-insensitively.",
+        starterCode: "# Given a string, write a set comprehension that returns the s\n\ndef vowels():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\ns = \"Hello World, this is Python\"\nvowels = {ch.lower() for ch in s if ch.lower() in \"aeiou\"}\nprint(vowels)\\n```",
+      },
+    ],
+  },
+  25: {
+    topicTitle: "Python: Python Iterators & Generators",
+    mcqs: [
+      {
+        questionText: "An iterator in Python is an object that implements:",
+        options: ["'__init__' and '__str__'", "'__iter__' and '__next__'", "'__len__' and '__getitem__' only", "'__call__'"],
+        correctOption: 1,
+        explanation: "The correct answer is: '__iter__' and '__next__'",
+      },
+      {
+        questionText: "A generator function is defined using:",
+        options: ["The 'return' keyword only", "The 'yield' keyword", "The 'async' keyword", "The 'lambda' keyword"],
+        correctOption: 1,
+        explanation: "The correct answer is: The 'yield' keyword",
+      },
+      {
+        questionText: "What is the key advantage of generators over lists for large sequences?",
+        options: ["They store all values in memory at once", "They produce values lazily (one at a time), saving memory", "They are always faster to sort", "They can only be used once and then deleted from disk"],
+        correctOption: 1,
+        explanation: "The correct answer is: They produce values lazily (one at a time), saving memory",
+      },
+      {
+        questionText: "What happens when a generator function's execution reaches the end without further 'yield' statements?",
+        options: ["It raises a 'StopIteration' exception automatically when next() is called again", "It restarts from the beginning", "It raises a 'SyntaxError'", "It returns 'None' indefinitely"],
+        correctOption: 0,
+        explanation: "The correct answer is: It raises a 'StopIteration' exception automatically when next() is called again",
+      },
+      {
+        questionText: "What does 'next(iterator)' do?",
+        options: ["Restarts the iterator", "Returns the next item from the iterator, advancing its state", "Deletes the current item", "Converts it to a list"],
+        correctOption: 1,
+        explanation: "The correct answer is: Returns the next item from the iterator, advancing its state",
+      },
+      {
+        questionText: "What is a generator expression?",
+        options: ["'(x**2 for x in range(5))' \u2014 similar to a list comprehension but with parentheses, producing a lazy generator", "'[x**2 for x in range(5)]'", "'{x**2 for x in range(5)}'", "A function that must use 'def'"],
+        correctOption: 0,
+        explanation: "The correct answer is: '(x**2 for x in range(5))' \u2014 similar to a list comprehension but with parentheses, producing a lazy generator",
+      },
+      {
+        questionText: "Which built-in function converts an iterable into an iterator explicitly?",
+        options: ["'iter()'", "'list()'", "'next()'", "'range()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'iter()'",
+      },
+      {
+        questionText: "Can a generator function have multiple 'yield' statements?",
+        options: ["No, only one 'yield' is allowed per function", "Yes, each call to 'next()' resumes execution until the next 'yield'", "Only if wrapped in a loop with 'return'", "Only in generator expressions"],
+        correctOption: 1,
+        explanation: "The correct answer is: Yes, each call to 'next()' resumes execution until the next 'yield'",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a generator function 'fibonacci_gen(n)' that yields the first 'n' Fibonacci numbers.",
+        starterCode: "# Write a generator function 'fibonacci_gen(n)' that yields th\n\ndef fibonacci_gen():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\ndef fibonacci_gen(n):\n    a, b = 0, 1\n    for _ in range(n):\n        yield a\n        a, b = b, a + b\n\nprint(list(fibonacci_gen(10)))\\n```",
+      },
+      {
+        questionText: "Write a generator function 'even_numbers(start, end)' that lazily yields all even numbers between 'start' and 'end' (inclusive), and demonstrate consuming it with a 'for' loop.",
+        starterCode: "# Write a generator function 'even_numbers(start, end)' that l\n\ndef even_numbers():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\ndef even_numbers(start, end):\n    for n in range(start, end + 1):\n        if n % 2 == 0:\n            yield n\n\nfor n in even_numbers(1, 20):\n    print(n, end=\" \")\\n```",
+      },
+    ],
+  },
+  26: {
+    topicTitle: "Python: Python Decorators",
+    mcqs: [
+      {
+        questionText: "A decorator in Python is:",
+        options: ["A function that takes another function and extends/modifies its behavior without changing its source code", "A type of loop", "A built-in data type", "A way to import modules"],
+        correctOption: 0,
+        explanation: "The correct answer is: A function that takes another function and extends/modifies its behavior without changing its source code",
+      },
+      {
+        questionText: "Which syntax applies a decorator named 'my_decorator' to a function 'foo'?",
+        options: ["'@my_decorator' placed above 'def foo():'", "'foo.decorate(my_decorator)'", "'decorator(foo) = my_decorator'", "'import my_decorator as foo'"],
+        correctOption: 0,
+        explanation: "The correct answer is: '@my_decorator' placed above 'def foo():'",
+      },
+      {
+        questionText: "Inside a typical decorator, why is '*args, **kwargs' used in the wrapper function?",
+        options: ["To allow the wrapper to accept and forward any arguments the decorated function may take", "To make the function run faster", "To disable arguments entirely", "It is required by Python syntax and has no other purpose"],
+        correctOption: 0,
+        explanation: "The correct answer is: To allow the wrapper to accept and forward any arguments the decorated function may take",
+      },
+      {
+        questionText: "What does 'functools.wraps' do when used in a decorator?",
+        options: ["Preserves the original function's name and docstring on the wrapped function", "Makes the function run in a separate thread", "Converts the function into a class", "Removes the need for '*args'"],
+        correctOption: 0,
+        explanation: "The correct answer is: Preserves the original function's name and docstring on the wrapped function",
+      },
+      {
+        questionText: "Can multiple decorators be stacked on a single function?",
+        options: ["No, only one decorator is allowed per function", "Yes, they are applied bottom-up (closest to the function first)", "Yes, but only in Python 2", "Yes, but they must all have the same name"],
+        correctOption: 1,
+        explanation: "The correct answer is: Yes, they are applied bottom-up (closest to the function first)",
+      },
+      {
+        questionText: "A common real-world use case for decorators is:",
+        options: ["Logging, timing, or authentication checks around a function's execution", "Declaring variables", "Defining classes", "Importing packages"],
+        correctOption: 0,
+        explanation: "The correct answer is: Logging, timing, or authentication checks around a function's execution",
+      },
+      {
+        questionText: "What does a decorator function typically return?",
+        options: ["A wrapper function that calls the original function and adds extra behavior", "The string name of the function", "'None' always", "The original function's arguments only"],
+        correctOption: 0,
+        explanation: "The correct answer is: A wrapper function that calls the original function and adds extra behavior",
+      },
+      {
+        questionText: "Can decorators accept their own arguments (e.g., '@repeat(3)')?",
+        options: ["No, decorators can never take arguments", "Yes, by writing a decorator factory \u2014 a function that returns a decorator", "Only built-in decorators support arguments", "Only if the decorated function has no arguments"],
+        correctOption: 1,
+        explanation: "The correct answer is: Yes, by writing a decorator factory \u2014 a function that returns a decorator",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a decorator 'timer' that measures and prints how long the decorated function takes to execute.",
+        starterCode: "# Write a decorator 'timer' that measures and prints how long \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport time\nfrom functools import wraps\n\ndef timer(func):\n    @wraps(func)\n    def wrapper(*args, **kwargs):\n        start = time.time()\n        result = func(*args, **kwargs)\n        print(f\"{func.__name__} took {time.time()-start:.4f}s\")\n        return result\n    return wrapper\n\n@timer\ndef slow():\n    time.sleep(0.1)\n\nslow()\\n```",
+      },
+      {
+        questionText: "Write a decorator 'repeat(n)' (a decorator factory) that causes the decorated function to be called 'n' times in a row each time it is invoked.",
+        starterCode: "# Write a decorator 'repeat(n)' (a decorator factory) that cau\n\ndef repeat():\n    pass",
+        expectedKeywords: ["def", "for", "import", "return"],
+        solutionDescription: "```python\\nfrom functools import wraps\n\ndef repeat(n):\n    def decorator(func):\n        @wraps(func)\n        def wrapper(*args, **kwargs):\n            for _ in range(n):\n                func(*args, **kwargs)\n        return wrapper\n    return decorator\n\n@repeat(3)\ndef greet():\n    print(\"Hello!\")\n\ngreet()\\n```",
+      },
+    ],
+  },
+  27: {
+    topicTitle: "Python: Python File Handling (Read/Write)",
+    mcqs: [
+      {
+        questionText: "Which built-in function is used to open a file in Python?",
+        options: ["'open()'", "'file()'", "'read()'", "'load()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'open()'",
+      },
+      {
+        questionText: "What does the mode ''w'' do when opening a file?",
+        options: ["Opens for reading only", "Opens for writing, truncating the file if it exists (creating it if not)", "Opens for appending only", "Opens in binary read mode"],
+        correctOption: 1,
+        explanation: "The correct answer is: Opens for writing, truncating the file if it exists (creating it if not)",
+      },
+      {
+        questionText: "Which mode appends new content to the end of an existing file without erasing it?",
+        options: ["''a''", "''w''", "''r''", "''x''"],
+        correctOption: 0,
+        explanation: "The correct answer is: ''a''",
+      },
+      {
+        questionText: "Why is the 'with open(...) as f:' context manager preferred over manually calling 'open()'/'close()'?",
+        options: ["It automatically closes the file when the block ends, even if an exception occurs", "It makes the file read-only", "It is required by Python syntax", "It doubles the read speed"],
+        correctOption: 0,
+        explanation: "The correct answer is: It automatically closes the file when the block ends, even if an exception occurs",
+      },
+      {
+        questionText: "Which method reads the entire content of a file as a single string?",
+        options: ["'f.read()'", "'f.readline()'", "'f.readlines()'", "'f.readall()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'f.read()'",
+      },
+      {
+        questionText: "What does 'f.readlines()' return?",
+        options: ["A single string of the whole file", "A list of strings, one per line", "A generator only", "A dictionary"],
+        correctOption: 1,
+        explanation: "The correct answer is: A list of strings, one per line",
+      },
+      {
+        questionText: "What does mode ''x'' do when opening a file?",
+        options: ["Opens for exclusive creation, failing with an error if the file already exists", "Deletes the file", "Opens in binary mode always", "Opens for appending"],
+        correctOption: 0,
+        explanation: "The correct answer is: Opens for exclusive creation, failing with an error if the file already exists",
+      },
+      {
+        questionText: "To read/write a file containing non-text data like images, which mode suffix should be added?",
+        options: ["''t'' for text", "''b'' for binary, e.g. ''rb'' or ''wb''", "''n'' for numeric", "No suffix is needed"],
+        correctOption: 1,
+        explanation: "The correct answer is: ''b'' for binary, e.g. ''rb'' or ''wb''",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a function 'count_words(filepath)' that opens a text file using a context manager and returns the total number of words in it.",
+        starterCode: "# Write a function 'count_words(filepath)' that opens a text f\n\ndef count_words():\n    pass",
+        expectedKeywords: ["def", "return"],
+        solutionDescription: "```python\\ndef count_words(filepath):\n    with open(filepath, 'r') as f:\n        text = f.read()\n    return len(text.split())\n\nprint(count_words('sample.txt'))\\n```",
+      },
+      {
+        questionText: "Write a function 'copy_file(src, dst)' that reads the contents of file 'src' and writes them to a new file 'dst', using 'with' statements for both files.",
+        starterCode: "# Write a function 'copy_file(src, dst)' that reads the conten\n\ndef copy_file():\n    pass",
+        expectedKeywords: ["def"],
+        solutionDescription: "```python\\ndef copy_file(src, dst):\n    with open(src, 'r') as f_in, open(dst, 'w') as f_out:\n        f_out.write(f_in.read())\n\ncopy_file('source.txt', 'copy.txt')\\n```",
+      },
+    ],
+  },
+  28: {
+    topicTitle: "Python: Python Regular Expressions (re module)",
+    mcqs: [
+      {
+        questionText: "Which module in Python's standard library provides regular expression support?",
+        options: ["'regex'", "'re'", "'pattern'", "'strings'"],
+        correctOption: 1,
+        explanation: "The correct answer is: 're'",
+      },
+      {
+        questionText: "Which function searches for the first match of a pattern anywhere in a string and returns a match object or 'None'?",
+        options: ["'re.search()'", "'re.match()' only", "'re.findall()' only", "'re.compile()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 're.search()'",
+      },
+      {
+        questionText: "What is the difference between 're.match()' and 're.search()'?",
+        options: ["There is no difference", "'re.match()' only checks for a match at the beginning of the string, while 're.search()' scans the whole string", "'re.search()' only works on lists", "'re.match()' is deprecated"],
+        correctOption: 1,
+        explanation: "The correct answer is: 're.match()' only checks for a match at the beginning of the string, while 're.search()' scans the whole string",
+      },
+      {
+        questionText: "What does 're.findall(r'\\d+', text)' return?",
+        options: ["A list of all non-overlapping substrings of one or more digits found in 'text'", "The first digit found", "'True' or 'False'", "A single concatenated string of all digits"],
+        correctOption: 0,
+        explanation: "The correct answer is: A list of all non-overlapping substrings of one or more digits found in 'text'",
+      },
+      {
+        questionText: "Which function replaces all occurrences of a pattern in a string with a replacement string?",
+        options: ["'re.sub()'", "'re.replace()'", "'re.change()'", "'re.swap()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 're.sub()'",
+      },
+      {
+        questionText: "In regex, what does the pattern '^\\w+@\\w+\\.\\w+$' roughly validate?",
+        options: ["A phone number", "A simple email address format", "A URL", "A date"],
+        correctOption: 1,
+        explanation: "The correct answer is: A simple email address format",
+      },
+      {
+        questionText: "What does the '\\d' special sequence match in a regex pattern?",
+        options: ["Any whitespace character", "Any digit character (0-9)", "Any word character", "Any non-digit character"],
+        correctOption: 1,
+        explanation: "The correct answer is: Any digit character (0-9)",
+      },
+      {
+        questionText: "What does 're.compile(pattern)' do?",
+        options: ["Executes the pattern against a string immediately", "Pre-compiles a regex pattern into a pattern object for repeated, efficient reuse", "Deletes the pattern", "Converts the pattern to a string"],
+        correctOption: 1,
+        explanation: "The correct answer is: Pre-compiles a regex pattern into a pattern object for repeated, efficient reuse",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a function 'extract_emails(text)' that uses the 're' module to return a list of all email addresses found in a block of text.",
+        starterCode: "# Write a function 'extract_emails(text)' that uses the 're' m\n\ndef extract_emails():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport re\n\ndef extract_emails(text):\n    return re.findall(r'[\\w.+-]+@[\\w-]+\\.[\\w.-]+', text)\n\nprint(extract_emails(\"Contact us at a@b.com or c.d@ex.org\"))\\n```",
+      },
+      {
+        questionText: "Write a function 'is_valid_phone(number)' that uses a regular expression to check whether a string matches the format 'XXX-XXX-XXXX' (digits only, with dashes).",
+        starterCode: "# Write a function 'is_valid_phone(number)' that uses a regula\n\ndef is_valid_phone():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport re\n\ndef is_valid_phone(number):\n    return bool(re.fullmatch(r'\\d{3}-\\d{3}-\\d{4}', number))\n\nprint(is_valid_phone(\"123-456-7890\"))\nprint(is_valid_phone(\"1234567890\"))\\n```",
+      },
+    ],
+  },
+  29: {
+    topicTitle: "Python: Python Multithreading & Multiprocessing",
+    mcqs: [
+      {
+        questionText: "Which standard library module is used for creating threads in Python?",
+        options: ["'threading'", "'thread' (Python 3 removed the old 'thread' module)", "'parallel'", "'async'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'threading'",
+      },
+      {
+        questionText: "What is the Global Interpreter Lock (GIL)?",
+        options: ["A lock that allows only one thread to execute Python bytecode at a time in CPython", "A file system lock", "A database locking mechanism", "A network security feature"],
+        correctOption: 0,
+        explanation: "The correct answer is: A lock that allows only one thread to execute Python bytecode at a time in CPython",
+      },
+      {
+        questionText: "Because of the GIL, multithreading in Python is most beneficial for:",
+        options: ["CPU-bound tasks like heavy numeric computation", "I/O-bound tasks like network requests or file I/O, where threads can overlap waiting time", "Neither type of task", "Only for GUI applications"],
+        correctOption: 1,
+        explanation: "The correct answer is: I/O-bound tasks like network requests or file I/O, where threads can overlap waiting time",
+      },
+      {
+        questionText: "Which module allows true parallel execution across multiple CPU cores by using separate processes instead of threads?",
+        options: ["'threading'", "'multiprocessing'", "'asyncio'", "'subprocess' only"],
+        correctOption: 1,
+        explanation: "The correct answer is: 'multiprocessing'",
+      },
+      {
+        questionText: "Why does 'multiprocessing' achieve real parallelism where 'threading' often cannot for CPU-bound work?",
+        options: ["Each process has its own Python interpreter and memory space, so the GIL doesn't limit them", "Processes are always faster than threads at everything", "Multiprocessing disables the GIL globally", "There is no real difference"],
+        correctOption: 0,
+        explanation: "The correct answer is: Each process has its own Python interpreter and memory space, so the GIL doesn't limit them",
+      },
+      {
+        questionText: "Which method is used to start a 'Thread' object's execution?",
+        options: ["'thread.run_now()'", "'thread.start()'", "'thread.begin()'", "'thread.execute()'"],
+        correctOption: 1,
+        explanation: "The correct answer is: 'thread.start()'",
+      },
+      {
+        questionText: "What does calling '.join()' on a thread or process do?",
+        options: ["Immediately kills the thread", "Blocks the calling program until that thread/process finishes execution", "Merges two threads into one", "Restarts the thread"],
+        correctOption: 1,
+        explanation: "The correct answer is: Blocks the calling program until that thread/process finishes execution",
+      },
+      {
+        questionText: "Which module provides a high-level interface ('ThreadPoolExecutor', 'ProcessPoolExecutor') for managing pools of threads/processes?",
+        options: ["'concurrent.futures'", "'threading.pool'", "'pool'", "'async.pool'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'concurrent.futures'",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a program using the 'threading' module that starts two threads, each printing numbers from 1 to 5 with a short delay, and waits for both to finish using '.join()'.",
+        starterCode: "# Write a program using the 'threading' module that starts two\n\ndef join():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport threading, time\n\ndef print_numbers(name):\n    for i in range(1, 6):\n        print(f\"{name}: {i}\")\n        time.sleep(0.1)\n\nt1 = threading.Thread(target=print_numbers, args=(\"Thread-1\",))\nt2 = threading.Thread(target=print_numbers, args=(\"Thread-2\",))\nt1.start(); t2.start()\nt1.join(); t2.join()\\n```",
+      },
+      {
+        questionText: "Write a program using 'multiprocessing.Pool' to compute the square of each number in a list '[1..10]' in parallel and print the results.",
+        starterCode: "# Write a program using 'multiprocessing.Pool' to compute the \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nfrom multiprocessing import Pool\n\ndef square(x):\n    return x * x\n\nif __name__ == \"__main__\":\n    with Pool(4) as p:\n        results = p.map(square, list(range(1, 11)))\n    print(results)\\n```",
+      },
+    ],
+  },
+  30: {
+    topicTitle: "Python: Python Virtual Environments & Package Management",
+    mcqs: [
+      {
+        questionText: "What is the purpose of a Python virtual environment?",
+        options: ["To run Python faster", "To create an isolated environment with its own dependencies, separate from the system Python installation", "To compile Python to machine code", "To encrypt Python scripts"],
+        correctOption: 1,
+        explanation: "The correct answer is: To create an isolated environment with its own dependencies, separate from the system Python installation",
+      },
+      {
+        questionText: "Which built-in module is commonly used to create a virtual environment?",
+        options: ["'venv'", "'virtual'", "'env'", "'isolate'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'venv'",
+      },
+      {
+        questionText: "Which command creates a virtual environment named 'myenv' using the standard library?",
+        options: ["'python -m venv myenv'", "'python create venv myenv'", "'pip install venv myenv'", "'venv myenv --create'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'python -m venv myenv'",
+      },
+      {
+        questionText: "What command is used to install a package from PyPI using pip?",
+        options: ["'pip install package_name'", "'pip get package_name'", "'python install package_name'", "'pip add package_name'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'pip install package_name'",
+      },
+      {
+        questionText: "Which file is conventionally used to list a project's dependencies for reproducible installs?",
+        options: ["'requirements.txt'", "'dependencies.py'", "'packages.json'", "'install.cfg'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'requirements.txt'",
+      },
+      {
+        questionText: "Which command generates a 'requirements.txt' file listing currently installed packages and their versions?",
+        options: ["'pip freeze > requirements.txt'", "'pip list --save requirements.txt'", "'pip export requirements.txt'", "'python freeze requirements.txt'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'pip freeze > requirements.txt'",
+      },
+      {
+        questionText: "On most systems, how do you activate a virtual environment created with 'venv' on Linux/macOS?",
+        options: ["'source myenv/bin/activate'", "'myenv/activate.exe'", "'python activate myenv'", "'pip activate myenv'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'source myenv/bin/activate'",
+      },
+      {
+        questionText: "Why are virtual environments especially important when working on multiple projects?",
+        options: ["They prevent dependency/version conflicts between projects that need different package versions", "They make code run without Python installed", "They are required to use 'import' statements", "They automatically fix all bugs"],
+        correctOption: 0,
+        explanation: "The correct answer is: They prevent dependency/version conflicts between projects that need different package versions",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write the shell commands to create a virtual environment called 'venv', activate it (Linux/macOS), install the 'requests' package, and freeze the installed packages into 'requirements.txt'.",
+        starterCode: "# Write the shell commands to create a virtual environment cal\n\ndef it():\n    pass",
+        expectedKeywords: ["def"],
+        solutionDescription: "```python\\n# Shell commands:\npython -m venv venv\nsource venv/bin/activate\npip install requests\npip freeze > requirements.txt\\n```",
+      },
+      {
+        questionText: "Write a Python script that uses 'subprocess' to programmatically run 'pip list' and print the installed package names.",
+        starterCode: "# Write a Python script that uses 'subprocess' to programmatic\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport subprocess\n\nresult = subprocess.run(['pip', 'list'], capture_output=True, text=True)\nfor line in result.stdout.splitlines()[2:]:\n    print(line.split()[0])\\n```",
+      },
+    ],
+  },
+  31: {
     topicTitle: "Pandas: Pandas Introduction",
     mcqs: [
       {
@@ -1426,9 +2029,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Conventional import:",
-        options: ["import pandas as pd", "import pandas as pandas", "include pandas as pd", "from pandas import *"],
+        options: ["'import pandas as pd'", "'import pandas as pandas'", "'include pandas as pd'", "'from pandas import *'"],
         correctOption: 0,
-        explanation: "The correct answer is: import pandas as pd",
+        explanation: "The correct answer is: 'import pandas as pd'",
       },
       {
         questionText: "Key advantage of Pandas over plain lists for tabular data:",
@@ -1438,9 +2041,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Command to check installed Pandas version:",
-        options: ["pd.__version__", "pandas.version()", "pd.ver", "check_version(pd)"],
+        options: ["'pd.__version__'", "'pandas.version()'", "'pd.ver'", "'check_version(pd)'"],
         correctOption: 0,
-        explanation: "The correct answer is: pd.__version__",
+        explanation: "The correct answer is: 'pd.__version__'",
       },
       {
         questionText: "A Series is:",
@@ -1456,34 +2059,34 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Command to install Pandas via pip:",
-        options: ["pip install pandas", "pip get pandas", "python install pandas", "pandas install"],
+        options: ["'pip install pandas'", "'pip get pandas'", "'python install pandas'", "'pandas install'"],
         correctOption: 0,
-        explanation: "The correct answer is: pip install pandas",
+        explanation: "The correct answer is: 'pip install pandas'",
       },
     ],
     coding: [
       {
         questionText: "Create a Series from a list of 5 numbers and print it with its index.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Create a Series from a list of 5 numbers and print it with its index....",
+        starterCode: "# Create a Series from a list of 5 numbers and print it with i\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ns = pd.Series([10, 20, 30, 40, 50])\nprint(s)\nprint(s.index)\\n```",
       },
       {
         questionText: "Create a DataFrame from a dictionary (3 columns, 4 rows) and print it with its shape.",
-        starterCode: "def dictionary():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Create a DataFrame from a dictionary (3 columns, 4 rows) and print it with its s...",
+        starterCode: "# Create a DataFrame from a dictionary (3 columns, 4 rows) and\n\ndef dictionary():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({\n    'Name': ['A', 'B', 'C', 'D'],\n    'Age': [25, 30, 35, 40],\n    'City': ['NY', 'LA', 'SF', 'CHI']\n})\nprint(df)\nprint(df.shape)\\n```",
       },
     ],
   },
-  23: {
+  32: {
     topicTitle: "Pandas: Pandas Series Introduction",
     mcqs: [
       {
         questionText: "Create a Series from '[10, 20, 30]':",
-        options: ["pd.Series([10,20,30])", "pd.DataFrame([10,20,30])", "pd.Array([10,20,30])", "pd.List([10,20,30])"],
+        options: ["'pd.Series([10,20,30])'", "'pd.DataFrame([10,20,30])'", "'pd.Array([10,20,30])'", "'pd.List([10,20,30])'"],
         correctOption: 0,
-        explanation: "The correct answer is: pd.Series([10,20,30])",
+        explanation: "The correct answer is: 'pd.Series([10,20,30])'",
       },
       {
         questionText: "Default index if none specified:",
@@ -1493,15 +2096,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Series with custom index:",
-        options: ["pd.Series([1,2,3], index=['a','b','c'])", "pd.Series([1,2,3], labels=['a','b','c'])", ".set_index() only", "pd.Series(index=['a','b','c'])"],
+        options: ["'pd.Series([1,2,3], index=['a','b','c'])'", "'pd.Series([1,2,3], labels=['a','b','c'])'", "'.set_index()' only", "'pd.Series(index=['a','b','c'])'"],
         correctOption: 0,
-        explanation: "The correct answer is: pd.Series([1,2,3], index=['a','b','c'])",
+        explanation: "The correct answer is: 'pd.Series([1,2,3], index=['a','b','c'])'",
       },
       {
         questionText: "Access element labeled ''b'' in Series 's':",
-        options: ["s['b']", "s.loc('b')", "s[0] only", "s.get_element('b')"],
+        options: ["'s['b']'", "'s.loc('b')'", "'s[0]' only", "'s.get_element('b')'"],
         correctOption: 0,
-        explanation: "The correct answer is: s['b']",
+        explanation: "The correct answer is: 's['b']'",
       },
       {
         questionText: "Can a Series hold mixed types?",
@@ -1517,9 +2120,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Create a Series from a dict:",
-        options: ["pd.Series({'a':1, 'b':2}) \u2014 keys become index", ".from_dict() only", "pd.DataFrame({'a':1,'b':2})", "Not possible"],
+        options: ["'pd.Series({'a':1, 'b':2})' \u2014 keys become index", "'.from_dict()' only", "'pd.DataFrame({'a':1,'b':2})'", "Not possible"],
         correctOption: 0,
-        explanation: "The correct answer is: pd.Series({'a':1, 'b':2}) \u2014 keys become index",
+        explanation: "The correct answer is: 'pd.Series({'a':1, 'b':2})' \u2014 keys become index",
       },
       {
         questionText: "Output of 'pd.Series([1,2,3]).name' if unset?",
@@ -1531,19 +2134,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Create a Series from a dict of 5 students' names/marks, then print it with its index.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Create a Series from a dict of 5 students' names/marks, then print it with its i...",
+        starterCode: "# Create a Series from a dict of 5 students' names/marks, then\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\nmarks = {'Amy': 85, 'Bob': 78, 'Cal': 92, 'Dee': 60, 'Eve': 74}\ns = pd.Series(marks)\nprint(s)\nprint(s.index)\\n```",
       },
       {
         questionText: "Create a Series of 10 random integers and print elements > 50 using boolean indexing.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Create a Series of 10 random integers and print elements > 50 using boolean inde...",
+        starterCode: "# Create a Series of 10 random integers and print elements > 5\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\nimport numpy as np\ns = pd.Series(np.random.randint(0, 100, 10))\nprint(s[s > 50])\\n```",
       },
     ],
   },
-  24: {
+  33: {
     topicTitle: "Pandas: Pandas NaN Value Intro",
     mcqs: [
       {
@@ -1554,9 +2157,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Function checking if a value is NaN:",
-        options: ["pd.isnull() / pd.isna()", "pd.isNaN()", "pd.checkNull()", "pd.missing()"],
+        options: ["'pd.isnull()' / 'pd.isna()'", "'pd.isNaN()'", "'pd.checkNull()'", "'pd.missing()'"],
         correctOption: 0,
-        explanation: "The correct answer is: pd.isnull() / pd.isna()",
+        explanation: "The correct answer is: 'pd.isnull()' / 'pd.isna()'",
       },
       {
         questionText: "Data type typically used for NaN:",
@@ -1572,186 +2175,186 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which method fills NaN values with a specified value?",
-        options: ["df.fillna(value)", "df.replace_nan(value)", "df.fill(value)", "df.setna(value)"],
+        options: ["'df.fillna(value)'", "'df.replace_nan(value)'", "'df.fill(value)'", "'df.setna(value)'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.fillna(value)",
+        explanation: "The correct answer is: 'df.fillna(value)'",
       },
       {
         questionText: "Which method drops rows with any NaN?",
-        options: ["df.dropna()", "df.removena()", "df.cleanna()", "df.deletena()"],
+        options: ["'df.dropna()'", "'df.removena()'", "'df.cleanna()'", "'df.deletena()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.dropna()",
+        explanation: "The correct answer is: 'df.dropna()'",
       },
       {
         questionText: "Count of NaN values per column:",
-        options: ["df.isnull().sum()", "df.countna()", "df.na_count()", "df.nan()"],
+        options: ["'df.isnull().sum()'", "'df.countna()'", "'df.na_count()'", "'df.nan()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.isnull().sum()",
+        explanation: "The correct answer is: 'df.isnull().sum()'",
       },
       {
         questionText: "Which correctly creates a NaN with NumPy?",
-        options: ["np.nan", "np.NAN_value", "np.null", "None.nan"],
+        options: ["'np.nan'", "'np.NAN_value'", "'np.null'", "'None.nan'"],
         correctOption: 0,
-        explanation: "The correct answer is: np.nan",
+        explanation: "The correct answer is: 'np.nan'",
       },
     ],
     coding: [
       {
         questionText: "Create a DataFrame with missing values and display the count of missing values per column and per row.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Create a DataFrame with missing values and display the count of missing values p...",
+        starterCode: "# Create a DataFrame with missing values and display the count\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\nimport numpy as np\ndf = pd.DataFrame({'A': [1, np.nan, 3], 'B': [np.nan, 2, 3]})\nprint(\"Missing per column:\\n\", df.isnull().sum())\nprint(\"Missing per row:\\n\", df.isnull().sum(axis=1))\\n```",
       },
       {
         questionText: "Fill missing numeric values with the column median and missing categorical values with \"Unknown\".",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Fill missing numeric values with the column median and missing categorical value...",
+        starterCode: "# Fill missing numeric values with the column median and missi\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\nimport numpy as np\ndf = pd.DataFrame({'score': [10, np.nan, 30], 'grade': ['A', np.nan, 'B']})\ndf['score'] = df['score'].fillna(df['score'].median())\ndf['grade'] = df['grade'].fillna('Unknown')\nprint(df)\\n```",
       },
     ],
   },
-  25: {
+  34: {
     topicTitle: "Pandas: Pandas Series Attributes",
     mcqs: [
       {
         questionText: "Attribute returning number of elements:",
-        options: ["s.size", "s.count_elements", "s.total", "s.number"],
+        options: ["'s.size'", "'s.count_elements'", "'s.total'", "'s.number'"],
         correctOption: 0,
-        explanation: "The correct answer is: s.size",
+        explanation: "The correct answer is: 's.size'",
       },
       {
         questionText: "Attribute returning data type of elements:",
-        options: ["s.dtype", "s.type", "s.datatype", "s.kind"],
+        options: ["'s.dtype'", "'s.type'", "'s.datatype'", "'s.kind'"],
         correctOption: 0,
-        explanation: "The correct answer is: s.dtype",
+        explanation: "The correct answer is: 's.dtype'",
       },
       {
         questionText: "Attribute returning the index object:",
-        options: ["s.index", "s.labels", "s.idx", "s.axis"],
+        options: ["'s.index'", "'s.labels'", "'s.idx'", "'s.axis'"],
         correctOption: 0,
-        explanation: "The correct answer is: s.index",
+        explanation: "The correct answer is: 's.index'",
       },
       {
         questionText: "Attribute returning underlying values array:",
-        options: ["s.values", "s.data", "s.array_only", "s.raw"],
+        options: ["'s.values'", "'s.data'", "'s.array_only'", "'s.raw'"],
         correctOption: 0,
-        explanation: "The correct answer is: s.values",
+        explanation: "The correct answer is: 's.values'",
       },
       {
         questionText: "Way to check for missing values as a boolean summary:",
-        options: ["s.isnull().any()", "s.has_nan", "s.missing", "s.null_check"],
+        options: ["'s.isnull().any()'", "'s.has_nan'", "'s.missing'", "'s.null_check'"],
         correctOption: 0,
-        explanation: "The correct answer is: s.isnull().any()",
+        explanation: "The correct answer is: 's.isnull().any()'",
       },
       {
         questionText: "What does 's.shape' return for a Series?",
-        options: ["A 2D tuple", "A 1-element tuple, e.g., (5,)", "The index labels", "The dtype"],
+        options: ["A 2D tuple", "A 1-element tuple, e.g., '(5,)'", "The index labels", "The dtype"],
         correctOption: 1,
-        explanation: "The correct answer is: A 1-element tuple, e.g., (5,)",
+        explanation: "The correct answer is: A 1-element tuple, e.g., '(5,)'",
       },
       {
         questionText: "Attribute giving a Series a descriptive label:",
-        options: ["s.name", "s.title", "s.label", "s.tag"],
+        options: ["'s.name'", "'s.title'", "'s.label'", "'s.tag'"],
         correctOption: 0,
-        explanation: "The correct answer is: s.name",
+        explanation: "The correct answer is: 's.name'",
       },
       {
         questionText: "Attribute returning True if the Series has no elements:",
-        options: ["s.empty", "s.is_empty()", "s.blank", "s.zero"],
+        options: ["'s.empty'", "'s.is_empty()'", "'s.blank'", "'s.zero'"],
         correctOption: 0,
-        explanation: "The correct answer is: s.empty",
+        explanation: "The correct answer is: 's.empty'",
       },
     ],
     coding: [
       {
         questionText: "Create a Series and print its 'dtype', 'size', 'shape', 'index', and 'values'.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Create a Series and print its 'dtype', 'size', 'shape', 'index', and 'values'....",
+        starterCode: "# Create a Series and print its 'dtype', 'size', 'shape', 'ind\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ns = pd.Series([5, 10, 15, 20])\nprint(s.dtype, s.size, s.shape, s.index, s.values)\\n```",
       },
       {
         questionText: "Create a Series, set its 'name', check '.empty', and print a formatted summary.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Create a Series, set its 'name', check '.empty', and print a formatted summary....",
+        starterCode: "# Create a Series, set its 'name', check '.empty', and print a\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ns = pd.Series([1, 2, 3], name='sample')\nprint(s.empty)\nprint(f\"Series '{s.name}' has {s.size} values, dtype {s.dtype}\")\\n```",
       },
     ],
   },
-  26: {
+  35: {
     topicTitle: "Pandas: Pandas Series Methods",
     mcqs: [
       {
         questionText: "Method returning summary statistics:",
-        options: ["s.describe()", "s.summary()", "s.stats()", "s.info()"],
+        options: ["'s.describe()'", "'s.summary()'", "'s.stats()'", "'s.info()'"],
         correctOption: 0,
-        explanation: "The correct answer is: s.describe()",
+        explanation: "The correct answer is: 's.describe()'",
       },
       {
         questionText: "Method returning the sum of all elements:",
-        options: ["s.sum()", "s.total()", "s.add_all()", "s.aggregate_sum()"],
+        options: ["'s.sum()'", "'s.total()'", "'s.add_all()'", "'s.aggregate_sum()'"],
         correctOption: 0,
-        explanation: "The correct answer is: s.sum()",
+        explanation: "The correct answer is: 's.sum()'",
       },
       {
         questionText: "Method returning number of unique values:",
-        options: ["s.nunique()", "s.unique_count()", "s.distinct()", "s.count_unique()"],
+        options: ["'s.nunique()'", "'s.unique_count()'", "'s.distinct()'", "'s.count_unique()'"],
         correctOption: 0,
-        explanation: "The correct answer is: s.nunique()",
+        explanation: "The correct answer is: 's.nunique()'",
       },
       {
         questionText: "Method returning frequency count of each unique value:",
-        options: ["s.value_counts()", "s.freq()", "s.count_values()", "s.tally()"],
+        options: ["'s.value_counts()'", "'s.freq()'", "'s.count_values()'", "'s.tally()'"],
         correctOption: 0,
-        explanation: "The correct answer is: s.value_counts()",
+        explanation: "The correct answer is: 's.value_counts()'",
       },
       {
         questionText: "Method applying a custom function element-wise:",
-        options: ["s.apply(func)", "s.map_all(func)", "s.each(func)", "s.loop(func)"],
+        options: ["'s.apply(func)'", "'s.map_all(func)'", "'s.each(func)'", "'s.loop(func)'"],
         correctOption: 0,
-        explanation: "The correct answer is: s.apply(func)",
+        explanation: "The correct answer is: 's.apply(func)'",
       },
       {
         questionText: "Method sorting a Series by values:",
-        options: ["s.sort_values()", "s.sort_index() only", "s.order()", "s.arrange()"],
+        options: ["'s.sort_values()'", "'s.sort_index()' only", "'s.order()'", "'s.arrange()'"],
         correctOption: 0,
-        explanation: "The correct answer is: s.sort_values()",
+        explanation: "The correct answer is: 's.sort_values()'",
       },
       {
         questionText: "Method returning the largest value:",
-        options: ["s.max()", "s.top()", "s.largest()", "s.high()"],
+        options: ["'s.max()'", "'s.top()'", "'s.largest()'", "'s.high()'"],
         correctOption: 0,
-        explanation: "The correct answer is: s.max()",
+        explanation: "The correct answer is: 's.max()'",
       },
       {
         questionText: "Method replacing specific values with others:",
-        options: ["s.replace(old, new)", "s.swap(old, new)", "s.substitute(old, new)", "s.change(old, new)"],
+        options: ["'s.replace(old, new)'", "'s.swap(old, new)'", "'s.substitute(old, new)'", "'s.change(old, new)'"],
         correctOption: 0,
-        explanation: "The correct answer is: s.replace(old, new)",
+        explanation: "The correct answer is: 's.replace(old, new)'",
       },
     ],
     coding: [
       {
         questionText: "Create a Series of exam scores; use '.describe()', '.value_counts()', and '.apply()' (grade letter based on score).",
-        starterCode: "def describe():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Create a Series of exam scores; use '.describe()', '.value_counts()', and '.appl...",
+        starterCode: "# Create a Series of exam scores; use '.describe()', '.value_c\n\ndef describe():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\nscores = pd.Series([95, 82, 67, 74, 88])\nprint(scores.describe())\nprint(scores.value_counts())\ngrades = scores.apply(lambda x: 'A' if x >= 90 else 'B' if x >= 75 else 'C')\nprint(grades)\\n```",
       },
       {
         questionText: "Use '.map()'/'.apply()' on a Celsius temperature Series to convert all values to Fahrenheit.",
-        starterCode: "def map():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use '.map()'/'.apply()' on a Celsius temperature Series to convert all values to...",
+        starterCode: "# Use '.map()'/'.apply()' on a Celsius temperature Series to c\n\ndef map():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ncelsius = pd.Series([0, 20, 37, 100])\nfahrenheit = celsius.map(lambda c: c * 9/5 + 32)\nprint(fahrenheit)\\n```",
       },
     ],
   },
-  27: {
+  36: {
     topicTitle: "Pandas: Pandas DataFrame Introduction",
     mcqs: [
       {
         questionText: "Which correctly creates a DataFrame from a dict of lists?",
-        options: ["pd.DataFrame({'a':[1,2],'b':[3,4]})", "pd.Series({...})", "pd.Array({...})", "pd.Table({...})"],
+        options: ["'pd.DataFrame({'a':[1,2],'b':[3,4]})'", "'pd.Series({...})'", "'pd.Array({...})'", "'pd.Table({...})'"],
         correctOption: 0,
-        explanation: "The correct answer is: pd.DataFrame({'a':[1,2],'b':[3,4]})",
+        explanation: "The correct answer is: 'pd.DataFrame({'a':[1,2],'b':[3,4]})'",
       },
       {
         questionText: "A DataFrame's columns:",
@@ -1761,15 +2364,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Method to display the first n rows (default 5):",
-        options: ["df.head()", "df.top()", "df.first()", "df.start()"],
+        options: ["'df.head()'", "'df.top()'", "'df.first()'", "'df.start()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.head()",
+        explanation: "The correct answer is: 'df.head()'",
       },
       {
         questionText: "Method to display the last n rows:",
-        options: ["df.tail()", "df.bottom()", "df.last()", "df.end()"],
+        options: ["'df.tail()'", "'df.bottom()'", "'df.last()'", "'df.end()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.tail()",
+        explanation: "The correct answer is: 'df.tail()'",
       },
       {
         questionText: "What does 'df.shape' return?",
@@ -1779,15 +2382,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Creating a DataFrame from a NumPy array with custom column names:",
-        options: ["pd.DataFrame(array, columns=['a','b','c'])", "Assign columns after only", "pd.Series(array, columns=[...])", "pd.Table(array, names=[...])"],
+        options: ["'pd.DataFrame(array, columns=['a','b','c'])'", "Assign columns after only", "'pd.Series(array, columns=[...])'", "'pd.Table(array, names=[...])'"],
         correctOption: 0,
-        explanation: "The correct answer is: pd.DataFrame(array, columns=['a','b','c'])",
+        explanation: "The correct answer is: 'pd.DataFrame(array, columns=['a','b','c'])'",
       },
       {
         questionText: "Attribute listing all column names:",
-        options: ["df.columns", "df.col_names", "df.headers", "df.fields"],
+        options: ["'df.columns'", "'df.col_names'", "'df.headers'", "'df.fields'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.columns",
+        explanation: "The correct answer is: 'df.columns'",
       },
       {
         questionText: "A DataFrame can be thought of as:",
@@ -1799,56 +2402,56 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Create a DataFrame of 5 employees with 'Name', 'Department', 'Salary'; print first 3 rows and shape.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Create a DataFrame of 5 employees with 'Name', 'Department', 'Salary'; print fir...",
+        starterCode: "# Create a DataFrame of 5 employees with 'Name', 'Department',\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({\n    'Name': ['A','B','C','D','E'],\n    'Department': ['IT','HR','IT','Sales','HR'],\n    'Salary': [60000,55000,62000,48000,53000]\n})\nprint(df.head(3))\nprint(df.shape)\\n```",
       },
       {
         questionText: "Create a DataFrame from a random NumPy 2D array (5x3) with custom column names A, B, C.",
-        starterCode: "def array():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Create a DataFrame from a random NumPy 2D array (5x3) with custom column names A...",
+        starterCode: "# Create a DataFrame from a random NumPy 2D array (5x3) with c\n\ndef array():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\nimport numpy as np\narr = np.random.rand(5, 3)\ndf = pd.DataFrame(arr, columns=['A', 'B', 'C'])\nprint(df)\\n```",
       },
     ],
   },
-  28: {
+  37: {
     topicTitle: "Pandas: Pandas Loading Files",
     mcqs: [
       {
         questionText: "Function to read a CSV into a DataFrame:",
-        options: ["pd.read_csv('file.csv')", "pd.load_csv('file.csv')", "pd.import_csv('file.csv')", "pd.open_csv('file.csv')"],
+        options: ["'pd.read_csv('file.csv')'", "'pd.load_csv('file.csv')'", "'pd.import_csv('file.csv')'", "'pd.open_csv('file.csv')'"],
         correctOption: 0,
-        explanation: "The correct answer is: pd.read_csv('file.csv')",
+        explanation: "The correct answer is: 'pd.read_csv('file.csv')'",
       },
       {
         questionText: "Function to read an Excel file:",
-        options: ["pd.read_excel('file.xlsx')", "pd.read_xls() only", "pd.load_excel()", "pd.open_excel()"],
+        options: ["'pd.read_excel('file.xlsx')'", "'pd.read_xls()' only", "'pd.load_excel()'", "'pd.open_excel()'"],
         correctOption: 0,
-        explanation: "The correct answer is: pd.read_excel('file.xlsx')",
+        explanation: "The correct answer is: 'pd.read_excel('file.xlsx')'",
       },
       {
         questionText: "Parameter of 'read_csv()' for a custom delimiter:",
-        options: ["sep=';'", "delimiter_char=';'", "split=';'", "divider=';'"],
+        options: ["'sep=';''", "'delimiter_char=';''", "'split=';''", "'divider=';''"],
         correctOption: 0,
-        explanation: "The correct answer is: sep=';'",
+        explanation: "The correct answer is: 'sep=';''",
       },
       {
         questionText: "Write DataFrame to CSV without the index column:",
-        options: ["df.to_csv('out.csv', index=False)", "df.save_csv('out.csv')", "df.write_csv('out.csv', index=None)", "df.export('out.csv')"],
+        options: ["'df.to_csv('out.csv', index=False)'", "'df.save_csv('out.csv')'", "'df.write_csv('out.csv', index=None)'", "'df.export('out.csv')'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.to_csv('out.csv', index=False)",
+        explanation: "The correct answer is: 'df.to_csv('out.csv', index=False)'",
       },
       {
         questionText: "Parameter specifying which row to use as column headers:",
-        options: ["header=0", "columns_row=0", "head_row=0", "title=0"],
+        options: ["'header=0'", "'columns_row=0'", "'head_row=0'", "'title=0'"],
         correctOption: 0,
-        explanation: "The correct answer is: header=0",
+        explanation: "The correct answer is: 'header=0'",
       },
       {
         questionText: "Function to read a JSON file:",
-        options: ["pd.read_json('file.json')", "pd.load_json()", "pd.import_json()", "pd.json_to_df()"],
+        options: ["'pd.read_json('file.json')'", "'pd.load_json()'", "'pd.import_json()'", "'pd.json_to_df()'"],
         correctOption: 0,
-        explanation: "The correct answer is: pd.read_json('file.json')",
+        explanation: "The correct answer is: 'pd.read_json('file.json')'",
       },
       {
         questionText: "What does 'pd.read_csv('file.csv', nrows=100)' do?",
@@ -1858,174 +2461,174 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Function to read data from SQL into a DataFrame:",
-        options: ["pd.read_sql()", "pd.load_sql()", "pd.sql_to_df()", "pd.import_sql()"],
+        options: ["'pd.read_sql()'", "'pd.load_sql()'", "'pd.sql_to_df()'", "'pd.import_sql()'"],
         correctOption: 0,
-        explanation: "The correct answer is: pd.read_sql()",
+        explanation: "The correct answer is: 'pd.read_sql()'",
       },
     ],
     coding: [
       {
         questionText: "Read a CSV, print '.info()', save a filtered subset to a new CSV without index.",
-        starterCode: "def info():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Read a CSV, print '.info()', save a filtered subset to a new CSV without index....",
+        starterCode: "# Read a CSV, print '.info()', save a filtered subset to a new\n\ndef info():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.read_csv('data.csv')\nprint(df.info())\nsubset = df[df['value'] > 100]\nsubset.to_csv('filtered.csv', index=False)\\n```",
       },
       {
         questionText: "Read a multi-sheet Excel file with 'pd.read_excel(sheet_name=None)', print sheet names and shapes.",
-        starterCode: "def read_excel():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Read a multi-sheet Excel file with 'pd.read_excel(sheet_name=None)', print sheet...",
+        starterCode: "# Read a multi-sheet Excel file with 'pd.read_excel(sheet_name\n\ndef read_excel():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\nsheets = pd.read_excel('workbook.xlsx', sheet_name=None)\nfor name, sheet_df in sheets.items():\n    print(name, sheet_df.shape)\\n```",
       },
     ],
   },
-  29: {
+  38: {
     topicTitle: "Pandas: Pandas DataFrame Attributes",
     mcqs: [
       {
         questionText: "Attribute returning dtypes of each column:",
-        options: ["df.dtypes", "df.types", "df.datatype", "df.kind"],
+        options: ["'df.dtypes'", "'df.types'", "'df.datatype'", "'df.kind'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.dtypes",
+        explanation: "The correct answer is: 'df.dtypes'",
       },
       {
         questionText: "Attribute returning the DataFrame's index:",
-        options: ["df.index", "df.rows", "df.labels", "df.row_index"],
+        options: ["'df.index'", "'df.rows'", "'df.labels'", "'df.row_index'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.index",
+        explanation: "The correct answer is: 'df.index'",
       },
       {
         questionText: "Returning total elements (rows \u00d7 columns):",
-        options: ["df.size", "df.count() only", "df.total", "df.length"],
+        options: ["'df.size'", "'df.count()' only", "'df.total'", "'df.length'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.size",
+        explanation: "The correct answer is: 'df.size'",
       },
       {
         questionText: "Attribute returning NumPy representation of data:",
-        options: ["df.values", "df.array", "df.data", "df.raw"],
+        options: ["'df.values'", "'df.array'", "'df.data'", "'df.raw'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.values",
+        explanation: "The correct answer is: 'df.values'",
       },
       {
         questionText: "Attribute returning True if no rows:",
-        options: ["df.empty", "df.is_empty()", "df.blank", "df.zero_rows"],
+        options: ["'df.empty'", "'df.is_empty()'", "'df.blank'", "'df.zero_rows'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.empty",
+        explanation: "The correct answer is: 'df.empty'",
       },
       {
         questionText: "Method giving dtypes, non-null counts, and memory usage summary:",
-        options: ["df.info()", "df.summary()", "df.describe()", "df.details()"],
+        options: ["'df.info()'", "'df.summary()'", "'df.describe()'", "'df.details()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.info()",
+        explanation: "The correct answer is: 'df.info()'",
       },
       {
         questionText: "Attribute returning number of dimensions (always 2 for a DataFrame):",
-        options: ["df.ndim", "df.dimensions", "df.axes_count", "df.dim"],
+        options: ["'df.ndim'", "'df.dimensions'", "'df.axes_count'", "'df.dim'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.ndim",
+        explanation: "The correct answer is: 'df.ndim'",
       },
       {
         questionText: "Attribute returning row and column axis labels:",
-        options: ["df.axes", "df.labels_all", "df.dims", "df.headers_all"],
+        options: ["'df.axes'", "'df.labels_all'", "'df.dims'", "'df.headers_all'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.axes",
+        explanation: "The correct answer is: 'df.axes'",
       },
     ],
     coding: [
       {
         questionText: "Load a sample DataFrame; print 'dtypes', 'shape', 'size', 'ndim', 'empty'.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Load a sample DataFrame; print 'dtypes', 'shape', 'size', 'ndim', 'empty'....",
+        starterCode: "# Load a sample DataFrame; print 'dtypes', 'shape', 'size', 'n\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'A': [1,2,3], 'B': [4.0,5.0,6.0], 'C': ['x','y','z']})\nprint(df.dtypes)\nprint(df.shape)\nprint(df.size)\nprint(df.ndim)\nprint(df.empty)\\n```",
       },
       {
         questionText: "Use '.info()' and '.describe()' together for a data-quality summary report.",
-        starterCode: "def info():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use '.info()' and '.describe()' together for a data-quality summary report....",
+        starterCode: "# Use '.info()' and '.describe()' together for a data-quality \n\ndef info():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'A': [1,2,None], 'B': [4.0,5.0,6.0]})\nprint(df.info())\nprint(df.describe())\\n```",
       },
     ],
   },
-  30: {
+  39: {
     topicTitle: "Pandas: Pandas DataFrame Methods",
     mcqs: [
       {
         questionText: "Method returning descriptive stats for numeric columns:",
-        options: ["df.describe()", "df.stats()", "df.summary()", "df.info()"],
+        options: ["'df.describe()'", "'df.stats()'", "'df.summary()'", "'df.info()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.describe()",
+        explanation: "The correct answer is: 'df.describe()'",
       },
       {
         questionText: "Method dropping a column:",
-        options: ["df.drop('col', axis=1)", "df.remove('col')", "df.delete_column('col')", "df.pop_column('col')"],
+        options: ["'df.drop('col', axis=1)'", "'df.remove('col')'", "'df.delete_column('col')'", "'df.pop_column('col')'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.drop('col', axis=1)",
+        explanation: "The correct answer is: 'df.drop('col', axis=1)'",
       },
       {
         questionText: "Method returning correlation matrix:",
-        options: ["df.corr()", "df.correlation()", "df.relation()", "df.covariance()"],
+        options: ["'df.corr()'", "'df.correlation()'", "'df.relation()'", "'df.covariance()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.corr()",
+        explanation: "The correct answer is: 'df.corr()'",
       },
       {
         questionText: "Method applying a function along an axis:",
-        options: ["df.apply(func, axis=...)", "df.map(func)", "df.each(func)", "df.loop(func)"],
+        options: ["'df.apply(func, axis=...)'", "'df.map(func)'", "'df.each(func)'", "'df.loop(func)'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.apply(func, axis=...)",
+        explanation: "The correct answer is: 'df.apply(func, axis=...)'",
       },
       {
         questionText: "Method transposing rows/columns:",
-        options: ["df.T (df.transpose())", "df.flip()", "df.swap()", "df.rotate()"],
+        options: ["'df.T' ('df.transpose()')", "'df.flip()'", "'df.swap()'", "'df.rotate()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.T (df.transpose())",
+        explanation: "The correct answer is: 'df.T' ('df.transpose()')",
       },
       {
         questionText: "Method returning non-null count per column:",
-        options: ["df.count()", "df.notnull_count()", "df.valid()", "df.present()"],
+        options: ["'df.count()'", "'df.notnull_count()'", "'df.valid()'", "'df.present()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.count()",
+        explanation: "The correct answer is: 'df.count()'",
       },
       {
         questionText: "Method checking for duplicate rows:",
-        options: ["df.duplicated()", "df.is_duplicate()", "df.check_dup()", "df.same_rows()"],
+        options: ["'df.duplicated()'", "'df.is_duplicate()'", "'df.check_dup()'", "'df.same_rows()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.duplicated()",
+        explanation: "The correct answer is: 'df.duplicated()'",
       },
       {
         questionText: "Method removing duplicate rows:",
-        options: ["df.drop_duplicates()", "df.remove_duplicates()", "df.unique_rows()", "df.dedupe()"],
+        options: ["'df.drop_duplicates()'", "'df.remove_duplicates()'", "'df.unique_rows()'", "'df.dedupe()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.drop_duplicates()",
+        explanation: "The correct answer is: 'df.drop_duplicates()'",
       },
     ],
     coding: [
       {
         questionText: "Use '.apply()' to sum two numeric columns into a new column; use '.corr()' to show correlations.",
-        starterCode: "def apply():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use '.apply()' to sum two numeric columns into a new column; use '.corr()' to sh...",
+        starterCode: "# Use '.apply()' to sum two numeric columns into a new column;\n\ndef apply():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'x': [1,2,3], 'y': [4,5,6]})\ndf['total'] = df.apply(lambda row: row['x'] + row['y'], axis=1)\nprint(df.corr())\\n```",
       },
       {
         questionText: "Identify and remove duplicate rows using '.duplicated()'/'.drop_duplicates()', printing the count found.",
-        starterCode: "def duplicated():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Identify and remove duplicate rows using '.duplicated()'/'.drop_duplicates()', p...",
+        starterCode: "# Identify and remove duplicate rows using '.duplicated()'/'.d\n\ndef duplicated():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'a': [1,1,2], 'b': [2,2,3]})\ndup_count = df.duplicated().sum()\nprint(\"Duplicates found:\", dup_count)\ndf_clean = df.drop_duplicates()\nprint(df_clean)\\n```",
       },
     ],
   },
-  31: {
+  40: {
     topicTitle: "Pandas: Pandas DataFrame col: rename",
     mcqs: [
       {
         questionText: "Method renaming columns:",
-        options: ["df.rename(columns={'old':'new'})", "df.rename_columns('old','new')", "df.columns.replace(...)", "df.set_names(...)"],
+        options: ["'df.rename(columns={'old':'new'})'", "'df.rename_columns('old','new')'", "'df.columns.replace(...)'", "'df.set_names(...)'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.rename(columns={'old':'new'})",
+        explanation: "The correct answer is: 'df.rename(columns={'old':'new'})'",
       },
       {
         questionText: "Renaming ALL columns at once with a list:",
-        options: ["df.columns = ['new1','new2','new3']", "df.rename_all([...])", "df.set_columns([...])", "df.replace_columns([...])"],
+        options: ["'df.columns = ['new1','new2','new3']'", "'df.rename_all([...])'", "'df.set_columns([...])'", "'df.replace_columns([...])'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.columns = ['new1','new2','new3']",
+        explanation: "The correct answer is: 'df.columns = ['new1','new2','new3']'",
       },
       {
         questionText: "What does 'inplace=True' do with 'df.rename()'?",
@@ -2035,21 +2638,21 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Renaming a single column ''age'' to ''Age'':",
-        options: ["df.rename(columns={'age': 'Age'}, inplace=True)", "df.columns.rename('age','Age')", "df.rename_column('age','Age')", "df['age'].rename('Age')"],
+        options: ["'df.rename(columns={'age': 'Age'}, inplace=True)'", "'df.columns.rename('age','Age')'", "'df.rename_column('age','Age')'", "'df['age'].rename('Age')'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.rename(columns={'age': 'Age'}, inplace=True)",
+        explanation: "The correct answer is: 'df.rename(columns={'age': 'Age'}, inplace=True)'",
       },
       {
         questionText: "Converting all column names to lowercase:",
-        options: ["df.columns = df.columns.str.lower()", "df.lower_columns()", "df.columns.tolower()", "df.rename(lower=True)"],
+        options: ["'df.columns = df.columns.str.lower()'", "'df.lower_columns()'", "'df.columns.tolower()'", "'df.rename(lower=True)'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.columns = df.columns.str.lower()",
+        explanation: "The correct answer is: 'df.columns = df.columns.str.lower()'",
       },
       {
         questionText: "Renaming index labels (not columns):",
-        options: ["df.rename(index={old_label: new_label})", "df.rename_index() only", "df.index.set()", "df.reindex_labels()"],
+        options: ["'df.rename(index={old_label: new_label})'", "'df.rename_index()' only", "'df.index.set()'", "'df.reindex_labels()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.rename(index={old_label: new_label})",
+        explanation: "The correct answer is: 'df.rename(index={old_label: new_label})'",
       },
       {
         questionText: "Renaming a non-existent column via 'df.rename(columns={'missing':'new'})':",
@@ -2059,34 +2662,34 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Stripping whitespace from all column names:",
-        options: ["df.columns = df.columns.str.strip()", "df.columns.trim()", "df.strip_columns()", "df.clean_columns()"],
+        options: ["'df.columns = df.columns.str.strip()'", "'df.columns.trim()'", "'df.strip_columns()'", "'df.clean_columns()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.columns = df.columns.str.strip()",
+        explanation: "The correct answer is: 'df.columns = df.columns.str.strip()'",
       },
     ],
     coding: [
       {
         questionText: "Load a DataFrame with messy column names and clean them (strip whitespace, lowercase, underscores).",
-        starterCode: "def them():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Load a DataFrame with messy column names and clean them (strip whitespace, lower...",
+        starterCode: "# Load a DataFrame with messy column names and clean them (str\n\ndef them():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({' First Name ': [1], 'LAST NAME': [2]})\ndf.columns = df.columns.str.strip().str.lower().str.replace(' ', '_')\nprint(df.columns)\\n```",
       },
       {
         questionText: "Rename three specific columns via a dictionary passed to '.rename()', using 'inplace=True'.",
-        starterCode: "def rename():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Rename three specific columns via a dictionary passed to '.rename()', using 'inp...",
+        starterCode: "# Rename three specific columns via a dictionary passed to '.r\n\ndef rename():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'a': [1], 'b': [2], 'c': [3]})\ndf.rename(columns={'a': 'col_a', 'b': 'col_b', 'c': 'col_c'}, inplace=True)\nprint(df.columns)\\n```",
       },
     ],
   },
-  32: {
+  41: {
     topicTitle: "Pandas: Pandas Inplace Parameter",
     mcqs: [
       {
         questionText: "What does 'inplace=True' generally do across Pandas methods?",
-        options: ["Returns a new object, original untouched", "Modifies the original directly and returns None", "Creates a backup automatically", "Always raises a warning"],
+        options: ["Returns a new object, original untouched", "Modifies the original directly and returns 'None'", "Creates a backup automatically", "Always raises a warning"],
         correctOption: 1,
-        explanation: "The correct answer is: Modifies the original directly and returns None",
+        explanation: "The correct answer is: Modifies the original directly and returns 'None'",
       },
       {
         questionText: "Default value of 'inplace' for most methods:",
@@ -2096,19 +2699,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "If you write 'df.dropna(inplace=True)', you should avoid:",
-        options: ["Reassigning like df = df.dropna(inplace=True), which would set df to None", "Calling any other method after", "Printing df afterward", "Using it in a function"],
+        options: ["Reassigning like 'df = df.dropna(inplace=True)', which would set 'df' to 'None'", "Calling any other method after", "Printing 'df' afterward", "Using it in a function"],
         correctOption: 0,
-        explanation: "The correct answer is: Reassigning like df = df.dropna(inplace=True), which would set df to None",
+        explanation: "The correct answer is: Reassigning like 'df = df.dropna(inplace=True)', which would set 'df' to 'None'",
       },
       {
         questionText: "Safer beginner practice:",
-        options: ["Always use inplace=True", "Use the default (False) and reassign, e.g., df = df.dropna()", "Never check if inplace is supported", "Avoid Pandas entirely"],
+        options: ["Always use 'inplace=True'", "Use the default ('False') and reassign, e.g., 'df = df.dropna()'", "Never check if inplace is supported", "Avoid Pandas entirely"],
         correctOption: 1,
-        explanation: "The correct answer is: Use the default (False) and reassign, e.g., df = df.dropna()",
+        explanation: "The correct answer is: Use the default ('False') and reassign, e.g., 'df = df.dropna()'",
       },
       {
         questionText: "Which of these commonly supports 'inplace'?",
-        options: ["fillna()", "drop()", "rename()", "All of the above"],
+        options: ["'fillna()'", "'drop()'", "'rename()'", "All of the above"],
         correctOption: 3,
         explanation: "The correct answer is: All of the above",
       },
@@ -2126,52 +2729,52 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Why might 'inplace=True' be discouraged in production code?",
-        options: ["It always breaks the program", "It can hurt readability/debugging and doesn't support chaining like df.dropna().reset_index()", "It's deprecated", "It only works with NumPy arrays"],
+        options: ["It always breaks the program", "It can hurt readability/debugging and doesn't support chaining like 'df.dropna().reset_index()'", "It's deprecated", "It only works with NumPy arrays"],
         correctOption: 1,
-        explanation: "The correct answer is: It can hurt readability/debugging and doesn't support chaining like df.dropna().reset_index()",
+        explanation: "The correct answer is: It can hurt readability/debugging and doesn't support chaining like 'df.dropna().reset_index()'",
       },
     ],
     coding: [
       {
         questionText: "Demonstrate the difference between 'inplace=True' and default 'inplace=False' when dropping NaN rows.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Demonstrate the difference between 'inplace=True' and default 'inplace=False' wh...",
+        starterCode: "# Demonstrate the difference between 'inplace=True' and defaul\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport pandas as pd\nimport numpy as np\ndf = pd.DataFrame({'x': [1, np.nan, 3]})\ndf_new = df.dropna()          # inplace=False: returns new DataFrame, df unchanged\nprint(df)                     # original still has NaN\ndf.dropna(inplace=True)       # inplace=True: modifies df directly, returns None\nprint(df)\\n```",
       },
       {
         questionText: "Rename columns with 'inplace=True', then reset the index with 'inplace=True', printing the final result.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Rename columns with 'inplace=True', then reset the index with 'inplace=True', pr...",
+        starterCode: "# Rename columns with 'inplace=True', then reset the index wit\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'a': [1,2]})\ndf.rename(columns={'a': 'value'}, inplace=True)\ndf.reset_index(drop=True, inplace=True)\nprint(df)\\n```",
       },
     ],
   },
-  33: {
+  42: {
     topicTitle: "Pandas: Pandas Handling Missing Values",
     mcqs: [
       {
         questionText: "Method detecting missing values (boolean mask):",
-        options: ["df.isnull() (df.isna())", "df.check_missing()", "df.na_mask()", "df.missing_values()"],
+        options: ["'df.isnull()' ('df.isna()')", "'df.check_missing()'", "'df.na_mask()'", "'df.missing_values()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.isnull() (df.isna())",
+        explanation: "The correct answer is: 'df.isnull()' ('df.isna()')",
       },
       {
         questionText: "Filling with the previous valid value (forward fill):",
-        options: ["df.fillna(method='ffill')", "df.fillna(method='bfill')", "df.fillna(0)", "df.dropna()"],
+        options: ["'df.fillna(method='ffill')'", "'df.fillna(method='bfill')'", "'df.fillna(0)'", "'df.dropna()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.fillna(method='ffill')",
+        explanation: "The correct answer is: 'df.fillna(method='ffill')'",
       },
       {
         questionText: "Filling with the next valid value (backward fill):",
-        options: ["df.fillna(method='ffill')", "df.fillna(method='bfill')", "df.dropna()", "df.interpolate(method='none')"],
+        options: ["'df.fillna(method='ffill')'", "'df.fillna(method='bfill')'", "'df.dropna()'", "'df.interpolate(method='none')'"],
         correctOption: 1,
-        explanation: "The correct answer is: df.fillna(method='bfill')",
+        explanation: "The correct answer is: 'df.fillna(method='bfill')'",
       },
       {
         questionText: "Estimating missing values by interpolating:",
-        options: ["df.interpolate()", "df.fillna(interp=True)", "df.estimate()", "df.guess()"],
+        options: ["'df.interpolate()'", "'df.fillna(interp=True)'", "'df.estimate()'", "'df.guess()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.interpolate()",
+        explanation: "The correct answer is: 'df.interpolate()'",
       },
       {
         questionText: "What does 'df.dropna(axis=1)' do?",
@@ -2201,19 +2804,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Create a DataFrame with missing values in multiple columns; handle with mean/mode/forward-fill per column type.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Create a DataFrame with missing values in multiple columns; handle with mean/mod...",
+        starterCode: "# Create a DataFrame with missing values in multiple columns; \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\nimport numpy as np\ndf = pd.DataFrame({'num': [1, np.nan, 3], 'cat': ['x', np.nan, 'y']})\ndf['num'] = df['num'].fillna(df['num'].mean())\ndf['cat'] = df['cat'].fillna(df['cat'].mode()[0])\ndf = df.ffill()\nprint(df)\\n```",
       },
       {
         questionText: "Visualize the pattern of missing data using a heatmap ('sns.heatmap(df.isnull())').",
-        starterCode: "def heatmap():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Visualize the pattern of missing data using a heatmap ('sns.heatmap(df.isnull())...",
+        starterCode: "# Visualize the pattern of missing data using a heatmap ('sns.\n\ndef heatmap():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nimport numpy as np\ndf = pd.DataFrame({'a': [1, np.nan, 3], 'b': [np.nan, 2, 3]})\nsns.heatmap(df.isnull(), cbar=False)\nplt.show()\\n```",
       },
     ],
   },
-  34: {
+  43: {
     topicTitle: "Pandas: Pandas Data Selection: loc & iloc",
     mcqs: [
       {
@@ -2242,88 +2845,88 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Select cell at row label 'x', column label 'y' using '.loc':",
-        options: ["df.loc['x', 'y']", "df.loc('x','y')", "df['x']['y']", "df.iloc['x','y']"],
+        options: ["'df.loc['x', 'y']'", "'df.loc('x','y')'", "'df['x']['y']'", "'df.iloc['x','y']'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.loc['x', 'y']",
+        explanation: "The correct answer is: 'df.loc['x', 'y']'",
       },
       {
         questionText: "Select rows where 'age' > 30 using '.loc':",
-        options: ["df.loc[df['age'] > 30]", "df.iloc[df['age'] > 30]", "df.loc[age > 30]", "df.select(age > 30)"],
+        options: ["'df.loc[df['age'] > 30]'", "'df.iloc[df['age'] > 30]'", "'df.loc[age > 30]'", "'df.select(age > 30)'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.loc[df['age'] > 30]",
+        explanation: "The correct answer is: 'df.loc[df['age'] > 30]'",
       },
       {
         questionText: "Key difference between '.loc' and '.iloc' slicing:",
-        options: ["No difference", ".loc includes the endpoint label; .iloc excludes the endpoint position", ".iloc supports labels", ".loc only works on Series"],
+        options: ["No difference", "'.loc' includes the endpoint label; '.iloc' excludes the endpoint position", "'.iloc' supports labels", "'.loc' only works on Series"],
         correctOption: 1,
-        explanation: "The correct answer is: .loc includes the endpoint label; .iloc excludes the endpoint position",
+        explanation: "The correct answer is: '.loc' includes the endpoint label; '.iloc' excludes the endpoint position",
       },
       {
         questionText: "Selecting the 2nd row (position-based) and all columns using '.iloc':",
-        options: ["df.iloc[1, :]", "df.iloc[2, :]", "df.loc[1, :]", "df.iloc[:, 1]"],
+        options: ["'df.iloc[1, :]'", "'df.iloc[2, :]'", "'df.loc[1, :]'", "'df.iloc[:, 1]'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.iloc[1, :]",
+        explanation: "The correct answer is: 'df.iloc[1, :]'",
       },
     ],
     coding: [
       {
         questionText: "Create a DataFrame with a custom string index; demonstrate '.loc' (by label) and '.iloc' (by position) selection.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Create a DataFrame with a custom string index; demonstrate '.loc' (by label) and...",
+        starterCode: "# Create a DataFrame with a custom string index; demonstrate '\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'Salary': [50000, 60000, 70000]}, index=['emp1', 'emp2', 'emp3'])\nprint(df.loc['emp2'])\nprint(df.iloc[1])\\n```",
       },
       {
         questionText: "Use '.loc' with a boolean condition to select rows where \"Salary\" is above the average.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use '.loc' with a boolean condition to select rows where \"Salary\" is above the a...",
+        starterCode: "# Use '.loc' with a boolean condition to select rows where \"Sa\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'Salary': [50000, 60000, 70000, 80000]})\nabove_avg = df.loc[df['Salary'] > df['Salary'].mean()]\nprint(above_avg)\\n```",
       },
     ],
   },
-  35: {
+  44: {
     topicTitle: "Pandas: Pandas Filtering",
     mcqs: [
       {
         questionText: "Filter rows where 'age' > 25:",
-        options: ["df[df['age'] > 25]", "df.filter(age > 25)", "df.where(age > 25)", "df.select(age > 25)"],
+        options: ["'df[df['age'] > 25]'", "'df.filter(age > 25)'", "'df.where(age > 25)'", "'df.select(age > 25)'"],
         correctOption: 0,
-        explanation: "The correct answer is: df[df['age'] > 25]",
+        explanation: "The correct answer is: 'df[df['age'] > 25]'",
       },
       {
         questionText: "Filter rows matching multiple AND conditions:",
-        options: ["df[(df['age'] > 25) & (df['city'] == 'Delhi')]", "df[df['age'] > 25 and df['city'] == 'Delhi']", "df.filter(age > 25 and city == 'Delhi')", "df[df['age'] > 25 && df['city']=='Delhi']"],
+        options: ["'df[(df['age'] > 25) & (df['city'] == 'Delhi')]'", "'df[df['age'] > 25 and df['city'] == 'Delhi']'", "'df.filter(age > 25 and city == 'Delhi')'", "'df[df['age'] > 25 && df['city']=='Delhi']'"],
         correctOption: 0,
-        explanation: "The correct answer is: df[(df['age'] > 25) & (df['city'] == 'Delhi')]",
+        explanation: "The correct answer is: 'df[(df['age'] > 25) & (df['city'] == 'Delhi')]'",
       },
       {
         questionText: "Filter rows matching either of two conditions (OR):",
-        options: ["df[(cond1) | (cond2)]", "df[cond1 or cond2]", "df.filter(cond1 || cond2)", "df[cond1, cond2]"],
+        options: ["'df[(cond1) | (cond2)]'", "'df[cond1 or cond2]'", "'df.filter(cond1 || cond2)'", "'df[cond1, cond2]'"],
         correctOption: 0,
-        explanation: "The correct answer is: df[(cond1) | (cond2)]",
+        explanation: "The correct answer is: 'df[(cond1) | (cond2)]'",
       },
       {
         questionText: "Checking if column values are within a list of values:",
-        options: ["df['col'].isin([...])", "df['col'].within([...])", "df['col'].contains_list([...])", "df['col'].match([...])"],
+        options: ["'df['col'].isin([...])'", "'df['col'].within([...])'", "'df['col'].contains_list([...])'", "'df['col'].match([...])'"],
         correctOption: 0,
-        explanation: "The correct answer is: df['col'].isin([...])",
+        explanation: "The correct answer is: 'df['col'].isin([...])'",
       },
       {
         questionText: "Negating a condition (NOT):",
-        options: ["The ~ operator before the condition", "! before the condition", "not() function", "Not supported"],
+        options: ["The '~' operator before the condition", "'!' before the condition", "'not()' function", "Not supported"],
         correctOption: 0,
-        explanation: "The correct answer is: The ~ operator before the condition",
+        explanation: "The correct answer is: The '~' operator before the condition",
       },
       {
         questionText: "Filtering rows/columns by labels using a callable/string/regex:",
-        options: ["df.filter(items=[...], like='...', regex='...')", "df.select_labels()", "df.query_labels()", "df.match_labels()"],
+        options: ["'df.filter(items=[...], like='...', regex='...')'", "'df.select_labels()'", "'df.query_labels()'", "'df.match_labels()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.filter(items=[...], like='...', regex='...')",
+        explanation: "The correct answer is: 'df.filter(items=[...], like='...', regex='...')'",
       },
       {
         questionText: "Filtering with a string expression:",
-        options: ["df.query(\"age > 25 and city == 'Delhi'\")", "df.filter_str(...)", "df.expr(...)", "df.eval_filter(...)"],
+        options: ["'df.query(\"age > 25 and city == 'Delhi'\")'", "'df.filter_str(...)'", "'df.expr(...)'", "'df.eval_filter(...)'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.query(\"age > 25 and city == 'Delhi'\")",
+        explanation: "The correct answer is: 'df.query(\"age > 25 and city == 'Delhi'\")'",
       },
       {
         questionText: "What does 'df[df['name'].str.contains('an')]' do?",
@@ -2335,44 +2938,44 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Filter employees in \"Sales\" with salary > 50,000 using boolean AND indexing.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Filter employees in \"Sales\" with salary > 50,000 using boolean AND indexing....",
+        starterCode: "# Filter employees in \"Sales\" with salary > 50,000 using boole\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'dept': ['Sales','IT','Sales'], 'salary': [55000,45000,60000]})\nresult = df[(df['dept'] == 'Sales') & (df['salary'] > 50000)]\nprint(result)\\n```",
       },
       {
         questionText: "Use 'df.query()' to filter rows where \"age\" is between 18 and 30 inclusive.",
-        starterCode: "def query():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use 'df.query()' to filter rows where \"age\" is between 18 and 30 inclusive....",
+        starterCode: "# Use 'df.query()' to filter rows where \"age\" is between 18 an\n\ndef query():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'age': [15, 22, 28, 35]})\nresult = df.query('18 <= age <= 30')\nprint(result)\\n```",
       },
     ],
   },
-  36: {
+  45: {
     topicTitle: "Pandas: Pandas Sorting",
     mcqs: [
       {
         questionText: "Method sorting by column values:",
-        options: ["df.sort_values(by='col')", "df.order_by('col')", "df.arrange('col')", "df.sort('col')"],
+        options: ["'df.sort_values(by='col')'", "'df.order_by('col')'", "'df.arrange('col')'", "'df.sort('col')'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.sort_values(by='col')",
+        explanation: "The correct answer is: 'df.sort_values(by='col')'",
       },
       {
         questionText: "Parameter controlling ascending/descending:",
-        options: ["ascending=True/False", "order='asc'/'desc'", "direction=1/-1", "desc=True/False"],
+        options: ["'ascending=True/False'", "'order='asc'/'desc''", "'direction=1/-1'", "'desc=True/False'"],
         correctOption: 0,
-        explanation: "The correct answer is: ascending=True/False",
+        explanation: "The correct answer is: 'ascending=True/False'",
       },
       {
         questionText: "Method sorting by index labels:",
-        options: ["df.sort_index()", "df.sort_by_index()", "df.index_sort()", "df.order_index()"],
+        options: ["'df.sort_index()'", "'df.sort_by_index()'", "'df.index_sort()'", "'df.order_index()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.sort_index()",
+        explanation: "The correct answer is: 'df.sort_index()'",
       },
       {
         questionText: "Sorting by 'Department' then 'Salary' descending:",
-        options: ["df.sort_values(by=['Department','Salary'], ascending=[True, False])", "df.sort_values('Department','Salary', desc=True)", "df.sort([...])", "df.order([...])"],
+        options: ["'df.sort_values(by=['Department','Salary'], ascending=[True, False])'", "'df.sort_values('Department','Salary', desc=True)'", "'df.sort([...])'", "'df.order([...])'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.sort_values(by=['Department','Salary'], ascending=[True, False])",
+        explanation: "The correct answer is: 'df.sort_values(by=['Department','Salary'], ascending=[True, False])'",
       },
       {
         questionText: "What does 'na_position='first'' do in 'sort_values()'?",
@@ -2382,39 +2985,39 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Method returning n largest values of a column efficiently:",
-        options: ["df.nlargest(n, 'col')", "df.top_n(n, 'col')", "df.sort_values('col').head(n) only", "df.max(n, 'col')"],
+        options: ["'df.nlargest(n, 'col')'", "'df.top_n(n, 'col')'", "'df.sort_values('col').head(n)' only", "'df.max(n, 'col')'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.nlargest(n, 'col')",
+        explanation: "The correct answer is: 'df.nlargest(n, 'col')'",
       },
       {
         questionText: "Method returning n smallest values:",
-        options: ["df.nsmallest(n, 'col')", "df.bottom_n(n, 'col')", "df.min(n, 'col')", "df.least(n, 'col')"],
+        options: ["'df.nsmallest(n, 'col')'", "'df.bottom_n(n, 'col')'", "'df.min(n, 'col')'", "'df.least(n, 'col')'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.nsmallest(n, 'col')",
+        explanation: "The correct answer is: 'df.nsmallest(n, 'col')'",
       },
       {
         questionText: "Does '.sort_values()' modify the DataFrame by default?",
-        options: ["Yes always", "No \u2014 returns a new sorted DataFrame unless inplace=True", "Deletes unsorted rows", "Only works on numeric columns"],
+        options: ["Yes always", "No \u2014 returns a new sorted DataFrame unless 'inplace=True'", "Deletes unsorted rows", "Only works on numeric columns"],
         correctOption: 1,
-        explanation: "The correct answer is: No \u2014 returns a new sorted DataFrame unless inplace=True",
+        explanation: "The correct answer is: No \u2014 returns a new sorted DataFrame unless 'inplace=True'",
       },
     ],
     coding: [
       {
         questionText: "Sort products first by \"Category\" ascending, then \"Price\" descending within category.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Sort products first by \"Category\" ascending, then \"Price\" descending within cate...",
+        starterCode: "# Sort products first by \"Category\" ascending, then \"Price\" de\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'Category': ['B','A','B','A'], 'Price': [10,20,5,25]})\nresult = df.sort_values(['Category', 'Price'], ascending=[True, False])\nprint(result)\\n```",
       },
       {
         questionText: "Find the top 5 highest-paid employees using '.nlargest()'.",
-        starterCode: "def nlargest():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Find the top 5 highest-paid employees using '.nlargest()'....",
+        starterCode: "# Find the top 5 highest-paid employees using '.nlargest()'.\n\ndef nlargest():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'Name': ['A','B','C','D','E','F'], 'Salary': [50,90,70,60,100,80]})\ntop5 = df.nlargest(5, 'Salary')\nprint(top5)\\n```",
       },
     ],
   },
-  37: {
+  46: {
     topicTitle: "Pandas: Pandas Groupby",
     mcqs: [
       {
@@ -2425,15 +3028,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Method computing mean per group after groupby:",
-        options: ["df.groupby('col').mean()", ".average()", ".avg()", ".center()"],
+        options: ["'df.groupby('col').mean()'", "'.average()'", "'.avg()'", "'.center()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.groupby('col').mean()",
+        explanation: "The correct answer is: 'df.groupby('col').mean()'",
       },
       {
         questionText: "Applying multiple different aggregations to different columns:",
-        options: ["df.groupby('col').agg({'col2':'mean','col3':'sum'})", ".multi_agg()", ".apply_all()", ".combine()"],
+        options: ["'df.groupby('col').agg({'col2':'mean','col3':'sum'})'", "'.multi_agg()'", "'.apply_all()'", "'.combine()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.groupby('col').agg({'col2':'mean','col3':'sum'})",
+        explanation: "The correct answer is: 'df.groupby('col').agg({'col2':'mean','col3':'sum'})'",
       },
       {
         questionText: "What does 'df.groupby('col').size()' return?",
@@ -2443,9 +3046,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Grouping by multiple columns simultaneously:",
-        options: ["df.groupby(['col1','col2'])", "df.groupby('col1','col2')", "df.groupby('col1'+'col2')", "df.multi_groupby([...])"],
+        options: ["'df.groupby(['col1','col2'])'", "'df.groupby('col1','col2')'", "'df.groupby('col1'+'col2')'", "'df.multi_groupby([...])'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.groupby(['col1','col2'])",
+        explanation: "The correct answer is: 'df.groupby(['col1','col2'])'",
       },
       {
         questionText: "What does 'df.groupby('col')['num_col'].sum()' return?",
@@ -2461,34 +3064,34 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Which method transforms grouped data back to original shape while applying a group-wise computation?",
-        options: ["df.groupby('col').transform('mean')", ".reshape('mean')", ".expand('mean')", ".restore('mean')"],
+        options: ["'df.groupby('col').transform('mean')'", "'.reshape('mean')'", "'.expand('mean')'", "'.restore('mean')'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.groupby('col').transform('mean')",
+        explanation: "The correct answer is: 'df.groupby('col').transform('mean')'",
       },
     ],
     coding: [
       {
         questionText: "Group a sales DataFrame by \"Region\" and compute total and average sales per region.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Group a sales DataFrame by \"Region\" and compute total and average sales per regi...",
+        starterCode: "# Group a sales DataFrame by \"Region\" and compute total and av\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'Region': ['E','W','E','W'], 'Sales': [100,150,200,80]})\nsummary = df.groupby('Region')['Sales'].agg(['sum', 'mean'])\nprint(summary)\\n```",
       },
       {
         questionText: "Group by two columns and compute average salary per combination, sorted descending.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Group by two columns and compute average salary per combination, sorted descendi...",
+        starterCode: "# Group by two columns and compute average salary per combinat\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'dept': ['IT','IT','HR'], 'level': ['Jr','Sr','Jr'], 'salary': [50000,80000,45000]})\nresult = df.groupby(['dept', 'level'])['salary'].mean().sort_values(ascending=False)\nprint(result)\\n```",
       },
     ],
   },
-  38: {
+  47: {
     topicTitle: "Pandas: Pandas Join/Merge",
     mcqs: [
       {
         questionText: "Function performing SQL-style joins:",
-        options: ["pd.merge(df1, df2, on='key')", "pd.join(df1, df2)", "pd.combine(df1, df2)", "pd.link(df1, df2)"],
+        options: ["'pd.merge(df1, df2, on='key')'", "'pd.join(df1, df2)'", "'pd.combine(df1, df2)'", "'pd.link(df1, df2)'"],
         correctOption: 0,
-        explanation: "The correct answer is: pd.merge(df1, df2, on='key')",
+        explanation: "The correct answer is: 'pd.merge(df1, df2, on='key')'",
       },
       {
         questionText: "What does an \"inner\" join (default) return?",
@@ -2510,52 +3113,52 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Parameter of 'pd.merge()' for shared-name join column:",
-        options: ["on='column_name'", "key='column_name'", "join_col='column_name'", "match='column_name'"],
+        options: ["'on='column_name''", "'key='column_name''", "'join_col='column_name''", "'match='column_name''"],
         correctOption: 0,
-        explanation: "The correct answer is: on='column_name'",
+        explanation: "The correct answer is: 'on='column_name''",
       },
       {
         questionText: "Method joining based on index rather than a column:",
-        options: ["df1.join(df2)", "df1.merge_index(df2)", "df1.index_join(df2)", "df1.combine_index(df2)"],
+        options: ["'df1.join(df2)'", "'df1.merge_index(df2)'", "'df1.index_join(df2)'", "'df1.combine_index(df2)'"],
         correctOption: 0,
-        explanation: "The correct answer is: df1.join(df2)",
+        explanation: "The correct answer is: 'df1.join(df2)'",
       },
       {
         questionText: "Parameters used when join columns have different names in each DataFrame:",
-        options: ["left_on='emp_id', right_on='id'", "on=['emp_id','id']", "key_left='emp_id', key_right='id'", "join_on=('emp_id','id')"],
+        options: ["'left_on='emp_id', right_on='id''", "'on=['emp_id','id']'", "'key_left='emp_id', key_right='id''", "'join_on=('emp_id','id')'"],
         correctOption: 0,
-        explanation: "The correct answer is: left_on='emp_id', right_on='id'",
+        explanation: "The correct answer is: 'left_on='emp_id', right_on='id''",
       },
       {
         questionText: "Common issue when merging DataFrames sharing column names (other than the join key):",
-        options: ["Nothing happens", "Pandas appends suffixes like _x/_y", "It raises an error", "It deletes overlapping columns"],
+        options: ["Nothing happens", "Pandas appends suffixes like '_x'/'_y'", "It raises an error", "It deletes overlapping columns"],
         correctOption: 1,
-        explanation: "The correct answer is: Pandas appends suffixes like _x/_y",
+        explanation: "The correct answer is: Pandas appends suffixes like '_x'/'_y'",
       },
     ],
     coding: [
       {
         questionText: "Create two DataFrames (employee IDs+names; employee IDs+salaries) and merge with an inner join.",
-        starterCode: "def DataFrames():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Create two DataFrames (employee IDs+names; employee IDs+salaries) and merge with...",
+        starterCode: "# Create two DataFrames (employee IDs+names; employee IDs+sala\n\ndef DataFrames():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\nemployees = pd.DataFrame({'id': [1,2,3], 'name': ['A','B','C']})\nsalaries = pd.DataFrame({'id': [1,2,3], 'salary': [50000,60000,70000]})\nmerged = pd.merge(employees, salaries, on='id', how='inner')\nprint(merged)\\n```",
       },
       {
         questionText: "Demonstrate the difference between inner join and left join when some IDs lack matching salary records.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Demonstrate the difference between inner join and left join when some IDs lack m...",
+        starterCode: "# Demonstrate the difference between inner join and left join \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\nemployees = pd.DataFrame({'id': [1,2,3], 'name': ['A','B','C']})\nsalaries = pd.DataFrame({'id': [1,2], 'salary': [50000,60000]})\ninner = pd.merge(employees, salaries, on='id', how='inner')\nleft = pd.merge(employees, salaries, on='id', how='left')\nprint(\"Inner:\\n\", inner)\nprint(\"Left:\\n\", left)\\n```",
       },
     ],
   },
-  39: {
+  48: {
     topicTitle: "Pandas: Pandas Concatenation",
     mcqs: [
       {
         questionText: "Function concatenating (stacking) two or more DataFrames:",
-        options: ["pd.concat([df1, df2])", "pd.stack([df1, df2])", "pd.append_all([df1, df2])", "pd.combine_rows([df1, df2])"],
+        options: ["'pd.concat([df1, df2])'", "'pd.stack([df1, df2])'", "'pd.append_all([df1, df2])'", "'pd.combine_rows([df1, df2])'"],
         correctOption: 0,
-        explanation: "The correct answer is: pd.concat([df1, df2])",
+        explanation: "The correct answer is: 'pd.concat([df1, df2])'",
       },
       {
         questionText: "What does 'pd.concat([df1, df2], axis=0)' do by default?",
@@ -2577,9 +3180,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Parameter that resets the resulting index to a fresh sequential range:",
-        options: ["ignore_index=True", "reset_index=True", "new_index=True", "fresh_index=True"],
+        options: ["'ignore_index=True'", "'reset_index=True'", "'new_index=True'", "'fresh_index=True'"],
         correctOption: 0,
-        explanation: "The correct answer is: ignore_index=True",
+        explanation: "The correct answer is: 'ignore_index=True'",
       },
       {
         questionText: "How does 'pd.concat()' handle columns present in one DataFrame but not another (default 'join='outer'')?",
@@ -2595,113 +3198,113 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Key difference between 'pd.concat()' and 'pd.merge()':",
-        options: ["Identical", "concat() stacks along an axis; merge() combines based on matching key values (SQL-style)", "merge() only joins two Series", "concat() requires a common key"],
+        options: ["Identical", "'concat()' stacks along an axis; 'merge()' combines based on matching key values (SQL-style)", "'merge()' only joins two Series", "'concat()' requires a common key"],
         correctOption: 1,
-        explanation: "The correct answer is: concat() stacks along an axis; merge() combines based on matching key values (SQL-style)",
+        explanation: "The correct answer is: 'concat()' stacks along an axis; 'merge()' combines based on matching key values (SQL-style)",
       },
     ],
     coding: [
       {
         questionText: "Concatenate two months' sales DataFrames (same columns) into one, with a fresh continuous index.",
-        starterCode: "def DataFrames():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Concatenate two months' sales DataFrames (same columns) into one, with a fresh c...",
+        starterCode: "# Concatenate two months' sales DataFrames (same columns) into\n\ndef DataFrames():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\njan = pd.DataFrame({'product': ['A','B'], 'sales': [100,200]})\nfeb = pd.DataFrame({'product': ['A','B'], 'sales': [150,180]})\ncombined = pd.concat([jan, feb], ignore_index=True)\nprint(combined)\\n```",
       },
       {
         questionText: "Concatenate two DataFrames side by side ('axis=1') sharing an index but different columns.",
-        starterCode: "def side():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Concatenate two DataFrames side by side ('axis=1') sharing an index but differen...",
+        starterCode: "# Concatenate two DataFrames side by side ('axis=1') sharing a\n\ndef side():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf1 = pd.DataFrame({'a': [1,2]})\ndf2 = pd.DataFrame({'b': [3,4]})\nresult = pd.concat([df1, df2], axis=1)\nprint(result)\\n```",
       },
     ],
   },
-  40: {
+  49: {
     topicTitle: "Pandas: Pandas add/remove col/index",
     mcqs: [
       {
         questionText: "Adding a new column 'total' as the sum of two existing columns:",
-        options: ["df['total'] = df['a'] + df['b']", "df.add_column('total', ...)", "df.new_col('total') = ...", "df.columns.add('total')"],
+        options: ["'df['total'] = df['a'] + df['b']'", "'df.add_column('total', ...)'", "'df.new_col('total') = ...'", "'df.columns.add('total')'"],
         correctOption: 0,
-        explanation: "The correct answer is: df['total'] = df['a'] + df['b']",
+        explanation: "The correct answer is: 'df['total'] = df['a'] + df['b']'",
       },
       {
         questionText: "Inserting a new column at a specific position:",
-        options: ["df.insert(loc, column, value)", "df.add_at(loc, column, value)", "df.place(loc, column, value)", "df.column_insert(loc, value)"],
+        options: ["'df.insert(loc, column, value)'", "'df.add_at(loc, column, value)'", "'df.place(loc, column, value)'", "'df.column_insert(loc, value)'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.insert(loc, column, value)",
+        explanation: "The correct answer is: 'df.insert(loc, column, value)'",
       },
       {
         questionText: "Removing a column (returns a new DataFrame by default):",
-        options: ["df.drop('col', axis=1)", "df.remove_col('col')", "df.delete('col')", "df.pop_col('col')"],
+        options: ["'df.drop('col', axis=1)'", "'df.remove_col('col')'", "'df.delete('col')'", "'df.pop_col('col')'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.drop('col', axis=1)",
+        explanation: "The correct answer is: 'df.drop('col', axis=1)'",
       },
       {
         questionText: "Removing a column AND returning its Series, modifying in place:",
-        options: ["df.pop('col')", "df.drop('col')", "df.remove('col')", "df.extract('col')"],
+        options: ["'df.pop('col')'", "'df.drop('col')'", "'df.remove('col')'", "'df.extract('col')'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.pop('col')",
+        explanation: "The correct answer is: 'df.pop('col')'",
       },
       {
         questionText: "Adding a new row using the modern recommended approach (since '.append()' is deprecated):",
-        options: ["pd.concat([df, new_row_df], ignore_index=True)", "df.add_row(new_row_df)", "df.append(new_row_df) only", "df.insert_row(new_row_df)"],
+        options: ["'pd.concat([df, new_row_df], ignore_index=True)'", "'df.add_row(new_row_df)'", "'df.append(new_row_df)' only", "'df.insert_row(new_row_df)'"],
         correctOption: 0,
-        explanation: "The correct answer is: pd.concat([df, new_row_df], ignore_index=True)",
+        explanation: "The correct answer is: 'pd.concat([df, new_row_df], ignore_index=True)'",
       },
       {
         questionText: "Setting an existing column as the new index:",
-        options: ["df.set_index('col')", "df.new_index('col')", "df.index_from('col')", "df.reindex_from('col')"],
+        options: ["'df.set_index('col')'", "'df.new_index('col')'", "'df.index_from('col')'", "'df.reindex_from('col')'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.set_index('col')",
+        explanation: "The correct answer is: 'df.set_index('col')'",
       },
       {
         questionText: "Resetting the index back to the default integer range:",
-        options: ["df.reset_index()", "df.default_index()", "df.clear_index()", "df.restore_index()"],
+        options: ["'df.reset_index()'", "'df.default_index()'", "'df.clear_index()'", "'df.restore_index()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.reset_index()",
+        explanation: "The correct answer is: 'df.reset_index()'",
       },
       {
         questionText: "Removing a specific row by index label:",
-        options: ["df.drop(index_label)", "df.drop(index_label, axis=1)", "df.remove_row(index_label)", "df.delete_row(index_label)"],
+        options: ["'df.drop(index_label)'", "'df.drop(index_label, axis=1)'", "'df.remove_row(index_label)'", "'df.delete_row(index_label)'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.drop(index_label)",
+        explanation: "The correct answer is: 'df.drop(index_label)'",
       },
     ],
     coding: [
       {
         questionText: "Add a \"Bonus\" column (10% of \"Salary\"), remove an unnecessary column, and set \"EmployeeID\" as the new index.",
-        starterCode: "def column():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Add a \"Bonus\" column (10% of \"Salary\"), remove an unnecessary column, and set \"E...",
+        starterCode: "# Add a \"Bonus\" column (10% of \"Salary\"), remove an unnecessar\n\ndef column():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'EmployeeID': [1,2], 'Salary': [50000,60000], 'Extra': ['x','y']})\ndf['Bonus'] = df['Salary'] * 0.10\ndf = df.drop(columns=['Extra'])\ndf = df.set_index('EmployeeID')\nprint(df)\\n```",
       },
       {
         questionText: "Add a new row via 'pd.concat(ignore_index=True)', then remove a row by index label using '.drop()'.",
-        starterCode: "def concat():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Add a new row via 'pd.concat(ignore_index=True)', then remove a row by index lab...",
+        starterCode: "# Add a new row via 'pd.concat(ignore_index=True)', then remov\n\ndef concat():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'name': ['A', 'B']})\nnew_row = pd.DataFrame({'name': ['C']})\ndf = pd.concat([df, new_row], ignore_index=True)\ndf = df.drop(index=1)\nprint(df)\\n```",
       },
     ],
   },
-  41: {
+  50: {
     topicTitle: "Pandas: Pandas Date & Time Operations",
     mcqs: [
       {
         questionText: "Function converting a string column to a datetime object:",
-        options: ["pd.to_datetime(df['col'])", "pd.convert_date(df['col'])", "pd.parse_date(df['col'])", "pd.datetime(df['col'])"],
+        options: ["'pd.to_datetime(df['col'])'", "'pd.convert_date(df['col'])'", "'pd.parse_date(df['col'])'", "'pd.datetime(df['col'])'"],
         correctOption: 0,
-        explanation: "The correct answer is: pd.to_datetime(df['col'])",
+        explanation: "The correct answer is: 'pd.to_datetime(df['col'])'",
       },
       {
         questionText: "Attribute extracting the year from a datetime Series:",
-        options: ["df['date'].dt.year", "df['date'].year()", "df['date'].get_year()", "df['date'].Year"],
+        options: ["'df['date'].dt.year'", "'df['date'].year()'", "'df['date'].get_year()'", "'df['date'].Year'"],
         correctOption: 0,
-        explanation: "The correct answer is: df['date'].dt.year",
+        explanation: "The correct answer is: 'df['date'].dt.year'",
       },
       {
         questionText: "Function generating a range of dates:",
-        options: ["pd.date_range(start=..., end=...)", "pd.range_dates(...)", "pd.generate_dates(...)", "pd.date_list(...)"],
+        options: ["'pd.date_range(start=..., end=...)'", "'pd.range_dates(...)'", "'pd.generate_dates(...)'", "'pd.date_list(...)'"],
         correctOption: 0,
-        explanation: "The correct answer is: pd.date_range(start=..., end=...)",
+        explanation: "The correct answer is: 'pd.date_range(start=..., end=...)'",
       },
       {
         questionText: "A 'Timedelta' object represents:",
@@ -2711,21 +3314,21 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Attribute extracting the day of week (Monday=0):",
-        options: ["df['date'].dt.dayofweek", ".dt.weekday_num", ".dt.day_name_num", ".dt.week"],
+        options: ["'df['date'].dt.dayofweek'", "'.dt.weekday_num'", "'.dt.day_name_num'", "'.dt.week'"],
         correctOption: 0,
-        explanation: "The correct answer is: df['date'].dt.dayofweek",
+        explanation: "The correct answer is: 'df['date'].dt.dayofweek'",
       },
       {
         questionText: "Setting a datetime column as the index for time-series slicing:",
-        options: ["df.set_index('date_col') (after conversion)", "df.set_time_index()", "df.time_index()", "df.date_as_index()"],
+        options: ["'df.set_index('date_col')' (after conversion)", "'df.set_time_index()'", "'df.time_index()'", "'df.date_as_index()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.set_index('date_col') (after conversion)",
+        explanation: "The correct answer is: 'df.set_index('date_col')' (after conversion)",
       },
       {
         questionText: "Method resampling time-series data to a different frequency:",
-        options: ["df.resample('M').mean()", "df.reformat('M').mean()", "df.regroup('M').mean()", "df.time_convert('M').mean()"],
+        options: ["'df.resample('M').mean()'", "'df.reformat('M').mean()'", "'df.regroup('M').mean()'", "'df.time_convert('M').mean()'"],
         correctOption: 0,
-        explanation: "The correct answer is: df.resample('M').mean()",
+        explanation: "The correct answer is: 'df.resample('M').mean()'",
       },
       {
         questionText: "What does 'pd.Timestamp.now()' return?",
@@ -2737,32 +3340,32 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Convert date strings to datetime objects, extract year/month/day-of-week into new columns.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Convert date strings to datetime objects, extract year/month/day-of-week into ne...",
+        starterCode: "# Convert date strings to datetime objects, extract year/month\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'date': ['2024-01-15', '2024-02-20']})\ndf['date'] = pd.to_datetime(df['date'])\ndf['year'] = df['date'].dt.year\ndf['month'] = df['date'].dt.month\ndf['dow'] = df['date'].dt.day_name()\nprint(df)\\n```",
       },
       {
         questionText: "Set a datetime column as index for daily sales, then resample to compute total monthly sales.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Set a datetime column as index for daily sales, then resample to compute total m...",
+        starterCode: "# Set a datetime column as index for daily sales, then resampl\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndates = pd.date_range('2024-01-01', periods=90, freq='D')\nsales = pd.DataFrame({'date': dates, 'sales': range(90)})\nsales = sales.set_index('date')\nmonthly_total = sales.resample('ME').sum()\nprint(monthly_total)\\n```",
       },
     ],
   },
-  42: {
+  51: {
     topicTitle: "Pandas: Pandas Concatenating Multiple CSV Files",
     mcqs: [
       {
         questionText: "Common approach to combine multiple same-structure CSVs into one DataFrame:",
-        options: ["Use glob to list matching paths, read each with pd.read_csv(), combine with pd.concat()", "A single built-in function reads a whole folder automatically", "Not possible in Pandas", "Manually copy-paste between files"],
+        options: ["Use 'glob' to list matching paths, read each with 'pd.read_csv()', combine with 'pd.concat()'", "A single built-in function reads a whole folder automatically", "Not possible in Pandas", "Manually copy-paste between files"],
         correctOption: 0,
-        explanation: "The correct answer is: Use glob to list matching paths, read each with pd.read_csv(), combine with pd.concat()",
+        explanation: "The correct answer is: Use 'glob' to list matching paths, read each with 'pd.read_csv()', combine with 'pd.concat()'",
       },
       {
         questionText: "Library commonly used to find files matching a pattern (e.g., '*.csv'):",
-        options: ["glob", "matplotlib", "seaborn", "sklearn"],
+        options: ["'glob'", "'matplotlib'", "'seaborn'", "'sklearn'"],
         correctOption: 0,
-        explanation: "The correct answer is: glob",
+        explanation: "The correct answer is: 'glob'",
       },
       {
         questionText: "What does 'glob.glob(\"data/*.csv\")' do?",
@@ -2772,9 +3375,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Parameter avoiding duplicate/overlapping index values when concatenating multiple CSVs:",
-        options: ["ignore_index=True", "reset_index=True (passed to concat)", "unique_index=True", "no_duplicate_index=True"],
+        options: ["'ignore_index=True'", "'reset_index=True' (passed to concat)", "'unique_index=True'", "'no_duplicate_index=True'"],
         correctOption: 0,
-        explanation: "The correct answer is: ignore_index=True",
+        explanation: "The correct answer is: 'ignore_index=True'",
       },
       {
         questionText: "What should you check before concatenating multiple CSVs?",
@@ -2784,9 +3387,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Correctly reading/concatenating a list of paths via a list comprehension:",
-        options: ["pd.concat([pd.read_csv(f) for f in file_list], ignore_index=True)", "pd.concat(pd.read_csv(file_list))", "pd.read_csv(file_list) alone", "pd.merge([...])"],
+        options: ["'pd.concat([pd.read_csv(f) for f in file_list], ignore_index=True)'", "'pd.concat(pd.read_csv(file_list))'", "'pd.read_csv(file_list)' alone", "'pd.merge([...])'"],
         correctOption: 0,
-        explanation: "The correct answer is: pd.concat([pd.read_csv(f) for f in file_list], ignore_index=True)",
+        explanation: "The correct answer is: 'pd.concat([pd.read_csv(f) for f in file_list], ignore_index=True)'",
       },
       {
         questionText: "If CSVs have slightly different columns, default 'pd.concat()' behavior ('join='outer''):",
@@ -2796,27 +3399,2305 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Method to verify no unexpected duplicate rows after concatenating multiple monthly CSVs:",
-        options: ["combined_df.duplicated().sum()", "combined_df.check_dupes()", "combined_df.validate()", "combined_df.is_unique()"],
+        options: ["'combined_df.duplicated().sum()'", "'combined_df.check_dupes()'", "'combined_df.validate()'", "'combined_df.is_unique()'"],
         correctOption: 0,
-        explanation: "The correct answer is: combined_df.duplicated().sum()",
+        explanation: "The correct answer is: 'combined_df.duplicated().sum()'",
       },
     ],
     coding: [
       {
         questionText: "Use 'glob' to find all CSVs in 'sales_data/', read and concatenate into one DataFrame with a fresh index.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use 'glob' to find all CSVs in 'sales_data/', read and concatenate into one Data...",
+        starterCode: "# Use 'glob' to find all CSVs in 'sales_data/', read and conca\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport pandas as pd, glob\nfiles = glob.glob('sales_data/*.csv')\ndf = pd.concat([pd.read_csv(f) for f in files], ignore_index=True)\nprint(df.shape)\\n```",
       },
       {
         questionText: "Simulate 3 monthly CSVs (as DataFrames), concatenate, remove duplicate rows, and save the combined result to a new CSV.",
-        starterCode: "def CSVs():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Simulate 3 monthly CSVs (as DataFrames), concatenate, remove duplicate rows, and...",
+        starterCode: "# Simulate 3 monthly CSVs (as DataFrames), concatenate, remove\n\ndef CSVs():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\njan = pd.DataFrame({'id':[1,2]}); feb = pd.DataFrame({'id':[2,3]}); mar = pd.DataFrame({'id':[3,4]})\ncombined = pd.concat([jan, feb, mar], ignore_index=True).drop_duplicates()\ncombined.to_csv('combined.csv', index=False)\\n```",
       },
     ],
   },
-  43: {
+  52: {
+    topicTitle: "Pandas: Pandas Pivot Tables & Crosstab",
+    mcqs: [
+      {
+        questionText: "What does 'DataFrame.pivot_table()' primarily do?",
+        options: ["Deletes rows with missing values", "Summarizes and reshapes data by grouping and aggregating values into a spreadsheet-style table", "Sorts a DataFrame", "Merges two DataFrames"],
+        correctOption: 1,
+        explanation: "The correct answer is: Summarizes and reshapes data by grouping and aggregating values into a spreadsheet-style table",
+      },
+      {
+        questionText: "Which parameter of 'pivot_table()' specifies the aggregation function to apply (e.g., 'mean', 'sum')?",
+        options: ["'agg'", "'aggfunc'", "'func'", "'apply'"],
+        correctOption: 1,
+        explanation: "The correct answer is: 'aggfunc'",
+      },
+      {
+        questionText: "What is the default aggregation function used by 'pivot_table()' if 'aggfunc' is not specified?",
+        options: ["'sum'", "'mean'", "'count'", "'max'"],
+        correctOption: 1,
+        explanation: "The correct answer is: 'mean'",
+      },
+      {
+        questionText: "What does 'pd.crosstab(df.col1, df.col2)' compute?",
+        options: ["A correlation matrix", "A cross-tabulation (frequency count) of two categorical variables", "A pivot with numeric aggregation only", "A join of two DataFrames"],
+        correctOption: 1,
+        explanation: "The correct answer is: A cross-tabulation (frequency count) of two categorical variables",
+      },
+      {
+        questionText: "How can 'pivot_table()' handle missing combinations of index/columns?",
+        options: ["It always raises an error", "Using the 'fill_value' parameter to fill NaN results", "It cannot handle missing combinations", "It drops those columns automatically with no option to change"],
+        correctOption: 1,
+        explanation: "The correct answer is: Using the 'fill_value' parameter to fill NaN results",
+      },
+      {
+        questionText: "What is the key difference between 'pivot()' and 'pivot_table()'?",
+        options: ["'pivot()' cannot aggregate duplicate entries, while 'pivot_table()' can via 'aggfunc'", "They are identical in every way", "'pivot_table()' cannot use an index", "'pivot()' supports multiple aggregation functions but 'pivot_table()' doesn't"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'pivot()' cannot aggregate duplicate entries, while 'pivot_table()' can via 'aggfunc'",
+      },
+      {
+        questionText: "Which parameter allows 'pivot_table()' to add row/column subtotals?",
+        options: ["'margins=True'", "'totals=True'", "'subtotal=True'", "'sum_all=True'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'margins=True'",
+      },
+      {
+        questionText: "In 'pd.crosstab()', which parameter normalizes the resulting table to show proportions instead of raw counts?",
+        options: ["'normalize=True' (or ''index''/''columns'')", "'proportion=True'", "'percent=True'", "'scale=True'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'normalize=True' (or ''index''/''columns'')",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Given a DataFrame of sales with columns 'region', 'product', and 'revenue', use 'pivot_table()' to compute total revenue per region and product.",
+        starterCode: "# Given a DataFrame of sales with columns 'region', 'product',\n\ndef pivot_table():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'region':['E','W','E'], 'product':['A','B','A'], 'revenue':[100,200,150]})\npivot = df.pivot_table(values='revenue', index='region', columns='product', aggfunc='sum')\nprint(pivot)\\n```",
+      },
+      {
+        questionText: "Given a DataFrame with columns 'gender' and 'purchased' (Yes/No), use 'pd.crosstab()' to show the count of purchases by gender.",
+        starterCode: "# Given a DataFrame with columns 'gender' and 'purchased' (Yes\n\ndef crosstab():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'gender':['M','F','M','F'], 'purchased':['Yes','No','Yes','Yes']})\nct = pd.crosstab(df['gender'], df['purchased'])\nprint(ct)\\n```",
+      },
+    ],
+  },
+  53: {
+    topicTitle: "Pandas: Pandas apply, map & applymap",
+    mcqs: [
+      {
+        questionText: "What does 'Series.map()' do?",
+        options: ["Applies a function or mapping (dict/Series) element-wise to a Series", "Applies a function to an entire DataFrame column-wise only", "Groups a DataFrame", "Merges two Series"],
+        correctOption: 0,
+        explanation: "The correct answer is: Applies a function or mapping (dict/Series) element-wise to a Series",
+      },
+      {
+        questionText: "What does 'DataFrame.apply()' do?",
+        options: ["Applies a function along an axis (rows or columns) of a DataFrame", "Only works on Series, not DataFrames", "Renames columns", "Sorts a DataFrame"],
+        correctOption: 0,
+        explanation: "The correct answer is: Applies a function along an axis (rows or columns) of a DataFrame",
+      },
+      {
+        questionText: "In 'df.apply(func, axis=1)', what does 'axis=1' mean?",
+        options: ["Apply the function down each column", "Apply the function across each row", "Apply the function to the whole DataFrame at once", "Apply the function to the index only"],
+        correctOption: 1,
+        explanation: "The correct answer is: Apply the function across each row",
+      },
+      {
+        questionText: "What is 'applymap()' (or 'DataFrame.map()' in newer pandas) used for?",
+        options: ["Applying a function element-wise to every single cell in a DataFrame", "Grouping rows", "Merging DataFrames", "Applying a function only to column names"],
+        correctOption: 0,
+        explanation: "The correct answer is: Applying a function element-wise to every single cell in a DataFrame",
+      },
+      {
+        questionText: "Which of the following is most efficient for simple element-wise arithmetic on a large numeric column?",
+        options: ["Vectorized operations (e.g., 'df['col'] * 2')", "'df['col'].apply(lambda x: x * 2)'", "A Python 'for' loop", "'applymap()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: Vectorized operations (e.g., 'df['col'] * 2')",
+      },
+      {
+        questionText: "What does 'series.map({'M': 'Male', 'F': 'Female'})' do?",
+        options: ["Replaces values in the Series using the dictionary as a lookup", "Deletes the Series", "Sorts values alphabetically", "Raises an error since dicts can't be used with map"],
+        correctOption: 0,
+        explanation: "The correct answer is: Replaces values in the Series using the dictionary as a lookup",
+      },
+      {
+        questionText: "If a function passed to '.map()' doesn't have a mapping for a given value, what happens by default?",
+        options: ["The result is 'NaN' for that value", "It raises an error immediately", "The original value is kept unchanged", "It is skipped entirely and the row removed"],
+        correctOption: 0,
+        explanation: "The correct answer is: The result is 'NaN' for that value",
+      },
+      {
+        questionText: "Which method would you use to apply a custom aggregation function to each group after a 'groupby()'?",
+        options: ["'.apply()'", "'.map()' only", "'.applymap()' only", "'.loc()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: '.apply()'",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Given a DataFrame column 'price' (as strings like '\"$1,200\"'), write code using '.apply()' with a custom function to convert it into a numeric float column.",
+        starterCode: "# Given a DataFrame column 'price' (as strings like '\"$1,200\"'\n\ndef apply():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'price': ['$1,200', '$850', '$3,000']})\ndf['price'] = df['price'].apply(lambda x: float(x.replace('$','').replace(',','')))\nprint(df)\\n```",
+      },
+      {
+        questionText: "Given a DataFrame 'df' with numeric columns, use '.applymap()' (or '.map()') to round every value to 2 decimal places.",
+        starterCode: "# Given a DataFrame 'df' with numeric columns, use '.applymap(\n\ndef applymap():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'a': [1.2345, 2.6789], 'b': [3.1111, 4.9999]})\nrounded = df.map(lambda x: round(x, 2))\nprint(rounded)\\n```",
+      },
+    ],
+  },
+  54: {
+    topicTitle: "Pandas: Pandas MultiIndex (Hierarchical Indexing)",
+    mcqs: [
+      {
+        questionText: "A MultiIndex in pandas is:",
+        options: ["An index with multiple levels (hierarchical), allowing higher-dimensional data in a 2D DataFrame", "An index with duplicate values only", "A special data type for strings", "A way to remove the index entirely"],
+        correctOption: 0,
+        explanation: "The correct answer is: An index with multiple levels (hierarchical), allowing higher-dimensional data in a 2D DataFrame",
+      },
+      {
+        questionText: "Which function creates a MultiIndex from a list of tuples?",
+        options: ["'pd.MultiIndex.from_tuples()'", "'pd.Index.multi()'", "'pd.create_multiindex()'", "'pd.hierarchy()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'pd.MultiIndex.from_tuples()'",
+      },
+      {
+        questionText: "How do you select data at the outer level of a MultiIndex DataFrame 'df'?",
+        options: ["'df.loc['outer_value']'", "'df.get('outer_value')'", "'df.select('outer_value')'", "'df.outer('outer_value')'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'df.loc['outer_value']'",
+      },
+      {
+        questionText: "What does 'df.swaplevel()' do on a MultiIndex DataFrame?",
+        options: ["Deletes one level of the index", "Swaps the order of two index levels", "Converts the MultiIndex to a single index", "Sorts the DataFrame"],
+        correctOption: 1,
+        explanation: "The correct answer is: Swaps the order of two index levels",
+      },
+      {
+        questionText: "Which method converts a MultiIndex DataFrame level into columns, effectively pivoting a level from rows to columns?",
+        options: ["'.unstack()'", "'.stack()'", "'.melt()'", "'.pivot()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: '.unstack()'",
+      },
+      {
+        questionText: "To select a specific combination of both levels in a MultiIndex, which syntax is typically used?",
+        options: ["'df.loc[(level1_val, level2_val)]'", "'df[level1_val][level2_val]' only", "'df.select_multi(level1_val, level2_val)'", "MultiIndex selection is not supported"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'df.loc[(level1_val, level2_val)]'",
+      },
+      {
+        questionText: "What does 'df.groupby(['col1', 'col2']).sum()' typically produce as a result index?",
+        options: ["A single flat index", "A MultiIndex composed of unique combinations of col1 and col2", "No index at all", "An error"],
+        correctOption: 1,
+        explanation: "The correct answer is: A MultiIndex composed of unique combinations of col1 and col2",
+      },
+      {
+        questionText: "Which method resets a MultiIndex back into regular columns?",
+        options: ["'df.reset_index()'", "'df.drop_index()'", "'df.flatten()'", "'df.unindex()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'df.reset_index()'",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Given sales data with columns 'year', 'quarter', and 'sales', create a MultiIndex DataFrame indexed by '(year, quarter)' and retrieve all rows for a specific year.",
+        starterCode: "# Given sales data with columns 'year', 'quarter', and 'sales'\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'year':[2023,2023,2024,2024], 'quarter':['Q1','Q2','Q1','Q2'], 'sales':[100,120,140,160]})\ndf = df.set_index(['year', 'quarter'])\nprint(df.loc[2023])\\n```",
+      },
+      {
+        questionText: "Given a DataFrame grouped by '['category', 'subcategory']' with a 'sum()' aggregation producing a MultiIndex result, write code to reset the index back into flat columns.",
+        starterCode: "# Given a DataFrame grouped by '['category', 'subcategory']' w\n\ndef sum():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'category':['A','A','B'], 'subcategory':['x','y','x'], 'sales':[10,20,30]})\ngrouped = df.groupby(['category', 'subcategory'])['sales'].sum()\nflat = grouped.reset_index()\nprint(flat)\\n```",
+      },
+    ],
+  },
+  55: {
+    topicTitle: "Pandas: Pandas Window Functions (Rolling & Expanding)",
+    mcqs: [
+      {
+        questionText: "What does 'Series.rolling(window=3).mean()' compute?",
+        options: ["The mean over the entire Series", "A moving/rolling average computed over a sliding window of 3 consecutive values", "The cumulative sum", "The median of the whole Series"],
+        correctOption: 1,
+        explanation: "The correct answer is: A moving/rolling average computed over a sliding window of 3 consecutive values",
+      },
+      {
+        questionText: "What is the main use case for rolling window functions?",
+        options: ["Removing duplicates", "Smoothing time series data or computing moving statistics like moving averages", "Sorting data", "Merging DataFrames"],
+        correctOption: 1,
+        explanation: "The correct answer is: Smoothing time series data or computing moving statistics like moving averages",
+      },
+      {
+        questionText: "What does 'Series.expanding().sum()' compute, as opposed to a rolling window?",
+        options: ["A cumulative sum that grows to include all prior data points up to the current one", "A fixed-size window sum", "The same as '.rolling()'", "Nothing, expanding() doesn't exist"],
+        correctOption: 0,
+        explanation: "The correct answer is: A cumulative sum that grows to include all prior data points up to the current one",
+      },
+      {
+        questionText: "In 'df['col'].rolling(window=5, min_periods=1).mean()', what does 'min_periods=1' control?",
+        options: ["The minimum number of observations required in the window to produce a result (instead of NaN)", "The size of the window", "The number of columns", "It has no effect"],
+        correctOption: 0,
+        explanation: "The correct answer is: The minimum number of observations required in the window to produce a result (instead of NaN)",
+      },
+      {
+        questionText: "Which method computes an exponentially weighted moving average, giving more weight to recent observations?",
+        options: ["'.ewm()'", "'.rolling()'", "'.expanding()'", "'.weighted()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: '.ewm()'",
+      },
+      {
+        questionText: "What does '.rolling(window=3).std()' return?",
+        options: ["The rolling standard deviation over each 3-value window", "The overall standard deviation", "The rolling mean", "A boolean mask"],
+        correctOption: 0,
+        explanation: "The correct answer is: The rolling standard deviation over each 3-value window",
+      },
+      {
+        questionText: "Rolling window functions are most commonly applied to which type of data?",
+        options: ["Time series / sequentially ordered data", "Unordered categorical data", "Only boolean data", "Only string data"],
+        correctOption: 0,
+        explanation: "The correct answer is: Time series / sequentially ordered data",
+      },
+      {
+        questionText: "What does 'df['col'].cumsum()' compute?",
+        options: ["The cumulative (running) sum of the column up to each row", "The rolling average", "The difference between consecutive rows", "The total sum only"],
+        correctOption: 0,
+        explanation: "The correct answer is: The cumulative (running) sum of the column up to each row",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Given a DataFrame of daily stock prices with a 'close' column, compute a 7-day rolling average and add it as a new column 'ma_7'.",
+        starterCode: "# Given a DataFrame of daily stock prices with a 'close' colum\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'close': [100,102,101,105,107,110,108,111,113,115]})\ndf['ma_7'] = df['close'].rolling(window=7).mean()\nprint(df)\\n```",
+      },
+      {
+        questionText: "Given a Series of daily sales, compute the expanding (cumulative) maximum sales value up to each day.",
+        starterCode: "# Given a Series of daily sales, compute the expanding (cumula\n\ndef expanding():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\nsales = pd.Series([10, 25, 15, 40, 30, 55])\nexpanding_max = sales.expanding().max()\nprint(expanding_max)\\n```",
+      },
+    ],
+  },
+  56: {
+    topicTitle: "Pandas: Pandas Categorical Data Type",
+    mcqs: [
+      {
+        questionText: "What is the main benefit of using pandas' 'category' dtype for a column with few unique repeated string values?",
+        options: ["It reduces memory usage and can speed up operations like grouping and sorting", "It converts strings to numbers automatically for machine learning", "It removes duplicate rows", "It prevents any further modification of the column"],
+        correctOption: 0,
+        explanation: "The correct answer is: It reduces memory usage and can speed up operations like grouping and sorting",
+      },
+      {
+        questionText: "How do you convert a column to categorical dtype?",
+        options: ["'df['col'] = df['col'].astype('category')'", "'df['col'] = df['col'].to_category()'", "'df['col'].categorize()'", "'pd.Category(df['col'])'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'df['col'] = df['col'].astype('category')'",
+      },
+      {
+        questionText: "What does 'df['col'].cat.categories' return?",
+        options: ["The number of rows", "The unique category labels defined for that categorical column", "The index of the DataFrame", "The dtype of every column"],
+        correctOption: 1,
+        explanation: "The correct answer is: The unique category labels defined for that categorical column",
+      },
+      {
+        questionText: "How can you specify that a categorical column has a meaningful order (e.g., 'Low' < 'Medium' < 'High')?",
+        options: ["By setting 'ordered=True' and passing the 'categories' list in the desired order", "Categorical columns can never be ordered", "By sorting the DataFrame first", "By converting to a string type"],
+        correctOption: 0,
+        explanation: "The correct answer is: By setting 'ordered=True' and passing the 'categories' list in the desired order",
+      },
+      {
+        questionText: "What happens if you try to assign a value to a categorical column that is not in its defined categories?",
+        options: ["It is silently added as a new row", "It results in a missing value (NaN) or raises an error depending on the operation, since the value isn't a recognized category", "Nothing, it works exactly like a normal string column", "The entire DataFrame is deleted"],
+        correctOption: 1,
+        explanation: "The correct answer is: It results in a missing value (NaN) or raises an error depending on the operation, since the value isn't a recognized category",
+      },
+      {
+        questionText: "Which method adds a new category to an existing categorical column?",
+        options: ["'.cat.add_categories([...])'", "'.cat.new_category([...])'", "'.cat.append([...])'", "'.astype('category')'"],
+        correctOption: 0,
+        explanation: "The correct answer is: '.cat.add_categories([...])'",
+      },
+      {
+        questionText: "Why might grouping by a categorical column be faster than grouping by an object (string) column?",
+        options: ["Pandas can use the underlying integer codes for categories internally, which is more efficient than comparing full strings", "Categorical columns cannot be grouped", "There is no performance difference", "Categorical columns are stored as floats"],
+        correctOption: 0,
+        explanation: "The correct answer is: Pandas can use the underlying integer codes for categories internally, which is more efficient than comparing full strings",
+      },
+      {
+        questionText: "What does 'df['col'].cat.codes' return?",
+        options: ["The integer codes representing each category value internally", "The category labels as strings", "The count of each category", "The DataFrame's column names"],
+        correctOption: 0,
+        explanation: "The correct answer is: The integer codes representing each category value internally",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Given a DataFrame with a 'size' column containing values ''S'', ''M'', ''L'', ''XL'', convert it to an ordered categorical dtype with that specific order, then sort the DataFrame by 'size'.",
+        starterCode: "# Given a DataFrame with a 'size' column containing values ''S\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'size': ['M','S','XL','L']})\norder = ['S','M','L','XL']\ndf['size'] = pd.Categorical(df['size'], categories=order, ordered=True)\ndf = df.sort_values('size')\nprint(df)\\n```",
+      },
+      {
+        questionText: "Write code to check the memory usage of a DataFrame column before and after converting it from 'object' to 'category' dtype using 'df.memory_usage(deep=True)'.",
+        starterCode: "# Write code to check the memory usage of a DataFrame column b\n\ndef memory_usage():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'size': ['S','M','L','XL'] * 1000})\nbefore = df.memory_usage(deep=True)['size']\ndf['size'] = df['size'].astype('category')\nafter = df.memory_usage(deep=True)['size']\nprint(f\"Before: {before} bytes, After: {after} bytes\")\\n```",
+      },
+    ],
+  },
+  57: {
+    topicTitle: "Pandas: Pandas String/Text Methods (.str accessor)",
+    mcqs: [
+      {
+        questionText: "What does the '.str' accessor allow you to do on a pandas Series?",
+        options: ["Apply vectorized string operations (like '.upper()', '.contains()') to every element at once", "Convert the Series to a NumPy array", "Sort the Series numerically", "Merge two Series"],
+        correctOption: 0,
+        explanation: "The correct answer is: Apply vectorized string operations (like '.upper()', '.contains()') to every element at once",
+      },
+      {
+        questionText: "What does 'df['col'].str.contains('abc')' return?",
+        options: ["The count of matches", "A boolean Series indicating whether each string contains the substring 'abc'", "A single True/False value", "A new DataFrame"],
+        correctOption: 1,
+        explanation: "The correct answer is: A boolean Series indicating whether each string contains the substring 'abc'",
+      },
+      {
+        questionText: "Which method splits each string in a Series into a list based on a delimiter?",
+        options: ["'.str.split(delimiter)'", "'.str.divide(delimiter)'", "'.str.break(delimiter)'", "'.str.cut(delimiter)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: '.str.split(delimiter)'",
+      },
+      {
+        questionText: "What does 'df['col'].str.strip()' do?",
+        options: ["Removes leading and trailing whitespace from each string", "Deletes the column entirely", "Converts to lowercase", "Splits the string"],
+        correctOption: 0,
+        explanation: "The correct answer is: Removes leading and trailing whitespace from each string",
+      },
+      {
+        questionText: "Which method replaces a substring/pattern within each string of a Series?",
+        options: ["'.str.replace(old, new)'", "'.str.sub(old, new)'", "'.str.change(old, new)'", "'.str.swap(old, new)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: '.str.replace(old, new)'",
+      },
+      {
+        questionText: "What does 'df['col'].str.len()' return?",
+        options: ["The number of rows in the column", "A Series of integers giving the character length of each string", "The total character count of the entire column", "A boolean Series"],
+        correctOption: 1,
+        explanation: "The correct answer is: A Series of integers giving the character length of each string",
+      },
+      {
+        questionText: "Does 'df['col'].str.contains('abc', case=False)' perform a case-sensitive or case-insensitive search?",
+        options: ["Case-sensitive", "Case-insensitive, because 'case=False' disables case sensitivity", "It raises an error", "It only works on numeric columns"],
+        correctOption: 1,
+        explanation: "The correct answer is: Case-insensitive, because 'case=False' disables case sensitivity",
+      },
+      {
+        questionText: "Which method extracts substrings matching a regex pattern with a capture group into new columns/Series?",
+        options: ["'.str.extract(pattern)'", "'.str.find(pattern)'", "'.str.locate(pattern)'", "'.str.pull(pattern)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: '.str.extract(pattern)'",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Given a DataFrame column 'email', write code using '.str' methods to extract the domain (text after '@') into a new column 'domain'.",
+        starterCode: "# Given a DataFrame column 'email', write code using '.str' me\n\ndef domain():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'email': ['john@gmail.com', 'sara@yahoo.com']})\ndf['domain'] = df['email'].str.split('@').str[1]\nprint(df)\\n```",
+      },
+      {
+        questionText: "Given a column 'full_name' with values like '\"john smith\"', write code to convert each name to title case ('\"John Smith\"') using '.str.title()'.",
+        starterCode: "# Given a column 'full_name' with values like '\"john smith\"', \n\ndef case():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'full_name': ['john smith', 'jane doe']})\ndf['full_name'] = df['full_name'].str.title()\nprint(df)\\n```",
+      },
+    ],
+  },
+  58: {
+    topicTitle: "Pandas: Pandas Reshaping: melt, stack, unstack",
+    mcqs: [
+      {
+        questionText: "What does 'pd.melt()' do to a \"wide\" DataFrame?",
+        options: ["Converts it to a \"long\" format by unpivoting columns into rows", "Deletes columns", "Merges two DataFrames", "Sorts columns alphabetically"],
+        correctOption: 0,
+        explanation: "The correct answer is: Converts it to a \"long\" format by unpivoting columns into rows",
+      },
+      {
+        questionText: "In 'pd.melt(df, id_vars=['id'], value_vars=['jan','feb'])', what does 'id_vars' specify?",
+        options: ["The columns to unpivot into rows", "The column(s) to keep fixed as identifier variables while other columns are unpivoted", "The new column names", "The columns to delete"],
+        correctOption: 1,
+        explanation: "The correct answer is: The column(s) to keep fixed as identifier variables while other columns are unpivoted",
+      },
+      {
+        questionText: "What does 'DataFrame.stack()' do?",
+        options: ["Pivots columns into a new innermost level of the row index, producing a Series/DataFrame with a MultiIndex", "Combines two DataFrames vertically", "Deletes duplicate rows", "Sorts the DataFrame"],
+        correctOption: 0,
+        explanation: "The correct answer is: Pivots columns into a new innermost level of the row index, producing a Series/DataFrame with a MultiIndex",
+      },
+      {
+        questionText: "What does 'DataFrame.unstack()' do, relative to 'stack()'?",
+        options: ["It is the inverse operation, pivoting an index level into columns", "It performs the same operation as 'stack()'", "It deletes the index", "It converts columns to rows only"],
+        correctOption: 0,
+        explanation: "The correct answer is: It is the inverse operation, pivoting an index level into columns",
+      },
+      {
+        questionText: "When would you typically use 'melt()' before analysis or plotting?",
+        options: ["When you need \"long-format\" (tidy) data, e.g., for certain visualization libraries or groupby operations", "Only when merging DataFrames", "When you want to widen the DataFrame", "Melt is only used for numeric conversion"],
+        correctOption: 0,
+        explanation: "The correct answer is: When you need \"long-format\" (tidy) data, e.g., for certain visualization libraries or groupby operations",
+      },
+      {
+        questionText: "What is the resulting shape characteristic of a melted DataFrame compared to the original wide one?",
+        options: ["Fewer columns, more rows", "More columns, fewer rows", "Same shape exactly", "Always exactly 2 columns regardless of input"],
+        correctOption: 0,
+        explanation: "The correct answer is: Fewer columns, more rows",
+      },
+      {
+        questionText: "Which pandas function is the inverse of 'melt()', converting long format back to wide format?",
+        options: ["'pivot()'", "'stack()'", "'concat()'", "'merge()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'pivot()'",
+      },
+      {
+        questionText: "If a DataFrame has a MultiIndex on columns, what does 'stack()' typically do?",
+        options: ["Moves one level of the column MultiIndex down into the row index", "Removes the MultiIndex entirely", "Raises an error always", "Converts all data to strings"],
+        correctOption: 0,
+        explanation: "The correct answer is: Moves one level of the column MultiIndex down into the row index",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Given a wide DataFrame with columns 'id', 'jan_sales', 'feb_sales', 'mar_sales', use 'pd.melt()' to reshape it into long format with columns 'id', 'month', 'sales'.",
+        starterCode: "# Given a wide DataFrame with columns 'id', 'jan_sales', 'feb_\n\ndef melt():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'id':[1,2], 'jan_sales':[100,150], 'feb_sales':[110,160], 'mar_sales':[120,170]})\nlong_df = pd.melt(df, id_vars='id', var_name='month', value_name='sales')\nprint(long_df)\\n```",
+      },
+      {
+        questionText: "Given a DataFrame with a MultiIndex on both rows and columns, demonstrate using '.stack()' followed by '.unstack()' to reshape it and explain the resulting structure with a printed output.",
+        starterCode: "# Given a DataFrame with a MultiIndex on both rows and columns\n\ndef stack():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport pandas as pd\narrays = [['A','A','B','B'], ['x','y','x','y']]\nidx = pd.MultiIndex.from_arrays(arrays, names=['cat','sub'])\ndf = pd.DataFrame({'val1':[1,2,3,4], 'val2':[5,6,7,8]}, index=idx)\nstacked = df.stack()\nprint(stacked)\nunstacked = stacked.unstack()\nprint(unstacked)  # returns to original wide shape\\n```",
+      },
+    ],
+  },
+  59: {
+    topicTitle: "Pandas: Pandas Performance Optimization",
+    mcqs: [
+      {
+        questionText: "Why are vectorized pandas/NumPy operations generally preferred over Python 'for' loops when processing DataFrame columns?",
+        options: ["Vectorized operations run in optimized C code under the hood, making them significantly faster", "Loops always produce more accurate results", "There is no actual performance difference", "Loops use less memory"],
+        correctOption: 0,
+        explanation: "The correct answer is: Vectorized operations run in optimized C code under the hood, making them significantly faster",
+      },
+      {
+        questionText: "What does 'df.memory_usage(deep=True)' help you identify?",
+        options: ["The exact runtime of each operation", "The memory consumed by each column, including actual object memory for strings", "The number of NaN values", "The correlation between columns"],
+        correctOption: 1,
+        explanation: "The correct answer is: The memory consumed by each column, including actual object memory for strings",
+      },
+      {
+        questionText: "Which technique can reduce memory usage of a numeric column significantly if its value range is small?",
+        options: ["Downcasting dtypes, e.g., converting 'int64' to 'int8'/'int32' using 'pd.to_numeric(..., downcast=...)'", "Converting to 'object' dtype", "Adding more decimal places", "Duplicating the column"],
+        correctOption: 0,
+        explanation: "The correct answer is: Downcasting dtypes, e.g., converting 'int64' to 'int8'/'int32' using 'pd.to_numeric(..., downcast=...)'",
+      },
+      {
+        questionText: "Why is 'df.iterrows()' generally discouraged for large DataFrames?",
+        options: ["It is one of the slowest ways to iterate row-by-row since it creates a Series for every row", "It cannot access column values", "It only works on the first 5 rows", "It automatically deletes data"],
+        correctOption: 0,
+        explanation: "The correct answer is: It is one of the slowest ways to iterate row-by-row since it creates a Series for every row",
+      },
+      {
+        questionText: "What is a recommended alternative to '.apply()' with a Python function for simple numeric transformations, for better performance?",
+        options: ["Vectorized arithmetic directly on columns (e.g., 'df['a'] + df['b']')", "'.iterrows()'", "Nested for loops", "'.applymap()' is always faster"],
+        correctOption: 0,
+        explanation: "The correct answer is: Vectorized arithmetic directly on columns (e.g., 'df['a'] + df['b']')",
+      },
+      {
+        questionText: "How can reading only necessary columns when loading a large CSV help performance?",
+        options: ["Using 'usecols' in 'pd.read_csv()' reduces memory and load time by skipping unneeded columns", "It has no effect on performance", "It always corrupts the data", "It is not supported by pandas"],
+        correctOption: 0,
+        explanation: "The correct answer is: Using 'usecols' in 'pd.read_csv()' reduces memory and load time by skipping unneeded columns",
+      },
+      {
+        questionText: "What is the benefit of using 'pd.eval()' or 'df.eval()' for complex arithmetic expressions on large DataFrames?",
+        options: ["It can evaluate expressions more efficiently by avoiding intermediate temporary arrays", "It converts the DataFrame to a database", "It replaces the need for column names", "It only works on strings"],
+        correctOption: 0,
+        explanation: "The correct answer is: It can evaluate expressions more efficiently by avoiding intermediate temporary arrays",
+      },
+      {
+        questionText: "Why might chaining many '.apply(lambda...)' calls be slower than a single vectorized expression?",
+        options: ["Each '.apply()' call with a Python-level function incurs per-row Python function call overhead, unlike vectorized C-level operations", "'.apply()' is always faster than vectorization", "Chaining has no performance cost", "Vectorized code cannot be chained"],
+        correctOption: 0,
+        explanation: "The correct answer is: Each '.apply()' call with a Python-level function incurs per-row Python function call overhead, unlike vectorized C-level operations",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write code that compares the execution time of computing 'df['a'] + df['b']' using a vectorized operation versus using 'df.apply(lambda row: row['a'] + row['b'], axis=1)', printing both timings.",
+        starterCode: "# Write code that compares the execution time of computing 'df\n\ndef apply():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd, time\ndf = pd.DataFrame({'a': range(100000), 'b': range(100000)})\nt0 = time.time()\nvec = df['a'] + df['b']\nt1 = time.time()\napplied = df.apply(lambda row: row['a'] + row['b'], axis=1)\nt2 = time.time()\nprint(f\"Vectorized: {t1-t0:.4f}s, apply: {t2-t1:.4f}s\")\\n```",
+      },
+      {
+        questionText: "Given a DataFrame with an 'int64' column that only contains values between 0 and 100, write code to downcast it to a smaller integer dtype and print the memory usage before and after.",
+        starterCode: "# Given a DataFrame with an 'int64' column that only contains \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\nimport numpy as np\ndf = pd.DataFrame({'x': np.random.randint(0, 101, 10000)})\nbefore = df['x'].memory_usage(deep=True)\ndf['x'] = df['x'].astype('uint8')\nafter = df['x'].memory_usage(deep=True)\nprint(f\"Before: {before} bytes, After: {after} bytes\")\\n```",
+      },
+    ],
+  },
+  60: {
+    topicTitle: "Pandas: Pandas Exporting Data (to_csv, to_excel, to_sql)",
+    mcqs: [
+      {
+        questionText: "Which method exports a DataFrame to a CSV file?",
+        options: ["'df.to_csv('file.csv')'", "'df.export_csv('file.csv')'", "'df.write_csv('file.csv')'", "'df.save('file.csv')'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'df.to_csv('file.csv')'",
+      },
+      {
+        questionText: "Which parameter of 'to_csv()' prevents the DataFrame's index from being written as a column in the file?",
+        options: ["'index=False'", "'header=False'", "'no_index=True'", "'include_index=False'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'index=False'",
+      },
+      {
+        questionText: "Which method exports a DataFrame to an Excel file, and what package is typically required to write '.xlsx' files?",
+        options: ["'df.to_excel('file.xlsx')', requiring a package like 'openpyxl'", "'df.to_xls()', requiring 'xlrd' only", "'df.save_excel()', no extra package needed", "'df.write('file.xlsx')'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'df.to_excel('file.xlsx')', requiring a package like 'openpyxl'",
+      },
+      {
+        questionText: "How would you write multiple DataFrames to different sheets in a single Excel file?",
+        options: ["Using 'pd.ExcelWriter' and calling 'to_excel(writer, sheet_name=...)' for each DataFrame", "It is not possible with pandas", "By concatenating them into one DataFrame first", "Using 'to_csv()' with multiple filenames"],
+        correctOption: 0,
+        explanation: "The correct answer is: Using 'pd.ExcelWriter' and calling 'to_excel(writer, sheet_name=...)' for each DataFrame",
+      },
+      {
+        questionText: "What does 'df.to_sql('table_name', con=engine)' do?",
+        options: ["Writes the DataFrame's contents into a SQL database table via a database connection/engine", "Converts the DataFrame into a SQL query string only", "Reads data from a SQL table", "Deletes a SQL table"],
+        correctOption: 0,
+        explanation: "The correct answer is: Writes the DataFrame's contents into a SQL database table via a database connection/engine",
+      },
+      {
+        questionText: "Which parameter of 'to_sql()' controls what happens if the target table already exists (e.g., 'replace', 'append', 'fail')?",
+        options: ["'if_exists'", "'mode'", "'on_conflict'", "'overwrite'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'if_exists'",
+      },
+      {
+        questionText: "Which method converts a DataFrame to a JSON string/file?",
+        options: ["'df.to_json()'", "'df.to_dict()' only", "'df.export_json()'", "'df.json()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'df.to_json()'",
+      },
+      {
+        questionText: "Why might you specify 'encoding='utf-8'' when exporting to CSV?",
+        options: ["To ensure special characters (like accented letters or emojis) are saved and read correctly", "It has no effect on the output", "It compresses the file", "It is required syntax with no functional purpose"],
+        correctOption: 0,
+        explanation: "The correct answer is: To ensure special characters (like accented letters or emojis) are saved and read correctly",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write code to export a DataFrame 'df' to a CSV file named 'output.csv' without including the index column.",
+        starterCode: "# Write code to export a DataFrame 'df' to a CSV file named 'o\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'a': [1,2,3]})\ndf.to_csv('output.csv', index=False)\\n```",
+      },
+      {
+        questionText: "Write code using 'pd.ExcelWriter' to export two DataFrames, 'df_sales' and 'df_customers', into a single Excel file called 'report.xlsx', on separate sheets named \"Sales\" and \"Customers\".",
+        starterCode: "# Write code using 'pd.ExcelWriter' to export two DataFrames, \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf_sales = pd.DataFrame({'product': ['A'], 'sales': [100]})\ndf_customers = pd.DataFrame({'name': ['X']})\nwith pd.ExcelWriter('report.xlsx') as writer:\n    df_sales.to_excel(writer, sheet_name='Sales', index=False)\n    df_customers.to_excel(writer, sheet_name='Customers', index=False)\\n```",
+      },
+    ],
+  },
+  61: {
+    topicTitle: "NumPy: NumPy - Introduction",
+    mcqs: [
+      {
+        questionText: "NumPy is primarily used in Python for:",
+        options: ["Web development", "Efficient numerical computing with support for multi-dimensional arrays", "Database management", "GUI development"],
+        correctOption: 1,
+        explanation: "The correct answer is: Efficient numerical computing with support for multi-dimensional arrays",
+      },
+      {
+        questionText: "Which import convention is standard for NumPy?",
+        options: ["'import numpy as np'", "'import numpy as numpy'", "'from numpy import *' only", "'include numpy'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'import numpy as np'",
+      },
+      {
+        questionText: "What is the core data structure provided by NumPy?",
+        options: ["DataFrame", "ndarray (N-dimensional array)", "Series", "LinkedList"],
+        correctOption: 1,
+        explanation: "The correct answer is: ndarray (N-dimensional array)",
+      },
+      {
+        questionText: "Why is NumPy generally faster than plain Python lists for numerical operations?",
+        options: ["It isn't faster at all", "It uses contiguous memory blocks and vectorized, compiled operations under the hood", "It uses more RAM automatically", "It converts numbers to strings internally"],
+        correctOption: 1,
+        explanation: "The correct answer is: It uses contiguous memory blocks and vectorized, compiled operations under the hood",
+      },
+      {
+        questionText: "Which of these correctly creates a NumPy array from a Python list?",
+        options: ["'np.array([1,2,3])'", "'np.list([1,2,3])'", "'np.tolist([1,2,3])'", "'numpy([1,2,3])'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.array([1,2,3])'",
+      },
+      {
+        questionText: "Which command checks the installed NumPy version?",
+        options: ["'np.__version__'", "'np.version()'", "'np.ver'", "'numpy.check_version()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.__version__'",
+      },
+      {
+        questionText: "Which of the following is a real-world use case of NumPy?",
+        options: ["Performing fast matrix and vector operations for scientific computing and ML", "Only formatting text", "Only rendering web pages", "Only managing files"],
+        correctOption: 0,
+        explanation: "The correct answer is: Performing fast matrix and vector operations for scientific computing and ML",
+      },
+      {
+        questionText: "NumPy underlies which other popular Python libraries?",
+        options: ["Pandas, scikit-learn, and TensorFlow, among others", "Only Flask", "Only BeautifulSoup", "None; it is used standalone only"],
+        correctOption: 0,
+        explanation: "The correct answer is: Pandas, scikit-learn, and TensorFlow, among others",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python program that imports NumPy, creates a 1D array from a list of 5 numbers, and prints the array along with its type.",
+        starterCode: "# Write a Python program that imports NumPy, creates a 1D arra\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\narr = np.array([1, 2, 3, 4, 5])\nprint(arr, type(arr))\\n```",
+      },
+      {
+        questionText: "Write a Python program that creates a 2D NumPy array (3x3) using 'np.array()' from a nested list, and prints it.",
+        starterCode: "# Write a Python program that creates a 2D NumPy array (3x3) u\n\ndef array():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\narr2d = np.array([[1,2,3],[4,5,6],[7,8,9]])\nprint(arr2d)\\n```",
+      },
+    ],
+  },
+  62: {
+    topicTitle: "NumPy: NumPy - Fundamentals",
+    mcqs: [
+      {
+        questionText: "Which function creates an array of zeros with a given shape?",
+        options: ["'np.zeros(shape)'", "'np.empty(shape)'", "'np.blank(shape)'", "'np.null(shape)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.zeros(shape)'",
+      },
+      {
+        questionText: "Which function creates an array of ones?",
+        options: ["'np.ones(shape)'", "'np.full_ones(shape)'", "'np.unit(shape)'", "'np.one(shape)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.ones(shape)'",
+      },
+      {
+        questionText: "Which function creates an array with evenly spaced values within a range (like Python's 'range')?",
+        options: ["'np.arange(start, stop, step)'", "'np.range(start, stop, step)'", "'np.sequence(start, stop, step)'", "'np.series(start, stop, step)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.arange(start, stop, step)'",
+      },
+      {
+        questionText: "Which function generates evenly spaced numbers over a specified interval, given a total count?",
+        options: ["'np.linspace(start, stop, num)'", "'np.arange(start, stop, num)'", "'np.evenspace(start, stop, num)'", "'np.spread(start, stop, num)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.linspace(start, stop, num)'",
+      },
+      {
+        questionText: "Which function creates an identity matrix?",
+        options: ["'np.eye(n)'", "'np.identity_matrix(n)'", "'np.diag_ones(n)'", "'np.unit_matrix(n)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.eye(n)'",
+      },
+      {
+        questionText: "Which function reshapes an array into a new shape without changing its data?",
+        options: ["'array.reshape(new_shape)'", "'array.resize_only(new_shape)'", "'array.transform(new_shape)'", "'array.rearrange(new_shape)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'array.reshape(new_shape)'",
+      },
+      {
+        questionText: "How do you generate an array of random numbers uniformly distributed between 0 and 1?",
+        options: ["'np.random.rand(size)'", "'np.random.uniform_only()'", "'np.rand.random(size)'", "'np.random_array(size)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.random.rand(size)'",
+      },
+      {
+        questionText: "Broadcasting in NumPy refers to:",
+        options: ["Sending data over a network", "The ability to perform arithmetic operations on arrays of different (but compatible) shapes without explicit looping", "Converting arrays to strings", "A type of sorting algorithm"],
+        correctOption: 1,
+        explanation: "The correct answer is: The ability to perform arithmetic operations on arrays of different (but compatible) shapes without explicit looping",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python program using NumPy to create a 4x4 array of zeros, a 4x4 array of ones, and a 4x4 identity matrix, printing all three.",
+        starterCode: "# Write a Python program using NumPy to create a 4x4 array of \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nzeros = np.zeros((4,4))\nones = np.ones((4,4))\nidentity = np.eye(4)\nprint(zeros, ones, identity, sep='\\n\\n')\\n```",
+      },
+      {
+        questionText: "Write a Python program that demonstrates broadcasting by adding a 1D NumPy array of shape (3,) to a 2D array of shape (3,3), and prints the result.",
+        starterCode: "# Write a Python program that demonstrates broadcasting by add\n\ndef shape():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\narr2d = np.ones((3,3))\narr1d = np.array([1,2,3])\nresult = arr2d + arr1d\nprint(result)\\n```",
+      },
+    ],
+  },
+  63: {
+    topicTitle: "NumPy: NumPy - Attributes",
+    mcqs: [
+      {
+        questionText: "Which attribute returns the shape (dimensions) of a NumPy array?",
+        options: ["'array.shape'", "'array.dims'", "'array.size_shape'", "'array.form'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'array.shape'",
+      },
+      {
+        questionText: "Which attribute returns the number of dimensions of an array?",
+        options: ["'array.ndim'", "'array.dimensions'", "'array.rank'", "'array.axes_count'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'array.ndim'",
+      },
+      {
+        questionText: "Which attribute returns the total number of elements in an array?",
+        options: ["'array.size'", "'array.count'", "'array.length'", "'array.total'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'array.size'",
+      },
+      {
+        questionText: "Which attribute returns the data type of the array's elements?",
+        options: ["'array.dtype'", "'array.type'", "'array.datatype'", "'array.kind'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'array.dtype'",
+      },
+      {
+        questionText: "Which attribute returns the size in bytes of each element in the array?",
+        options: ["'array.itemsize'", "'array.bytesize'", "'array.element_size'", "'array.nbytes_each'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'array.itemsize'",
+      },
+      {
+        questionText: "Which attribute returns the total memory consumed by the array's elements in bytes?",
+        options: ["'array.nbytes'", "'array.memory'", "'array.total_bytes'", "'array.size_bytes'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'array.nbytes'",
+      },
+      {
+        questionText: "If 'arr.shape' is '(3, 4)', what does this indicate?",
+        options: ["The array has 3 elements", "The array has 3 rows and 4 columns (a 2D array)", "The array has 4 dimensions", "The array has 12 dimensions"],
+        correctOption: 1,
+        explanation: "The correct answer is: The array has 3 rows and 4 columns (a 2D array)",
+      },
+      {
+        questionText: "Which attribute returns the transpose of a 2D array?",
+        options: ["'array.T'", "'array.transpose_view'", "'array.flip()' only", "'array.rotate'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'array.T'",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python program that creates a 2D NumPy array and prints its 'shape', 'ndim', 'size', 'dtype', and 'itemsize' attributes.",
+        starterCode: "# Write a Python program that creates a 2D NumPy array and pri\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\narr = np.array([[1,2,3],[4,5,6]])\nprint(arr.shape, arr.ndim, arr.size, arr.dtype, arr.itemsize)\\n```",
+      },
+      {
+        questionText: "Write a Python program that creates a NumPy array of integers, then another of floats, and compares their 'dtype' and 'nbytes' attributes side by side.",
+        starterCode: "# Write a Python program that creates a NumPy array of integer\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nint_arr = np.array([1,2,3])\nfloat_arr = np.array([1.0,2.0,3.0])\nprint(\"Int:\", int_arr.dtype, int_arr.nbytes)\nprint(\"Float:\", float_arr.dtype, float_arr.nbytes)\\n```",
+      },
+    ],
+  },
+  64: {
+    topicTitle: "NumPy: NumPy - Methods",
+    mcqs: [
+      {
+        questionText: "Which method computes the sum of all elements in an array?",
+        options: ["'array.sum()'", "'array.total()'", "'array.add_all()'", "'array.aggregate()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'array.sum()'",
+      },
+      {
+        questionText: "Which method computes the mean of an array's elements?",
+        options: ["'array.mean()'", "'array.average_val()'", "'array.avg()'", "'array.center()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'array.mean()'",
+      },
+      {
+        questionText: "Which method returns the maximum value in an array?",
+        options: ["'array.max()'", "'array.highest()'", "'array.top()'", "'array.largest()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'array.max()'",
+      },
+      {
+        questionText: "Which method returns the index of the maximum value in an array?",
+        options: ["'array.argmax()'", "'array.index_max()'", "'array.maxindex()'", "'array.pos_max()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'array.argmax()'",
+      },
+      {
+        questionText: "Which method sorts the elements of an array?",
+        options: ["'array.sort()'", "'array.order()'", "'array.arrange_vals()'", "'array.rank()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'array.sort()'",
+      },
+      {
+        questionText: "Which method computes the standard deviation of an array's elements?",
+        options: ["'array.std()'", "'array.stddev()'", "'array.deviation()'", "'array.spread()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'array.std()'",
+      },
+      {
+        questionText: "Which method performs matrix multiplication between two 2D NumPy arrays?",
+        options: ["'np.dot(a, b)' or 'a @ b'", "'a * b' (element-wise, not matrix multiplication)", "'a.multiply(b)'", "'np.cross(a, b)' only"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.dot(a, b)' or 'a @ b'",
+      },
+      {
+        questionText: "Which method flattens a multi-dimensional array into a 1D array?",
+        options: ["'array.flatten()' (or '.ravel()')", "'array.squeeze_all()'", "'array.linear()'", "'array.collapse()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'array.flatten()' (or '.ravel()')",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python program using NumPy to compute the sum, mean, standard deviation, min, and max of a 1D array of 10 numbers.",
+        starterCode: "# Write a Python program using NumPy to compute the sum, mean,\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\narr = np.array([4,8,15,16,23,42,1,9,3,7])\nprint(arr.sum(), arr.mean(), arr.std(), arr.min(), arr.max())\\n```",
+      },
+      {
+        questionText: "Write a Python program that performs matrix multiplication between two 2D NumPy arrays (2x3 and 3x2) using 'np.dot()' or the '@' operator, and prints the resulting matrix.",
+        starterCode: "# Write a Python program that performs matrix multiplication b\n\ndef arrays():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nA = np.random.randint(1, 10, (2,3))\nB = np.random.randint(1, 10, (3,2))\nresult = A @ B\nprint(result)\\n```",
+      },
+    ],
+  },
+  65: {
+    topicTitle: "NumPy: NumPy Array Creation & Reshaping",
+    mcqs: [
+      {
+        questionText: "Which function creates a NumPy array from a Python list?",
+        options: ["'np.array([1,2,3])'", "'np.list([1,2,3])'", "'np.create([1,2,3])'", "'np.tolist([1,2,3])'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.array([1,2,3])'",
+      },
+      {
+        questionText: "Which function creates an array of evenly spaced values within a given range, similar to Python's 'range()'?",
+        options: ["'np.arange(start, stop, step)'", "'np.linspace_range()'", "'np.evenly()'", "'np.sequence()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.arange(start, stop, step)'",
+      },
+      {
+        questionText: "Which function creates an array of a given number of evenly spaced points between two values (inclusive of both endpoints by default)?",
+        options: ["'np.linspace(start, stop, num)'", "'np.arange(start, stop, num)'", "'np.range(start, stop, num)'", "'np.points(start, stop)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.linspace(start, stop, num)'",
+      },
+      {
+        questionText: "Which functions create arrays filled entirely with zeros or ones respectively?",
+        options: ["'np.zeros(shape)' and 'np.ones(shape)'", "'np.empty(shape)' for both", "'np.null(shape)' and 'np.unit(shape)'", "'np.blank(shape)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.zeros(shape)' and 'np.ones(shape)'",
+      },
+      {
+        questionText: "What does 'array.reshape(2, 3)' do to an array with 6 elements?",
+        options: ["Deletes elements to fit the new shape", "Rearranges the same data into a new shape of 2 rows and 3 columns without changing the underlying data", "Raises an error since reshaping is not allowed", "Sorts the array"],
+        correctOption: 1,
+        explanation: "The correct answer is: Rearranges the same data into a new shape of 2 rows and 3 columns without changing the underlying data",
+      },
+      {
+        questionText: "What does passing '-1' as one dimension in '.reshape()' do, e.g. 'array.reshape(-1, 1)'?",
+        options: ["It causes an error", "NumPy automatically infers that dimension's size based on the array's total length and other given dimensions", "It reverses the array", "It flattens the array to 1D always"],
+        correctOption: 1,
+        explanation: "The correct answer is: NumPy automatically infers that dimension's size based on the array's total length and other given dimensions",
+      },
+      {
+        questionText: "Which method returns a flattened 1D copy of a multi-dimensional array?",
+        options: ["'array.flatten()'", "'array.reshape()' only", "'array.squeeze()' only", "'array.expand()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'array.flatten()'",
+      },
+      {
+        questionText: "What is the difference between 'np.zeros((3,3))' and 'np.eye(3)'?",
+        options: ["There is no difference", "'np.zeros' creates a matrix of all zeros, while 'np.eye' creates a 3x3 identity matrix with ones on the diagonal", "'np.eye' creates a matrix of all zeros", "They are two names for the same function"],
+        correctOption: 1,
+        explanation: "The correct answer is: 'np.zeros' creates a matrix of all zeros, while 'np.eye' creates a 3x3 identity matrix with ones on the diagonal",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Create a 1D NumPy array of integers from 1 to 12, then reshape it into a 3x4 2D array and print the result.",
+        starterCode: "# Create a 1D NumPy array of integers from 1 to 12, then resha\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\narr = np.arange(1, 13)\nreshaped = arr.reshape(3, 4)\nprint(reshaped)\\n```",
+      },
+      {
+        questionText: "Write code to create a 5x5 identity matrix using NumPy, and separately a 3x3 array of random integers between 1 and 100.",
+        starterCode: "# Write code to create a 5x5 identity matrix using NumPy, and \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nidentity5 = np.eye(5)\nrandom_ints = np.random.randint(1, 101, (3,3))\nprint(identity5)\nprint(random_ints)\\n```",
+      },
+    ],
+  },
+  66: {
+    topicTitle: "NumPy: NumPy Indexing, Slicing & Boolean Masking",
+    mcqs: [
+      {
+        questionText: "How do you access the element in row 1, column 2 (0-indexed) of a 2D NumPy array 'arr'?",
+        options: ["'arr[1, 2]'", "'arr(1,2)'", "'arr[1][2]' only works, 'arr[1,2]' is invalid", "'arr.get(1,2)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'arr[1, 2]'",
+      },
+      {
+        questionText: "What does the slice 'arr[1:4]' return for a 1D array?",
+        options: ["Elements at indices 1, 2, 3 (index 4 excluded)", "Elements at indices 1 through 4 inclusive", "Only the element at index 1", "The entire array"],
+        correctOption: 0,
+        explanation: "The correct answer is: Elements at indices 1, 2, 3 (index 4 excluded)",
+      },
+      {
+        questionText: "What does 'arr[:, 0]' select from a 2D array?",
+        options: ["The first row", "The first column (all rows, column index 0)", "A single element", "The last column"],
+        correctOption: 1,
+        explanation: "The correct answer is: The first column (all rows, column index 0)",
+      },
+      {
+        questionText: "What is boolean masking in NumPy, e.g. 'arr[arr > 5]'?",
+        options: ["Selecting elements of an array where a boolean condition is 'True'", "Converting the array to boolean type", "Deleting elements greater than 5", "Sorting the array"],
+        correctOption: 0,
+        explanation: "The correct answer is: Selecting elements of an array where a boolean condition is 'True'",
+      },
+      {
+        questionText: "What does fancy indexing, e.g. 'arr[[0, 2, 4]]', do?",
+        options: ["Selects elements at the specified list of indices", "Raises an error since lists cannot be used as indices", "Selects a range from 0 to 4", "Deletes those indices"],
+        correctOption: 0,
+        explanation: "The correct answer is: Selects elements at the specified list of indices",
+      },
+      {
+        questionText: "Does slicing a NumPy array (e.g., 'arr[1:3]') return a copy or a view of the original data by default?",
+        options: ["A view \u2014 modifying the slice can modify the original array", "Always a full independent copy", "It depends on the array's dtype only", "Neither; slicing always fails"],
+        correctOption: 0,
+        explanation: "The correct answer is: A view \u2014 modifying the slice can modify the original array",
+      },
+      {
+        questionText: "What does 'np.where(arr > 5)' return?",
+        options: ["The array values sorted", "The indices where the condition is True", "A single boolean value", "The count of matching elements"],
+        correctOption: 1,
+        explanation: "The correct answer is: The indices where the condition is True",
+      },
+      {
+        questionText: "How would you select all elements of 'arr' that are greater than 2 AND less than 8?",
+        options: ["'arr[(arr > 2) & (arr < 8)]'", "'arr[arr > 2 and arr < 8]'", "'arr[2 < arr < 8]'", "'arr.between(2, 8)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'arr[(arr > 2) & (arr < 8)]'",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Given a 1D NumPy array of 20 random integers between 1 and 100, use boolean masking to extract only the even numbers.",
+        starterCode: "# Given a 1D NumPy array of 20 random integers between 1 and 1\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\narr = np.random.randint(1, 101, 20)\nevens = arr[arr % 2 == 0]\nprint(evens)\\n```",
+      },
+      {
+        questionText: "Given a 2D array of shape (5,5), write code to extract the second row, the last column, and the sub-array formed by the first two rows and first two columns.",
+        starterCode: "# Given a 2D array of shape (5,5), write code to extract the s\n\ndef shape():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\narr = np.arange(25).reshape(5,5)\nprint(\"Second row:\", arr[1])\nprint(\"Last column:\", arr[:, -1])\nprint(\"Sub-array:\", arr[:2, :2])\\n```",
+      },
+    ],
+  },
+  67: {
+    topicTitle: "NumPy: NumPy Broadcasting",
+    mcqs: [
+      {
+        questionText: "What is broadcasting in NumPy?",
+        options: ["A mechanism that allows NumPy to perform element-wise operations on arrays of different but compatible shapes without explicit copying", "A way to send data over a network", "A method to broadcast (duplicate) code across files", "A sorting algorithm"],
+        correctOption: 0,
+        explanation: "The correct answer is: A mechanism that allows NumPy to perform element-wise operations on arrays of different but compatible shapes without explicit copying",
+      },
+      {
+        questionText: "What happens when you add a scalar to a NumPy array, e.g. 'arr + 5'?",
+        options: ["It raises an error since shapes don't match", "The scalar is broadcast and added to every element of the array", "Only the first element is changed", "It converts the array to a scalar"],
+        correctOption: 1,
+        explanation: "The correct answer is: The scalar is broadcast and added to every element of the array",
+      },
+      {
+        questionText: "For broadcasting to work between two arrays, their shapes must be compatible according to which rule (from the trailing dimensions)?",
+        options: ["Dimensions must be equal, or one of them must be 1", "All dimensions must always be exactly equal", "Arrays must have the same total number of elements", "Broadcasting works for any two shapes"],
+        correctOption: 0,
+        explanation: "The correct answer is: Dimensions must be equal, or one of them must be 1",
+      },
+      {
+        questionText: "Can you add a (3,1) shaped array to a (1,4) shaped array using broadcasting?",
+        options: ["No, this always raises an error", "Yes, they broadcast together to produce a (3,4) shaped result", "Yes, but only if converted to lists first", "Only if both arrays are 1D"],
+        correctOption: 1,
+        explanation: "The correct answer is: Yes, they broadcast together to produce a (3,4) shaped result",
+      },
+      {
+        questionText: "What is a major performance benefit of using broadcasting instead of explicit Python loops?",
+        options: ["Broadcasting avoids the overhead of Python-level loops by delegating repeated operations to fast, vectorized C code", "It uses more memory but no speed difference", "It only works on integers", "There is no performance benefit"],
+        correctOption: 0,
+        explanation: "The correct answer is: Broadcasting avoids the overhead of Python-level loops by delegating repeated operations to fast, vectorized C code",
+      },
+      {
+        questionText: "If you try to broadcast arrays with shapes (3,4) and (2,4), what happens?",
+        options: ["It works fine and produces a (3,2,4) array", "It raises a 'ValueError' because dimension 0 (3 vs 2) is incompatible and neither is 1", "NumPy automatically pads with zeros", "It truncates the larger array"],
+        correctOption: 1,
+        explanation: "The correct answer is: It raises a 'ValueError' because dimension 0 (3 vs 2) is incompatible and neither is 1",
+      },
+      {
+        questionText: "How does broadcasting allow you to normalize each row of a 2D array by subtracting the row means (stored as shape (n,1))?",
+        options: ["'arr - row_means' broadcasts the (n,1) array across each column automatically", "It is not possible without a for loop", "You must first flatten the array", "You must convert to a list"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'arr - row_means' broadcasts the (n,1) array across each column automatically",
+      },
+      {
+        questionText: "Which of the following shape pairs CANNOT be broadcast together?",
+        options: ["(5,4) and (4,)", "(5,4) and (5,1)", "(5,4) and (3,4)", "(5,1) and (1,4)"],
+        correctOption: 2,
+        explanation: "The correct answer is: (5,4) and (3,4)",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Given a 2D array of shape (4,3) representing 4 samples with 3 features, use broadcasting to subtract the column-wise mean from each feature (standardizing the data).",
+        starterCode: "# Given a 2D array of shape (4,3) representing 4 samples with \n\ndef shape():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\ndata = np.random.rand(4,3)\nstandardized = data - data.mean(axis=0)\nprint(standardized)\\n```",
+      },
+      {
+        questionText: "Write code demonstrating broadcasting by adding a 1D array of shape (3,) to a 2D array of shape (4,3), and explain via printed output what shape the result has.",
+        starterCode: "# Write code demonstrating broadcasting by adding a 1D array o\n\ndef shape():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\narr2d = np.ones((4,3))\narr1d = np.array([1,2,3])\nresult = arr2d + arr1d\nprint(result.shape)  # (4,3): arr1d broadcasts across each row\\n```",
+      },
+    ],
+  },
+  68: {
+    topicTitle: "NumPy: NumPy Mathematical & Statistical Functions",
+    mcqs: [
+      {
+        questionText: "Which function computes the element-wise square root of a NumPy array?",
+        options: ["'np.sqrt(arr)'", "'arr.root()'", "'np.square_root(arr)'", "'arr.sqrt' (without parentheses)"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.sqrt(arr)'",
+      },
+      {
+        questionText: "Which function computes the mean of all elements in an array?",
+        options: ["'np.mean(arr)'", "'np.average_val(arr)'", "'arr.total() / arr.len()'", "'np.center(arr)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.mean(arr)'",
+      },
+      {
+        questionText: "Which function computes the standard deviation of an array?",
+        options: ["'np.std(arr)'", "'np.deviation(arr)'", "'np.stdev(arr)'", "'arr.spread()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.std(arr)'",
+      },
+      {
+        questionText: "What does 'np.sum(arr, axis=0)' compute for a 2D array?",
+        options: ["The sum of all elements as a single scalar", "The sum along each column (collapsing rows)", "The sum along each row (collapsing columns)", "The cumulative sum"],
+        correctOption: 1,
+        explanation: "The correct answer is: The sum along each column (collapsing rows)",
+      },
+      {
+        questionText: "Which function returns the index of the maximum value in an array?",
+        options: ["'np.argmax(arr)'", "'np.max_index(arr)'", "'np.indexmax(arr)'", "'np.where_max(arr)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.argmax(arr)'",
+      },
+      {
+        questionText: "Which function computes the dot product of two arrays/matrices?",
+        options: ["'np.dot(a, b)' (or the '@' operator)", "'np.multiply_all(a, b)'", "'np.cross(a, b)' only", "'a.times(b)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.dot(a, b)' (or the '@' operator)",
+      },
+      {
+        questionText: "What does 'np.cumsum(arr)' return?",
+        options: ["An array of the same length showing the running cumulative sum", "A single total sum", "The array sorted", "The differences between consecutive elements"],
+        correctOption: 0,
+        explanation: "The correct answer is: An array of the same length showing the running cumulative sum",
+      },
+      {
+        questionText: "Which function computes element-wise exponential (e^x) of an array?",
+        options: ["'np.exp(arr)'", "'np.power_e(arr)'", "'arr.exponential()'", "'np.e(arr)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.exp(arr)'",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Given a 2D NumPy array representing exam scores of 5 students across 4 subjects, compute the mean and standard deviation of scores per student (row-wise) and per subject (column-wise).",
+        starterCode: "# Given a 2D NumPy array representing exam scores of 5 student\n\ndef student():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nscores = np.random.randint(50, 100, (5,4))\nprint(\"Per student (row):\", scores.mean(axis=1), scores.std(axis=1))\nprint(\"Per subject (col):\", scores.mean(axis=0), scores.std(axis=0))\\n```",
+      },
+      {
+        questionText: "Write a function 'z_score_normalize(arr)' that uses NumPy statistical functions to standardize a 1D array to have mean 0 and standard deviation 1.",
+        starterCode: "# Write a function 'z_score_normalize(arr)' that uses NumPy st\n\ndef z_score_normalize():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport numpy as np\ndef z_score_normalize(arr):\n    return (arr - arr.mean()) / arr.std()\n\ndata = np.array([10, 20, 30, 40, 50])\nprint(z_score_normalize(data))\\n```",
+      },
+    ],
+  },
+  69: {
+    topicTitle: "NumPy: NumPy Linear Algebra Operations",
+    mcqs: [
+      {
+        questionText: "Which NumPy submodule provides linear algebra functions like matrix inversion and eigenvalues?",
+        options: ["'numpy.linalg'", "'numpy.matrix'", "'numpy.algebra'", "'numpy.la'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'numpy.linalg'",
+      },
+      {
+        questionText: "Which function computes the inverse of a square matrix?",
+        options: ["'np.linalg.inv(matrix)'", "'np.linalg.invert(matrix)'", "'matrix.inverse()'", "'np.invert(matrix)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.linalg.inv(matrix)'",
+      },
+      {
+        questionText: "Which function or operator performs matrix multiplication (not element-wise) between two 2D arrays?",
+        options: ["'np.matmul(a, b)' or 'a @ b'", "'a * b'", "'np.multiply(a, b)'", "'a.times(b)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.matmul(a, b)' or 'a @ b'",
+      },
+      {
+        questionText: "Which function computes the determinant of a matrix?",
+        options: ["'np.linalg.det(matrix)'", "'np.linalg.determinant(matrix)'", "'matrix.det()'", "'np.det_matrix(matrix)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.linalg.det(matrix)'",
+      },
+      {
+        questionText: "Which function computes the eigenvalues and eigenvectors of a square matrix?",
+        options: ["'np.linalg.eig(matrix)'", "'np.linalg.eigenvalue(matrix)'", "'matrix.eigen()'", "'np.eigen_decompose(matrix)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.linalg.eig(matrix)'",
+      },
+      {
+        questionText: "What does 'matrix.T' (transpose) do?",
+        options: ["Flips the matrix over its diagonal, swapping rows and columns", "Inverts the matrix", "Computes the determinant", "Sorts the matrix"],
+        correctOption: 0,
+        explanation: "The correct answer is: Flips the matrix over its diagonal, swapping rows and columns",
+      },
+      {
+        questionText: "Why is 'a * b' different from 'np.matmul(a, b)' for two 2D NumPy arrays?",
+        options: ["There is no difference", "'a * b' performs element-wise multiplication, while 'np.matmul' performs true matrix multiplication (dot products of rows and columns)", "'a * b' is invalid syntax", "'np.matmul' only works on 1D arrays"],
+        correctOption: 1,
+        explanation: "The correct answer is: 'a * b' performs element-wise multiplication, while 'np.matmul' performs true matrix multiplication (dot products of rows and columns)",
+      },
+      {
+        questionText: "Which function solves a system of linear equations 'Ax = b' for 'x'?",
+        options: ["'np.linalg.solve(A, b)'", "'np.linalg.equation(A, b)'", "'A.solve(b)'", "'np.solve_linear(A, b)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.linalg.solve(A, b)'",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Given two matrices A (3x2) and B (2x3), write code to compute their matrix product using 'np.matmul()' or the '@' operator, and print the resulting shape.",
+        starterCode: "# Given two matrices A (3x2) and B (2x3), write code to comput\n\ndef A():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nA = np.random.rand(3,2)\nB = np.random.rand(2,3)\nproduct = A @ B\nprint(product.shape)\\n```",
+      },
+      {
+        questionText: "Given a square, invertible matrix, write code to compute its inverse and verify the result by multiplying the matrix by its inverse to confirm it approximates the identity matrix.",
+        starterCode: "# Given a square, invertible matrix, write code to compute its\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nM = np.array([[4,7],[2,6]])\nM_inv = np.linalg.inv(M)\nidentity_check = M @ M_inv\nprint(identity_check)  # approximately identity matrix\\n```",
+      },
+    ],
+  },
+  70: {
+    topicTitle: "NumPy: NumPy Random Module",
+    mcqs: [
+      {
+        questionText: "Which NumPy submodule provides functions for generating random numbers?",
+        options: ["'numpy.random'", "'numpy.rand'", "'numpy.stats'", "'numpy.sample'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'numpy.random'",
+      },
+      {
+        questionText: "Which function generates random floats uniformly distributed between 0 and 1?",
+        options: ["'np.random.rand(size)'", "'np.random.int(size)'", "'np.random.uniform_int(size)'", "'np.random.normal(size)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.random.rand(size)'",
+      },
+      {
+        questionText: "Which function generates random integers within a specified range?",
+        options: ["'np.random.randint(low, high, size)'", "'np.random.int_range(low, high)'", "'np.random.integers_only(low, high)'", "'np.random.rand_int(low, high)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.random.randint(low, high, size)'",
+      },
+      {
+        questionText: "Why is setting a random seed ('np.random.seed(42)') important in reproducible experiments?",
+        options: ["It ensures the same sequence of \"random\" numbers is generated every time the code runs", "It makes the numbers truly random instead of pseudo-random", "It speeds up random number generation", "It has no practical effect"],
+        correctOption: 0,
+        explanation: "The correct answer is: It ensures the same sequence of \"random\" numbers is generated every time the code runs",
+      },
+      {
+        questionText: "Which function generates random samples from a normal (Gaussian) distribution?",
+        options: ["'np.random.normal(loc, scale, size)'", "'np.random.gauss_dist(size)'", "'np.random.bell(size)'", "'np.random.standard(size)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.random.normal(loc, scale, size)'",
+      },
+      {
+        questionText: "Which function randomly shuffles the elements of an array in place?",
+        options: ["'np.random.shuffle(arr)'", "'np.random.mix(arr)'", "'np.random.randomize(arr)'", "'arr.shuffle_random()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.random.shuffle(arr)'",
+      },
+      {
+        questionText: "Which function randomly selects a specified number of elements from a given 1D array, optionally with or without replacement?",
+        options: ["'np.random.choice(arr, size, replace=True/False)'", "'np.random.select(arr, size)'", "'np.random.sample_from(arr)'", "'np.random.pick(arr)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.random.choice(arr, size, replace=True/False)'",
+      },
+      {
+        questionText: "What is the modern recommended way to create a random number generator in NumPy (as opposed to the legacy global 'np.random' state)?",
+        options: ["'rng = np.random.default_rng(seed)', then call methods like 'rng.random()'", "'np.random.new()'", "'np.RandomState.create()'", "There is no modern alternative"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'rng = np.random.default_rng(seed)', then call methods like 'rng.random()'",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write code that sets a random seed for reproducibility, then generates a 4x4 array of random integers between 1 and 50.",
+        starterCode: "# Write code that sets a random seed for reproducibility, then\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nnp.random.seed(42)\narr = np.random.randint(1, 51, (4,4))\nprint(arr)\\n```",
+      },
+      {
+        questionText: "Write a function 'train_test_split_indices(n, test_ratio=0.2)' that uses 'np.random.shuffle()' or 'np.random.choice()' to randomly split indices '0..n-1' into training and testing index arrays according to the given ratio.",
+        starterCode: "# Write a function 'train_test_split_indices(n, test_ratio=0.2\n\ndef train_test_split_indices():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport numpy as np\ndef train_test_split_indices(n, test_ratio=0.2):\n    indices = np.arange(n)\n    np.random.shuffle(indices)\n    split = int(n * (1 - test_ratio))\n    return indices[:split], indices[split:]\n\ntrain_idx, test_idx = train_test_split_indices(100, 0.2)\nprint(len(train_idx), len(test_idx))\\n```",
+      },
+    ],
+  },
+  71: {
+    topicTitle: "Maths: Maths Part 1 - Population, Sample, Types of Variables",
+    mcqs: [
+      {
+        questionText: "A \"population\" in statistics refers to:",
+        options: ["A small subset of data selected for analysis", "The entire set of individuals or items of interest for a study", "Only numerical data", "A type of chart"],
+        correctOption: 1,
+        explanation: "The correct answer is: The entire set of individuals or items of interest for a study",
+      },
+      {
+        questionText: "A \"sample\" refers to:",
+        options: ["The entire population", "A subset of the population selected for analysis, used to make inferences about the population", "A single data point", "A hypothesis test"],
+        correctOption: 1,
+        explanation: "The correct answer is: A subset of the population selected for analysis, used to make inferences about the population",
+      },
+      {
+        questionText: "Why do we typically use a sample instead of the entire population?",
+        options: ["Samples are always less accurate with no benefit", "Studying an entire population is often impractical, costly, or impossible, so a representative sample is used to estimate population characteristics", "Populations don't exist in real data", "Sampling always gives the exact population value"],
+        correctOption: 1,
+        explanation: "The correct answer is: Studying an entire population is often impractical, costly, or impossible, so a representative sample is used to estimate population characteristics",
+      },
+      {
+        questionText: "Which of these is an example of a \"quantitative\" (numeric) variable?",
+        options: ["Height in centimeters", "Eye color", "Marital status", "City name"],
+        correctOption: 0,
+        explanation: "The correct answer is: Height in centimeters",
+      },
+      {
+        questionText: "Which of these is an example of a \"categorical\" (qualitative) variable?",
+        options: ["Age in years", "Gender (Male/Female/Other)", "Weight in kg", "Temperature in Celsius"],
+        correctOption: 1,
+        explanation: "The correct answer is: Gender (Male/Female/Other)",
+      },
+      {
+        questionText: "Which type of quantitative variable can only take specific, countable values (e.g., number of children)?",
+        options: ["Discrete variable", "Continuous variable", "Nominal variable", "Ordinal variable"],
+        correctOption: 0,
+        explanation: "The correct answer is: Discrete variable",
+      },
+      {
+        questionText: "Which type of quantitative variable can take any value within a range (e.g., height, weight)?",
+        options: ["Discrete variable", "Continuous variable", "Nominal variable", "Ordinal variable"],
+        correctOption: 1,
+        explanation: "The correct answer is: Continuous variable",
+      },
+      {
+        questionText: "Which type of categorical variable has a meaningful order (e.g., \"Low\", \"Medium\", \"High\")?",
+        options: ["Nominal variable", "Ordinal variable", "Discrete variable", "Continuous variable"],
+        correctOption: 1,
+        explanation: "The correct answer is: Ordinal variable",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python program that takes a list representing a population of exam scores, randomly samples 5 scores from it using 'random.sample()', and prints both the population and the sample.",
+        starterCode: "# Write a Python program that takes a list representing a popu\n\ndef sample():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport random\npopulation = [65, 70, 55, 80, 90, 60, 75, 85, 95, 50]\nsample = random.sample(population, 5)\nprint(\"Population:\", population)\nprint(\"Sample:\", sample)\\n```",
+      },
+      {
+        questionText: "Write a Python program using Pandas that classifies each column of a small sample DataFrame (with numeric and categorical columns) as \"quantitative\" or \"categorical\" based on its dtype, and prints the classification.",
+        starterCode: "# Write a Python program using Pandas that classifies each col\n\ndef DataFrame():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'age': [25,30,35], 'city': ['NY','LA','SF']})\nfor col in df.columns:\n    kind = 'quantitative' if pd.api.types.is_numeric_dtype(df[col]) else 'categorical'\n    print(col, '->', kind)\\n```",
+      },
+    ],
+  },
+  72: {
+    topicTitle: "Maths: Maths Part 2 - Mode, Median, Mean, Range, Standard Deviation, Variance",
+    mcqs: [
+      {
+        questionText: "The \"mean\" of a dataset is:",
+        options: ["The middle value when sorted", "The sum of all values divided by the number of values", "The most frequently occurring value", "The difference between the max and min"],
+        correctOption: 1,
+        explanation: "The correct answer is: The sum of all values divided by the number of values",
+      },
+      {
+        questionText: "The \"median\" of a dataset is:",
+        options: ["The average of all values", "The middle value when the data is sorted (or the average of the two middle values for an even count)", "The most frequent value", "The range of the data"],
+        correctOption: 1,
+        explanation: "The correct answer is: The middle value when the data is sorted (or the average of the two middle values for an even count)",
+      },
+      {
+        questionText: "The \"mode\" of a dataset is:",
+        options: ["The average value", "The middle value", "The most frequently occurring value(s)", "The maximum value"],
+        correctOption: 2,
+        explanation: "The correct answer is: The most frequently occurring value(s)",
+      },
+      {
+        questionText: "The \"range\" of a dataset is calculated as:",
+        options: ["Maximum \u2212 Minimum", "Mean \u2212 Median", "Sum of all values", "The middle value"],
+        correctOption: 0,
+        explanation: "The correct answer is: Maximum \u2212 Minimum",
+      },
+      {
+        questionText: "\"Variance\" measures:",
+        options: ["The central value of a dataset", "The average of the squared deviations of each value from the mean, indicating spread", "The most frequent value", "The middle value"],
+        correctOption: 1,
+        explanation: "The correct answer is: The average of the squared deviations of each value from the mean, indicating spread",
+      },
+      {
+        questionText: "\"Standard deviation\" is:",
+        options: ["The square root of the variance, expressed in the same units as the original data", "The same as variance with no difference", "Always equal to the mean", "The range divided by 2"],
+        correctOption: 0,
+        explanation: "The correct answer is: The square root of the variance, expressed in the same units as the original data",
+      },
+      {
+        questionText: "Which measure of central tendency is most appropriate for skewed data with outliers?",
+        options: ["Mean", "Median", "Range", "Variance"],
+        correctOption: 1,
+        explanation: "The correct answer is: Median",
+      },
+      {
+        questionText: "A dataset can have how many modes?",
+        options: ["Always exactly one", "Zero (no repeated values), one (unimodal), or more than one (multimodal)", "Always exactly two", "Always equal to the number of data points"],
+        correctOption: 1,
+        explanation: "The correct answer is: Zero (no repeated values), one (unimodal), or more than one (multimodal)",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python program that computes the mean, median, mode, range, variance, and standard deviation of a given list of numbers without using any external library (implement manually).",
+        starterCode: "# Write a Python program that computes the mean, median, mode,\n\ndef library():\n    pass",
+        expectedKeywords: ["def", "for", "return"],
+        solutionDescription: "```python\\ndef stats_manual(nums):\n    n = len(nums)\n    mean = sum(nums)/n\n    sorted_nums = sorted(nums)\n    median = sorted_nums[n//2] if n % 2 else (sorted_nums[n//2-1]+sorted_nums[n//2])/2\n    mode = max(set(nums), key=nums.count)\n    rng = max(nums) - min(nums)\n    variance = sum((x-mean)**2 for x in nums)/n\n    std = variance ** 0.5\n    return mean, median, mode, rng, variance, std\n\nnums = [4,8,6,5,3,8,9,2]\nprint(stats_manual(nums))\\n```",
+      },
+      {
+        questionText: "Write a Python program using NumPy and 'statistics' (or 'scipy.stats') to compute the same six statistics for a list, and compare the results with your manual implementation from Exercise 1.",
+        starterCode: "# Write a Python program using NumPy and 'statistics' (or 'sci\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nimport statistics as st\nnums = [4,8,6,5,3,8,9,2]\narr = np.array(nums)\nprint(arr.mean(), np.median(arr), st.mode(nums), arr.max()-arr.min(), arr.var(), arr.std())\\n```",
+      },
+    ],
+  },
+  73: {
+    topicTitle: "Maths: Maths Part 3 - Outliers",
+    mcqs: [
+      {
+        questionText: "An \"outlier\" in a dataset is:",
+        options: ["The most frequent value", "A data point that differs significantly from other observations, often unusually high or low", "The mean of the dataset", "The median of the dataset"],
+        correctOption: 1,
+        explanation: "The correct answer is: A data point that differs significantly from other observations, often unusually high or low",
+      },
+      {
+        questionText: "Which of these is a common method to detect outliers using quartiles?",
+        options: ["The Interquartile Range (IQR) method", "The mode calculation", "The mean calculation only", "Sorting the data"],
+        correctOption: 0,
+        explanation: "The correct answer is: The Interquartile Range (IQR) method",
+      },
+      {
+        questionText: "Using the IQR method, a value is typically considered an outlier if it is:",
+        options: ["Exactly equal to the median", "Below Q1 \u2212 1.5\u00d7IQR or above Q3 + 1.5\u00d7IQR", "Between Q1 and Q3", "Equal to the mean"],
+        correctOption: 1,
+        explanation: "The correct answer is: Below Q1 \u2212 1.5\u00d7IQR or above Q3 + 1.5\u00d7IQR",
+      },
+      {
+        questionText: "Which statistical method uses the number of standard deviations from the mean to flag outliers?",
+        options: ["The Z-score method (e.g., |z| > 3 flags a potential outlier)", "The mode method", "The median method", "The range method only"],
+        correctOption: 0,
+        explanation: "The correct answer is: The Z-score method (e.g., |z| > 3 flags a potential outlier)",
+      },
+      {
+        questionText: "Why can outliers significantly affect the mean but have less effect on the median?",
+        options: ["The mean uses every value including extreme ones, while the median depends only on the middle value(s), making it more robust to extremes", "The median always ignores the entire dataset", "The mean is never affected by any values", "There is no difference between them"],
+        correctOption: 0,
+        explanation: "The correct answer is: The mean uses every value including extreme ones, while the median depends only on the middle value(s), making it more robust to extremes",
+      },
+      {
+        questionText: "Which of these is NOT always the correct way to handle an outlier?",
+        options: ["Investigating whether it's a data entry error before deciding how to treat it", "Automatically deleting every outlier without any investigation", "Considering domain context before deciding to remove, cap, or keep it", "Visualizing the data (e.g., boxplot) to confirm it's genuinely extreme"],
+        correctOption: 1,
+        explanation: "The correct answer is: Automatically deleting every outlier without any investigation",
+      },
+      {
+        questionText: "Which visualization is commonly used to visually identify outliers?",
+        options: ["A boxplot, where points beyond the whiskers are marked as outliers", "A pie chart", "A bar chart only", "A single scalar value"],
+        correctOption: 0,
+        explanation: "The correct answer is: A boxplot, where points beyond the whiskers are marked as outliers",
+      },
+      {
+        questionText: "Outliers can sometimes represent:",
+        options: ["Only errors and nothing else", "Genuine rare but valid extreme events, or data errors \u2014 context determines which", "Only fraud", "Only sensor malfunctions"],
+        correctOption: 1,
+        explanation: "The correct answer is: Genuine rare but valid extreme events, or data errors \u2014 context determines which",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python program that computes Q1, Q3, and the IQR for a given list of numbers, and identifies any outliers using the 1.5\u00d7IQR rule.",
+        starterCode: "# Write a Python program that computes Q1, Q3, and the IQR for\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nnums = [12,14,15,16,18,19,20,21,22,100]\nq1, q3 = np.percentile(nums, [25, 75])\niqr = q3 - q1\nlower, upper = q1 - 1.5*iqr, q3 + 1.5*iqr\noutliers = [x for x in nums if x < lower or x > upper]\nprint(\"Q1:\", q1, \"Q3:\", q3, \"IQR:\", iqr, \"Outliers:\", outliers)\\n```",
+      },
+      {
+        questionText: "Write a Python program that uses the Z-score method (values with |z| > 3) to detect outliers in a NumPy array of numbers, printing the flagged outlier values.",
+        starterCode: "# Write a Python program that uses the Z-score method (values \n\ndef method():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\narr = np.array([10,12,11,13,9,300,10,12])\nz_scores = (arr - arr.mean()) / arr.std()\noutliers = arr[np.abs(z_scores) > 3]\nprint(\"Outliers:\", outliers)\\n```",
+      },
+    ],
+  },
+  74: {
+    topicTitle: "Maths: Maths Part 4 - The Five Number Summary, Box Plot, Outlier",
+    mcqs: [
+      {
+        questionText: "The \"Five Number Summary\" of a dataset consists of:",
+        options: ["Mean, Median, Mode, Range, Variance", "Minimum, Q1 (25th percentile), Median (Q2), Q3 (75th percentile), Maximum", "Only the minimum and maximum", "Only the mean and standard deviation"],
+        correctOption: 1,
+        explanation: "The correct answer is: Minimum, Q1 (25th percentile), Median (Q2), Q3 (75th percentile), Maximum",
+      },
+      {
+        questionText: "In a box plot, the box itself represents:",
+        options: ["The entire range of the data", "The interquartile range (Q1 to Q3), containing the middle 50% of the data", "Only the outliers", "The mean and standard deviation"],
+        correctOption: 1,
+        explanation: "The correct answer is: The interquartile range (Q1 to Q3), containing the middle 50% of the data",
+      },
+      {
+        questionText: "In a box plot, the line inside the box typically represents:",
+        options: ["The mean", "The median (Q2)", "The mode", "The range"],
+        correctOption: 1,
+        explanation: "The correct answer is: The median (Q2)",
+      },
+      {
+        questionText: "What do the \"whiskers\" of a box plot typically represent?",
+        options: ["The full range including outliers with no limit", "The range of data within 1.5\u00d7IQR from the box edges (Q1/Q3), excluding flagged outliers", "The mean \u00b1 standard deviation", "The mode of the dataset"],
+        correctOption: 1,
+        explanation: "The correct answer is: The range of data within 1.5\u00d7IQR from the box edges (Q1/Q3), excluding flagged outliers",
+      },
+      {
+        questionText: "Points plotted individually beyond the whiskers in a box plot represent:",
+        options: ["The median", "Potential outliers", "The mean", "The mode"],
+        correctOption: 1,
+        explanation: "The correct answer is: Potential outliers",
+      },
+      {
+        questionText: "Which Python function/library is commonly used to create a box plot?",
+        options: ["'plt.boxplot()' (Matplotlib) or 'sns.boxplot()' (Seaborn)", "'plt.piechart()'", "'plt.scatter()' only", "'plt.hist()' only"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'plt.boxplot()' (Matplotlib) or 'sns.boxplot()' (Seaborn)",
+      },
+      {
+        questionText: "Comparing box plots across multiple categories helps to:",
+        options: ["Compare distributions, medians, spread, and outliers across groups visually", "Only compare means numerically with no visual benefit", "Replace the need for any other visualization", "Compute correlation between variables"],
+        correctOption: 0,
+        explanation: "The correct answer is: Compare distributions, medians, spread, and outliers across groups visually",
+      },
+      {
+        questionText: "Which Pandas/NumPy function computes the quartile values needed for the five number summary?",
+        options: ["'np.percentile(data, [0,25,50,75,100])' (or 'df.describe()'/'df.quantile()')", "'np.mean(data)' only", "'np.mode(data)'", "'np.variance(data)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.percentile(data, [0,25,50,75,100])' (or 'df.describe()'/'df.quantile()')",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python program that computes the Five Number Summary (min, Q1, median, Q3, max) for a given dataset using NumPy or Pandas.",
+        starterCode: "# Write a Python program that computes the Five Number Summary\n\ndef Summary():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\ndata = np.array([5,7,8,10,12,15,18,20,22,25])\nminimum, q1, median, q3, maximum = np.percentile(data, [0,25,50,75,100])\nprint(minimum, q1, median, q3, maximum)\\n```",
+      },
+      {
+        questionText: "Write a Python program using Matplotlib or Seaborn to create a box plot for a numeric column of a sample DataFrame, and visually identify any outliers.",
+        starterCode: "# Write a Python program using Matplotlib or Seaborn to create\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\nimport seaborn as sns\nimport matplotlib.pyplot as plt\ndf = pd.DataFrame({'value': [5,7,8,10,12,15,18,20,22,100]})\nsns.boxplot(y=df['value'])\nplt.show()\\n```",
+      },
+    ],
+  },
+  75: {
+    topicTitle: "Maths: Maths Part 5 - Symmetry and Skewness",
+    mcqs: [
+      {
+        questionText: "A distribution is \"symmetric\" when:",
+        options: ["The left and right sides are mirror images of each other around the center", "All values are identical", "It has no mean", "It always has outliers"],
+        correctOption: 0,
+        explanation: "The correct answer is: The left and right sides are mirror images of each other around the center",
+      },
+      {
+        questionText: "\"Skewness\" measures:",
+        options: ["The central tendency of a distribution", "The asymmetry of a distribution's shape around its mean", "The spread of a distribution", "The number of modes"],
+        correctOption: 1,
+        explanation: "The correct answer is: The asymmetry of a distribution's shape around its mean",
+      },
+      {
+        questionText: "A \"right-skewed\" (positively skewed) distribution has:",
+        options: ["A longer tail on the left side, with mean less than median", "A longer tail on the right side, typically with mean greater than median", "No tail on either side", "Equal tails on both sides"],
+        correctOption: 1,
+        explanation: "The correct answer is: A longer tail on the right side, typically with mean greater than median",
+      },
+      {
+        questionText: "A \"left-skewed\" (negatively skewed) distribution has:",
+        options: ["A longer tail on the left side, typically with mean less than median", "A longer tail on the right side", "No skewness at all", "A perfectly symmetric shape"],
+        correctOption: 0,
+        explanation: "The correct answer is: A longer tail on the left side, typically with mean less than median",
+      },
+      {
+        questionText: "In a perfectly symmetric distribution (like a normal distribution), how do the mean, median, and mode typically relate?",
+        options: ["They are all different from each other", "They are approximately equal, all located at the center", "The mode is always the largest", "The mean is always the smallest"],
+        correctOption: 1,
+        explanation: "The correct answer is: They are approximately equal, all located at the center",
+      },
+      {
+        questionText: "Which Pandas/SciPy function computes the skewness of a dataset?",
+        options: ["'df['col'].skew()' (or 'scipy.stats.skew()')", "'df['col'].mean()'", "'df['col'].mode()'", "'df['col'].std()'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'df['col'].skew()' (or 'scipy.stats.skew()')",
+      },
+      {
+        questionText: "A skewness value close to 0 suggests:",
+        options: ["A highly skewed distribution", "An approximately symmetric distribution", "A bimodal distribution", "An error in calculation"],
+        correctOption: 1,
+        explanation: "The correct answer is: An approximately symmetric distribution",
+      },
+      {
+        questionText: "Why does skewness matter when choosing between the mean and median to summarize data?",
+        options: ["It doesn't matter; always use the mean", "In skewed distributions, the mean can be pulled toward the tail by extreme values, making the median a more robust measure of central tendency", "Skewness only matters for categorical data", "The median is never appropriate for skewed data"],
+        correctOption: 1,
+        explanation: "The correct answer is: In skewed distributions, the mean can be pulled toward the tail by extreme values, making the median a more robust measure of central tendency",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python program that generates a right-skewed synthetic dataset (e.g., using 'numpy.random.exponential'), computes its skewness using 'scipy.stats.skew()', and plots a histogram to visualize the skew.",
+        starterCode: "# Write a Python program that generates a right-skewed synthet\n\ndef dataset():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nfrom scipy.stats import skew\nimport matplotlib.pyplot as plt\ndata = np.random.exponential(scale=2, size=1000)\nprint(\"Skewness:\", skew(data))\nplt.hist(data, bins=30)\nplt.show()\\n```",
+      },
+      {
+        questionText: "Write a Python program that compares the mean and median of a right-skewed dataset versus a symmetric (normal) dataset, printing both side by side to illustrate how skewness affects these measures differently.",
+        starterCode: "# Write a Python program that compares the mean and median of \n\ndef symmetric():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nright_skewed = np.random.exponential(scale=2, size=1000)\nsymmetric = np.random.normal(loc=5, scale=1, size=1000)\nprint(\"Skewed - mean:\", right_skewed.mean(), \"median:\", np.median(right_skewed))\nprint(\"Symmetric - mean:\", symmetric.mean(), \"median:\", np.median(symmetric))\\n```",
+      },
+    ],
+  },
+  76: {
+    topicTitle: "Maths: Maths Part 6 - Explanatory and Responsive Variables",
+    mcqs: [
+      {
+        questionText: "An \"explanatory variable\" (independent variable) is:",
+        options: ["The outcome being measured or predicted", "The variable believed to influence or explain changes in another variable", "A random unrelated variable", "Always categorical"],
+        correctOption: 1,
+        explanation: "The correct answer is: The variable believed to influence or explain changes in another variable",
+      },
+      {
+        questionText: "A \"response variable\" (dependent variable) is:",
+        options: ["The variable used to explain or predict changes", "The outcome variable being measured, affected by or predicted from the explanatory variable(s)", "Always the x-axis variable", "Never used in regression"],
+        correctOption: 1,
+        explanation: "The correct answer is: The outcome variable being measured, affected by or predicted from the explanatory variable(s)",
+      },
+      {
+        questionText: "In a study examining how study hours affect exam scores, which is the explanatory variable?",
+        options: ["Exam scores", "Study hours", "Both are explanatory", "Neither is explanatory"],
+        correctOption: 1,
+        explanation: "The correct answer is: Study hours",
+      },
+      {
+        questionText: "In a scatter plot showing the relationship between two variables, which variable is conventionally placed on the x-axis?",
+        options: ["The response variable", "The explanatory variable", "It doesn't matter; there's no convention", "Neither variable is plotted"],
+        correctOption: 1,
+        explanation: "The correct answer is: The explanatory variable",
+      },
+      {
+        questionText: "In simple linear regression y = mx + c, which variable does 'y' typically represent?",
+        options: ["The explanatory variable", "The response variable", "The slope", "The intercept"],
+        correctOption: 1,
+        explanation: "The correct answer is: The response variable",
+      },
+      {
+        questionText: "Can a study have more than one explanatory variable predicting a single response variable?",
+        options: ["No, only one explanatory variable is ever allowed", "Yes \u2014 this is the basis of Multiple Linear Regression", "Only in unsupervised learning", "Only if there are also multiple response variables"],
+        correctOption: 1,
+        explanation: "The correct answer is: Yes \u2014 this is the basis of Multiple Linear Regression",
+      },
+      {
+        questionText: "Why is it important to distinguish explanatory from response variables before analysis?",
+        options: ["It has no impact on the analysis", "It clarifies the direction of the hypothesized relationship and guides appropriate modeling choices", "Only affects the visualization colors", "It determines the file format used"],
+        correctOption: 1,
+        explanation: "The correct answer is: It clarifies the direction of the hypothesized relationship and guides appropriate modeling choices",
+      },
+      {
+        questionText: "In machine learning terminology, \"explanatory variables\" are most closely analogous to:",
+        options: ["Labels", "Features", "Hyperparameters", "The model itself"],
+        correctOption: 1,
+        explanation: "The correct answer is: Features",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python program that creates a scatter plot with \"study hours\" as the explanatory variable (x-axis) and \"exam score\" as the response variable (y-axis) using Matplotlib, with proper axis labels.",
+        starterCode: "# Write a Python program that creates a scatter plot with \"stu\n\ndef variable():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport matplotlib.pyplot as plt\nstudy_hours = [1,2,3,4,5,6,7]\nexam_score = [50,55,65,70,75,85,90]\nplt.scatter(study_hours, exam_score)\nplt.xlabel('Study Hours (explanatory)')\nplt.ylabel('Exam Score (response)')\nplt.show()\\n```",
+      },
+      {
+        questionText: "Write a Python program using Pandas that, given a small dataset, identifies which column is most likely the response variable and which are explanatory variables, then separates them into X and y.",
+        starterCode: "# Write a Python program using Pandas that, given a small data\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'study_hours':[1,2,3], 'attendance':[80,90,95], 'exam_score':[60,75,88]})\ny = df['exam_score']  # response variable\nX = df.drop(columns=['exam_score'])  # explanatory variables\nprint(X, y)\\n```",
+      },
+    ],
+  },
+  77: {
+    topicTitle: "Maths: Maths Part 7 - Regression and R Squared",
+    mcqs: [
+      {
+        questionText: "In the context of regression, R-squared (R\u00b2) represents:",
+        options: ["The slope of the regression line", "The proportion of variance in the response variable explained by the explanatory variable(s)", "The number of data points", "The standard deviation of residuals"],
+        correctOption: 1,
+        explanation: "The correct answer is: The proportion of variance in the response variable explained by the explanatory variable(s)",
+      },
+      {
+        questionText: "R-squared values range between:",
+        options: ["\u22121 and 1", "0 and 1 (sometimes reported as 0%-100%)", "\u2212100 and 100", "1 and 10"],
+        correctOption: 1,
+        explanation: "The correct answer is: 0 and 1 (sometimes reported as 0%-100%)",
+      },
+      {
+        questionText: "An R\u00b2 value of 0.85 means:",
+        options: ["The model is 85% inaccurate", "About 85% of the variance in the response variable is explained by the model's explanatory variable(s)", "The correlation is negative", "The model has 85 features"],
+        correctOption: 1,
+        explanation: "The correct answer is: About 85% of the variance in the response variable is explained by the model's explanatory variable(s)",
+      },
+      {
+        questionText: "Does a high R\u00b2 always mean the regression model is \"good\" and appropriate?",
+        options: ["Yes, always, with no exceptions", "Not necessarily \u2014 a high R\u00b2 can occur with overfitting, and doesn't confirm the model's assumptions are valid", "R\u00b2 has no relationship to model quality", "R\u00b2 only applies to classification models"],
+        correctOption: 1,
+        explanation: "The correct answer is: Not necessarily \u2014 a high R\u00b2 can occur with overfitting, and doesn't confirm the model's assumptions are valid",
+      },
+      {
+        questionText: "How is R\u00b2 related to the correlation coefficient (r) in simple linear regression?",
+        options: ["R\u00b2 is the square of the correlation coefficient r", "They are entirely unrelated", "R\u00b2 is always negative when r is positive", "R equals R\u00b2 always"],
+        correctOption: 0,
+        explanation: "The correct answer is: R\u00b2 is the square of the correlation coefficient r",
+      },
+      {
+        questionText: "Which of these could cause a LOW R\u00b2 value?",
+        options: ["A strong, clear linear relationship between variables", "A weak relationship between the explanatory and response variable, or a non-linear relationship not captured by a linear model", "Perfect prediction accuracy", "Zero variance in the response variable"],
+        correctOption: 1,
+        explanation: "The correct answer is: A weak relationship between the explanatory and response variable, or a non-linear relationship not captured by a linear model",
+      },
+      {
+        questionText: "\"Adjusted R-squared\" differs from R\u00b2 in that it:",
+        options: ["Is identical to R\u00b2 in every case", "Adjusts for the number of predictors, penalizing added variables that don't improve the model meaningfully", "Cannot be computed for regression models", "Is always higher than R\u00b2"],
+        correctOption: 1,
+        explanation: "The correct answer is: Adjusts for the number of predictors, penalizing added variables that don't improve the model meaningfully",
+      },
+      {
+        questionText: "Which Python function computes R\u00b2 given true and predicted values?",
+        options: ["'r2_score(y_true, y_pred)' from 'sklearn.metrics'", "'mean_squared_error(y_true, y_pred)'", "'accuracy_score(y_true, y_pred)'", "'confusion_matrix(y_true, y_pred)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'r2_score(y_true, y_pred)' from 'sklearn.metrics'",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python program using scikit-learn to fit a simple linear regression model on a sample dataset and compute the R\u00b2 score using 'r2_score()', printing an interpretation of the value.",
+        starterCode: "# Write a Python program using scikit-learn to fit a simple li\n\ndef r2_score():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import r2_score\nimport numpy as np\nX = np.array([[1],[2],[3],[4],[5]])\ny = np.array([2,4,5,4,5])\nmodel = LinearRegression().fit(X, y)\npreds = model.predict(X)\nprint(\"R2:\", r2_score(y, preds))\\n```",
+      },
+      {
+        questionText: "Write a Python program that manually computes R\u00b2 from scratch (using 1 \u2212 SS_res/SS_tot) given actual and predicted values, and verifies it matches scikit-learn's 'r2_score()'.",
+        starterCode: "# Write a Python program that manually computes R\u00b2 from scratc\n\ndef scratch():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\ny_actual = np.array([2,4,5,4,5])\ny_pred = np.array([2.2,3.8,5.1,4.0,4.9])\nss_res = np.sum((y_actual - y_pred)**2)\nss_tot = np.sum((y_actual - y_actual.mean())**2)\nr2_manual = 1 - ss_res/ss_tot\nprint(\"Manual R2:\", r2_manual)\\n```",
+      },
+    ],
+  },
+  78: {
+    topicTitle: "Maths: Maths Part 8 - Residual",
+    mcqs: [
+      {
+        questionText: "A \"residual\" in regression is defined as:",
+        options: ["The predicted value", "The difference between the actual observed value and the predicted value (actual \u2212 predicted)", "The slope of the regression line", "The R-squared value"],
+        correctOption: 1,
+        explanation: "The correct answer is: The difference between the actual observed value and the predicted value (actual \u2212 predicted)",
+      },
+      {
+        questionText: "What does a residual of 0 for a specific data point indicate?",
+        options: ["The model's prediction for that point exactly matches the actual value", "The model completely failed for that point", "The point is an outlier", "The R\u00b2 is 0"],
+        correctOption: 0,
+        explanation: "The correct answer is: The model's prediction for that point exactly matches the actual value",
+      },
+      {
+        questionText: "A \"residual plot\" typically plots:",
+        options: ["Residuals against the predicted values (or against the explanatory variable)", "The mean against the median", "Only the actual values", "The confusion matrix"],
+        correctOption: 0,
+        explanation: "The correct answer is: Residuals against the predicted values (or against the explanatory variable)",
+      },
+      {
+        questionText: "In a well-fitting linear regression model, residuals plotted against predicted values should ideally show:",
+        options: ["A clear systematic pattern or curve", "Random scatter around zero with no discernible pattern (homoscedasticity)", "All residuals equal to zero", "An increasing trend"],
+        correctOption: 1,
+        explanation: "The correct answer is: Random scatter around zero with no discernible pattern (homoscedasticity)",
+      },
+      {
+        questionText: "What does a funnel-shaped pattern (residuals fanning out) in a residual plot suggest?",
+        options: ["A perfect model fit", "Heteroscedasticity \u2014 non-constant variance of residuals, violating a key regression assumption", "Perfect symmetry", "No relationship between variables"],
+        correctOption: 1,
+        explanation: "The correct answer is: Heteroscedasticity \u2014 non-constant variance of residuals, violating a key regression assumption",
+      },
+      {
+        questionText: "Which cost function used in linear regression is based on squared residuals?",
+        options: ["Mean Squared Error (MSE)", "Accuracy", "Precision", "Confusion matrix"],
+        correctOption: 0,
+        explanation: "The correct answer is: Mean Squared Error (MSE)",
+      },
+      {
+        questionText: "Why do we analyze residual plots rather than relying solely on R\u00b2?",
+        options: ["Residual plots have no additional value beyond R\u00b2", "They can reveal violations of regression assumptions (non-linearity, heteroscedasticity) that a single summary statistic might hide", "R\u00b2 already shows everything a residual plot would show", "Residuals cannot be computed for regression models"],
+        correctOption: 1,
+        explanation: "The correct answer is: They can reveal violations of regression assumptions (non-linearity, heteroscedasticity) that a single summary statistic might hide",
+      },
+      {
+        questionText: "A large residual for a specific data point indicates:",
+        options: ["The model predicted that point very accurately", "The model's prediction was far from the actual value for that case, possibly an outlier or model misfit", "That point has zero variance", "The R\u00b2 is negative"],
+        correctOption: 1,
+        explanation: "The correct answer is: The model's prediction was far from the actual value for that case, possibly an outlier or model misfit",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python program that fits a simple linear regression model, computes the residuals (actual \u2212 predicted) for each point, and plots a residual plot (residuals vs. predicted values) using Matplotlib.",
+        starterCode: "# Write a Python program that fits a simple linear regression \n\ndef residuals():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.linear_model import LinearRegression\nimport numpy as np\nimport matplotlib.pyplot as plt\nX = np.array([[1],[2],[3],[4],[5]])\ny = np.array([2,4,5,4,5])\nmodel = LinearRegression().fit(X, y)\npreds = model.predict(X)\nresiduals = y - preds\nplt.scatter(preds, residuals)\nplt.axhline(0, color='red')\nplt.xlabel('Predicted')\nplt.ylabel('Residuals')\nplt.show()\\n```",
+      },
+      {
+        questionText: "Write a Python program that identifies the data point(s) with the largest absolute residual from a fitted regression model, and prints them alongside their actual and predicted values.",
+        starterCode: "# Write a Python program that identifies the data point(s) wit\n\ndef point():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\ny_actual = np.array([2,4,5,4,5])\ny_pred = np.array([2.2,3.8,5.9,4.0,4.9])\nresiduals = np.abs(y_actual - y_pred)\nidx = np.argmax(residuals)\nprint(f\"Largest residual at index {idx}: actual={y_actual[idx]}, predicted={y_pred[idx]}\")\\n```",
+      },
+    ],
+  },
+  79: {
+    topicTitle: "Maths: Maths Part 9 - The Normal Distribution and 68-95-99.7 Rule",
+    mcqs: [
+      {
+        questionText: "The Normal Distribution is characterized by:",
+        options: ["A skewed, asymmetric bell shape", "A symmetric, bell-shaped curve centered at the mean, defined by its mean and standard deviation", "A uniform flat shape", "Only discrete values"],
+        correctOption: 1,
+        explanation: "The correct answer is: A symmetric, bell-shaped curve centered at the mean, defined by its mean and standard deviation",
+      },
+      {
+        questionText: "In a Normal Distribution, the mean, median, and mode are:",
+        options: ["All different values", "All equal, located at the center of the distribution", "Always zero", "Impossible to compute"],
+        correctOption: 1,
+        explanation: "The correct answer is: All equal, located at the center of the distribution",
+      },
+      {
+        questionText: "According to the 68-95-99.7 (empirical) rule, approximately what percentage of data falls within 1 standard deviation of the mean?",
+        options: ["50%", "68%", "95%", "99.7%"],
+        correctOption: 1,
+        explanation: "The correct answer is: 68%",
+      },
+      {
+        questionText: "According to the empirical rule, approximately what percentage falls within 2 standard deviations of the mean?",
+        options: ["68%", "95%", "99.7%", "100%"],
+        correctOption: 1,
+        explanation: "The correct answer is: 95%",
+      },
+      {
+        questionText: "According to the empirical rule, approximately what percentage falls within 3 standard deviations of the mean?",
+        options: ["68%", "95%", "99.7%", "50%"],
+        correctOption: 2,
+        explanation: "The correct answer is: 99.7%",
+      },
+      {
+        questionText: "The empirical rule (68-95-99.7) applies specifically to:",
+        options: ["Any distribution, regardless of shape", "Data that is approximately normally distributed", "Only skewed distributions", "Only categorical data"],
+        correctOption: 1,
+        explanation: "The correct answer is: Data that is approximately normally distributed",
+      },
+      {
+        questionText: "Which Python function generates random samples from a Normal Distribution?",
+        options: ["'np.random.normal(mean, std, size)'", "'np.random.uniform(mean, std, size)'", "'np.random.choice(mean, std)'", "'np.random.poisson(mean, std)'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.random.normal(mean, std, size)'",
+      },
+      {
+        questionText: "Why is the Normal Distribution particularly important in statistics and machine learning?",
+        options: ["It has no practical importance", "Many statistical methods and real-world phenomena approximate normality, underlying concepts like z-scores and confidence intervals", "It only applies to categorical variables", "It replaces the need for any other distribution"],
+        correctOption: 1,
+        explanation: "The correct answer is: Many statistical methods and real-world phenomena approximate normality, underlying concepts like z-scores and confidence intervals",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python program using NumPy to generate 10,000 random samples from a Normal Distribution with a given mean and standard deviation, then verify the empirical rule by calculating the percentage of samples within 1, 2, and 3 standard deviations of the mean.",
+        starterCode: "# Write a Python program using NumPy to generate 10,000 random\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nmean, std = 50, 10\nsamples = np.random.normal(mean, std, 10000)\nfor k in [1,2,3]:\n    within = np.mean((samples > mean-k*std) & (samples < mean+k*std)) * 100\n    print(f\"Within {k} std: {within:.2f}%\")\\n```",
+      },
+      {
+        questionText: "Write a Python program using Matplotlib/Seaborn to plot a histogram of a normally distributed dataset, overlaying vertical lines at the mean and at \u00b11, \u00b12, \u00b13 standard deviations to visualize the 68-95-99.7 rule.",
+        starterCode: "# Write a Python program using Matplotlib/Seaborn to plot a hi\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nimport matplotlib.pyplot as plt\nmean, std = 50, 10\ndata = np.random.normal(mean, std, 10000)\nplt.hist(data, bins=50)\nfor k in [-3,-2,-1,0,1,2,3]:\n    plt.axvline(mean + k*std, color='red', linestyle='--')\nplt.show()\\n```",
+      },
+    ],
+  },
+  80: {
+    topicTitle: "Maths: Maths Part 10 - Matrix",
+    mcqs: [
+      {
+        questionText: "A matrix is best described as:",
+        options: ["A single scalar number", "A rectangular array of numbers arranged in rows and columns", "A single column of numbers only", "A type of loop"],
+        correctOption: 1,
+        explanation: "The correct answer is: A rectangular array of numbers arranged in rows and columns",
+      },
+      {
+        questionText: "The \"order\" (dimensions) of a matrix with 3 rows and 4 columns is written as:",
+        options: ["4x3", "3x4", "12x1", "7"],
+        correctOption: 1,
+        explanation: "The correct answer is: 3x4",
+      },
+      {
+        questionText: "Which operation requires two matrices to have the exact same dimensions?",
+        options: ["Matrix multiplication", "Matrix addition/subtraction", "Matrix transpose", "Finding the determinant"],
+        correctOption: 1,
+        explanation: "The correct answer is: Matrix addition/subtraction",
+      },
+      {
+        questionText: "For matrix multiplication A\u00d7B to be valid, what condition must be satisfied?",
+        options: ["A and B must have the same number of rows", "The number of columns in A must equal the number of rows in B", "A and B must both be square matrices", "There is no condition; any two matrices can be multiplied"],
+        correctOption: 1,
+        explanation: "The correct answer is: The number of columns in A must equal the number of rows in B",
+      },
+      {
+        questionText: "The \"transpose\" of a matrix:",
+        options: ["Multiplies every element by \u22121", "Swaps the matrix's rows and columns", "Computes the determinant", "Deletes the last row"],
+        correctOption: 1,
+        explanation: "The correct answer is: Swaps the matrix's rows and columns",
+      },
+      {
+        questionText: "The \"identity matrix\" is a special matrix where:",
+        options: ["All elements are zero", "All elements are one", "It has 1s on the main diagonal and 0s elsewhere, acting like the number 1 in matrix multiplication", "It has no defined shape"],
+        correctOption: 2,
+        explanation: "The correct answer is: It has 1s on the main diagonal and 0s elsewhere, acting like the number 1 in matrix multiplication",
+      },
+      {
+        questionText: "The \"determinant\" of a matrix is:",
+        options: ["A scalar value providing information about the matrix, such as whether it's invertible (zero determinant means it isn't)", "The sum of all its elements", "The number of rows in the matrix", "Always equal to 1"],
+        correctOption: 0,
+        explanation: "The correct answer is: A scalar value providing information about the matrix, such as whether it's invertible (zero determinant means it isn't)",
+      },
+      {
+        questionText: "Which NumPy function computes the matrix multiplication of two 2D arrays?",
+        options: ["'np.dot(A,", "' or 'A @ B'", "'A * B' (element-wise multiplication, not matrix multiplication)", "'np.add(A,"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'np.dot(A,",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python program using NumPy to create two matrices (2x3 and 3x2), perform matrix multiplication, and print the resulting matrix along with its shape.",
+        starterCode: "# Write a Python program using NumPy to create two matrices (2\n\ndef matrices():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nA = np.random.randint(1,10,(2,3))\nB = np.random.randint(1,10,(3,2))\nresult = A @ B\nprint(result, result.shape)\\n```",
+      },
+      {
+        questionText: "Write a Python program using NumPy to compute the transpose and determinant of a given 3x3 square matrix.",
+        starterCode: "# Write a Python program using NumPy to compute the transpose \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nM = np.random.randint(1,10,(3,3))\nprint(\"Transpose:\\n\", M.T)\nprint(\"Determinant:\", np.linalg.det(M))\\n```",
+      },
+    ],
+  },
+  81: {
+    topicTitle: "FeatEng: Feature Engineering - Data Preprocessing Part 1",
+    mcqs: [
+      {
+        questionText: "Feature Engineering refers to:",
+        options: ["Deploying a trained model to production", "The process of creating, transforming, or selecting features from raw data to improve model performance", "Visualizing a confusion matrix", "Splitting data into train and test sets only"],
+        correctOption: 1,
+        explanation: "The correct answer is: The process of creating, transforming, or selecting features from raw data to improve model performance",
+      },
+      {
+        questionText: "Which of these is a common data preprocessing step before feeding data into an ML model?",
+        options: ["Handling missing values", "Deleting the entire dataset", "Ignoring data quality issues", "Removing the target variable"],
+        correctOption: 0,
+        explanation: "The correct answer is: Handling missing values",
+      },
+      {
+        questionText: "Why is handling missing data an important preprocessing step?",
+        options: ["Most ML algorithms cannot handle missing values directly and may error out or produce biased results if missingness isn't addressed", "Missing data never affects model training", "It's purely a cosmetic concern", "All algorithms automatically ignore missing values with no issue"],
+        correctOption: 0,
+        explanation: "The correct answer is: Most ML algorithms cannot handle missing values directly and may error out or produce biased results if missingness isn't addressed",
+      },
+      {
+        questionText: "Which of these is a common strategy for imputing missing numeric values?",
+        options: ["Replacing missing values with the mean or median of the column", "Deleting the entire dataset", "Replacing with a random unrelated number", "Ignoring the column with no substitute"],
+        correctOption: 0,
+        explanation: "The correct answer is: Replacing missing values with the mean or median of the column",
+      },
+      {
+        questionText: "What does \"feature scaling\" refer to?",
+        options: ["Deleting features from the dataset", "Transforming numeric features to a common scale/range (normalization/standardization) to improve model performance", "Increasing the number of features", "Converting numeric data to categorical"],
+        correctOption: 1,
+        explanation: "The correct answer is: Transforming numeric features to a common scale/range (normalization/standardization) to improve model performance",
+      },
+      {
+        questionText: "Why is feature scaling particularly important for distance-based algorithms like KNN or SVM?",
+        options: ["It's not important for these algorithms", "Features with larger numeric ranges could disproportionately dominate distance calculations unless scaled comparably", "It only matters for tree-based models", "It changes the target variable"],
+        correctOption: 1,
+        explanation: "The correct answer is: Features with larger numeric ranges could disproportionately dominate distance calculations unless scaled comparably",
+      },
+      {
+        questionText: "Which scikit-learn class standardizes features by removing the mean and scaling to unit variance?",
+        options: ["'StandardScaler'", "'OneHotEncoder'", "'LabelEncoder'", "'PolynomialFeatures'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'StandardScaler'",
+      },
+      {
+        questionText: "Which scikit-learn class scales features to a fixed range, typically [0, 1]?",
+        options: ["'MinMaxScaler'", "'StandardScaler' only", "'RobustScaler' (used for outlier-resistant scaling, a different purpose)", "'Normalizer' (normalizes rows, not necessarily to [0,1])"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'MinMaxScaler'",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python program using Pandas that identifies missing values in a sample DataFrame, imputes numeric columns with the median and categorical columns with the mode, and prints the cleaned DataFrame.",
+        starterCode: "# Write a Python program using Pandas that identifies missing \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\nimport numpy as np\ndf = pd.DataFrame({'age': [25, np.nan, 35], 'city': ['NY', np.nan, 'LA']})\ndf['age'] = df['age'].fillna(df['age'].median())\ndf['city'] = df['city'].fillna(df['city'].mode()[0])\nprint(df)\\n```",
+      },
+      {
+        questionText: "Write a Python program using scikit-learn's 'StandardScaler' and 'MinMaxScaler' to scale a numeric feature column two different ways, and print both scaled outputs side by side for comparison.",
+        starterCode: "# Write a Python program using scikit-learn's 'StandardScaler'\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.preprocessing import StandardScaler, MinMaxScaler\nimport numpy as np\ndata = np.array([[10],[20],[30],[40],[50]])\nstandard_scaled = StandardScaler().fit_transform(data)\nminmax_scaled = MinMaxScaler().fit_transform(data)\nprint(\"Standard:\", standard_scaled.ravel())\nprint(\"MinMax:\", minmax_scaled.ravel())\\n```",
+      },
+    ],
+  },
+  82: {
+    topicTitle: "FeatEng: Feature Engineering - Data Preprocessing Part 2",
+    mcqs: [
+      {
+        questionText: "Which technique converts categorical text variables into numeric form for ML models?",
+        options: ["Encoding techniques like One-Hot Encoding or Label Encoding", "Deleting the categorical columns always", "Feature scaling only", "PCA only"],
+        correctOption: 0,
+        explanation: "The correct answer is: Encoding techniques like One-Hot Encoding or Label Encoding",
+      },
+      {
+        questionText: "What does \"feature selection\" refer to?",
+        options: ["Creating brand new features from existing ones", "Choosing a subset of the most relevant features for model training, discarding less useful ones", "Scaling features to a common range", "Encoding categorical variables"],
+        correctOption: 1,
+        explanation: "The correct answer is: Choosing a subset of the most relevant features for model training, discarding less useful ones",
+      },
+      {
+        questionText: "What does \"feature extraction\" refer to, as distinct from feature selection?",
+        options: ["Simply removing irrelevant features", "Creating new features by transforming or combining existing ones (e.g., PCA components, polynomial features)", "Deleting the target variable", "Splitting data into train/test sets"],
+        correctOption: 1,
+        explanation: "The correct answer is: Creating new features by transforming or combining existing ones (e.g., PCA components, polynomial features)",
+      },
+      {
+        questionText: "Which of these is an example of feature extraction?",
+        options: ["Selecting the top 5 most correlated features with the target", "Creating a \"BMI\" feature from existing \"height\" and \"weight\" columns", "Deleting duplicate rows", "Renaming columns"],
+        correctOption: 1,
+        explanation: "The correct answer is: Creating a \"BMI\" feature from existing \"height\" and \"weight\" columns",
+      },
+      {
+        questionText: "Why might binning (discretizing) a continuous variable into categories be useful as a preprocessing step?",
+        options: ["It never provides any benefit", "It can simplify relationships, handle outliers, and sometimes improve interpretability or performance for certain models", "It always reduces model accuracy", "It converts categorical data into continuous data"],
+        correctOption: 1,
+        explanation: "The correct answer is: It can simplify relationships, handle outliers, and sometimes improve interpretability or performance for certain models",
+      },
+      {
+        questionText: "What is \"data leakage\" in the context of feature engineering?",
+        options: ["A file storage error", "When information from outside the training dataset (e.g., the test set, or the target itself) improperly influences training, leading to overly optimistic performance estimates", "A type of missing data", "A visualization technique"],
+        correctOption: 1,
+        explanation: "The correct answer is: When information from outside the training dataset (e.g., the test set, or the target itself) improperly influences training, leading to overly optimistic performance estimates",
+      },
+      {
+        questionText: "Why should preprocessing steps like scaling or imputation be fit ONLY on the training data, then applied to the test data?",
+        options: ["It doesn't matter; fitting on the full dataset is equally valid", "To prevent data leakage \u2014 the test set should remain unseen during any fitting step for an honest evaluation of generalization", "It saves computation time only", "It has no relation to data leakage"],
+        correctOption: 1,
+        explanation: "The correct answer is: To prevent data leakage \u2014 the test set should remain unseen during any fitting step for an honest evaluation of generalization",
+      },
+      {
+        questionText: "Which of these is a benefit of using a scikit-learn 'Pipeline' to chain preprocessing steps and a model together?",
+        options: ["It has no practical benefit", "It ensures consistent, reproducible application of preprocessing to both training and test/new data, reducing the risk of mistakes like data leakage", "It slows down the workflow unnecessarily", "It removes the need for any preprocessing at all"],
+        correctOption: 1,
+        explanation: "The correct answer is: It ensures consistent, reproducible application of preprocessing to both training and test/new data, reducing the risk of mistakes like data leakage",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python program using 'pd.get_dummies()' or scikit-learn's 'OneHotEncoder' to encode a categorical column, combine it with numeric columns, and prepare a fully numeric feature matrix ready for model training.",
+        starterCode: "# Write a Python program using 'pd.get_dummies()' or scikit-le\n\ndef get_dummies():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'color': ['red','blue','green'], 'price': [10,20,30]})\nencoded = pd.get_dummies(df, columns=['color'])\nprint(encoded)\\n```",
+      },
+      {
+        questionText: "Write a Python program using scikit-learn's 'Pipeline' to chain a 'StandardScaler' and a 'LogisticRegression' model together, fit it on training data, and evaluate it on test data \u2014 demonstrating how the pipeline helps prevent preprocessing data leakage.",
+        starterCode: "# Write a Python program using scikit-learn's 'Pipeline' to ch\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.pipeline import Pipeline\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.model_selection import train_test_split\nimport numpy as np\nX = np.random.rand(100,3)\ny = np.random.randint(0,2,100)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)\npipe = Pipeline([('scaler', StandardScaler()), ('clf', LogisticRegression())])\npipe.fit(X_train, y_train)\nprint(\"Accuracy:\", pipe.score(X_test, y_test))\\n```",
+      },
+    ],
+  },
+  83: {
+    topicTitle: "FeatEng: Feature Engineering - Encoding Techniques",
+    mcqs: [
+      {
+        questionText: "Why do most machine learning algorithms require categorical variables to be encoded numerically?",
+        options: ["Most ML algorithms are mathematical and only operate on numeric input", "Categorical data cannot be stored in a DataFrame", "Encoding is only needed for deep learning", "It is not actually required"],
+        correctOption: 0,
+        explanation: "The correct answer is: Most ML algorithms are mathematical and only operate on numeric input",
+      },
+      {
+        questionText: "What does Label Encoding do?",
+        options: ["Assigns each unique category an arbitrary integer value (e.g., 0, 1, 2...)", "Creates a new binary column for every category", "Removes categorical columns", "Converts numbers into categories"],
+        correctOption: 0,
+        explanation: "The correct answer is: Assigns each unique category an arbitrary integer value (e.g., 0, 1, 2...)",
+      },
+      {
+        questionText: "What is a potential problem with using Label Encoding on nominal (unordered) categorical data for algorithms like linear regression?",
+        options: ["It implies a false ordinal relationship/ranking between categories that doesn't actually exist", "It uses too much memory", "It cannot handle more than 2 categories", "There is no problem at all"],
+        correctOption: 0,
+        explanation: "The correct answer is: It implies a false ordinal relationship/ranking between categories that doesn't actually exist",
+      },
+      {
+        questionText: "What does One-Hot Encoding do?",
+        options: ["Creates a new binary (0/1) column for each category, avoiding implying any order", "Assigns a single integer per category", "Removes rows with categorical values", "Converts numeric columns into categories"],
+        correctOption: 0,
+        explanation: "The correct answer is: Creates a new binary (0/1) column for each category, avoiding implying any order",
+      },
+      {
+        questionText: "What is the \"dummy variable trap,\" and how is it commonly avoided?",
+        options: ["Perfect multicollinearity from one-hot encoding all categories; avoided by dropping one category column ('drop_first=True')", "It refers to encoding numeric variables as categories", "It only happens with Label Encoding", "It cannot be avoided"],
+        correctOption: 0,
+        explanation: "The correct answer is: Perfect multicollinearity from one-hot encoding all categories; avoided by dropping one category column ('drop_first=True')",
+      },
+      {
+        questionText: "When is One-Hot Encoding generally less practical?",
+        options: ["When a categorical feature has very high cardinality (many unique values), since it creates many sparse columns", "When there are only 2 categories", "It is always the best choice regardless of cardinality", "When using tree-based models only"],
+        correctOption: 0,
+        explanation: "The correct answer is: When a categorical feature has very high cardinality (many unique values), since it creates many sparse columns",
+      },
+      {
+        questionText: "What is Target (Mean) Encoding?",
+        options: ["Replacing each category with the mean of the target variable for that category", "Replacing categories with random numbers", "The same as One-Hot Encoding", "Removing the target variable"],
+        correctOption: 0,
+        explanation: "The correct answer is: Replacing each category with the mean of the target variable for that category",
+      },
+      {
+        questionText: "What is a key risk of Target Encoding that requires careful handling (e.g., via cross-validation)?",
+        options: ["Data leakage / overfitting, since the encoding directly uses target information", "It cannot represent more than 2 categories", "It always increases dimensionality significantly", "It only works on numeric targets"],
+        correctOption: 0,
+        explanation: "The correct answer is: Data leakage / overfitting, since the encoding directly uses target information",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Given a DataFrame with a categorical column 'color' ('red', 'blue', 'green'), use 'pandas.get_dummies()' to one-hot encode it, dropping the first category to avoid the dummy variable trap.",
+        starterCode: "# Given a DataFrame with a categorical column 'color' ('red', \n\ndef get_dummies():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'color': ['red','blue','green']})\nencoded = pd.get_dummies(df, columns=['color'], drop_first=True)\nprint(encoded)\\n```",
+      },
+      {
+        questionText: "Using 'sklearn.preprocessing.LabelEncoder', write code to encode a categorical column 'grade' ('A', 'B', 'C', 'D') into numeric labels, then show how to decode back to the original labels.",
+        starterCode: "# Using 'sklearn.preprocessing.LabelEncoder', write code to en\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.preprocessing import LabelEncoder\nle = LabelEncoder()\ngrades = ['A','B','C','D','B']\nencoded = le.fit_transform(grades)\ndecoded = le.inverse_transform(encoded)\nprint(encoded, decoded)\\n```",
+      },
+    ],
+  },
+  84: {
+    topicTitle: "FeatEng: Feature Engineering - Feature Scaling",
+    mcqs: [
+      {
+        questionText: "Why is feature scaling important for algorithms like KNN, SVM, or gradient descent-based models?",
+        options: ["Features with larger numeric ranges can dominate distance calculations or slow convergence if not scaled to comparable ranges", "Scaling is never actually necessary for any algorithm", "It only matters for categorical features", "It changes the number of features"],
+        correctOption: 0,
+        explanation: "The correct answer is: Features with larger numeric ranges can dominate distance calculations or slow convergence if not scaled to comparable ranges",
+      },
+      {
+        questionText: "What does Standardization (Z-score scaling) do to a feature?",
+        options: ["Transforms it to have mean 0 and standard deviation 1", "Transforms it to a fixed range of [0,1]", "Removes outliers", "Converts it to categorical bins"],
+        correctOption: 0,
+        explanation: "The correct answer is: Transforms it to have mean 0 and standard deviation 1",
+      },
+      {
+        questionText: "What is the formula used for Standardization?",
+        options: ["'(x - mean) / std'", "'(x - min) / (max - min)'", "'x / max'", "'(x - median) / IQR'"],
+        correctOption: 0,
+        explanation: "The correct answer is: '(x - mean) / std'",
+      },
+      {
+        questionText: "What does Min-Max Normalization do to a feature?",
+        options: ["Rescales values to a fixed range, typically [0, 1]", "Rescales to have mean 0", "Removes duplicate values", "Converts to log scale"],
+        correctOption: 0,
+        explanation: "The correct answer is: Rescales values to a fixed range, typically [0, 1]",
+      },
+      {
+        questionText: "What is the formula used for Min-Max Normalization?",
+        options: ["'(x - min) / (max - min)'", "'(x - mean) / std'", "'x - mean'", "'x / std'"],
+        correctOption: 0,
+        explanation: "The correct answer is: '(x - min) / (max - min)'",
+      },
+      {
+        questionText: "Which scaling method is more robust to outliers because it is based on the median and interquartile range (IQR)?",
+        options: ["Robust Scaling", "Min-Max Normalization", "Standardization", "One-Hot Encoding"],
+        correctOption: 0,
+        explanation: "The correct answer is: Robust Scaling",
+      },
+      {
+        questionText: "Which algorithms are relatively insensitive to feature scaling and generally don't require it?",
+        options: ["Tree-based models like Decision Trees and Random Forest, since they split on thresholds rather than distances", "K-Nearest Neighbors", "Support Vector Machines", "Neural networks trained with gradient descent"],
+        correctOption: 0,
+        explanation: "The correct answer is: Tree-based models like Decision Trees and Random Forest, since they split on thresholds rather than distances",
+      },
+      {
+        questionText: "When fitting a scaler (e.g., 'StandardScaler') as part of a machine learning pipeline, why should it be fit only on the training data and then applied to the test data?",
+        options: ["To prevent data leakage from test set statistics influencing the scaling parameters", "It has no effect on results either way", "Because the test set doesn't need scaling", "Because scalers can only be fit once globally with no train/test distinction"],
+        correctOption: 0,
+        explanation: "The correct answer is: To prevent data leakage from test set statistics influencing the scaling parameters",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using 'sklearn.preprocessing.StandardScaler', write code to standardize a DataFrame's numeric columns, showing the mean and standard deviation before and after.",
+        starterCode: "# Using 'sklearn.preprocessing.StandardScaler', write code to \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.preprocessing import StandardScaler\nimport pandas as pd\ndf = pd.DataFrame({'income': [30000, 50000, 70000, 90000]})\nprint(\"Before - mean:\", df['income'].mean(), \"std:\", df['income'].std())\nscaled = StandardScaler().fit_transform(df[['income']])\nprint(\"After - mean:\", scaled.mean(), \"std:\", scaled.std())\\n```",
+      },
+      {
+        questionText: "Using 'sklearn.preprocessing.MinMaxScaler', write code to scale a numeric column to the range [0, 1], and demonstrate correctly fitting on training data only before transforming both train and test sets.",
+        starterCode: "# Using 'sklearn.preprocessing.MinMaxScaler', write code to sc\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.preprocessing import MinMaxScaler\nfrom sklearn.model_selection import train_test_split\nimport numpy as np\ndata = np.array([[10],[20],[30],[40],[50]])\ntrain, test = train_test_split(data, test_size=0.2, random_state=42)\nscaler = MinMaxScaler().fit(train)  # fit only on train\ntrain_scaled = scaler.transform(train)\ntest_scaled = scaler.transform(test)\nprint(train_scaled, test_scaled)\\n```",
+      },
+    ],
+  },
+  85: {
+    topicTitle: "FeatEng: Feature Engineering - Feature Selection Techniques",
+    mcqs: [
+      {
+        questionText: "What is the main goal of feature selection in machine learning?",
+        options: ["To identify and keep the most relevant features while removing redundant or irrelevant ones, improving model performance and interpretability", "To always use every available feature", "To convert features into categories", "To increase the number of features"],
+        correctOption: 0,
+        explanation: "The correct answer is: To identify and keep the most relevant features while removing redundant or irrelevant ones, improving model performance and interpretability",
+      },
+      {
+        questionText: "What is the difference between feature selection and feature extraction (like PCA)?",
+        options: ["Feature selection chooses a subset of the original features, while feature extraction creates new transformed features from combinations of the originals", "They are identical processes", "Feature extraction always removes features", "Feature selection creates new features from scratch"],
+        correctOption: 0,
+        explanation: "The correct answer is: Feature selection chooses a subset of the original features, while feature extraction creates new transformed features from combinations of the originals",
+      },
+      {
+        questionText: "What is a \"Filter\" method of feature selection?",
+        options: ["Selecting features based on statistical measures (e.g., correlation, chi-square) independent of any specific ML model", "Selecting features based on model performance directly", "Randomly selecting features", "Using neural networks only"],
+        correctOption: 0,
+        explanation: "The correct answer is: Selecting features based on statistical measures (e.g., correlation, chi-square) independent of any specific ML model",
+      },
+      {
+        questionText: "What is a \"Wrapper\" method of feature selection, such as Recursive Feature Elimination (RFE)?",
+        options: ["It evaluates subsets of features by training and testing a model repeatedly to find the best-performing subset", "It uses only correlation coefficients", "It requires no model training at all", "It is identical to a filter method"],
+        correctOption: 0,
+        explanation: "The correct answer is: It evaluates subsets of features by training and testing a model repeatedly to find the best-performing subset",
+      },
+      {
+        questionText: "What is an \"Embedded\" method of feature selection?",
+        options: ["Feature selection happens as part of the model training process itself, e.g., Lasso regression's coefficient shrinkage to zero", "It requires a separate preprocessing step unrelated to the model", "It is the same as PCA", "It only applies to categorical features"],
+        correctOption: 0,
+        explanation: "The correct answer is: Feature selection happens as part of the model training process itself, e.g., Lasso regression's coefficient shrinkage to zero",
+      },
+      {
+        questionText: "How does high correlation between two independent features (multicollinearity) typically affect linear models?",
+        options: ["It can make coefficient estimates unstable and harder to interpret, so one of the correlated features is often removed", "It always improves model accuracy", "It has no effect on any model", "It only affects tree-based models"],
+        correctOption: 0,
+        explanation: "The correct answer is: It can make coefficient estimates unstable and harder to interpret, so one of the correlated features is often removed",
+      },
+      {
+        questionText: "Which metric is commonly used in a Filter method to select features most correlated with a continuous target variable?",
+        options: ["Pearson correlation coefficient", "Levenshtein distance", "Euclidean distance only", "Hamming distance"],
+        correctOption: 0,
+        explanation: "The correct answer is: Pearson correlation coefficient",
+      },
+      {
+        questionText: "Why is feature selection particularly valuable when working with high-dimensional data (many features, e.g., text or genomic data)?",
+        options: ["It helps reduce overfitting, training time, and the curse of dimensionality by removing uninformative features", "It always increases the dataset size", "It guarantees a perfect model", "It is only relevant for image data"],
+        correctOption: 0,
+        explanation: "The correct answer is: It helps reduce overfitting, training time, and the curse of dimensionality by removing uninformative features",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using 'sklearn.feature_selection.SelectKBest' with the 'f_classif' scoring function, write code to select the top 5 most relevant features from a dataset 'X' with target 'y'.",
+        starterCode: "# Using 'sklearn.feature_selection.SelectKBest' with the 'f_cl\n\ndef solution():\n    pass",
+        expectedKeywords: ["class", "def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.feature_selection import SelectKBest, f_classif\nimport numpy as np\nX = np.random.rand(100, 10)\ny = np.random.randint(0, 2, 100)\nselector = SelectKBest(score_func=f_classif, k=5)\nX_new = selector.fit_transform(X, y)\nprint(X_new.shape)\\n```",
+      },
+      {
+        questionText: "Using 'sklearn.feature_selection.RFE' with a 'LogisticRegression' estimator, write code to recursively select the top 3 features from a dataset and print which columns were selected.",
+        starterCode: "# Using 'sklearn.feature_selection.RFE' with a 'LogisticRegres\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.feature_selection import RFE\nfrom sklearn.linear_model import LogisticRegression\nimport numpy as np\nimport pandas as pd\nX = pd.DataFrame(np.random.rand(100, 8), columns=[f'f{i}' for i in range(8)])\ny = np.random.randint(0, 2, 100)\nrfe = RFE(LogisticRegression(), n_features_to_select=3)\nrfe.fit(X, y)\nprint(\"Selected columns:\", X.columns[rfe.support_].tolist())\\n```",
+      },
+    ],
+  },
+  86: {
     topicTitle: "ML: Machine Learning \u2013 Introduction",
     mcqs: [
       {
@@ -2871,19 +5752,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Print scikit-learn's version and list 3 built-in datasets available in 'sklearn.datasets'.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Print scikit-learn's version and list 3 built-in datasets available in 'sklearn....",
+        starterCode: "# Print scikit-learn's version and list 3 built-in datasets av\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport sklearn\nprint(sklearn.__version__)\nprint(\"Built-in datasets: load_iris, load_diabetes, load_wine\")\\n```",
       },
       {
         questionText: "Load the iris dataset via 'sklearn.datasets.load_iris'; print the feature-data shape and target class names.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["class", "def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Load the iris dataset via 'sklearn.datasets.load_iris'; print the feature-data s...",
+        starterCode: "# Load the iris dataset via 'sklearn.datasets.load_iris'; prin\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.datasets import load_iris\ndata = load_iris()\nprint(data.data.shape)\nprint(data.target_names)\\n```",
       },
     ],
   },
-  44: {
+  87: {
     topicTitle: "ML: Machine Learning \u2013 Terminology",
     mcqs: [
       {
@@ -2938,19 +5819,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Load the iris dataset; clearly print which columns are \"features\" and which is the \"label\".",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Load the iris dataset; clearly print which columns are \"features\" and which is t...",
+        starterCode: "# Load the iris dataset; clearly print which columns are \"feat\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.datasets import load_iris\ndata = load_iris()\nprint(\"Features:\", data.feature_names)\nprint(\"Label:\", \"species (target)\")\\n```",
       },
       {
         questionText: "Define a hyperparameter dictionary (e.g., '{\"n_estimators\": 100, \"max_depth\": 5}'); print each name/value distinguishing them from \"learned parameters\".",
-        starterCode: "def dictionary():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Define a hyperparameter dictionary (e.g., '{\"n_estimators\": 100, \"max_depth\": 5}...",
+        starterCode: "# Define a hyperparameter dictionary (e.g., '{\"n_estimators\": \n\ndef dictionary():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\nhyperparams = {\"n_estimators\": 100, \"max_depth\": 5}\nfor name, value in hyperparams.items():\n    print(f\"Hyperparameter {name} = {value} (set before training, not learned)\")\\n```",
       },
     ],
   },
-  45: {
+  88: {
     topicTitle: "ML: Data and ML Algorithms",
     mcqs: [
       {
@@ -3005,19 +5886,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Create a small structured dataset (list of dicts) and convert to a Pandas DataFrame.",
-        starterCode: "def dataset():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Create a small structured dataset (list of dicts) and convert to a Pandas DataFr...",
+        starterCode: "# Create a small structured dataset (list of dicts) and conver\n\ndef dataset():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\nrecords = [{'name': 'A', 'age': 25}, {'name': 'B', 'age': 30}]\ndf = pd.DataFrame(records)\nprint(df)\\n```",
       },
       {
         questionText: "Fit 'LinearRegression' (supervised) and 'KMeans' (unsupervised) on the same synthetic numeric dataset, printing both outputs.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Fit 'LinearRegression' (supervised) and 'KMeans' (unsupervised) on the same synt...",
+        starterCode: "# Fit 'LinearRegression' (supervised) and 'KMeans' (unsupervis\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.cluster import KMeans\nimport numpy as np\nX = np.random.rand(50, 2)\ny = X[:, 0] * 2 + 1\nlr = LinearRegression().fit(X, y)\nprint(\"Supervised coef:\", lr.coef_)\nkm = KMeans(n_clusters=3, n_init=10).fit(X)\nprint(\"Unsupervised labels:\", km.labels_[:10])\\n```",
       },
     ],
   },
-  46: {
+  89: {
     topicTitle: "ML: Learning Function",
     mcqs: [
       {
@@ -3072,19 +5953,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Generate noisy data from y=3x+5 and use 'numpy.polyfit' (or 'LinearRegression') to learn the slope/intercept.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Generate noisy data from y=3x+5 and use 'numpy.polyfit' (or 'LinearRegression') ...",
+        starterCode: "# Generate noisy data from y=3x+5 and use 'numpy.polyfit' (or \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nx = np.linspace(0, 10, 50)\ny = 3*x + 5 + np.random.normal(0, 1, 50)\nslope, intercept = np.polyfit(x, y, 1)\nprint(\"Learned slope:\", slope, \"intercept:\", intercept)\\n```",
       },
       {
         questionText: "Use the learned function to predict new x-values and compare to the true noise-free function's values.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use the learned function to predict new x-values and compare to the true noise-f...",
+        starterCode: "# Use the learned function to predict new x-values and compare\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nx_new = np.array([2, 5, 8])\nslope, intercept = 3.02, 4.9  # from previous fit\npredicted = slope * x_new + intercept\ntrue_values = 3 * x_new + 5\nprint(\"Predicted:\", predicted, \"True:\", true_values)\\n```",
       },
     ],
   },
-  47: {
+  90: {
     topicTitle: "ML: Types of the Model (Feature and Label)",
     mcqs: [
       {
@@ -3139,19 +6020,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Load a sample customer dataset (age, income, \"purchased\"); separate features (X) from label (y).",
-        starterCode: "def dataset():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Load a sample customer dataset (age, income, \"purchased\"); separate features (X)...",
+        starterCode: "# Load a sample customer dataset (age, income, \"purchased\"); s\n\ndef dataset():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'age': [25,40,35], 'income': [30000,60000,45000], 'purchased': [0,1,1]})\nX = df[['age', 'income']]\ny = df['purchased']\nprint(X, y)\\n```",
       },
       {
         questionText: "Create one regression-suited and one classification-suited dataset; print features/label for each and note the appropriate model type.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["class", "def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Create one regression-suited and one classification-suited dataset; print featur...",
+        starterCode: "# Create one regression-suited and one classification-suited d\n\ndef solution():\n    pass",
+        expectedKeywords: ["class", "def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\nreg_df = pd.DataFrame({'sqft': [1000,1500], 'price': [200000,300000]})  # regression\nclf_df = pd.DataFrame({'age': [25,40], 'bought': [0,1]})  # classification\nprint(\"Regression - X:\", reg_df[['sqft']], \"y:\", reg_df['price'])\nprint(\"Classification - X:\", clf_df[['age']], \"y:\", clf_df['bought'])\\n```",
       },
     ],
   },
-  48: {
+  91: {
     topicTitle: "ML: Life Cycle",
     mcqs: [
       {
@@ -3206,19 +6087,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Simulate the life cycle as a sequence of function calls ('collect_data()', 'clean_data()', 'analyze_data()', 'train_model()', 'evaluate_model()'), printing a message at each stage.",
-        starterCode: "def calls():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Simulate the life cycle as a sequence of function calls ('collect_data()', 'clea...",
+        starterCode: "# Simulate the life cycle as a sequence of function calls ('co\n\ndef calls():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\ndef collect_data(): print(\"1. Collecting data...\")\ndef clean_data(): print(\"2. Cleaning data...\")\ndef analyze_data(): print(\"3. Analyzing data...\")\ndef train_model(): print(\"4. Training model...\")\ndef evaluate_model(): print(\"5. Evaluating model...\")\n\nfor step in [collect_data, clean_data, analyze_data, train_model, evaluate_model]:\n    step()\\n```",
       },
       {
         questionText: "Perform \"Data Wrangling\" on a raw, messy sample dataset (missing values, inconsistent formatting) to produce a clean DataFrame.",
-        starterCode: "def dataset():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Perform \"Data Wrangling\" on a raw, messy sample dataset (missing values, inconsi...",
+        starterCode: "# Perform \"Data Wrangling\" on a raw, messy sample dataset (mis\n\ndef dataset():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\nimport numpy as np\nraw = pd.DataFrame({'Age': [25, None, '35 '], 'City': [' NY', 'la', 'SF ']})\nraw['Age'] = pd.to_numeric(raw['Age'].astype(str).str.strip(), errors='coerce')\nraw['Age'] = raw['Age'].fillna(raw['Age'].median())\nraw['City'] = raw['City'].str.strip().str.upper()\nprint(raw)\\n```",
       },
     ],
   },
-  49: {
+  92: {
     topicTitle: "ML: Train & Test Datasets",
     mcqs: [
       {
@@ -3229,9 +6110,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "scikit-learn function to split a dataset:",
-        options: ["train_test_split()", "split_dataset()", "train_test_divide()", "data_split()"],
+        options: ["'train_test_split()'", "'split_dataset()'", "'train_test_divide()'", "'data_split()'"],
         correctOption: 0,
-        explanation: "The correct answer is: train_test_split()",
+        explanation: "The correct answer is: 'train_test_split()'",
       },
       {
         questionText: "Common train-test split ratio in practice:",
@@ -3273,19 +6154,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Split a sample dataset 80/20 with 'random_state=42'; print the shapes of the resulting sets.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Split a sample dataset 80/20 with 'random_state=42'; print the shapes of the res...",
+        starterCode: "# Split a sample dataset 80/20 with 'random_state=42'; print t\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.model_selection import train_test_split\nimport numpy as np\nX = np.random.rand(100, 3)\ny = np.random.randint(0, 2, 100)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\nprint(X_train.shape, X_test.shape)\\n```",
       },
       {
         questionText: "Split a classification dataset using 'stratify=y'; print class distributions of the original data and both splits.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["class", "def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Split a classification dataset using 'stratify=y'; print class distributions of ...",
+        starterCode: "# Split a classification dataset using 'stratify=y'; print cla\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.model_selection import train_test_split\nimport numpy as np\nX = np.random.rand(100, 3)\ny = np.array([0]*80 + [1]*20)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratify=y, random_state=42)\nimport collections\nprint(collections.Counter(y), collections.Counter(y_train), collections.Counter(y_test))\\n```",
       },
     ],
   },
-  50: {
+  93: {
     topicTitle: "ML: R Value",
     mcqs: [
       {
@@ -3332,27 +6213,27 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Computing the correlation between two Pandas columns:",
-        options: ["df['col1'].corr(df['col2'])", "df.correlate('col1','col2')", "df.r_value('col1','col2')", "df['col1'].relation(df['col2'])"],
+        options: ["'df['col1'].corr(df['col2'])'", "'df.correlate('col1','col2')'", "'df.r_value('col1','col2')'", "'df['col1'].relation(df['col2'])'"],
         correctOption: 0,
-        explanation: "The correct answer is: df['col1'].corr(df['col2'])",
+        explanation: "The correct answer is: 'df['col1'].corr(df['col2'])'",
       },
     ],
     coding: [
       {
         questionText: "Compute the R value between two numeric columns of a sample DataFrame; interpret weak/moderate/strong.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Compute the R value between two numeric columns of a sample DataFrame; interpret...",
+        starterCode: "# Compute the R value between two numeric columns of a sample \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'x': [1,2,3,4,5], 'y': [2,4,5,4,5]})\nr = df['x'].corr(df['y'])\nstrength = 'strong' if abs(r) > 0.7 else 'moderate' if abs(r) > 0.3 else 'weak'\nprint(f\"R = {r:.2f} ({strength})\")\\n```",
       },
       {
         questionText: "Generate two strongly correlated synthetic variables and two unrelated ones; compute and compare R for each pair.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Generate two strongly correlated synthetic variables and two unrelated ones; com...",
+        starterCode: "# Generate two strongly correlated synthetic variables and two\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nx1 = np.arange(50); y1 = x1 * 2 + np.random.normal(0, 1, 50)  # strongly correlated\nx2 = np.random.rand(50); y2 = np.random.rand(50)  # unrelated\nprint(\"Strong pair R:\", np.corrcoef(x1, y1)[0,1])\nprint(\"Unrelated pair R:\", np.corrcoef(x2, y2)[0,1])\\n```",
       },
     ],
   },
-  51: {
+  94: {
     topicTitle: "ML: Simple Linear Regression",
     mcqs: [
       {
@@ -3381,21 +6262,21 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "scikit-learn class implementing Simple Linear Regression:",
-        options: ["LinearRegression from sklearn.linear_model", "LogisticRegression", "KMeans", "DecisionTreeClassifier"],
+        options: ["'LinearRegression' from 'sklearn.linear_model'", "'LogisticRegression'", "'KMeans'", "'DecisionTreeClassifier'"],
         correctOption: 0,
-        explanation: "The correct answer is: LinearRegression from sklearn.linear_model",
+        explanation: "The correct answer is: 'LinearRegression' from 'sklearn.linear_model'",
       },
       {
         questionText: "Attribute of a fitted 'LinearRegression' giving the learned slope(s):",
-        options: ["model.coef_", "model.slope", "model.m_value", "model.weights"],
+        options: ["'model.coef_'", "'model.slope'", "'model.m_value'", "'model.weights'"],
         correctOption: 0,
-        explanation: "The correct answer is: model.coef_",
+        explanation: "The correct answer is: 'model.coef_'",
       },
       {
         questionText: "Attribute giving the y-intercept:",
-        options: ["model.intercept_", "model.c_value", "model.bias", "model.origin"],
+        options: ["'model.intercept_'", "'model.c_value'", "'model.bias'", "'model.origin'"],
         correctOption: 0,
-        explanation: "The correct answer is: model.intercept_",
+        explanation: "The correct answer is: 'model.intercept_'",
       },
       {
         questionText: "The \"residual\" is:",
@@ -3407,19 +6288,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Fit a 'LinearRegression' model on a salary-vs-experience dataset; print the learned slope and intercept.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Fit a 'LinearRegression' model on a salary-vs-experience dataset; print the lear...",
+        starterCode: "# Fit a 'LinearRegression' model on a salary-vs-experience dat\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.linear_model import LinearRegression\nimport numpy as np\nX = np.array([[1],[2],[3],[4],[5]])\ny = np.array([35000,40000,50000,55000,65000])\nmodel = LinearRegression().fit(X, y)\nprint(\"Slope:\", model.coef_[0], \"Intercept:\", model.intercept_)\\n```",
       },
       {
         questionText: "Predict salary for a new experience value; plot data points and the fitted regression line with Matplotlib.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Predict salary for a new experience value; plot data points and the fitted regre...",
+        starterCode: "# Predict salary for a new experience value; plot data points \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.linear_model import LinearRegression\nimport numpy as np\nimport matplotlib.pyplot as plt\nX = np.array([[1],[2],[3],[4],[5]])\ny = np.array([35000,40000,50000,55000,65000])\nmodel = LinearRegression().fit(X, y)\nprint(\"Prediction for 6 years:\", model.predict([[6]]))\nplt.scatter(X, y)\nplt.plot(X, model.predict(X), color='red')\nplt.show()\\n```",
       },
     ],
   },
-  52: {
+  95: {
     topicTitle: "ML: Polynomial Features",
     mcqs: [
       {
@@ -3430,9 +6311,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "scikit-learn class generating polynomial features:",
-        options: ["PolynomialFeatures from sklearn.preprocessing", "PolyModel", "FeatureExpander", "NonLinearTransform"],
+        options: ["'PolynomialFeatures' from 'sklearn.preprocessing'", "'PolyModel'", "'FeatureExpander'", "'NonLinearTransform'"],
         correctOption: 0,
-        explanation: "The correct answer is: PolynomialFeatures from sklearn.preprocessing",
+        explanation: "The correct answer is: 'PolynomialFeatures' from 'sklearn.preprocessing'",
       },
       {
         questionText: "What does the 'degree' parameter control?",
@@ -3442,9 +6323,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "After generating polynomial features, which model typically still fits the data?",
-        options: ["LinearRegression, fitting a linear model to the expanded features", "KMeans", "DecisionTreeClassifier only", "No further model needed"],
+        options: ["'LinearRegression', fitting a linear model to the expanded features", "'KMeans'", "'DecisionTreeClassifier' only", "No further model needed"],
         correctOption: 0,
-        explanation: "The correct answer is: LinearRegression, fitting a linear model to the expanded features",
+        explanation: "The correct answer is: 'LinearRegression', fitting a linear model to the expanded features",
       },
       {
         questionText: "Risk of a very high polynomial degree:",
@@ -3474,19 +6355,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Fit a degree-2 'PolynomialFeatures' + 'LinearRegression' model on a quadratic synthetic dataset with noise.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Fit a degree-2 'PolynomialFeatures' + 'LinearRegression' model on a quadratic sy...",
+        starterCode: "# Fit a degree-2 'PolynomialFeatures' + 'LinearRegression' mod\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.preprocessing import PolynomialFeatures\nfrom sklearn.linear_model import LinearRegression\nimport numpy as np\nX = np.linspace(-3, 3, 30).reshape(-1,1)\ny = X.ravel()**2 + np.random.normal(0, 1, 30)\npoly = PolynomialFeatures(degree=2)\nX_poly = poly.fit_transform(X)\nmodel = LinearRegression().fit(X_poly, y)\nprint(model.coef_, model.intercept_)\\n```",
       },
       {
         questionText: "Compare simple Linear Regression and degree-3 Polynomial Regression on the same non-linear dataset, plotting both curves.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Compare simple Linear Regression and degree-3 Polynomial Regression on the same ...",
+        starterCode: "# Compare simple Linear Regression and degree-3 Polynomial Reg\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.preprocessing import PolynomialFeatures\nfrom sklearn.linear_model import LinearRegression\nimport numpy as np\nimport matplotlib.pyplot as plt\nX = np.linspace(-3, 3, 30).reshape(-1,1)\ny = X.ravel()**2 + np.random.normal(0, 1, 30)\nlin = LinearRegression().fit(X, y)\npoly3 = PolynomialFeatures(degree=3)\nX_poly = poly3.fit_transform(X)\npoly_model = LinearRegression().fit(X_poly, y)\nplt.scatter(X, y)\nplt.plot(X, lin.predict(X), label='linear')\nplt.plot(X, poly_model.predict(X_poly), label='degree-3')\nplt.legend(); plt.show()\\n```",
       },
     ],
   },
-  53: {
+  96: {
     topicTitle: "ML: Multiple Linear Regression",
     mcqs: [
       {
@@ -3503,9 +6384,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "scikit-learn class for Multiple Linear Regression:",
-        options: ["LinearRegression (handles single and multiple features)", "MultipleLinearRegression (distinct class)", "LogisticRegression", "KMeans"],
+        options: ["'LinearRegression' (handles single and multiple features)", "'MultipleLinearRegression' (distinct class)", "'LogisticRegression'", "'KMeans'"],
         correctOption: 0,
-        explanation: "The correct answer is: LinearRegression (handles single and multiple features)",
+        explanation: "The correct answer is: 'LinearRegression' (handles single and multiple features)",
       },
       {
         questionText: "Each coefficient (b1, b2, etc.) represents:",
@@ -3541,19 +6422,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Fit a Multiple Linear Regression model with 3+ independent variables (size, bedrooms, age) predicting house price; print coefficients/intercept.",
-        starterCode: "def variables():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Fit a Multiple Linear Regression model with 3+ independent variables (size, bedr...",
+        starterCode: "# Fit a Multiple Linear Regression model with 3+ independent v\n\ndef variables():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.linear_model import LinearRegression\nimport numpy as np\nX = np.array([[1500,3,10],[1800,4,5],[1200,2,20],[2000,4,2]])\ny = np.array([300000,340000,250000,400000])\nmodel = LinearRegression().fit(X, y)\nprint(\"Coefficients:\", model.coef_, \"Intercept:\", model.intercept_)\\n```",
       },
       {
         questionText: "Compute and print R\u00b2 and Adjusted R\u00b2 for the fitted model given predictor count and sample size.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Compute and print R\u00b2 and Adjusted R\u00b2 for the fitted model given predictor count ...",
+        starterCode: "# Compute and print R\u00b2 and Adjusted R\u00b2 for the fitted model gi\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.metrics import r2_score\nn, p = 4, 3\ny_actual = np.array([300000,340000,250000,400000])\ny_pred = np.array([295000,345000,255000,395000])\nr2 = r2_score(y_actual, y_pred)\nadj_r2 = 1 - (1-r2)*(n-1)/(n-p-1)\nprint(\"R2:\", r2, \"Adjusted R2:\", adj_r2)\\n```",
       },
     ],
   },
-  54: {
+  97: {
     topicTitle: "ML: Pickling and Unpickling",
     mcqs: [
       {
@@ -3570,21 +6451,21 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Module used for pickling/unpickling:",
-        options: ["pickle", "json only", "pandas", "os"],
+        options: ["'pickle'", "'json' only", "'pandas'", "'os'"],
         correctOption: 0,
-        explanation: "The correct answer is: pickle",
+        explanation: "The correct answer is: 'pickle'",
       },
       {
         questionText: "Function to save (pickle) an object:",
-        options: ["pickle.dump(obj, file)", "pickle.save(obj, file)", "pickle.write(obj, file)", "pickle.export(obj, file)"],
+        options: ["'pickle.dump(obj, file)'", "'pickle.save(obj, file)'", "'pickle.write(obj, file)'", "'pickle.export(obj, file)'"],
         correctOption: 0,
-        explanation: "The correct answer is: pickle.dump(obj, file)",
+        explanation: "The correct answer is: 'pickle.dump(obj, file)'",
       },
       {
         questionText: "Function to load (unpickle) an object:",
-        options: ["pickle.load(file)", "pickle.read(file)", "pickle.open(file)", "pickle.restore(file)"],
+        options: ["'pickle.load(file)'", "'pickle.read(file)'", "'pickle.open(file)'", "'pickle.restore(file)'"],
         correctOption: 0,
-        explanation: "The correct answer is: pickle.load(file)",
+        explanation: "The correct answer is: 'pickle.load(file)'",
       },
       {
         questionText: "Why is pickling useful for ML models?",
@@ -3600,27 +6481,27 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "File mode typically used for pickling/unpickling:",
-        options: ["Binary mode, 'wb'/'rb'", "Text mode only", "Append mode only", "Doesn't matter"],
+        options: ["Binary mode, ''wb''/''rb''", "Text mode only", "Append mode only", "Doesn't matter"],
         correctOption: 0,
-        explanation: "The correct answer is: Binary mode, 'wb'/'rb'",
+        explanation: "The correct answer is: Binary mode, ''wb''/''rb''",
       },
     ],
     coding: [
       {
         questionText: "Train a 'LinearRegression' model, pickle it to 'model.pkl', unpickle it, and confirm matching predictions.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train a 'LinearRegression' model, pickle it to 'model.pkl', unpickle it, and con...",
+        starterCode: "# Train a 'LinearRegression' model, pickle it to 'model.pkl', \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pickle\nfrom sklearn.linear_model import LinearRegression\nimport numpy as np\nX = np.array([[1],[2],[3]]); y = np.array([2,4,6])\nmodel = LinearRegression().fit(X, y)\nwith open('model.pkl', 'wb') as f:\n    pickle.dump(model, f)\nwith open('model.pkl', 'rb') as f:\n    loaded = pickle.load(f)\nprint(model.predict(X) == loaded.predict(X))\\n```",
       },
       {
         questionText: "Pickle a dict of model metadata (feature names, training date, accuracy), unpickle it, and print the contents.",
-        starterCode: "def metadata():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Pickle a dict of model metadata (feature names, training date, accuracy), unpick...",
+        starterCode: "# Pickle a dict of model metadata (feature names, training dat\n\ndef metadata():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pickle\nmetadata = {'features': ['a','b'], 'training_date': '2024-01-01', 'accuracy': 0.92}\nwith open('meta.pkl', 'wb') as f:\n    pickle.dump(metadata, f)\nwith open('meta.pkl', 'rb') as f:\n    loaded = pickle.load(f)\nprint(loaded)\\n```",
       },
     ],
   },
-  55: {
+  98: {
     topicTitle: "ML: Save Model using Joblib and Pickling",
     mcqs: [
       {
@@ -3631,21 +6512,21 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Function to save a model with joblib:",
-        options: ["joblib.dump(model, 'model.joblib')", "joblib.save(...)", "joblib.write(...)", "joblib.export(...)"],
+        options: ["'joblib.dump(model, 'model.joblib')'", "'joblib.save(...)'", "'joblib.write(...)'", "'joblib.export(...)'"],
         correctOption: 0,
-        explanation: "The correct answer is: joblib.dump(model, 'model.joblib')",
+        explanation: "The correct answer is: 'joblib.dump(model, 'model.joblib')'",
       },
       {
         questionText: "Function to load a model saved with joblib:",
-        options: ["joblib.load('model.joblib')", "joblib.read(...)", "joblib.open(...)", "joblib.restore(...)"],
+        options: ["'joblib.load('model.joblib')'", "'joblib.read(...)'", "'joblib.open(...)'", "'joblib.restore(...)'"],
         correctOption: 0,
-        explanation: "The correct answer is: joblib.load('model.joblib')",
+        explanation: "The correct answer is: 'joblib.load('model.joblib')'",
       },
       {
         questionText: "Module import needed to use joblib:",
-        options: ["import joblib", "import pickle_lib", "import model_saver", "import sklearn.save"],
+        options: ["'import joblib'", "'import pickle_lib'", "'import model_saver'", "'import sklearn.save'"],
         correctOption: 0,
-        explanation: "The correct answer is: import joblib",
+        explanation: "The correct answer is: 'import joblib'",
       },
       {
         questionText: "Key benefit of saving a trained model to disk:",
@@ -3667,27 +6548,27 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Common file extension used with joblib:",
-        options: [".joblib or .pkl", ".exe", ".csv only", ".txt only"],
+        options: ["'.joblib' or '.pkl'", "'.exe'", "'.csv' only", "'.txt' only"],
         correctOption: 0,
-        explanation: "The correct answer is: .joblib or .pkl",
+        explanation: "The correct answer is: '.joblib' or '.pkl'",
       },
     ],
     coding: [
       {
         questionText: "Train a classifier, save with 'joblib.dump()', load with 'joblib.load()', and verify identical predictions.",
-        starterCode: "def dump():\n    pass",
-        expectedKeywords: ["class", "def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train a classifier, save with 'joblib.dump()', load with 'joblib.load()', and ve...",
+        starterCode: "# Train a classifier, save with 'joblib.dump()', load with 'jo\n\ndef dump():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport joblib\nfrom sklearn.linear_model import LogisticRegression\nimport numpy as np\nX = np.random.rand(50,2); y = np.random.randint(0,2,50)\nclf = LogisticRegression().fit(X, y)\njoblib.dump(clf, 'clf.joblib')\nloaded_clf = joblib.load('clf.joblib')\nprint(all(clf.predict(X) == loaded_clf.predict(X)))\\n```",
       },
       {
         questionText: "Save a model AND a fitted 'StandardScaler' with joblib; load both back and use them together on new data.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Save a model AND a fitted 'StandardScaler' with joblib; load both back and use t...",
+        starterCode: "# Save a model AND a fitted 'StandardScaler' with joblib; load\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport joblib\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.linear_model import LogisticRegression\nimport numpy as np\nX = np.random.rand(50,2); y = np.random.randint(0,2,50)\nscaler = StandardScaler().fit(X)\nclf = LogisticRegression().fit(scaler.transform(X), y)\njoblib.dump({'scaler': scaler, 'model': clf}, 'bundle.joblib')\nbundle = joblib.load('bundle.joblib')\nnew_X = np.random.rand(5,2)\nprint(bundle['model'].predict(bundle['scaler'].transform(new_X)))\\n```",
       },
     ],
   },
-  56: {
+  99: {
     topicTitle: "ML: Cost Function",
     mcqs: [
       {
@@ -3742,19 +6623,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Manually implement Mean Squared Error given actual/predicted lists; compute for a few prediction sets.",
-        starterCode: "def solution():\n    pass",
+        starterCode: "# Manually implement Mean Squared Error given actual/predicted\n\ndef solution():\n    pass",
         expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Manually implement Mean Squared Error given actual/predicted lists; compute for ...",
+        solutionDescription: "```python\\ndef mse(actual, predicted):\n    return sum((a-p)**2 for a,p in zip(actual, predicted)) / len(actual)\n\nprint(mse([3,5,7], [2.5,5.5,6.5]))\nprint(mse([10,20], [12,18]))\\n```",
       },
       {
         questionText: "Manually implement one iteration of gradient descent for y = mx + c, updating m and c on a small dataset.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Manually implement one iteration of gradient descent for y = mx + c, updating m ...",
+        starterCode: "# Manually implement one iteration of gradient descent for y =\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\nx = [1,2,3,4]; y = [3,5,7,9]\nm, c = 0, 0\nlr = 0.01\nn = len(x)\npreds = [m*xi + c for xi in x]\ndm = (-2/n) * sum(xi*(yi-pi) for xi,yi,pi in zip(x,y,preds))\ndc = (-2/n) * sum(yi-pi for yi,pi in zip(y,preds))\nm -= lr*dm\nc -= lr*dc\nprint(\"Updated m:\", m, \"c:\", c)\\n```",
       },
     ],
   },
-  57: {
+  100: {
     topicTitle: "ML: Regression Cost Functions",
     mcqs: [
       {
@@ -3801,27 +6682,27 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Computing MAE with scikit-learn:",
-        options: ["mean_absolute_error(y_true, y_pred) from sklearn.metrics", "mean_squared_error(..., squared=False) gives MAE directly", "r2_score(...)", "accuracy_score(...)"],
+        options: ["'mean_absolute_error(y_true, y_pred)' from 'sklearn.metrics'", "'mean_squared_error(..., squared=False)' gives MAE directly", "'r2_score(...)'", "'accuracy_score(...)'"],
         correctOption: 0,
-        explanation: "The correct answer is: mean_absolute_error(y_true, y_pred) from sklearn.metrics",
+        explanation: "The correct answer is: 'mean_absolute_error(y_true, y_pred)' from 'sklearn.metrics'",
       },
     ],
     coding: [
       {
         questionText: "Use 'mean_absolute_error', 'mean_squared_error', and 'r2_score' to evaluate a regression model's predictions.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use 'mean_absolute_error', 'mean_squared_error', and 'r2_score' to evaluate a re...",
+        starterCode: "# Use 'mean_absolute_error', 'mean_squared_error', and 'r2_sco\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score\ny_actual = [3,5,7,9]; y_pred = [2.8,5.2,6.9,9.3]\nprint(\"MAE:\", mean_absolute_error(y_actual, y_pred))\nprint(\"MSE:\", mean_squared_error(y_actual, y_pred))\nprint(\"R2:\", r2_score(y_actual, y_pred))\\n```",
       },
       {
         questionText: "Manually implement MAE and MSE from scratch, and verify results match scikit-learn's built-in functions.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Manually implement MAE and MSE from scratch, and verify results match scikit-lea...",
+        starterCode: "# Manually implement MAE and MSE from scratch, and verify resu\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\ny_actual = [3,5,7,9]; y_pred = [2.8,5.2,6.9,9.3]\nmae_manual = sum(abs(a-p) for a,p in zip(y_actual,y_pred)) / len(y_actual)\nmse_manual = sum((a-p)**2 for a,p in zip(y_actual,y_pred)) / len(y_actual)\nprint(\"Manual MAE:\", mae_manual, \"Manual MSE:\", mse_manual)\\n```",
       },
     ],
   },
-  58: {
+  101: {
     topicTitle: "ML: Dummy Variable & OneHotEncoding",
     mcqs: [
       {
@@ -3856,15 +6737,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Pandas function to quickly one-hot encode:",
-        options: ["pd.get_dummies(df)", "pd.encode(df)", "pd.one_hot(df)", "pd.dummy_transform(df)"],
+        options: ["'pd.get_dummies(df)'", "'pd.encode(df)'", "'pd.one_hot(df)'", "'pd.dummy_transform(df)'"],
         correctOption: 0,
-        explanation: "The correct answer is: pd.get_dummies(df)",
+        explanation: "The correct answer is: 'pd.get_dummies(df)'",
       },
       {
         questionText: "scikit-learn class for one-hot encoding within a pipeline:",
-        options: ["OneHotEncoder from sklearn.preprocessing", "LabelEncoder (better for ordinal/target encoding)", "StandardScaler", "PolynomialFeatures"],
+        options: ["'OneHotEncoder' from 'sklearn.preprocessing'", "'LabelEncoder' (better for ordinal/target encoding)", "'StandardScaler'", "'PolynomialFeatures'"],
         correctOption: 0,
-        explanation: "The correct answer is: OneHotEncoder from sklearn.preprocessing",
+        explanation: "The correct answer is: 'OneHotEncoder' from 'sklearn.preprocessing'",
       },
       {
         questionText: "When is Label Encoding less appropriate than One-Hot Encoding?",
@@ -3876,19 +6757,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Use 'pd.get_dummies()' with 'drop_first=True' on a \"City\" column to avoid the dummy variable trap.",
-        starterCode: "def get_dummies():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use 'pd.get_dummies()' with 'drop_first=True' on a \"City\" column to avoid the du...",
+        starterCode: "# Use 'pd.get_dummies()' with 'drop_first=True' on a \"City\" co\n\ndef get_dummies():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'City': ['NY','LA','SF','NY']})\nencoded = pd.get_dummies(df, columns=['City'], drop_first=True)\nprint(encoded)\\n```",
       },
       {
         questionText: "Use scikit-learn's 'OneHotEncoder' in a small pipeline to encode a categorical column and combine with numeric columns before fitting 'LinearRegression'.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use scikit-learn's 'OneHotEncoder' in a small pipeline to encode a categorical c...",
+        starterCode: "# Use scikit-learn's 'OneHotEncoder' in a small pipeline to en\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.compose import ColumnTransformer\nfrom sklearn.preprocessing import OneHotEncoder\nfrom sklearn.pipeline import Pipeline\nfrom sklearn.linear_model import LinearRegression\nimport pandas as pd\ndf = pd.DataFrame({'City': ['NY','LA','SF'], 'Size': [1000,1500,1200], 'Price': [300000,400000,350000]})\nct = ColumnTransformer([('onehot', OneHotEncoder(), ['City'])], remainder='passthrough')\npipe = Pipeline([('prep', ct), ('model', LinearRegression())])\npipe.fit(df[['City','Size']], df['Price'])\nprint(pipe.predict(df[['City','Size']]))\\n```",
       },
     ],
   },
-  59: {
+  102: {
     topicTitle: "ML: Gradient Descent Algorithm",
     mcqs: [
       {
@@ -3943,19 +6824,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Implement Batch Gradient Descent from scratch to find m and c of a simple linear regression on a small dataset, printing cost per iteration.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Implement Batch Gradient Descent from scratch to find m and c of a simple linear...",
+        starterCode: "# Implement Batch Gradient Descent from scratch to find m and \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nx = np.array([1,2,3,4,5]); y = np.array([3,5,7,9,11])\nm, c = 0.0, 0.0\nlr = 0.01\nfor i in range(1000):\n    preds = m*x + c\n    cost = np.mean((y-preds)**2)\n    dm = (-2/len(x)) * np.sum(x*(y-preds))\n    dc = (-2/len(x)) * np.sum(y-preds)\n    m -= lr*dm\n    c -= lr*dc\n    if i % 200 == 0:\n        print(f\"iter {i}: cost={cost:.4f}, m={m:.3f}, c={c:.3f}\")\\n```",
       },
       {
         questionText: "Experiment with 3 learning rates (0.001, 0.01, 0.5) on the same gradient descent implementation; compare convergence.",
-        starterCode: "def rates():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Experiment with 3 learning rates (0.001, 0.01, 0.5) on the same gradient descent...",
+        starterCode: "# Experiment with 3 learning rates (0.001, 0.01, 0.5) on the s\n\ndef rates():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nx = np.array([1,2,3,4,5]); y = np.array([3,5,7,9,11])\nfor lr in [0.001, 0.01, 0.5]:\n    m, c = 0.0, 0.0\n    for i in range(200):\n        preds = m*x + c\n        dm = (-2/len(x)) * np.sum(x*(y-preds))\n        dc = (-2/len(x)) * np.sum(y-preds)\n        m -= lr*dm; c -= lr*dc\n    print(f\"lr={lr}: final m={m:.3f}, c={c:.3f}\")\\n```",
       },
     ],
   },
-  60: {
+  103: {
     topicTitle: "ML: Logistic Regression",
     mcqs: [
       {
@@ -3984,9 +6865,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "scikit-learn class for Logistic Regression:",
-        options: ["LogisticRegression from sklearn.linear_model", "LinearRegression", "KMeans", "DecisionTreeRegressor"],
+        options: ["'LogisticRegression' from 'sklearn.linear_model'", "'LinearRegression'", "'KMeans'", "'DecisionTreeRegressor'"],
         correctOption: 0,
-        explanation: "The correct answer is: LogisticRegression from sklearn.linear_model",
+        explanation: "The correct answer is: 'LogisticRegression' from 'sklearn.linear_model'",
       },
       {
         questionText: "Default 0.5 threshold meaning:",
@@ -4010,19 +6891,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Train 'LogisticRegression' on a sample dataset (e.g., pass/fail vs study hours); print predicted probabilities and classes.",
-        starterCode: "def dataset():\n    pass",
-        expectedKeywords: ["class", "def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train 'LogisticRegression' on a sample dataset (e.g., pass/fail vs study hours);...",
+        starterCode: "# Train 'LogisticRegression' on a sample dataset (e.g., pass/f\n\ndef dataset():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.linear_model import LogisticRegression\nimport numpy as np\nX = np.array([[1],[2],[3],[8],[9],[10]])\ny = np.array([0,0,0,1,1,1])\nmodel = LogisticRegression().fit(X, y)\nprint(model.predict_proba(X))\nprint(model.predict(X))\\n```",
       },
       {
         questionText: "Manually implement sigmoid with hardcoded weights/bias; compute probabilities and apply a 0.5 threshold for a few inputs.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Manually implement sigmoid with hardcoded weights/bias; compute probabilities an...",
+        starterCode: "# Manually implement sigmoid with hardcoded weights/bias; comp\n\ndef solution():\n    pass",
+        expectedKeywords: ["class", "def", "for", "import", "return"],
+        solutionDescription: "```python\\nimport numpy as np\ndef sigmoid(z):\n    return 1 / (1 + np.exp(-z))\n\nw, b = 0.8, -4\nfor x in [2, 5, 8]:\n    prob = sigmoid(w*x + b)\n    cls = 1 if prob >= 0.5 else 0\n    print(f\"x={x}: prob={prob:.3f}, class={cls}\")\\n```",
       },
     ],
   },
-  61: {
+  104: {
     topicTitle: "ML: Logistic Regression \u2013 Multiclass Classification",
     mcqs: [
       {
@@ -4045,9 +6926,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "scikit-learn 'LogisticRegression' parameter specifying multiclass strategy:",
-        options: ["multi_class", "strategy", "class_mode", "multiclass_type"],
+        options: ["'multi_class'", "'strategy'", "'class_mode'", "'multiclass_type'"],
         correctOption: 0,
-        explanation: "The correct answer is: multi_class",
+        explanation: "The correct answer is: 'multi_class'",
       },
       {
         questionText: "For 3-class One-vs-Rest, how many binary classifiers are effectively trained?",
@@ -4077,19 +6958,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Train 'LogisticRegression' with 'multi_class='multinomial'' on iris (3 classes); print predicted classes and accuracy.",
-        starterCode: "def iris():\n    pass",
-        expectedKeywords: ["class", "def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train 'LogisticRegression' with 'multi_class='multinomial'' on iris (3 classes);...",
+        starterCode: "# Train 'LogisticRegression' with 'multi_class='multinomial'' \n\ndef iris():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\ndata = load_iris()\nX_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.2, random_state=42)\nmodel = LogisticRegression(max_iter=200).fit(X_train, y_train)\nprint(model.predict(X_test))\nprint(\"Accuracy:\", model.score(X_test, y_test))\\n```",
       },
       {
         questionText: "Train a One-vs-Rest Logistic Regression classifier; print per-class predicted probabilities for a few samples, confirming they sum to ~1.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["class", "def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train a One-vs-Rest Logistic Regression classifier; print per-class predicted pr...",
+        starterCode: "# Train a One-vs-Rest Logistic Regression classifier; print pe\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.datasets import load_iris\ndata = load_iris()\nmodel = LogisticRegression(max_iter=200)\nmodel.fit(data.data, data.target)\nprobs = model.predict_proba(data.data[:5])\nprint(probs)\nprint(\"Row sums:\", probs.sum(axis=1))\\n```",
       },
     ],
   },
-  62: {
+  105: {
     topicTitle: "ML: Decision Tree",
     mcqs: [
       {
@@ -4112,9 +6993,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "scikit-learn class for a classification Decision Tree:",
-        options: ["DecisionTreeClassifier from sklearn.tree", "DecisionTreeRegressor only", "RandomForestClassifier", "KMeans"],
+        options: ["'DecisionTreeClassifier' from 'sklearn.tree'", "'DecisionTreeRegressor' only", "'RandomForestClassifier'", "'KMeans'"],
         correctOption: 0,
-        explanation: "The correct answer is: DecisionTreeClassifier from sklearn.tree",
+        explanation: "The correct answer is: 'DecisionTreeClassifier' from 'sklearn.tree'",
       },
       {
         questionText: "Risk of a very deep Decision Tree:",
@@ -4124,9 +7005,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Hyperparameter limiting tree depth to control overfitting:",
-        options: ["max_depth", "n_estimators (ensemble-specific)", "learning_rate", "n_neighbors"],
+        options: ["'max_depth'", "'n_estimators' (ensemble-specific)", "'learning_rate'", "'n_neighbors'"],
         correctOption: 0,
-        explanation: "The correct answer is: max_depth",
+        explanation: "The correct answer is: 'max_depth'",
       },
       {
         questionText: "Key advantage of Decision Trees:",
@@ -4144,19 +7025,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Train 'DecisionTreeClassifier' on a sample dataset; print test accuracy.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["class", "def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train 'DecisionTreeClassifier' on a sample dataset; print test accuracy....",
+        starterCode: "# Train 'DecisionTreeClassifier' on a sample dataset; print te\n\ndef solution():\n    pass",
+        expectedKeywords: ["class", "def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\ndata = load_iris()\nX_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.2, random_state=42)\nmodel = DecisionTreeClassifier().fit(X_train, y_train)\nprint(\"Accuracy:\", model.score(X_test, y_test))\\n```",
       },
       {
         questionText: "Train Decision Trees with different 'max_depth' (2, 5, None); compare train/test accuracy to show overfitting effects.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train Decision Trees with different 'max_depth' (2, 5, None); compare train/test...",
+        starterCode: "# Train Decision Trees with different 'max_depth' (2, 5, None)\n\ndef solution():\n    pass",
+        expectedKeywords: ["class", "def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\ndata = load_iris()\nX_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.2, random_state=42)\nfor depth in [2, 5, None]:\n    model = DecisionTreeClassifier(max_depth=depth).fit(X_train, y_train)\n    print(f\"depth={depth}: train={model.score(X_train,y_train):.3f}, test={model.score(X_test,y_test):.3f}\")\\n```",
       },
     ],
   },
-  63: {
+  106: {
     topicTitle: "ML: Confusion Matrix",
     mcqs: [
       {
@@ -4179,9 +7060,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "scikit-learn function computing a confusion matrix:",
-        options: ["confusion_matrix(y_true, y_pred)", "accuracy_score(...)", "classification_report(...) only", "r2_score(...)"],
+        options: ["'confusion_matrix(y_true, y_pred)'", "'accuracy_score(...)'", "'classification_report(...)' only", "'r2_score(...)'"],
         correctOption: 0,
-        explanation: "The correct answer is: confusion_matrix(y_true, y_pred)",
+        explanation: "The correct answer is: 'confusion_matrix(y_true, y_pred)'",
       },
       {
         questionText: "Accuracy computed from a confusion matrix:",
@@ -4203,27 +7084,27 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Common visualization for a confusion matrix:",
-        options: ["A heatmap (e.g., sns.heatmap)", "A pie chart only", "A line chart", "A scatter plot only"],
+        options: ["A heatmap (e.g., 'sns.heatmap')", "A pie chart only", "A line chart", "A scatter plot only"],
         correctOption: 0,
-        explanation: "The correct answer is: A heatmap (e.g., sns.heatmap)",
+        explanation: "The correct answer is: A heatmap (e.g., 'sns.heatmap')",
       },
     ],
     coding: [
       {
         questionText: "Train a binary classifier; compute the confusion matrix and manually calculate accuracy, precision, recall from TP/TN/FP/FN.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["class", "def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train a binary classifier; compute the confusion matrix and manually calculate a...",
+        starterCode: "# Train a binary classifier; compute the confusion matrix and \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.metrics import confusion_matrix\ny_true = [1,0,1,1,0,0,1,0]\ny_pred = [1,0,0,1,0,1,1,0]\ncm = confusion_matrix(y_true, y_pred)\ntn, fp, fn, tp = cm.ravel()\naccuracy = (tp+tn)/(tp+tn+fp+fn)\nprecision = tp/(tp+fp)\nrecall = tp/(tp+fn)\nprint(cm, accuracy, precision, recall)\\n```",
       },
       {
         questionText: "Visualize a multiclass confusion matrix (e.g., iris) as a Seaborn heatmap with proper axis labels.",
-        starterCode: "def matrix():\n    pass",
-        expectedKeywords: ["class", "def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Visualize a multiclass confusion matrix (e.g., iris) as a Seaborn heatmap with p...",
+        starterCode: "# Visualize a multiclass confusion matrix (e.g., iris) as a Se\n\ndef matrix():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.metrics import confusion_matrix\nfrom sklearn.datasets import load_iris\nfrom sklearn.linear_model import LogisticRegression\nimport seaborn as sns\nimport matplotlib.pyplot as plt\ndata = load_iris()\nmodel = LogisticRegression(max_iter=200).fit(data.data, data.target)\ncm = confusion_matrix(data.target, model.predict(data.data))\nsns.heatmap(cm, annot=True, xticklabels=data.target_names, yticklabels=data.target_names)\nplt.xlabel('Predicted'); plt.ylabel('Actual')\nplt.show()\\n```",
       },
     ],
   },
-  64: {
+  107: {
     topicTitle: "ML: Bias-Variance Tradeoff",
     mcqs: [
       {
@@ -4278,19 +7159,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Train degree-1, degree-4, and degree-15 polynomial regressions on the same noisy dataset; plot each fit to illustrate underfitting/good-fit/overfitting.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train degree-1, degree-4, and degree-15 polynomial regressions on the same noisy...",
+        starterCode: "# Train degree-1, degree-4, and degree-15 polynomial regressio\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.preprocessing import PolynomialFeatures\nfrom sklearn.linear_model import LinearRegression\nimport numpy as np\nimport matplotlib.pyplot as plt\nX = np.linspace(-3,3,30).reshape(-1,1)\ny = X.ravel()**2 + np.random.normal(0,1,30)\nfor deg in [1,4,15]:\n    poly = PolynomialFeatures(deg)\n    X_poly = poly.fit_transform(X)\n    model = LinearRegression().fit(X_poly, y)\n    plt.plot(X, model.predict(X_poly), label=f'degree {deg}')\nplt.scatter(X, y)\nplt.legend(); plt.show()\\n```",
       },
       {
         questionText: "Compute/compare training vs. validation error (MSE) for the three models above; print a summary table.",
-        starterCode: "def error():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Compute/compare training vs. validation error (MSE) for the three models above; ...",
+        starterCode: "# Compute/compare training vs. validation error (MSE) for the \n\ndef error():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.preprocessing import PolynomialFeatures\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.metrics import mean_squared_error\nimport numpy as np\nX = np.linspace(-3,3,30).reshape(-1,1)\ny = X.ravel()**2 + np.random.normal(0,1,30)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1)\nfor deg in [1,4,15]:\n    poly = PolynomialFeatures(deg)\n    model = LinearRegression().fit(poly.fit_transform(X_train), y_train)\n    train_mse = mean_squared_error(y_train, model.predict(poly.transform(X_train)))\n    val_mse = mean_squared_error(y_test, model.predict(poly.transform(X_test)))\n    print(f\"degree {deg}: train MSE={train_mse:.2f}, val MSE={val_mse:.2f}\")\\n```",
       },
     ],
   },
-  65: {
+  108: {
     topicTitle: "ML: Random Forest Algorithm",
     mcqs: [
       {
@@ -4313,15 +7194,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "scikit-learn class implementing Random Forest for classification:",
-        options: ["RandomForestClassifier from sklearn.ensemble", "DecisionTreeClassifier", "RandomForestRegressor only", "KMeans"],
+        options: ["'RandomForestClassifier' from 'sklearn.ensemble'", "'DecisionTreeClassifier'", "'RandomForestRegressor' only", "'KMeans'"],
         correctOption: 0,
-        explanation: "The correct answer is: RandomForestClassifier from sklearn.ensemble",
+        explanation: "The correct answer is: 'RandomForestClassifier' from 'sklearn.ensemble'",
       },
       {
         questionText: "Hyperparameter controlling the number of trees:",
-        options: ["n_estimators", "max_depth only", "n_trees_total", "forest_size"],
+        options: ["'n_estimators'", "'max_depth' only", "'n_trees_total'", "'forest_size'"],
         correctOption: 0,
-        explanation: "The correct answer is: n_estimators",
+        explanation: "The correct answer is: 'n_estimators'",
       },
       {
         questionText: "Compared to a single Decision Tree, Random Forest typically:",
@@ -4337,27 +7218,27 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Method giving each feature's importance in a fitted 'RandomForestClassifier':",
-        options: ["model.feature_importances_", "model.feature_weights_", "model.coef_", "model.importance_scores()"],
+        options: ["'model.feature_importances_'", "'model.feature_weights_'", "'model.coef_'", "'model.importance_scores()'"],
         correctOption: 0,
-        explanation: "The correct answer is: model.feature_importances_",
+        explanation: "The correct answer is: 'model.feature_importances_'",
       },
     ],
     coding: [
       {
         questionText: "Train 'RandomForestClassifier'; print accuracy and the top 3 most important features via 'feature_importances_'.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["class", "def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train 'RandomForestClassifier'; print accuracy and the top 3 most important feat...",
+        starterCode: "# Train 'RandomForestClassifier'; print accuracy and the top 3\n\ndef solution():\n    pass",
+        expectedKeywords: ["class", "def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\nimport numpy as np\ndata = load_iris()\nX_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.2, random_state=42)\nmodel = RandomForestClassifier(n_estimators=100, random_state=42).fit(X_train, y_train)\nprint(\"Accuracy:\", model.score(X_test, y_test))\ntop3 = np.argsort(model.feature_importances_)[-3:]\nprint(\"Top 3 features:\", [data.feature_names[i] for i in top3])\\n```",
       },
       {
         questionText: "Compare test accuracy of a single 'DecisionTreeClassifier' vs 'RandomForestClassifier(n_estimators=100)' on the same dataset.",
-        starterCode: "def RandomForestClassifier():\n    pass",
-        expectedKeywords: ["class", "def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Compare test accuracy of a single 'DecisionTreeClassifier' vs 'RandomForestClass...",
+        starterCode: "# Compare test accuracy of a single 'DecisionTreeClassifier' v\n\ndef RandomForestClassifier():\n    pass",
+        expectedKeywords: ["class", "def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\ndata = load_iris()\nX_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.2, random_state=42)\ndt = DecisionTreeClassifier().fit(X_train, y_train)\nrf = RandomForestClassifier(n_estimators=100).fit(X_train, y_train)\nprint(\"Tree:\", dt.score(X_test, y_test), \"Forest:\", rf.score(X_test, y_test))\\n```",
       },
     ],
   },
-  66: {
+  109: {
     topicTitle: "ML: K-Fold Cross Validation",
     mcqs: [
       {
@@ -4380,9 +7261,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "scikit-learn function for easy K-Fold CV scores:",
-        options: ["cross_val_score() from sklearn.model_selection", "train_test_split()", "GridSearchCV()", "KFold alone with no scoring"],
+        options: ["'cross_val_score()' from 'sklearn.model_selection'", "'train_test_split()'", "'GridSearchCV()'", "'KFold' alone with no scoring"],
         correctOption: 0,
-        explanation: "The correct answer is: cross_val_score() from sklearn.model_selection",
+        explanation: "The correct answer is: 'cross_val_score()' from 'sklearn.model_selection'",
       },
       {
         questionText: "Why prefer K-Fold CV over a single split, especially for small datasets?",
@@ -4412,19 +7293,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Use 'cross_val_score()' for 5-fold CV on 'LogisticRegression'; print per-fold accuracy, mean, and std dev.",
-        starterCode: "def cross_val_score():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use 'cross_val_score()' for 5-fold CV on 'LogisticRegression'; print per-fold ac...",
+        starterCode: "# Use 'cross_val_score()' for 5-fold CV on 'LogisticRegression\n\ndef cross_val_score():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.model_selection import cross_val_score\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.datasets import load_iris\ndata = load_iris()\nscores = cross_val_score(LogisticRegression(max_iter=200), data.data, data.target, cv=5)\nprint(scores, scores.mean(), scores.std())\\n```",
       },
       {
         questionText: "Manually implement K-Fold CV (K=5) with 'KFold', looping through folds; compare the result to 'cross_val_score()'.",
-        starterCode: "def CV():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Manually implement K-Fold CV (K=5) with 'KFold', looping through folds; compare ...",
+        starterCode: "# Manually implement K-Fold CV (K=5) with 'KFold', looping thr\n\ndef CV():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.model_selection import KFold\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.datasets import load_iris\nimport numpy as np\ndata = load_iris()\nkf = KFold(n_splits=5, shuffle=True, random_state=42)\nscores = []\nfor train_idx, test_idx in kf.split(data.data):\n    model = LogisticRegression(max_iter=200).fit(data.data[train_idx], data.target[train_idx])\n    scores.append(model.score(data.data[test_idx], data.target[test_idx]))\nprint(np.mean(scores))\\n```",
       },
     ],
   },
-  67: {
+  110: {
     topicTitle: "ML: Support Vector Machine",
     mcqs: [
       {
@@ -4453,15 +7334,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "scikit-learn class for SVM classification:",
-        options: ["SVC from sklearn.svm", "SVR only", "KMeans", "DecisionTreeClassifier"],
+        options: ["'SVC' from 'sklearn.svm'", "'SVR' only", "'KMeans'", "'DecisionTreeClassifier'"],
         correctOption: 0,
-        explanation: "The correct answer is: SVC from sklearn.svm",
+        explanation: "The correct answer is: 'SVC' from 'sklearn.svm'",
       },
       {
         questionText: "SVM hyperparameter controlling the training-vs-test error tradeoff (regularization strength):",
-        options: ["C", "n_estimators", "max_depth", "n_neighbors"],
+        options: ["'C'", "'n_estimators'", "'max_depth'", "'n_neighbors'"],
         correctOption: 0,
-        explanation: "The correct answer is: C",
+        explanation: "The correct answer is: 'C'",
       },
       {
         questionText: "Default/versatile kernel for non-linear boundaries:",
@@ -4479,19 +7360,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Train 'SVC' with a linear kernel on a small linearly separable dataset; print test accuracy.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train 'SVC' with a linear kernel on a small linearly separable dataset; print te...",
+        starterCode: "# Train 'SVC' with a linear kernel on a small linearly separab\n\ndef solution():\n    pass",
+        expectedKeywords: ["class", "def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.svm import SVC\nfrom sklearn.datasets import make_classification\nfrom sklearn.model_selection import train_test_split\nX, y = make_classification(n_samples=100, n_features=2, n_redundant=0, random_state=42)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\nmodel = SVC(kernel='linear').fit(X_train, y_train)\nprint(\"Accuracy:\", model.score(X_test, y_test))\\n```",
       },
       {
         questionText: "Train 'SVC' with an RBF kernel on a non-linear dataset ('make_circles'/'make_moons'); visualize the decision boundary.",
-        starterCode: "def dataset():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train 'SVC' with an RBF kernel on a non-linear dataset ('make_circles'/'make_moo...",
+        starterCode: "# Train 'SVC' with an RBF kernel on a non-linear dataset ('mak\n\ndef dataset():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.svm import SVC\nfrom sklearn.datasets import make_moons\nimport matplotlib.pyplot as plt\nimport numpy as np\nX, y = make_moons(noise=0.2, random_state=42)\nmodel = SVC(kernel='rbf').fit(X, y)\nxx, yy = np.meshgrid(np.linspace(X[:,0].min()-1, X[:,0].max()+1, 200),\n                      np.linspace(X[:,1].min()-1, X[:,1].max()+1, 200))\nZ = model.predict(np.c_[xx.ravel(), yy.ravel()]).reshape(xx.shape)\nplt.contourf(xx, yy, Z, alpha=0.3)\nplt.scatter(X[:,0], X[:,1], c=y)\nplt.show()\\n```",
       },
     ],
   },
-  68: {
+  111: {
     topicTitle: "ML: Underfitting and Overfitting",
     mcqs: [
       {
@@ -4546,19 +7427,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Train Decision Trees at very shallow, moderate, and very deep depths; compare train/test accuracy to identify underfit/good-fit/overfit.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train Decision Trees at very shallow, moderate, and very deep depths; compare tr...",
+        starterCode: "# Train Decision Trees at very shallow, moderate, and very dee\n\ndef solution():\n    pass",
+        expectedKeywords: ["class", "def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.datasets import make_classification\nfrom sklearn.model_selection import train_test_split\nX, y = make_classification(n_samples=200, random_state=42)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)\nfor depth in [1, 5, None]:\n    model = DecisionTreeClassifier(max_depth=depth).fit(X_train, y_train)\n    print(f\"depth={depth}: train={model.score(X_train,y_train):.3f}, test={model.score(X_test,y_test):.3f}\")\\n```",
       },
       {
         questionText: "Plot a \"learning curve\" (train/validation accuracy vs. training-set size) using scikit-learn's 'learning_curve()'.",
-        starterCode: "def learning_curve():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Plot a \"learning curve\" (train/validation accuracy vs. training-set size) using ...",
+        starterCode: "# Plot a \"learning curve\" (train/validation accuracy vs. train\n\ndef learning_curve():\n    pass",
+        expectedKeywords: ["class", "def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.model_selection import learning_curve\nfrom sklearn.tree import DecisionTreeClassifier\nfrom sklearn.datasets import make_classification\nimport matplotlib.pyplot as plt\nimport numpy as np\nX, y = make_classification(n_samples=300, random_state=42)\ntrain_sizes, train_scores, val_scores = learning_curve(DecisionTreeClassifier(max_depth=3), X, y, cv=5)\nplt.plot(train_sizes, train_scores.mean(axis=1), label='train')\nplt.plot(train_sizes, val_scores.mean(axis=1), label='validation')\nplt.legend(); plt.show()\\n```",
       },
     ],
   },
-  69: {
+  112: {
     topicTitle: "ML: Lasso and Ridge Regression",
     mcqs: [
       {
@@ -4587,21 +7468,21 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "scikit-learn class implementing Ridge Regression:",
-        options: ["Ridge from sklearn.linear_model", "Lasso", "LinearRegression", "ElasticNet only"],
+        options: ["'Ridge' from 'sklearn.linear_model'", "'Lasso'", "'LinearRegression'", "'ElasticNet' only"],
         correctOption: 0,
-        explanation: "The correct answer is: Ridge from sklearn.linear_model",
+        explanation: "The correct answer is: 'Ridge' from 'sklearn.linear_model'",
       },
       {
         questionText: "scikit-learn class implementing Lasso Regression:",
-        options: ["Lasso from sklearn.linear_model", "Ridge", "LogisticRegression", "SVR"],
+        options: ["'Lasso' from 'sklearn.linear_model'", "'Ridge'", "'LogisticRegression'", "'SVR'"],
         correctOption: 0,
-        explanation: "The correct answer is: Lasso from sklearn.linear_model",
+        explanation: "The correct answer is: 'Lasso' from 'sklearn.linear_model'",
       },
       {
         questionText: "Hyperparameter controlling regularization strength in both Ridge and Lasso:",
-        options: ["alpha", "n_estimators", "max_depth", "n_neighbors"],
+        options: ["'alpha'", "'n_estimators'", "'max_depth'", "'n_neighbors'"],
         correctOption: 0,
-        explanation: "The correct answer is: alpha",
+        explanation: "The correct answer is: 'alpha'",
       },
       {
         questionText: "Why apply regularization (Ridge/Lasso) to linear regression?",
@@ -4613,19 +7494,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Train 'Ridge' and 'Lasso' on a multi-feature dataset; compare coefficients and identify any zeroed by Lasso.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train 'Ridge' and 'Lasso' on a multi-feature dataset; compare coefficients and i...",
+        starterCode: "# Train 'Ridge' and 'Lasso' on a multi-feature dataset; compar\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.linear_model import Ridge, Lasso\nimport numpy as np\nX = np.random.rand(100, 10)\ny = X[:, 0]*3 + X[:, 1]*2 + np.random.normal(0, 0.1, 100)\nridge = Ridge(alpha=1.0).fit(X, y)\nlasso = Lasso(alpha=0.1).fit(X, y)\nprint(\"Ridge coefs:\", ridge.coef_)\nprint(\"Lasso coefs:\", lasso.coef_)\nprint(\"Zeroed by Lasso:\", np.sum(lasso.coef_ == 0))\\n```",
       },
       {
         questionText: "Train Lasso with several 'alpha' values (0.001, 0.1, 1, 10); print how the number of non-zero coefficients changes.",
-        starterCode: "def values():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train Lasso with several 'alpha' values (0.001, 0.1, 1, 10); print how the numbe...",
+        starterCode: "# Train Lasso with several 'alpha' values (0.001, 0.1, 1, 10);\n\ndef values():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.linear_model import Lasso\nimport numpy as np\nX = np.random.rand(100, 10)\ny = X[:, 0]*3 + X[:, 1]*2 + np.random.normal(0, 0.1, 100)\nfor alpha in [0.001, 0.1, 1, 10]:\n    model = Lasso(alpha=alpha).fit(X, y)\n    nonzero = np.sum(model.coef_ != 0)\n    print(f\"alpha={alpha}: non-zero coefficients={nonzero}\")\\n```",
       },
     ],
   },
-  70: {
+  113: {
     topicTitle: "ML: K-Means Clustering",
     mcqs: [
       {
@@ -4654,9 +7535,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "scikit-learn class implementing K-Means:",
-        options: ["KMeans from sklearn.cluster", "KNeighborsClassifier", "DBSCAN", "PCA"],
+        options: ["'KMeans' from 'sklearn.cluster'", "'KNeighborsClassifier'", "'DBSCAN'", "'PCA'"],
         correctOption: 0,
-        explanation: "The correct answer is: KMeans from sklearn.cluster",
+        explanation: "The correct answer is: 'KMeans' from 'sklearn.cluster'",
       },
       {
         questionText: "Technique commonly used to help choose K:",
@@ -4680,19 +7561,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Cluster a sample 2D dataset into 3 clusters with 'KMeans'; plot clusters in different colors with centroids marked.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Cluster a sample 2D dataset into 3 clusters with 'KMeans'; plot clusters in diff...",
+        starterCode: "# Cluster a sample 2D dataset into 3 clusters with 'KMeans'; p\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.cluster import KMeans\nfrom sklearn.datasets import make_blobs\nimport matplotlib.pyplot as plt\nX, _ = make_blobs(n_samples=150, centers=3, random_state=42)\nkm = KMeans(n_clusters=3, n_init=10, random_state=42).fit(X)\nplt.scatter(X[:,0], X[:,1], c=km.labels_)\nplt.scatter(km.cluster_centers_[:,0], km.cluster_centers_[:,1], marker='X', s=200, c='red')\nplt.show()\\n```",
       },
       {
         questionText: "Compute and plot the Elbow Method curve (inertia vs. K=1 to 10) to help choose K.",
-        starterCode: "def curve():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Compute and plot the Elbow Method curve (inertia vs. K=1 to 10) to help choose K...",
+        starterCode: "# Compute and plot the Elbow Method curve (inertia vs. K=1 to \n\ndef curve():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.cluster import KMeans\nfrom sklearn.datasets import make_blobs\nimport matplotlib.pyplot as plt\nX, _ = make_blobs(n_samples=150, centers=3, random_state=42)\ninertias = []\nfor k in range(1, 11):\n    km = KMeans(n_clusters=k, n_init=10, random_state=42).fit(X)\n    inertias.append(km.inertia_)\nplt.plot(range(1,11), inertias, marker='o')\nplt.xlabel('K'); plt.ylabel('Inertia')\nplt.show()\\n```",
       },
     ],
   },
-  71: {
+  114: {
     topicTitle: "ML: K Nearest Neighbor",
     mcqs: [
       {
@@ -4721,9 +7602,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "scikit-learn class for KNN classification:",
-        options: ["KNeighborsClassifier from sklearn.neighbors", "KMeans", "DecisionTreeClassifier", "SVC"],
+        options: ["'KNeighborsClassifier' from 'sklearn.neighbors'", "'KMeans'", "'DecisionTreeClassifier'", "'SVC'"],
         correctOption: 0,
-        explanation: "The correct answer is: KNeighborsClassifier from sklearn.neighbors",
+        explanation: "The correct answer is: 'KNeighborsClassifier' from 'sklearn.neighbors'",
       },
       {
         questionText: "Effect of K too small (e.g., K=1):",
@@ -4739,27 +7620,27 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "KNN can be used for:",
-        options: ["Only classification", "Both classification and regression (via KNeighborsRegressor)", "Only clustering", "Only dimensionality reduction"],
+        options: ["Only classification", "Both classification and regression (via 'KNeighborsRegressor')", "Only clustering", "Only dimensionality reduction"],
         correctOption: 1,
-        explanation: "The correct answer is: Both classification and regression (via KNeighborsRegressor)",
+        explanation: "The correct answer is: Both classification and regression (via 'KNeighborsRegressor')",
       },
     ],
     coding: [
       {
         questionText: "Train 'KNeighborsClassifier' (with 'StandardScaler' applied first) for K=3, 5, and 10; print test accuracy for each.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["class", "def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train 'KNeighborsClassifier' (with 'StandardScaler' applied first) for K=3, 5, a...",
+        starterCode: "# Train 'KNeighborsClassifier' (with 'StandardScaler' applied \n\ndef solution():\n    pass",
+        expectedKeywords: ["class", "def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\ndata = load_iris()\nX_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.2, random_state=42)\nscaler = StandardScaler().fit(X_train)\nX_train_s, X_test_s = scaler.transform(X_train), scaler.transform(X_test)\nfor k in [3, 5, 10]:\n    model = KNeighborsClassifier(n_neighbors=k).fit(X_train_s, y_train)\n    print(f\"K={k}: accuracy={model.score(X_test_s, y_test):.3f}\")\\n```",
       },
       {
         questionText: "Plot test accuracy vs. K (1 to 20) to help visually identify a good choice of K.",
-        starterCode: "def K():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Plot test accuracy vs. K (1 to 20) to help visually identify a good choice of K....",
+        starterCode: "# Plot test accuracy vs. K (1 to 20) to help visually identify\n\ndef K():\n    pass",
+        expectedKeywords: ["class", "def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.neighbors import KNeighborsClassifier\nfrom sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\nimport matplotlib.pyplot as plt\ndata = load_iris()\nX_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.2, random_state=42)\naccs = []\nfor k in range(1, 21):\n    model = KNeighborsClassifier(n_neighbors=k).fit(X_train, y_train)\n    accs.append(model.score(X_test, y_test))\nplt.plot(range(1,21), accs, marker='o')\nplt.xlabel('K'); plt.ylabel('Accuracy')\nplt.show()\\n```",
       },
     ],
   },
-  72: {
+  115: {
     topicTitle: "ML: Naive Bayes Classifier",
     mcqs: [
       {
@@ -4788,9 +7669,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "scikit-learn class implementing Gaussian Naive Bayes:",
-        options: ["GaussianNB from sklearn.naive_bayes", "MultinomialNB only", "KMeans", "SVC"],
+        options: ["'GaussianNB' from 'sklearn.naive_bayes'", "'MultinomialNB' only", "'KMeans'", "'SVC'"],
         correctOption: 0,
-        explanation: "The correct answer is: GaussianNB from sklearn.naive_bayes",
+        explanation: "The correct answer is: 'GaussianNB' from 'sklearn.naive_bayes'",
       },
       {
         questionText: "Key advantage of Naive Bayes:",
@@ -4814,19 +7695,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Train 'GaussianNB' on a numeric dataset (e.g., iris); print test accuracy and confusion matrix.",
-        starterCode: "def dataset():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train 'GaussianNB' on a numeric dataset (e.g., iris); print test accuracy and co...",
+        starterCode: "# Train 'GaussianNB' on a numeric dataset (e.g., iris); print \n\ndef dataset():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.naive_bayes import GaussianNB\nfrom sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.metrics import confusion_matrix\ndata = load_iris()\nX_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.2, random_state=42)\nmodel = GaussianNB().fit(X_train, y_train)\nprint(\"Accuracy:\", model.score(X_test, y_test))\nprint(confusion_matrix(y_test, model.predict(X_test)))\\n```",
       },
       {
         questionText: "Use 'MultinomialNB' with 'CountVectorizer' to build a spam-detection classifier on a small labeled text dataset.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["class", "def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use 'MultinomialNB' with 'CountVectorizer' to build a spam-detection classifier ...",
+        starterCode: "# Use 'MultinomialNB' with 'CountVectorizer' to build a spam-d\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.naive_bayes import MultinomialNB\nfrom sklearn.feature_extraction.text import CountVectorizer\ntexts = [\"win free money now\", \"meeting at noon tomorrow\", \"claim your prize now\", \"let's grab lunch\"]\nlabels = [1, 0, 1, 0]\nvec = CountVectorizer()\nX = vec.fit_transform(texts)\nmodel = MultinomialNB().fit(X, labels)\nprint(model.predict(vec.transform([\"free prize now\"])))\\n```",
       },
     ],
   },
-  73: {
+  116: {
     topicTitle: "ML: Hyperparameter Tuning - GridSearchCV",
     mcqs: [
       {
@@ -4837,33 +7718,33 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Module containing 'GridSearchCV':",
-        options: ["sklearn.model_selection", "sklearn.preprocessing", "sklearn.metrics", "sklearn.linear_model"],
+        options: ["'sklearn.model_selection'", "'sklearn.preprocessing'", "'sklearn.metrics'", "'sklearn.linear_model'"],
         correctOption: 0,
-        explanation: "The correct answer is: sklearn.model_selection",
+        explanation: "The correct answer is: 'sklearn.model_selection'",
       },
       {
         questionText: "Parameter specifying the hyperparameter grid dict:",
-        options: ["param_grid", "hyperparameters", "grid_values", "search_space"],
+        options: ["'param_grid'", "'hyperparameters'", "'grid_values'", "'search_space'"],
         correctOption: 0,
-        explanation: "The correct answer is: param_grid",
+        explanation: "The correct answer is: 'param_grid'",
       },
       {
         questionText: "Parameter controlling the number of CV folds:",
-        options: ["cv", "folds", "k_value", "n_splits_cv"],
+        options: ["'cv'", "'folds'", "'k_value'", "'n_splits_cv'"],
         correctOption: 0,
-        explanation: "The correct answer is: cv",
+        explanation: "The correct answer is: 'cv'",
       },
       {
         questionText: "Attribute of a fitted 'GridSearchCV' giving the best hyperparameters:",
-        options: ["grid_search.best_params_", "grid_search.top_params", "grid_search.optimal_params()", "grid_search.best_config"],
+        options: ["'grid_search.best_params_'", "'grid_search.top_params'", "'grid_search.optimal_params()'", "'grid_search.best_config'"],
         correctOption: 0,
-        explanation: "The correct answer is: grid_search.best_params_",
+        explanation: "The correct answer is: 'grid_search.best_params_'",
       },
       {
         questionText: "Attribute giving the best cross-validation score:",
-        options: ["grid_search.best_score_", "grid_search.top_score", "grid_search.max_accuracy", "grid_search.optimal_score()"],
+        options: ["'grid_search.best_score_'", "'grid_search.top_score'", "'grid_search.max_accuracy'", "'grid_search.optimal_score()'"],
         correctOption: 0,
-        explanation: "The correct answer is: grid_search.best_score_",
+        explanation: "The correct answer is: 'grid_search.best_score_'",
       },
       {
         questionText: "Key downside of GridSearchCV with many hyperparameters/values:",
@@ -4873,27 +7754,27 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Alternative sampling a limited number of random combinations instead of exhaustive search:",
-        options: ["RandomizedSearchCV", "train_test_split", "KFold", "StandardScaler"],
+        options: ["'RandomizedSearchCV'", "'train_test_split'", "'KFold'", "'StandardScaler'"],
         correctOption: 0,
-        explanation: "The correct answer is: RandomizedSearchCV",
+        explanation: "The correct answer is: 'RandomizedSearchCV'",
       },
     ],
     coding: [
       {
         questionText: "Use 'GridSearchCV' to tune 'n_estimators' and 'max_depth' for 'RandomForestClassifier'; print best params and score.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["class", "def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use 'GridSearchCV' to tune 'n_estimators' and 'max_depth' for 'RandomForestClass...",
+        starterCode: "# Use 'GridSearchCV' to tune 'n_estimators' and 'max_depth' fo\n\ndef solution():\n    pass",
+        expectedKeywords: ["class", "def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.model_selection import GridSearchCV\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.datasets import load_iris\ndata = load_iris()\nparams = {'n_estimators': [50, 100], 'max_depth': [3, 5, None]}\ngrid = GridSearchCV(RandomForestClassifier(), params, cv=5)\ngrid.fit(data.data, data.target)\nprint(grid.best_params_, grid.best_score_)\\n```",
       },
       {
         questionText: "Use 'GridSearchCV' (5-fold CV) to tune 'C' and 'kernel' for 'SVC'; print the best combination and test accuracy.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use 'GridSearchCV' (5-fold CV) to tune 'C' and 'kernel' for 'SVC'; print the bes...",
+        starterCode: "# Use 'GridSearchCV' (5-fold CV) to tune 'C' and 'kernel' for \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.model_selection import GridSearchCV\nfrom sklearn.svm import SVC\nfrom sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\ndata = load_iris()\nX_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.2, random_state=42)\nparams = {'C': [0.1, 1, 10], 'kernel': ['linear', 'rbf']}\ngrid = GridSearchCV(SVC(), params, cv=5)\ngrid.fit(X_train, y_train)\nprint(grid.best_params_)\nprint(\"Test accuracy:\", grid.score(X_test, y_test))\\n```",
       },
     ],
   },
-  74: {
+  117: {
     topicTitle: "ML: XGBoost",
     mcqs: [
       {
@@ -4916,15 +7797,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Package needed to use XGBoost in Python:",
-        options: ["pip install xgboost", "pip install boosting", "pip install gradient-tree", "pip install sklearn-xgboost"],
+        options: ["'pip install xgboost'", "'pip install boosting'", "'pip install gradient-tree'", "'pip install sklearn-xgboost'"],
         correctOption: 0,
-        explanation: "The correct answer is: pip install xgboost",
+        explanation: "The correct answer is: 'pip install xgboost'",
       },
       {
         questionText: "Class from 'xgboost' used for classification:",
-        options: ["XGBClassifier", "XGBRegressor only", "XGBoostModel", "GradientBooster"],
+        options: ["'XGBClassifier'", "'XGBRegressor' only", "'XGBoostModel'", "'GradientBooster'"],
         correctOption: 0,
-        explanation: "The correct answer is: XGBClassifier",
+        explanation: "The correct answer is: 'XGBClassifier'",
       },
       {
         questionText: "Built-in feature helping prevent overfitting via penalty terms:",
@@ -4934,9 +7815,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Hyperparameter controlling the number of boosting rounds:",
-        options: ["n_estimators", "max_depth only", "learning_rate only", "subsample only"],
+        options: ["'n_estimators'", "'max_depth' only", "'learning_rate' only", "'subsample' only"],
         correctOption: 0,
-        explanation: "The correct answer is: n_estimators",
+        explanation: "The correct answer is: 'n_estimators'",
       },
       {
         questionText: "Compared to standard Gradient Boosting, XGBoost is often praised for:",
@@ -4948,19 +7829,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Train 'XGBClassifier' on a binary classification dataset; print test accuracy.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["class", "def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train 'XGBClassifier' on a binary classification dataset; print test accuracy....",
+        starterCode: "# Train 'XGBClassifier' on a binary classification dataset; pr\n\ndef solution():\n    pass",
+        expectedKeywords: ["class", "def", "import"],
+        solutionDescription: "```python\\nfrom xgboost import XGBClassifier\nfrom sklearn.datasets import make_classification\nfrom sklearn.model_selection import train_test_split\nX, y = make_classification(n_samples=200, random_state=42)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\nmodel = XGBClassifier(eval_metric='logloss').fit(X_train, y_train)\nprint(\"Accuracy:\", model.score(X_test, y_test))\\n```",
       },
       {
         questionText: "Print feature importances after training 'XGBClassifier'; compare its accuracy against a 'RandomForestClassifier' on the same data.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["class", "def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Print feature importances after training 'XGBClassifier'; compare its accuracy a...",
+        starterCode: "# Print feature importances after training 'XGBClassifier'; co\n\ndef solution():\n    pass",
+        expectedKeywords: ["class", "def", "for", "import"],
+        solutionDescription: "```python\\nfrom xgboost import XGBClassifier\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.datasets import make_classification\nfrom sklearn.model_selection import train_test_split\nX, y = make_classification(n_samples=200, random_state=42)\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\nxgb = XGBClassifier(eval_metric='logloss').fit(X_train, y_train)\nrf = RandomForestClassifier().fit(X_train, y_train)\nprint(\"XGB importances:\", xgb.feature_importances_)\nprint(\"XGB acc:\", xgb.score(X_test, y_test), \"RF acc:\", rf.score(X_test, y_test))\\n```",
       },
     ],
   },
-  75: {
+  118: {
     topicTitle: "DL: DL - Introduction",
     mcqs: [
       {
@@ -5015,19 +7896,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Check whether TensorFlow (or PyTorch) is installed, print the version, and check GPU availability.",
-        starterCode: "def TensorFlow():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Check whether TensorFlow (or PyTorch) is installed, print the version, and check...",
+        starterCode: "# Check whether TensorFlow (or PyTorch) is installed, print th\n\ndef TensorFlow():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport tensorflow as tf\nprint(\"TF version:\", tf.__version__)\nprint(\"GPU available:\", tf.config.list_physical_devices('GPU'))\\n```",
       },
       {
         questionText: "Manually implement a single artificial neuron: weighted sum + bias + sigmoid activation, given inputs/weights/bias.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Manually implement a single artificial neuron: weighted sum + bias + sigmoid act...",
+        starterCode: "# Manually implement a single artificial neuron: weighted sum \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport numpy as np\ndef sigmoid(z): return 1/(1+np.exp(-z))\ninputs = np.array([0.5, 0.8])\nweights = np.array([0.4, 0.6])\nbias = 0.1\noutput = sigmoid(np.dot(inputs, weights) + bias)\nprint(output)\\n```",
       },
     ],
   },
-  76: {
+  119: {
     topicTitle: "DL: DL - Libraries",
     mcqs: [
       {
@@ -5056,21 +7937,21 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Keras class for a simple sequential stack of layers:",
-        options: ["Sequential", "Functional only", "Stack", "LinearModel"],
+        options: ["'Sequential'", "'Functional' only", "'Stack'", "'LinearModel'"],
         correctOption: 0,
-        explanation: "The correct answer is: Sequential",
+        explanation: "The correct answer is: 'Sequential'",
       },
       {
         questionText: "Method compiling a Keras model (optimizer/loss/metrics):",
-        options: ["model.compile()", "model.build()", "model.setup()", "model.configure()"],
+        options: ["'model.compile()'", "'model.build()'", "'model.setup()'", "'model.configure()'"],
         correctOption: 0,
-        explanation: "The correct answer is: model.compile()",
+        explanation: "The correct answer is: 'model.compile()'",
       },
       {
         questionText: "Method training a compiled Keras model:",
-        options: ["model.fit()", "model.train()", "model.run()", "model.learn()"],
+        options: ["'model.fit()'", "'model.train()'", "'model.run()'", "'model.learn()'"],
         correctOption: 0,
-        explanation: "The correct answer is: model.fit()",
+        explanation: "The correct answer is: 'model.fit()'",
       },
       {
         questionText: "Library providing pre-trained state-of-the-art Transformer models:",
@@ -5082,19 +7963,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Build a 'Sequential' Keras model with an input layer and one Dense hidden layer; print 'model.summary()'.",
-        starterCode: "def summary():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Build a 'Sequential' Keras model with an input layer and one Dense hidden layer;...",
+        starterCode: "# Build a 'Sequential' Keras model with an input layer and one\n\ndef summary():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nmodel = keras.Sequential([\n    keras.layers.Input(shape=(10,)),\n    keras.layers.Dense(16, activation='relu')\n])\nmodel.summary()\\n```",
       },
       {
         questionText: "Define a simple 2-layer neural network model (PyTorch or Keras) and print the number of trainable parameters.",
-        starterCode: "def model():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Define a simple 2-layer neural network model (PyTorch or Keras) and print the nu...",
+        starterCode: "# Define a simple 2-layer neural network model (PyTorch or Ker\n\ndef model():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nmodel = keras.Sequential([\n    keras.layers.Input(shape=(8,)),\n    keras.layers.Dense(4, activation='relu'),\n    keras.layers.Dense(1, activation='sigmoid')\n])\nprint(\"Trainable params:\", model.count_params())\\n```",
       },
     ],
   },
-  77: {
+  120: {
     topicTitle: "DL: DL - Terminology",
     mcqs: [
       {
@@ -5149,19 +8030,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Define 'epochs', 'batch_size', 'learning_rate' variables and simulate a loop printing \"Epoch X of Y\".",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Define 'epochs', 'batch_size', 'learning_rate' variables and simulate a loop pri...",
+        starterCode: "# Define 'epochs', 'batch_size', 'learning_rate' variables and\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\nepochs = 5\nbatch_size = 32\nlearning_rate = 0.001\nfor epoch in range(1, epochs+1):\n    print(f\"Epoch {epoch} of {epochs}\")\\n```",
       },
       {
         questionText: "Manually implement Mean Squared Error given predicted and actual value lists, without library functions.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Manually implement Mean Squared Error given predicted and actual value lists, wi...",
+        starterCode: "# Manually implement Mean Squared Error given predicted and ac\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "return"],
+        solutionDescription: "```python\\ndef mse(actual, predicted):\n    return sum((a-p)**2 for a,p in zip(actual,predicted)) / len(actual)\n\nprint(mse([1,2,3], [1.1,1.9,3.2]))\\n```",
       },
     ],
   },
-  78: {
+  121: {
     topicTitle: "DL: DL - MLP Steps",
     mcqs: [
       {
@@ -5190,9 +8071,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Keras layer type commonly used for basic MLP hidden layers:",
-        options: ["Dense", "Conv2D", "LSTM", "Embedding"],
+        options: ["'Dense'", "'Conv2D'", "'LSTM'", "'Embedding'"],
         correctOption: 0,
-        explanation: "The correct answer is: Dense",
+        explanation: "The correct answer is: 'Dense'",
       },
       {
         questionText: "Activation typically used in the output layer for multi-class classification:",
@@ -5202,9 +8083,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "'model.fit()' parameter specifying training-data fraction set aside for validation:",
-        options: ["validation_split", "test_split", "holdout_ratio", "eval_fraction"],
+        options: ["'validation_split'", "'test_split'", "'holdout_ratio'", "'eval_fraction'"],
         correctOption: 0,
-        explanation: "The correct answer is: validation_split",
+        explanation: "The correct answer is: 'validation_split'",
       },
       {
         questionText: "Why split into train/test before building an MLP?",
@@ -5216,19 +8097,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Build a Keras MLP: input layer, one Dense ReLU hidden layer, sigmoid output layer for binary classification.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["class", "def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Build a Keras MLP: input layer, one Dense ReLU hidden layer, sigmoid output laye...",
+        starterCode: "# Build a Keras MLP: input layer, one Dense ReLU hidden layer,\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nmodel = keras.Sequential([\n    keras.layers.Input(shape=(20,)),\n    keras.layers.Dense(16, activation='relu'),\n    keras.layers.Dense(1, activation='sigmoid')\n])\nmodel.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])\\n```",
       },
       {
         questionText: "Load a small dataset (e.g., 'load_iris'), split, scale, build/compile/train an MLP, and evaluate test accuracy.",
-        starterCode: "def dataset():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Load a small dataset (e.g., 'load_iris'), split, scale, build/compile/train an M...",
+        starterCode: "# Load a small dataset (e.g., 'load_iris'), split, scale, buil\n\ndef dataset():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import StandardScaler\nfrom tensorflow import keras\ndata = load_iris()\nX_train, X_test, y_train, y_test = train_test_split(data.data, data.target, test_size=0.2, random_state=42)\nscaler = StandardScaler().fit(X_train)\nX_train, X_test = scaler.transform(X_train), scaler.transform(X_test)\nmodel = keras.Sequential([\n    keras.layers.Input(shape=(4,)),\n    keras.layers.Dense(8, activation='relu'),\n    keras.layers.Dense(3, activation='softmax')\n])\nmodel.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])\nmodel.fit(X_train, y_train, epochs=20, verbose=0)\nprint(model.evaluate(X_test, y_test))\\n```",
       },
     ],
   },
-  79: {
+  122: {
     topicTitle: "DL: DL - DL Codebase",
     mcqs: [
       {
@@ -5245,9 +8126,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Common file in a well-structured DL codebase:",
-        options: ["data_loader.py for loading/preprocessing", "A single main.py with everything hardcoded", "No config files", "Only a notebook with no reusable functions"],
+        options: ["'data_loader.py' for loading/preprocessing", "A single 'main.py' with everything hardcoded", "No config files", "Only a notebook with no reusable functions"],
         correctOption: 0,
-        explanation: "The correct answer is: data_loader.py for loading/preprocessing",
+        explanation: "The correct answer is: 'data_loader.py' for loading/preprocessing",
       },
       {
         questionText: "Benefit of a config file/dict for hyperparameters:",
@@ -5257,9 +8138,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Reusable function pattern to build a compiled Keras model:",
-        options: ["def build_model(input_shape, num_classes): ... return model", "A single global variable", "A class with no methods", "Unreachable code"],
+        options: ["'def build_model(input_shape, num_classes): ... return model'", "A single global variable", "A class with no methods", "Unreachable code"],
         correctOption: 0,
-        explanation: "The correct answer is: def build_model(input_shape, num_classes): ... return model",
+        explanation: "The correct answer is: 'def build_model(input_shape, num_classes): ... return model'",
       },
       {
         questionText: "Benefit of separating \"training\" logic from \"evaluation\" logic:",
@@ -5283,32 +8164,32 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Structure a script with 'load_data()', 'build_model()', 'train_model()', 'evaluate_model()' and call them from 'main()'.",
-        starterCode: "def load_data():\n    pass",
+        starterCode: "# Structure a script with 'load_data()', 'build_model()', 'tra\n\ndef load_data():\n    pass",
         expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Structure a script with 'load_data()', 'build_model()', 'train_model()', 'evalua...",
+        solutionDescription: "```python\\ndef load_data():\n    print(\"Loading data...\")\n    return None, None\n\ndef build_model():\n    print(\"Building model...\")\n    return None\n\ndef train_model(model, data):\n    print(\"Training model...\")\n\ndef evaluate_model(model, data):\n    print(\"Evaluating model...\")\n\ndef main():\n    X, y = load_data()\n    model = build_model()\n    train_model(model, (X, y))\n    evaluate_model(model, (X, y))\n\nmain()\\n```",
       },
       {
         questionText: "Define a config dict ('epochs', 'batch_size', 'learning_rate') and use it to compile/mock-train a simple Keras model.",
-        starterCode: "def dict():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Define a config dict ('epochs', 'batch_size', 'learning_rate') and use it to com...",
+        starterCode: "# Define a config dict ('epochs', 'batch_size', 'learning_rate\n\ndef dict():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nconfig = {'epochs': 10, 'batch_size': 32, 'learning_rate': 0.001}\nmodel = keras.Sequential([keras.layers.Input(shape=(5,)), keras.layers.Dense(1)])\nmodel.compile(optimizer=keras.optimizers.Adam(learning_rate=config['learning_rate']), loss='mse')\nprint(f\"Configured for {config['epochs']} epochs, batch size {config['batch_size']}\")\\n```",
       },
     ],
   },
-  80: {
+  123: {
     topicTitle: "DL: DL - Model Evaluation",
     mcqs: [
       {
         questionText: "Keras method evaluating a model on test data, returning loss/metrics:",
-        options: ["model.evaluate(x_test, y_test)", "model.test(...)", "model.check(...)", "model.score(...)"],
+        options: ["'model.evaluate(x_test, y_test)'", "'model.test(...)'", "'model.check(...)'", "'model.score(...)'"],
         correctOption: 0,
-        explanation: "The correct answer is: model.evaluate(x_test, y_test)",
+        explanation: "The correct answer is: 'model.evaluate(x_test, y_test)'",
       },
       {
         questionText: "Method generating predictions on new data:",
-        options: ["model.predict(x_new)", "model.forecast(x_new)", "model.output(x_new)", "model.run(x_new)"],
+        options: ["'model.predict(x_new)'", "'model.forecast(x_new)'", "'model.output(x_new)'", "'model.run(x_new)'"],
         correctOption: 0,
-        explanation: "The correct answer is: model.predict(x_new)",
+        explanation: "The correct answer is: 'model.predict(x_new)'",
       },
       {
         questionText: "Metric commonly monitored during classification evaluation:",
@@ -5350,44 +8231,44 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Train a simple Keras model and evaluate on a held-out test set using 'model.evaluate()'.",
-        starterCode: "def evaluate():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train a simple Keras model and evaluate on a held-out test set using 'model.eval...",
+        starterCode: "# Train a simple Keras model and evaluate on a held-out test s\n\ndef evaluate():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nimport numpy as np\nX = np.random.rand(100, 5); y = np.random.randint(0, 2, 100)\nmodel = keras.Sequential([keras.layers.Input(shape=(5,)), keras.layers.Dense(1, activation='sigmoid')])\nmodel.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])\nmodel.fit(X, y, epochs=5, verbose=0)\nloss, acc = model.evaluate(X, y)\nprint(loss, acc)\\n```",
       },
       {
         questionText: "Use the 'history' object to print the final epoch's training and validation accuracy.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use the 'history' object to print the final epoch's training and validation accu...",
+        starterCode: "# Use the 'history' object to print the final epoch's training\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nimport numpy as np\nX = np.random.rand(100, 5); y = np.random.randint(0, 2, 100)\nmodel = keras.Sequential([keras.layers.Input(shape=(5,)), keras.layers.Dense(1, activation='sigmoid')])\nmodel.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])\nhistory = model.fit(X, y, validation_split=0.2, epochs=5, verbose=0)\nprint(\"Final train acc:\", history.history['accuracy'][-1])\nprint(\"Final val acc:\", history.history['val_accuracy'][-1])\\n```",
       },
     ],
   },
-  81: {
+  124: {
     topicTitle: "DL: DL - Save Model",
     mcqs: [
       {
         questionText: "Keras method saving an entire model (architecture, weights, optimizer state):",
-        options: ["model.save('model.h5')", "model.export() only", "model.write()", "model.dump()"],
+        options: ["'model.save('model.h5')'", "'model.export()' only", "'model.write()'", "'model.dump()'"],
         correctOption: 0,
-        explanation: "The correct answer is: model.save('model.h5')",
+        explanation: "The correct answer is: 'model.save('model.h5')'",
       },
       {
         questionText: "Function loading a saved Keras model:",
-        options: ["tf.keras.models.load_model('model.h5')", ".open_model()", ".read()", ".import_model()"],
+        options: ["'tf.keras.models.load_model('model.h5')'", "'.open_model()'", "'.read()'", "'.import_model()'"],
         correctOption: 0,
-        explanation: "The correct answer is: tf.keras.models.load_model('model.h5')",
+        explanation: "The correct answer is: 'tf.keras.models.load_model('model.h5')'",
       },
       {
         questionText: "Method saving ONLY the trained weights:",
-        options: ["model.save_weights('weights.h5')", "model.save('weights.h5') only saves weights", "model.export_weights()", "model.dump_weights()"],
+        options: ["'model.save_weights('weights.h5')'", "'model.save('weights.h5')' only saves weights", "'model.export_weights()'", "'model.dump_weights()'"],
         correctOption: 0,
-        explanation: "The correct answer is: model.save_weights('weights.h5')",
+        explanation: "The correct answer is: 'model.save_weights('weights.h5')'",
       },
       {
         questionText: "Method loading weights into a matching architecture:",
-        options: ["model.load_weights('weights.h5')", ".read_weights()", ".import_weights()", ".restore_weights()"],
+        options: ["'model.load_weights('weights.h5')'", "'.read_weights()'", "'.import_weights()'", "'.restore_weights()'"],
         correctOption: 0,
-        explanation: "The correct answer is: model.load_weights('weights.h5')",
+        explanation: "The correct answer is: 'model.load_weights('weights.h5')'",
       },
       {
         questionText: "Key benefit of saving a trained model:",
@@ -5409,27 +8290,27 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "File extension commonly used for HDF5-based Keras model saves:",
-        options: [".h5", ".csv", ".txt", ".json only"],
+        options: ["'.h5'", "'.csv'", "'.txt'", "'.json' only"],
         correctOption: 0,
-        explanation: "The correct answer is: .h5",
+        explanation: "The correct answer is: '.h5'",
       },
     ],
     coding: [
       {
         questionText: "Train a simple Keras model, save it to '.h5', load it back, and verify identical predictions.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train a simple Keras model, save it to '.h5', load it back, and verify identical...",
+        starterCode: "# Train a simple Keras model, save it to '.h5', load it back, \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nimport numpy as np\nX = np.random.rand(50, 5); y = np.random.randint(0, 2, 50)\nmodel = keras.Sequential([keras.layers.Input(shape=(5,)), keras.layers.Dense(1, activation='sigmoid')])\nmodel.compile(optimizer='adam', loss='binary_crossentropy')\nmodel.fit(X, y, epochs=3, verbose=0)\nmodel.save('model.h5')\nloaded = keras.models.load_model('model.h5')\nprint(np.allclose(model.predict(X), loaded.predict(X)))\\n```",
       },
       {
         questionText: "Save only a model's weights, load them into a fresh model with the same architecture, and evaluate.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Save only a model's weights, load them into a fresh model with the same architec...",
+        starterCode: "# Save only a model's weights, load them into a fresh model wi\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nimport numpy as np\nX = np.random.rand(50, 5); y = np.random.randint(0, 2, 50)\nmodel = keras.Sequential([keras.layers.Input(shape=(5,)), keras.layers.Dense(1, activation='sigmoid')])\nmodel.compile(optimizer='adam', loss='binary_crossentropy')\nmodel.fit(X, y, epochs=3, verbose=0)\nmodel.save_weights('weights.h5')\nnew_model = keras.Sequential([keras.layers.Input(shape=(5,)), keras.layers.Dense(1, activation='sigmoid')])\nnew_model.load_weights('weights.h5')\nnew_model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])\nprint(new_model.evaluate(X, y))\\n```",
       },
     ],
   },
-  82: {
+  125: {
     topicTitle: "DL: DL - Model Best Checkpoints",
     mcqs: [
       {
@@ -5440,9 +8321,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Parameter of 'ModelCheckpoint' specifying the monitored metric:",
-        options: ["monitor='val_loss'", "metric='val_loss'", "watch='val_loss'", "track='val_loss'"],
+        options: ["'monitor='val_loss''", "'metric='val_loss''", "'watch='val_loss''", "'track='val_loss''"],
         correctOption: 0,
-        explanation: "The correct answer is: monitor='val_loss'",
+        explanation: "The correct answer is: 'monitor='val_loss''",
       },
       {
         questionText: "What does 'save_best_only=True' do?",
@@ -5470,33 +8351,33 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Where is 'ModelCheckpoint' typically passed?",
-        options: ["To model.compile()", "In the callbacks list argument to model.fit()", "It can't be used with .fit()", "To model.evaluate()"],
+        options: ["To 'model.compile()'", "In the 'callbacks' list argument to 'model.fit()'", "It can't be used with '.fit()'", "To 'model.evaluate()'"],
         correctOption: 1,
-        explanation: "The correct answer is: In the callbacks list argument to model.fit()",
+        explanation: "The correct answer is: In the 'callbacks' list argument to 'model.fit()'",
       },
       {
         questionText: "Common filename pattern saving a distinct file per epoch:",
-        options: ["A placeholder like {epoch:02d}, e.g., \"model_{epoch:02d}.h5\"", "Always the same static filename", "Not possible", "Using only the class name"],
+        options: ["A placeholder like '{epoch:02d}', e.g., '\"model_{epoch:02d}.h5\"'", "Always the same static filename", "Not possible", "Using only the class name"],
         correctOption: 0,
-        explanation: "The correct answer is: A placeholder like {epoch:02d}, e.g., \"model_{epoch:02d}.h5\"",
+        explanation: "The correct answer is: A placeholder like '{epoch:02d}', e.g., '\"model_{epoch:02d}.h5\"'",
       },
     ],
     coding: [
       {
         questionText: "Set up 'ModelCheckpoint' to save only the best model (based on validation loss) during training.",
-        starterCode: "def model():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Set up 'ModelCheckpoint' to save only the best model (based on validation loss) ...",
+        starterCode: "# Set up 'ModelCheckpoint' to save only the best model (based \n\ndef model():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nimport numpy as np\nX = np.random.rand(100, 5); y = np.random.randint(0, 2, 100)\nmodel = keras.Sequential([keras.layers.Input(shape=(5,)), keras.layers.Dense(1, activation='sigmoid')])\nmodel.compile(optimizer='adam', loss='binary_crossentropy')\ncheckpoint = keras.callbacks.ModelCheckpoint('best_model.h5', monitor='val_loss', save_best_only=True)\nmodel.fit(X, y, validation_split=0.2, epochs=10, callbacks=[checkpoint], verbose=0)\\n```",
       },
       {
         questionText: "Combine 'ModelCheckpoint' and 'EarlyStopping', and print which epoch's model was saved as best.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Combine 'ModelCheckpoint' and 'EarlyStopping', and print which epoch's model was...",
+        starterCode: "# Combine 'ModelCheckpoint' and 'EarlyStopping', and print whi\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nimport numpy as np\nX = np.random.rand(100, 5); y = np.random.randint(0, 2, 100)\nmodel = keras.Sequential([keras.layers.Input(shape=(5,)), keras.layers.Dense(1, activation='sigmoid')])\nmodel.compile(optimizer='adam', loss='binary_crossentropy')\ncheckpoint = keras.callbacks.ModelCheckpoint('best.h5', monitor='val_loss', save_best_only=True)\nearly_stop = keras.callbacks.EarlyStopping(monitor='val_loss', patience=3, restore_best_weights=True)\nhistory = model.fit(X, y, validation_split=0.2, epochs=20, callbacks=[checkpoint, early_stop], verbose=0)\nbest_epoch = np.argmin(history.history['val_loss']) + 1\nprint(\"Best epoch:\", best_epoch)\\n```",
       },
     ],
   },
-  83: {
+  126: {
     topicTitle: "DL: DL - Viz Model Acc & Loss",
     mcqs: [
       {
@@ -5507,15 +8388,15 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Key in 'history.history' holding training loss per epoch:",
-        options: ["'loss'", "'train_loss'", "'epoch_loss'", "'error'"],
+        options: ["''loss''", "''train_loss''", "''epoch_loss''", "''error''"],
         correctOption: 0,
-        explanation: "The correct answer is: 'loss'",
+        explanation: "The correct answer is: ''loss''",
       },
       {
         questionText: "Key typically holding validation accuracy per epoch:",
-        options: ["'val_accuracy'", "'validation_acc'", "'test_accuracy'", "'acc_val'"],
+        options: ["''val_accuracy''", "''validation_acc''", "''test_accuracy''", "''acc_val''"],
         correctOption: 0,
-        explanation: "The correct answer is: 'val_accuracy'",
+        explanation: "The correct answer is: ''val_accuracy''",
       },
       {
         questionText: "Rising training accuracy with plateauing/decreasing validation accuracy usually indicates:",
@@ -5531,9 +8412,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Function to create a new Matplotlib figure before plotting:",
-        options: ["plt.figure()", "plt.new()", "plt.create()", "plt.window()"],
+        options: ["'plt.figure()'", "'plt.new()'", "'plt.create()'", "'plt.window()'"],
         correctOption: 0,
-        explanation: "The correct answer is: plt.figure()",
+        explanation: "The correct answer is: 'plt.figure()'",
       },
       {
         questionText: "A loss curve decreasing then flattening typically suggests:",
@@ -5543,27 +8424,27 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Function displaying a Matplotlib plot in a script:",
-        options: ["plt.show()", "plt.display()", "plt.render()", "plt.output()"],
+        options: ["'plt.show()'", "'plt.display()'", "'plt.render()'", "'plt.output()'"],
         correctOption: 0,
-        explanation: "The correct answer is: plt.show()",
+        explanation: "The correct answer is: 'plt.show()'",
       },
     ],
     coding: [
       {
         questionText: "Train a model; plot training/validation accuracy on one chart and loss on another.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train a model; plot training/validation accuracy on one chart and loss on anothe...",
+        starterCode: "# Train a model; plot training/validation accuracy on one char\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nimport numpy as np\nimport matplotlib.pyplot as plt\nX = np.random.rand(100, 5); y = np.random.randint(0, 2, 100)\nmodel = keras.Sequential([keras.layers.Input(shape=(5,)), keras.layers.Dense(1, activation='sigmoid')])\nmodel.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])\nhistory = model.fit(X, y, validation_split=0.2, epochs=10, verbose=0)\nplt.plot(history.history['accuracy'], label='train_acc')\nplt.plot(history.history['val_accuracy'], label='val_acc')\nplt.legend(); plt.show()\nplt.plot(history.history['loss'], label='train_loss')\nplt.plot(history.history['val_loss'], label='val_loss')\nplt.legend(); plt.show()\\n```",
       },
       {
         questionText: "Find the epoch with lowest validation loss from 'history.history' and print its validation accuracy.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Find the epoch with lowest validation loss from 'history.history' and print its ...",
+        starterCode: "# Find the epoch with lowest validation loss from 'history.his\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nval_loss = [0.9, 0.7, 0.5, 0.55, 0.6]\nval_acc = [0.6, 0.7, 0.8, 0.78, 0.76]\nbest_epoch = np.argmin(val_loss)\nprint(f\"Lowest val loss at epoch {best_epoch+1}, val accuracy = {val_acc[best_epoch]}\")\\n```",
       },
     ],
   },
-  84: {
+  127: {
     topicTitle: "DL: DL - Fine Tuning Parameters",
     mcqs: [
       {
@@ -5618,19 +8499,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Train the same model twice with a high LR (0.1) and a low LR (0.0001); compare final training loss.",
-        starterCode: "def LR():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Train the same model twice with a high LR (0.1) and a low LR (0.0001); compare f...",
+        starterCode: "# Train the same model twice with a high LR (0.1) and a low LR\n\ndef LR():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nimport numpy as np\nX = np.random.rand(100, 5); y = np.random.randint(0, 2, 100)\nfor lr in [0.1, 0.0001]:\n    model = keras.Sequential([keras.layers.Input(shape=(5,)), keras.layers.Dense(1, activation='sigmoid')])\n    model.compile(optimizer=keras.optimizers.Adam(learning_rate=lr), loss='binary_crossentropy')\n    history = model.fit(X, y, epochs=10, verbose=0)\n    print(f\"lr={lr}: final loss={history.history['loss'][-1]:.4f}\")\\n```",
       },
       {
         questionText: "Use 'ReduceLROnPlateau' monitoring validation loss; print the LR before/after training to see if it changed.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use 'ReduceLROnPlateau' monitoring validation loss; print the LR before/after tr...",
+        starterCode: "# Use 'ReduceLROnPlateau' monitoring validation loss; print th\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nimport numpy as np\nX = np.random.rand(100, 5); y = np.random.randint(0, 2, 100)\nmodel = keras.Sequential([keras.layers.Input(shape=(5,)), keras.layers.Dense(1, activation='sigmoid')])\nmodel.compile(optimizer=keras.optimizers.Adam(learning_rate=0.01), loss='binary_crossentropy')\nprint(\"LR before:\", model.optimizer.learning_rate.numpy())\nreduce_lr = keras.callbacks.ReduceLROnPlateau(monitor='loss', factor=0.5, patience=2)\nmodel.fit(X, y, epochs=15, callbacks=[reduce_lr], verbose=0)\nprint(\"LR after:\", model.optimizer.learning_rate.numpy())\\n```",
       },
     ],
   },
-  85: {
+  128: {
     topicTitle: "DL: DL - CNN & Computer Vision",
     mcqs: [
       {
@@ -5685,19 +8566,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Using OpenCV, read an image, convert it to grayscale, and apply Gaussian blur, then display or save the processed image.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Using OpenCV, read an image, convert it to grayscale, and apply Gaussian blur, t...",
+        starterCode: "# Using OpenCV, read an image, convert it to grayscale, and ap\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport cv2\nimg = cv2.imread('image.jpg')\ngray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)\nblurred = cv2.GaussianBlur(gray, (5,5), 0)\ncv2.imwrite('processed.jpg', blurred)\\n```",
       },
       {
         questionText: "Using TensorFlow/Keras, load a pre-trained model (e.g., MobileNetV2) with transfer learning, freeze its base layers, add a custom classification head, and compile the model for a new image classification task.",
-        starterCode: "def model():\n    pass",
-        expectedKeywords: ["class", "def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Using TensorFlow/Keras, load a pre-trained model (e.g., MobileNetV2) with transf...",
+        starterCode: "# Using TensorFlow/Keras, load a pre-trained model (e.g., Mobi\n\ndef model():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nbase_model = keras.applications.MobileNetV2(weights='imagenet', include_top=False, input_shape=(224,224,3))\nbase_model.trainable = False\nmodel = keras.Sequential([\n    base_model,\n    keras.layers.GlobalAveragePooling2D(),\n    keras.layers.Dense(1, activation='sigmoid')\n])\nmodel.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])\\n```",
       },
     ],
   },
-  86: {
+  129: {
     topicTitle: "DL: DL - RNN",
     mcqs: [
       {
@@ -5744,27 +8625,27 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Keras layer type for a simple RNN:",
-        options: ["SimpleRNN (or LSTM/GRU)", "Conv2D", "Dense only", "Dropout"],
+        options: ["'SimpleRNN' (or 'LSTM'/'GRU')", "'Conv2D'", "'Dense' only", "'Dropout'"],
         correctOption: 0,
-        explanation: "The correct answer is: SimpleRNN (or LSTM/GRU)",
+        explanation: "The correct answer is: 'SimpleRNN' (or 'LSTM'/'GRU')",
       },
     ],
     coding: [
       {
         questionText: "Build a simple RNN ('SimpleRNN' or 'LSTM') predicting the next value in a numeric sequence.",
-        starterCode: "def RNN():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Build a simple RNN ('SimpleRNN' or 'LSTM') predicting the next value in a numeri...",
+        starterCode: "# Build a simple RNN ('SimpleRNN' or 'LSTM') predicting the ne\n\ndef RNN():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nimport numpy as np\nX = np.random.rand(100, 10, 1); y = np.random.rand(100, 1)\nmodel = keras.Sequential([\n    keras.layers.Input(shape=(10,1)),\n    keras.layers.SimpleRNN(16),\n    keras.layers.Dense(1)\n])\nmodel.compile(optimizer='adam', loss='mse')\nmodel.fit(X, y, epochs=5, verbose=0)\\n```",
       },
       {
         questionText: "Tokenize/pad a small text dataset and build a simple LSTM-based binary classification architecture.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["class", "def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Tokenize/pad a small text dataset and build a simple LSTM-based binary classific...",
+        starterCode: "# Tokenize/pad a small text dataset and build a simple LSTM-ba\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\ntexts = [\"good movie\", \"bad film\", \"great acting\", \"terrible plot\"]\nlabels = [1, 0, 1, 0]\ntokenizer = keras.preprocessing.text.Tokenizer(num_words=100)\ntokenizer.fit_on_texts(texts)\nsequences = tokenizer.texts_to_sequences(texts)\npadded = keras.preprocessing.sequence.pad_sequences(sequences, maxlen=5)\nmodel = keras.Sequential([\n    keras.layers.Embedding(100, 8, input_length=5),\n    keras.layers.LSTM(16),\n    keras.layers.Dense(1, activation='sigmoid')\n])\nmodel.compile(optimizer='adam', loss='binary_crossentropy')\\n```",
       },
     ],
   },
-  87: {
+  130: {
     topicTitle: "DL: DL - Loss, Optimization, Activation Functions",
     mcqs: [
       {
@@ -5787,9 +8668,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Loss commonly used for multi-class classification with integer-encoded labels:",
-        options: ["sparse_categorical_crossentropy", "mean_squared_error", "binary_crossentropy only", "mean_absolute_error"],
+        options: ["'sparse_categorical_crossentropy'", "'mean_squared_error'", "'binary_crossentropy' only", "'mean_absolute_error'"],
         correctOption: 0,
-        explanation: "The correct answer is: sparse_categorical_crossentropy",
+        explanation: "The correct answer is: 'sparse_categorical_crossentropy'",
       },
       {
         questionText: "Loss commonly used for regression:",
@@ -5819,19 +8700,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Manually implement ReLU and Sigmoid and apply each to a small NumPy array.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Manually implement ReLU and Sigmoid and apply each to a small NumPy array....",
+        starterCode: "# Manually implement ReLU and Sigmoid and apply each to a smal\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport numpy as np\ndef relu(x): return np.maximum(0, x)\ndef sigmoid(x): return 1/(1+np.exp(-x))\narr = np.array([-2, -1, 0, 1, 2])\nprint(\"ReLU:\", relu(arr))\nprint(\"Sigmoid:\", sigmoid(arr))\\n```",
       },
       {
         questionText: "Compile identical architectures with 'sgd' and 'adam' optimizers on the same data; compare final training loss.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Compile identical architectures with 'sgd' and 'adam' optimizers on the same dat...",
+        starterCode: "# Compile identical architectures with 'sgd' and 'adam' optimi\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nimport numpy as np\nX = np.random.rand(100, 5); y = np.random.randint(0, 2, 100)\nfor opt in ['sgd', 'adam']:\n    model = keras.Sequential([keras.layers.Input(shape=(5,)), keras.layers.Dense(1, activation='sigmoid')])\n    model.compile(optimizer=opt, loss='binary_crossentropy')\n    history = model.fit(X, y, epochs=10, verbose=0)\n    print(f\"{opt}: final loss={history.history['loss'][-1]:.4f}\")\\n```",
       },
     ],
   },
-  88: {
+  131: {
     topicTitle: "DL: DL - Real-World Structured Code",
     mcqs: [
       {
@@ -5886,19 +8767,1091 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Write a structured script ('load_and_preprocess_data()', 'build_model()', 'train_and_save_model()') tying together a full training pipeline for a synthetic classification task.",
-        starterCode: "def script():\n    pass",
-        expectedKeywords: ["class", "def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a structured script ('load_and_preprocess_data()', 'build_model()', 'train...",
+        starterCode: "# Write a structured script ('load_and_preprocess_data()', 'bu\n\ndef script():\n    pass",
+        expectedKeywords: ["class", "def", "for", "import", "return"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nfrom sklearn.datasets import make_classification\nfrom sklearn.preprocessing import StandardScaler\n\ndef load_and_preprocess_data():\n    X, y = make_classification(n_samples=200, random_state=42)\n    scaler = StandardScaler().fit(X)\n    return scaler.transform(X), y, scaler\n\ndef build_model(input_dim):\n    model = keras.Sequential([keras.layers.Input(shape=(input_dim,)), keras.layers.Dense(8, activation='relu'), keras.layers.Dense(1, activation='sigmoid')])\n    model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])\n    return model\n\ndef train_and_save_model():\n    X, y, scaler = load_and_preprocess_data()\n    model = build_model(X.shape[1])\n    model.fit(X, y, epochs=10, verbose=0)\n    model.save('final_model.h5')\n    return model, scaler\n\ntrain_and_save_model()\\n```",
       },
       {
         questionText: "Write a 'predict(input_data)' function that loads a saved Keras model, applies the same preprocessing used in training, and returns a prediction.",
-        starterCode: "def predict():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a 'predict(input_data)' function that loads a saved Keras model, applies t...",
+        starterCode: "# Write a 'predict(input_data)' function that loads a saved Ke\n\ndef predict():\n    pass",
+        expectedKeywords: ["def", "for", "import", "return"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nimport numpy as np\n\ndef predict(input_data, scaler, model_path='final_model.h5'):\n    model = keras.models.load_model(model_path)\n    scaled = scaler.transform(input_data)\n    return model.predict(scaled)\\n```",
       },
     ],
   },
-  89: {
+  132: {
+    topicTitle: "DL: DL - Perceptron & Neural Network Basics",
+    mcqs: [
+      {
+        questionText: "What is a perceptron?",
+        options: ["The simplest type of artificial neuron that computes a weighted sum of inputs plus a bias, then applies an activation function", "A type of database", "A clustering algorithm", "A loss function"],
+        correctOption: 0,
+        explanation: "The correct answer is: The simplest type of artificial neuron that computes a weighted sum of inputs plus a bias, then applies an activation function",
+      },
+      {
+        questionText: "What are the three main layer types in a typical feedforward neural network?",
+        options: ["Input layer, hidden layer(s), and output layer", "Only input and output layers", "Convolutional, pooling, and dense layers only", "Encoder, decoder, and attention layers only"],
+        correctOption: 0,
+        explanation: "The correct answer is: Input layer, hidden layer(s), and output layer",
+      },
+      {
+        questionText: "What role does the bias term play in a neuron's computation?",
+        options: ["It allows the activation function to be shifted, giving the model more flexibility to fit data", "It has no effect on the output", "It is only used in the output layer", "It replaces the need for weights"],
+        correctOption: 0,
+        explanation: "The correct answer is: It allows the activation function to be shifted, giving the model more flexibility to fit data",
+      },
+      {
+        questionText: "Why can a single-layer perceptron NOT solve the XOR problem?",
+        options: ["XOR is not linearly separable, and a single-layer perceptron can only learn linear decision boundaries", "The XOR problem requires too much data", "Perceptrons cannot process binary inputs", "It actually can solve XOR easily"],
+        correctOption: 0,
+        explanation: "The correct answer is: XOR is not linearly separable, and a single-layer perceptron can only learn linear decision boundaries",
+      },
+      {
+        questionText: "What does \"fully connected\" (dense) mean in the context of neural network layers?",
+        options: ["Every neuron in one layer is connected to every neuron in the next layer", "Only some neurons are connected", "Neurons are connected randomly", "Layers are not connected at all"],
+        correctOption: 0,
+        explanation: "The correct answer is: Every neuron in one layer is connected to every neuron in the next layer",
+      },
+      {
+        questionText: "What is the purpose of an activation function in a neuron?",
+        options: ["To introduce non-linearity, allowing the network to learn complex, non-linear patterns", "To normalize the input data only", "To reduce the number of layers", "To store the weights"],
+        correctOption: 0,
+        explanation: "The correct answer is: To introduce non-linearity, allowing the network to learn complex, non-linear patterns",
+      },
+      {
+        questionText: "What does it mean when we say a Multi-Layer Perceptron (MLP) is a \"universal function approximator\"?",
+        options: ["With enough hidden units, an MLP can theoretically approximate any continuous function", "It can only approximate linear functions", "It requires no training data", "It only works for image data"],
+        correctOption: 0,
+        explanation: "The correct answer is: With enough hidden units, an MLP can theoretically approximate any continuous function",
+      },
+      {
+        questionText: "In a neural network, what determines the number of neurons in the output layer for a binary classification task?",
+        options: ["Typically 1 neuron (with a sigmoid activation) representing the probability of the positive class", "Always equal to the number of input features", "Always exactly 10", "It must equal the number of hidden layers"],
+        correctOption: 0,
+        explanation: "The correct answer is: Typically 1 neuron (with a sigmoid activation) representing the probability of the positive class",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Implement a single perceptron from scratch in Python/NumPy that takes 2 inputs, applies weights and a bias, and uses a step activation function to output 0 or 1.",
+        starterCode: "# Implement a single perceptron from scratch in Python/NumPy t\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport numpy as np\ndef perceptron(x1, x2, w1, w2, bias):\n    z = x1*w1 + x2*w2 + bias\n    return 1 if z >= 0 else 0\n\nprint(perceptron(1, 0, 0.5, 0.5, -0.6))\\n```",
+      },
+      {
+        questionText: "Using NumPy, manually compute the forward pass of a tiny neural network with one hidden layer (2 inputs, 3 hidden neurons, 1 output) using randomly initialized weights and a sigmoid activation function.",
+        starterCode: "# Using NumPy, manually compute the forward pass of a tiny neu\n\ndef layer():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport numpy as np\ndef sigmoid(x): return 1/(1+np.exp(-x))\nX = np.array([0.5, 0.8])\nW1 = np.random.rand(2, 3)\nb1 = np.random.rand(3)\nW2 = np.random.rand(3, 1)\nb2 = np.random.rand(1)\nhidden = sigmoid(X @ W1 + b1)\noutput = sigmoid(hidden @ W2 + b2)\nprint(output)\\n```",
+      },
+    ],
+  },
+  133: {
+    topicTitle: "DL: DL - Forward & Backward Propagation",
+    mcqs: [
+      {
+        questionText: "What is forward propagation in a neural network?",
+        options: ["The process of passing input data through the network layer by layer to compute the final output/prediction", "The process of updating weights", "The process of loading data", "The process of removing layers"],
+        correctOption: 0,
+        explanation: "The correct answer is: The process of passing input data through the network layer by layer to compute the final output/prediction",
+      },
+      {
+        questionText: "What is backpropagation used for?",
+        options: ["Efficiently computing the gradient of the loss function with respect to each weight in the network, using the chain rule", "Loading data into the model", "Choosing the number of layers", "Normalizing input data"],
+        correctOption: 0,
+        explanation: "The correct answer is: Efficiently computing the gradient of the loss function with respect to each weight in the network, using the chain rule",
+      },
+      {
+        questionText: "What mathematical rule underlies the backpropagation algorithm?",
+        options: ["The chain rule of calculus, used to propagate error gradients backward through the layers", "The Pythagorean theorem", "Bayes' theorem", "The central limit theorem"],
+        correctOption: 0,
+        explanation: "The correct answer is: The chain rule of calculus, used to propagate error gradients backward through the layers",
+      },
+      {
+        questionText: "After backpropagation computes the gradients, what is typically done next?",
+        options: ["The weights are updated in the direction that reduces the loss, using an optimizer like gradient descent", "The gradients are discarded", "The network architecture is changed", "The input data is re-shuffled only"],
+        correctOption: 0,
+        explanation: "The correct answer is: The weights are updated in the direction that reduces the loss, using an optimizer like gradient descent",
+      },
+      {
+        questionText: "What is stored during forward propagation that backpropagation needs to compute gradients efficiently?",
+        options: ["Intermediate activations/outputs of each layer", "Only the final output", "Nothing needs to be stored", "The original random seed only"],
+        correctOption: 0,
+        explanation: "The correct answer is: Intermediate activations/outputs of each layer",
+      },
+      {
+        questionText: "What does the term \"epoch\" refer to in the training process involving forward and backward propagation?",
+        options: ["One complete pass through the entire training dataset", "A single forward pass on one sample", "The number of layers", "The learning rate value"],
+        correctOption: 0,
+        explanation: "The correct answer is: One complete pass through the entire training dataset",
+      },
+      {
+        questionText: "Why is backpropagation described as computationally efficient compared to naive gradient computation?",
+        options: ["It reuses computed values from the forward pass and propagates errors layer by layer rather than recomputing everything from scratch for every weight", "It skips most of the layers", "It doesn't require any calculus", "It avoids using the chain rule entirely"],
+        correctOption: 0,
+        explanation: "The correct answer is: It reuses computed values from the forward pass and propagates errors layer by layer rather than recomputing everything from scratch for every weight",
+      },
+      {
+        questionText: "What happens during the \"backward pass\" if the network has multiple hidden layers?",
+        options: ["Gradients are propagated backward from the output layer through each hidden layer in reverse order, applying the chain rule at each step", "Gradients are computed only for the last layer", "Gradients are computed randomly for each layer", "The backward pass only occurs once, regardless of layer count"],
+        correctOption: 0,
+        explanation: "The correct answer is: Gradients are propagated backward from the output layer through each hidden layer in reverse order, applying the chain rule at each step",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Implement forward propagation from scratch in NumPy for a 2-layer neural network (one hidden layer with ReLU, output layer with sigmoid) given random weight matrices and a batch of inputs.",
+        starterCode: "# Implement forward propagation from scratch in NumPy for a 2-\n\ndef network():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport numpy as np\ndef relu(x): return np.maximum(0, x)\ndef sigmoid(x): return 1/(1+np.exp(-x))\nX = np.random.rand(4, 3)  # batch of 4 samples, 3 features\nW1 = np.random.rand(3, 5); b1 = np.random.rand(5)\nW2 = np.random.rand(5, 1); b2 = np.random.rand(1)\nhidden = relu(X @ W1 + b1)\noutput = sigmoid(hidden @ W2 + b2)\nprint(output)\\n```",
+      },
+      {
+        questionText: "Implement a simplified backpropagation step in NumPy that computes the gradient of the mean squared error loss with respect to the output layer weights of a single-layer network.",
+        starterCode: "# Implement a simplified backpropagation step in NumPy that co\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\ny_true = np.array([[1.0]])\noutput = np.array([[0.7]])\nhidden_activation = np.array([[0.3, 0.5, 0.8]])\nd_loss_d_output = 2 * (output - y_true)  # dMSE/doutput\nd_weights = hidden_activation.T @ d_loss_d_output\nprint(d_weights)\\n```",
+      },
+    ],
+  },
+  134: {
+    topicTitle: "DL: DL - Weight Initialization Techniques",
+    mcqs: [
+      {
+        questionText: "Why does initializing all weights in a neural network to zero cause a problem?",
+        options: ["All neurons in a layer would compute identical outputs and gradients, so they'd never learn different features (the symmetry problem)", "It causes the network to train instantly", "It has no negative effect", "It only affects the output layer"],
+        correctOption: 0,
+        explanation: "The correct answer is: All neurons in a layer would compute identical outputs and gradients, so they'd never learn different features (the symmetry problem)",
+      },
+      {
+        questionText: "What is Xavier (Glorot) initialization designed to do?",
+        options: ["Set initial weight variance based on the number of input and output units to keep signal variance stable across layers, particularly for sigmoid/tanh activations", "Set all weights to a constant value", "Initialize weights randomly with no consideration of layer size", "Only initialize biases, not weights"],
+        correctOption: 0,
+        explanation: "The correct answer is: Set initial weight variance based on the number of input and output units to keep signal variance stable across layers, particularly for sigmoid/tanh activations",
+      },
+      {
+        questionText: "What is He initialization primarily designed for?",
+        options: ["Networks using ReLU (or its variants) as the activation function, accounting for the fact that ReLU zeros out roughly half the inputs", "Only for output layers", "Only for recurrent networks", "It is identical to Xavier initialization"],
+        correctOption: 0,
+        explanation: "The correct answer is: Networks using ReLU (or its variants) as the activation function, accounting for the fact that ReLU zeros out roughly half the inputs",
+      },
+      {
+        questionText: "What problem can occur if weights are initialized with values that are too large?",
+        options: ["Activations and gradients can explode, causing unstable training", "The model always converges faster", "It has no effect on training", "It only affects inference speed"],
+        correctOption: 0,
+        explanation: "The correct answer is: Activations and gradients can explode, causing unstable training",
+      },
+      {
+        questionText: "What problem can occur if weights are initialized with values that are too small (close to zero)?",
+        options: ["Activations and gradients can vanish, slowing or stalling learning, especially in deep networks", "The model always overfits immediately", "It causes an immediate crash", "It has no effect"],
+        correctOption: 0,
+        explanation: "The correct answer is: Activations and gradients can vanish, slowing or stalling learning, especially in deep networks",
+      },
+      {
+        questionText: "In most modern deep learning frameworks (e.g., Keras, PyTorch), how are weights initialized by default?",
+        options: ["Frameworks use sensible default initializers (e.g., Glorot/He variants) rather than requiring manual initialization for every layer", "Weights must always be manually initialized by the user", "All weights default to zero", "All weights default to 1"],
+        correctOption: 0,
+        explanation: "The correct answer is: Frameworks use sensible default initializers (e.g., Glorot/He variants) rather than requiring manual initialization for every layer",
+      },
+      {
+        questionText: "Why are biases commonly initialized to zero, unlike weights?",
+        options: ["Zero-initialized biases don't cause the symmetry problem that zero-initialized weights do, since neurons still receive different weighted inputs", "Biases must always be random", "Biases have no effect on the network", "Biases are never initialized"],
+        correctOption: 0,
+        explanation: "The correct answer is: Zero-initialized biases don't cause the symmetry problem that zero-initialized weights do, since neurons still receive different weighted inputs",
+      },
+      {
+        questionText: "Which initialization approach might be chosen for a network using the tanh activation function?",
+        options: ["Xavier/Glorot initialization, since it's designed for symmetric activation functions like tanh and sigmoid", "He initialization is strictly required", "Zero initialization is preferred", "Random large-value initialization is preferred"],
+        correctOption: 0,
+        explanation: "The correct answer is: Xavier/Glorot initialization, since it's designed for symmetric activation functions like tanh and sigmoid",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a NumPy function 'xavier_init(n_in, n_out)' that returns a weight matrix of shape '(n_in, n_out)' initialized using Xavier/Glorot initialization.",
+        starterCode: "# Write a NumPy function 'xavier_init(n_in, n_out)' that retur\n\ndef xavier_init():\n    pass",
+        expectedKeywords: ["def", "for", "import", "return"],
+        solutionDescription: "```python\\nimport numpy as np\ndef xavier_init(n_in, n_out):\n    limit = np.sqrt(6 / (n_in + n_out))\n    return np.random.uniform(-limit, limit, (n_in, n_out))\n\nprint(xavier_init(4, 3))\\n```",
+      },
+      {
+        questionText: "Using Keras or PyTorch, build a simple dense layer and demonstrate explicitly setting its kernel initializer to 'he_normal' (Keras) or an equivalent He initialization scheme (PyTorch).",
+        starterCode: "# Using Keras or PyTorch, build a simple dense layer and demon\n\ndef scheme():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nlayer = keras.layers.Dense(16, kernel_initializer='he_normal')\n# PyTorch equivalent:\n# import torch.nn as nn\n# layer = nn.Linear(10, 16)\n# nn.init.kaiming_normal_(layer.weight)\\n```",
+      },
+    ],
+  },
+  135: {
+    topicTitle: "DL: DL - Batch Normalization",
+    mcqs: [
+      {
+        questionText: "What does Batch Normalization do during training?",
+        options: ["Normalizes the activations of a layer (using batch statistics) to have roughly zero mean and unit variance before scaling and shifting with learnable parameters", "Normalizes only the input data once before training", "Removes the need for an activation function", "Reduces the number of layers"],
+        correctOption: 0,
+        explanation: "The correct answer is: Normalizes the activations of a layer (using batch statistics) to have roughly zero mean and unit variance before scaling and shifting with learnable parameters",
+      },
+      {
+        questionText: "What is a key benefit of Batch Normalization for training deep networks?",
+        options: ["It helps stabilize and speed up training by reducing internal covariate shift, often allowing higher learning rates", "It always eliminates the need for regularization entirely", "It has no effect on training speed", "It removes the need for backpropagation"],
+        correctOption: 0,
+        explanation: "The correct answer is: It helps stabilize and speed up training by reducing internal covariate shift, often allowing higher learning rates",
+      },
+      {
+        questionText: "Where is a Batch Normalization layer typically placed in a network?",
+        options: ["After a linear/convolutional layer and before (or after) the activation function", "Only at the very end of the network", "Only at the input layer", "It cannot be placed between other layers"],
+        correctOption: 0,
+        explanation: "The correct answer is: After a linear/convolutional layer and before (or after) the activation function",
+      },
+      {
+        questionText: "What learnable parameters does Batch Normalization introduce?",
+        options: ["A scale (gamma) and shift (beta) parameter per feature, allowing the network to undo normalization if needed", "None; it has no learnable parameters", "Only a single global scale", "Only the bias term of the layer"],
+        correctOption: 0,
+        explanation: "The correct answer is: A scale (gamma) and shift (beta) parameter per feature, allowing the network to undo normalization if needed",
+      },
+      {
+        questionText: "How does Batch Normalization behave differently at inference (test) time compared to training time?",
+        options: ["It uses running statistics (moving average of mean/variance) computed during training instead of the current batch's statistics", "It behaves identically to training time", "It is disabled entirely at inference", "It recomputes statistics from a large validation set each time"],
+        correctOption: 0,
+        explanation: "The correct answer is: It uses running statistics (moving average of mean/variance) computed during training instead of the current batch's statistics",
+      },
+      {
+        questionText: "What potential side benefit does Batch Normalization provide, sometimes reducing the need for other regularization?",
+        options: ["A mild regularizing effect due to noise introduced by using mini-batch statistics", "It always eliminates overfitting completely", "It guarantees a smaller model size", "It removes the need for training data"],
+        correctOption: 0,
+        explanation: "The correct answer is: A mild regularizing effect due to noise introduced by using mini-batch statistics",
+      },
+      {
+        questionText: "What is a limitation of Batch Normalization when batch sizes are very small?",
+        options: ["Batch statistics become noisy/unreliable estimates of the true mean and variance, hurting performance", "It works better with very small batches", "It has no dependency on batch size", "It cannot be used with batch sizes under 1000"],
+        correctOption: 0,
+        explanation: "The correct answer is: Batch statistics become noisy/unreliable estimates of the true mean and variance, hurting performance",
+      },
+      {
+        questionText: "Which alternative normalization technique computes statistics across features for a single sample instead of across the batch, making it useful for recurrent networks or small batch sizes?",
+        options: ["Layer Normalization", "Batch Normalization does this too, identically", "Dropout", "L2 Regularization"],
+        correctOption: 0,
+        explanation: "The correct answer is: Layer Normalization",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using Keras, build a small feedforward network with two hidden Dense layers, inserting a 'BatchNormalization' layer after each Dense layer and before the activation.",
+        starterCode: "# Using Keras, build a small feedforward network with two hidd\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nmodel = keras.Sequential([\n    keras.layers.Input(shape=(20,)),\n    keras.layers.Dense(32),\n    keras.layers.BatchNormalization(),\n    keras.layers.Activation('relu'),\n    keras.layers.Dense(16),\n    keras.layers.BatchNormalization(),\n    keras.layers.Activation('relu'),\n    keras.layers.Dense(1, activation='sigmoid')\n])\\n```",
+      },
+      {
+        questionText: "Implement a simplified batch normalization function from scratch in NumPy that normalizes a batch of activations (mean 0, variance 1) and applies learnable scale and shift parameters.",
+        starterCode: "# Implement a simplified batch normalization function from scr\n\ndef activations():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport numpy as np\ndef batch_norm(X, gamma, beta, eps=1e-5):\n    mean = X.mean(axis=0)\n    var = X.var(axis=0)\n    X_norm = (X - mean) / np.sqrt(var + eps)\n    return gamma * X_norm + beta\n\nX = np.random.rand(10, 4)\ngamma, beta = np.ones(4), np.zeros(4)\nprint(batch_norm(X, gamma, beta))\\n```",
+      },
+    ],
+  },
+  136: {
+    topicTitle: "DL: DL - Dropout & Regularization in DL",
+    mcqs: [
+      {
+        questionText: "What does Dropout do during training?",
+        options: ["Randomly \"drops\" (zeroes out) a fraction of neurons in a layer for each training step, forcing the network to not rely too heavily on any single neuron", "Removes layers permanently from the network", "Removes training samples randomly", "Increases the learning rate randomly"],
+        correctOption: 0,
+        explanation: "The correct answer is: Randomly \"drops\" (zeroes out) a fraction of neurons in a layer for each training step, forcing the network to not rely too heavily on any single neuron",
+      },
+      {
+        questionText: "What is the primary purpose of using Dropout?",
+        options: ["To reduce overfitting by preventing co-adaptation of neurons", "To speed up forward propagation only", "To increase the model's capacity", "To replace the need for an optimizer"],
+        correctOption: 0,
+        explanation: "The correct answer is: To reduce overfitting by preventing co-adaptation of neurons",
+      },
+      {
+        questionText: "How does Dropout behave differently at inference (test) time?",
+        options: ["Dropout is turned off, and typically all neurons are used with their outputs scaled appropriately", "Dropout remains fully active at test time too", "All neurons are removed permanently", "Dropout only works during inference, not training"],
+        correctOption: 0,
+        explanation: "The correct answer is: Dropout is turned off, and typically all neurons are used with their outputs scaled appropriately",
+      },
+      {
+        questionText: "What does L2 regularization (weight decay) do to a network's loss function?",
+        options: ["Adds a penalty term proportional to the sum of squared weights, discouraging overly large weight values", "Removes neurons from the network", "Increases the number of training epochs", "Adds a penalty based on the absolute values only, not squared"],
+        correctOption: 0,
+        explanation: "The correct answer is: Adds a penalty term proportional to the sum of squared weights, discouraging overly large weight values",
+      },
+      {
+        questionText: "What is the effect of L1 regularization on model weights, compared to L2?",
+        options: ["L1 tends to push some weights exactly to zero, producing sparse models, while L2 shrinks weights smoothly without necessarily zeroing them", "L1 and L2 have identical effects", "L1 always increases weight magnitude", "L2 always produces sparse models instead"],
+        correctOption: 0,
+        explanation: "The correct answer is: L1 tends to push some weights exactly to zero, producing sparse models, while L2 shrinks weights smoothly without necessarily zeroing them",
+      },
+      {
+        questionText: "What is \"early stopping\" as a regularization technique in deep learning?",
+        options: ["Halting training once validation performance stops improving, to avoid overfitting to the training data", "Stopping training exactly after 1 epoch always", "A method to increase the learning rate", "A technique used only during data preprocessing"],
+        correctOption: 0,
+        explanation: "The correct answer is: Halting training once validation performance stops improving, to avoid overfitting to the training data",
+      },
+      {
+        questionText: "What dropout rate value (e.g., 0.5) represents?",
+        options: ["The probability that a given neuron's output is set to zero during that training step", "The learning rate of the optimizer", "The fraction of layers removed from the network", "The percentage of data used in training"],
+        correctOption: 0,
+        explanation: "The correct answer is: The probability that a given neuron's output is set to zero during that training step",
+      },
+      {
+        questionText: "Why might using too high a dropout rate hurt model performance?",
+        options: ["It can remove too much information/capacity from the network, leading to underfitting", "It always improves performance regardless of rate", "It has no effect on capacity", "It only affects the input layer"],
+        correctOption: 0,
+        explanation: "The correct answer is: It can remove too much information/capacity from the network, leading to underfitting",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using Keras, build a neural network with a 'Dropout(0.3)' layer after each hidden Dense layer, and compile it for a binary classification task.",
+        starterCode: "# Using Keras, build a neural network with a 'Dropout(0.3)' la\n\ndef Dropout():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nmodel = keras.Sequential([\n    keras.layers.Input(shape=(20,)),\n    keras.layers.Dense(32, activation='relu'),\n    keras.layers.Dropout(0.3),\n    keras.layers.Dense(16, activation='relu'),\n    keras.layers.Dropout(0.3),\n    keras.layers.Dense(1, activation='sigmoid')\n])\nmodel.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])\\n```",
+      },
+      {
+        questionText: "Using Keras or PyTorch, add L2 regularization (weight decay) to a Dense/Linear layer and briefly show, via code, the difference in how weight decay is configured compared to adding a Dropout layer.",
+        starterCode: "# Using Keras or PyTorch, add L2 regularization (weight decay)\n\ndef regularization():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nfrom tensorflow.keras import regularizers\nlayer_l2 = keras.layers.Dense(16, kernel_regularizer=regularizers.l2(0.01))\n# vs Dropout, which is added as a separate layer:\nlayer_dropout = keras.layers.Dropout(0.3)\n# L2 penalizes large weights during training; Dropout randomly deactivates neurons\\n```",
+      },
+    ],
+  },
+  137: {
+    topicTitle: "DL: DL - Vanishing & Exploding Gradients",
+    mcqs: [
+      {
+        questionText: "What is the vanishing gradient problem?",
+        options: ["Gradients become extremely small as they are backpropagated through many layers, causing earlier layers to learn very slowly or not at all", "Gradients become undefined", "Gradients disappear only in the output layer", "It only happens with a single-layer network"],
+        correctOption: 0,
+        explanation: "The correct answer is: Gradients become extremely small as they are backpropagated through many layers, causing earlier layers to learn very slowly or not at all",
+      },
+      {
+        questionText: "What is the exploding gradient problem?",
+        options: ["Gradients grow extremely large during backpropagation through many layers, causing unstable weight updates", "Gradients shrink to exactly zero", "It only happens in shallow networks", "It refers to too much training data"],
+        correctOption: 0,
+        explanation: "The correct answer is: Gradients grow extremely large during backpropagation through many layers, causing unstable weight updates",
+      },
+      {
+        questionText: "Which activation functions are particularly prone to causing vanishing gradients, and why?",
+        options: ["Sigmoid and tanh, because their derivatives are small (near zero) for large positive or negative inputs, and this compounds across layers", "ReLU, because its derivative is always 1", "Softmax, because it has no derivative", "Linear activations, because they saturate quickly"],
+        correctOption: 0,
+        explanation: "The correct answer is: Sigmoid and tanh, because their derivatives are small (near zero) for large positive or negative inputs, and this compounds across layers",
+      },
+      {
+        questionText: "How does using the ReLU activation function help mitigate vanishing gradients compared to sigmoid/tanh?",
+        options: ["ReLU's derivative is 1 for positive inputs (not shrinking toward zero), which helps gradients flow better through deep networks", "ReLU always produces larger gradients than any other function", "ReLU has no derivative", "ReLU eliminates the need for gradients entirely"],
+        correctOption: 0,
+        explanation: "The correct answer is: ReLU's derivative is 1 for positive inputs (not shrinking toward zero), which helps gradients flow better through deep networks",
+      },
+      {
+        questionText: "What technique commonly used in very deep networks (like ResNets) directly helps combat vanishing gradients by providing shortcut paths?",
+        options: ["Residual/skip connections", "Increasing the learning rate", "Removing all activation functions", "Reducing the batch size to 1"],
+        correctOption: 0,
+        explanation: "The correct answer is: Residual/skip connections",
+      },
+      {
+        questionText: "What is \"gradient clipping,\" commonly used to address exploding gradients?",
+        options: ["Capping the gradient values (or their norm) to a maximum threshold before applying weight updates", "Deleting gradients above a threshold entirely and not updating those weights", "Increasing gradients artificially", "Clipping only affects the loss function"],
+        correctOption: 0,
+        explanation: "The correct answer is: Capping the gradient values (or their norm) to a maximum threshold before applying weight updates",
+      },
+      {
+        questionText: "How can proper weight initialization (e.g., He or Xavier) help with vanishing/exploding gradients?",
+        options: ["It helps keep the scale of activations and gradients stable across layers from the start of training", "It has no effect on gradient behavior", "It only affects the final layer", "It eliminates the need for an activation function"],
+        correctOption: 0,
+        explanation: "The correct answer is: It helps keep the scale of activations and gradients stable across layers from the start of training",
+      },
+      {
+        questionText: "Why are recurrent neural networks (RNNs) particularly susceptible to vanishing/exploding gradients?",
+        options: ["Backpropagation through time involves repeatedly multiplying gradients across many time steps, which can compound shrinking or growing effects", "RNNs never use backpropagation", "RNNs only have one layer, so gradients cannot vanish", "RNNs do not use activation functions"],
+        correctOption: 0,
+        explanation: "The correct answer is: Backpropagation through time involves repeatedly multiplying gradients across many time steps, which can compound shrinking or growing effects",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a small NumPy simulation that multiplies a gradient value by a derivative less than 1 (e.g., 0.25) repeatedly across 50 \"layers\" and prints the result, demonstrating the vanishing gradient effect numerically.",
+        starterCode: "# Write a small NumPy simulation that multiplies a gradient va\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\ngradient = 1.0\nfor layer in range(50):\n    gradient *= 0.25\nprint(\"Gradient after 50 layers:\", gradient)  # vanishes to near zero\\n```",
+      },
+      {
+        questionText: "Using Keras or PyTorch, demonstrate configuring gradient clipping (e.g., 'clipnorm' in Keras or 'torch.nn.utils.clip_grad_norm_' in PyTorch) when training a simple model.",
+        starterCode: "# Using Keras or PyTorch, demonstrate configuring gradient cli\n\ndef clipping():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\noptimizer = keras.optimizers.Adam(clipnorm=1.0)\n# PyTorch equivalent:\n# import torch.nn.utils as utils\n# utils.clip_grad_norm_(model.parameters(), max_norm=1.0)\\n```",
+      },
+    ],
+  },
+  138: {
+    topicTitle: "DL: DL - LSTM & GRU",
+    mcqs: [
+      {
+        questionText: "What problem do LSTM (Long Short-Term Memory) networks primarily address compared to vanilla RNNs?",
+        options: ["The vanishing gradient problem, enabling learning of longer-range dependencies in sequences", "They eliminate the need for any activation function", "They process images instead of sequences", "They remove the need for training data"],
+        correctOption: 0,
+        explanation: "The correct answer is: The vanishing gradient problem, enabling learning of longer-range dependencies in sequences",
+      },
+      {
+        questionText: "What is the \"cell state\" in an LSTM?",
+        options: ["A memory pathway that runs through the sequence, allowing information to be carried forward with minimal modification, regulated by gates", "The same as the hidden state, with no distinction", "A single scalar value used only for the first time step", "The loss function of the LSTM"],
+        correctOption: 0,
+        explanation: "The correct answer is: A memory pathway that runs through the sequence, allowing information to be carried forward with minimal modification, regulated by gates",
+      },
+      {
+        questionText: "What are the three main gates in a standard LSTM cell?",
+        options: ["Forget gate, input gate, and output gate", "Encoder gate, decoder gate, attention gate", "Convolution gate, pooling gate, dense gate", "Start gate, middle gate, end gate"],
+        correctOption: 0,
+        explanation: "The correct answer is: Forget gate, input gate, and output gate",
+      },
+      {
+        questionText: "What does the \"forget gate\" in an LSTM control?",
+        options: ["How much of the previous cell state should be retained versus discarded", "How many layers to remove", "The learning rate", "The size of the input"],
+        correctOption: 0,
+        explanation: "The correct answer is: How much of the previous cell state should be retained versus discarded",
+      },
+      {
+        questionText: "What is a GRU (Gated Recurrent Unit)?",
+        options: ["A simplified variant of LSTM with fewer gates (update and reset gates), often faster to train with comparable performance", "A type of convolutional layer", "An unsupervised clustering algorithm", "A loss function"],
+        correctOption: 0,
+        explanation: "The correct answer is: A simplified variant of LSTM with fewer gates (update and reset gates), often faster to train with comparable performance",
+      },
+      {
+        questionText: "How many gates does a standard GRU have, compared to an LSTM's three?",
+        options: ["Two gates: update and reset", "Four gates", "One gate", "GRUs have no gates"],
+        correctOption: 0,
+        explanation: "The correct answer is: Two gates: update and reset",
+      },
+      {
+        questionText: "In which types of tasks are LSTMs/GRUs commonly applied?",
+        options: ["Sequential data tasks like time series forecasting, text/language modeling, and speech recognition", "Only static image classification", "Only tabular data with no order", "Only unsupervised clustering"],
+        correctOption: 0,
+        explanation: "The correct answer is: Sequential data tasks like time series forecasting, text/language modeling, and speech recognition",
+      },
+      {
+        questionText: "What is a Bidirectional LSTM?",
+        options: ["An LSTM architecture that processes the sequence in both forward and backward directions and combines the results, capturing context from both past and future", "An LSTM with double the cell state size", "An LSTM that only works on numeric data", "An LSTM without gates"],
+        correctOption: 0,
+        explanation: "The correct answer is: An LSTM architecture that processes the sequence in both forward and backward directions and combines the results, capturing context from both past and future",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using Keras, build a simple sequential model with an 'LSTM' layer (e.g., 64 units) followed by a Dense output layer for a binary sequence classification task, and print the model summary.",
+        starterCode: "# Using Keras, build a simple sequential model with an 'LSTM' \n\ndef layer():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nmodel = keras.Sequential([\n    keras.layers.Input(shape=(10, 8)),\n    keras.layers.LSTM(64),\n    keras.layers.Dense(1, activation='sigmoid')\n])\nmodel.summary()\\n```",
+      },
+      {
+        questionText: "Using Keras, build a model using a 'GRU' layer instead of LSTM for the same type of sequence classification task, and briefly note (in a comment) the parameter count difference reflected in the model summary.",
+        starterCode: "# Using Keras, build a model using a 'GRU' layer instead of LS\n\ndef note():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nmodel = keras.Sequential([\n    keras.layers.Input(shape=(10, 8)),\n    keras.layers.GRU(64),\n    keras.layers.Dense(1, activation='sigmoid')\n])\nmodel.summary()\n# GRU has fewer parameters than LSTM (3 gates vs 4), so param count is lower\\n```",
+      },
+    ],
+  },
+  139: {
+    topicTitle: "DL: DL - Autoencoders",
+    mcqs: [
+      {
+        questionText: "What is an autoencoder?",
+        options: ["An unsupervised neural network trained to reconstruct its input, learning a compressed (latent) representation in the process", "A supervised classification model", "A reinforcement learning algorithm", "A type of loss function"],
+        correctOption: 0,
+        explanation: "The correct answer is: An unsupervised neural network trained to reconstruct its input, learning a compressed (latent) representation in the process",
+      },
+      {
+        questionText: "What are the two main components of an autoencoder?",
+        options: ["An encoder that compresses input into a latent representation, and a decoder that reconstructs the input from that representation", "A generator and a discriminator", "An input layer and an output layer only", "A convolutional layer and a pooling layer"],
+        correctOption: 0,
+        explanation: "The correct answer is: An encoder that compresses input into a latent representation, and a decoder that reconstructs the input from that representation",
+      },
+      {
+        questionText: "What is the \"bottleneck\" (latent space) in an autoencoder?",
+        options: ["The smallest, most compressed layer in the middle of the network that forces the model to learn essential features", "The final output layer", "The first layer of the encoder", "The loss function"],
+        correctOption: 0,
+        explanation: "The correct answer is: The smallest, most compressed layer in the middle of the network that forces the model to learn essential features",
+      },
+      {
+        questionText: "What is a common application of autoencoders?",
+        options: ["Dimensionality reduction, anomaly detection, and denoising", "Only image classification with labels", "Only text generation", "Reinforcement learning tasks exclusively"],
+        correctOption: 0,
+        explanation: "The correct answer is: Dimensionality reduction, anomaly detection, and denoising",
+      },
+      {
+        questionText: "What loss function is commonly used to train a standard autoencoder for continuous data?",
+        options: ["Mean Squared Error (MSE) between the input and the reconstructed output", "Categorical cross-entropy always", "Hinge loss", "No loss function is needed"],
+        correctOption: 0,
+        explanation: "The correct answer is: Mean Squared Error (MSE) between the input and the reconstructed output",
+      },
+      {
+        questionText: "How can autoencoders be used for anomaly detection?",
+        options: ["By training on \"normal\" data and flagging inputs with high reconstruction error as potential anomalies", "By classifying anomalies directly with labeled data", "They cannot be used for anomaly detection", "By clustering the raw input data only"],
+        correctOption: 0,
+        explanation: "The correct answer is: By training on \"normal\" data and flagging inputs with high reconstruction error as potential anomalies",
+      },
+      {
+        questionText: "What is a Denoising Autoencoder trained to do?",
+        options: ["Reconstruct a clean version of the input from a corrupted/noisy version of it", "Add noise to clean images", "Classify noisy images into categories", "Compress images without reconstruction"],
+        correctOption: 0,
+        explanation: "The correct answer is: Reconstruct a clean version of the input from a corrupted/noisy version of it",
+      },
+      {
+        questionText: "How does a Variational Autoencoder (VAE) differ from a standard autoencoder?",
+        options: ["A VAE learns a probabilistic latent space (a distribution) rather than a fixed encoding, allowing new data generation by sampling", "A VAE has no decoder", "A VAE cannot compress data", "There is no meaningful difference"],
+        correctOption: 0,
+        explanation: "The correct answer is: A VAE learns a probabilistic latent space (a distribution) rather than a fixed encoding, allowing new data generation by sampling",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using Keras, build a simple autoencoder for the MNIST dataset with an encoder (Dense layers compressing 784 \u2192 32) and a symmetric decoder (32 \u2192 784), and compile it with MSE loss.",
+        starterCode: "# Using Keras, build a simple autoencoder for the MNIST datase\n\ndef encoder():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nencoder = keras.Sequential([keras.layers.Input(shape=(784,)), keras.layers.Dense(32, activation='relu')])\ndecoder = keras.Sequential([keras.layers.Input(shape=(32,)), keras.layers.Dense(784, activation='sigmoid')])\nautoencoder = keras.Sequential([encoder, decoder])\nautoencoder.compile(optimizer='adam', loss='mse')\\n```",
+      },
+      {
+        questionText: "Write code to compute the reconstruction error (MSE) between original and reconstructed samples from a trained autoencoder, and use a threshold to flag samples as anomalies.",
+        starterCode: "# Write code to compute the reconstruction error (MSE) between\n\ndef error():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport numpy as np\noriginal = np.random.rand(10, 784)\nreconstructed = original + np.random.normal(0, 0.05, (10, 784))\nerrors = np.mean((original - reconstructed)**2, axis=1)\nthreshold = 0.01\nanomalies = errors > threshold\nprint(anomalies)\\n```",
+      },
+    ],
+  },
+  140: {
+    topicTitle: "DL: DL - Transfer Learning",
+    mcqs: [
+      {
+        questionText: "What is transfer learning?",
+        options: ["Reusing a model pre-trained on one task/dataset as a starting point for a new, related task, rather than training from scratch", "Training a completely new model from random weights every time", "Transferring data between two databases", "Converting a model from one framework to another only"],
+        correctOption: 0,
+        explanation: "The correct answer is: Reusing a model pre-trained on one task/dataset as a starting point for a new, related task, rather than training from scratch",
+      },
+      {
+        questionText: "Why is transfer learning especially useful when you have a small labeled dataset?",
+        options: ["The pre-trained model has already learned general features from a much larger dataset, reducing the amount of new data and training needed", "It eliminates the need for any labeled data", "It always trains faster regardless of data size", "It removes the need for a GPU"],
+        correctOption: 0,
+        explanation: "The correct answer is: The pre-trained model has already learned general features from a much larger dataset, reducing the amount of new data and training needed",
+      },
+      {
+        questionText: "What does \"freezing\" layers mean in the context of transfer learning?",
+        options: ["Keeping the weights of certain (usually early) layers fixed during training on the new task, so only the remaining layers are updated", "Deleting those layers entirely", "Making the layers run faster", "Duplicating those layers"],
+        correctOption: 0,
+        explanation: "The correct answer is: Keeping the weights of certain (usually early) layers fixed during training on the new task, so only the remaining layers are updated",
+      },
+      {
+        questionText: "What is \"fine-tuning\" in transfer learning?",
+        options: ["Unfreezing some or all of the pre-trained layers and continuing training (typically with a low learning rate) on the new dataset", "Only training the very first layer", "Randomly initializing all weights again", "Removing the pre-trained model's output layer without replacement"],
+        correctOption: 0,
+        explanation: "The correct answer is: Unfreezing some or all of the pre-trained layers and continuing training (typically with a low learning rate) on the new dataset",
+      },
+      {
+        questionText: "Why are early layers of a pre-trained CNN often frozen while later layers are fine-tuned?",
+        options: ["Early layers tend to learn generic, transferable features (like edges/textures), while later layers learn task-specific features", "Early layers never learn anything useful", "Later layers cannot be modified", "Early layers are always task-specific"],
+        correctOption: 0,
+        explanation: "The correct answer is: Early layers tend to learn generic, transferable features (like edges/textures), while later layers learn task-specific features",
+      },
+      {
+        questionText: "Which of these is a commonly used pre-trained model for image-based transfer learning?",
+        options: ["ResNet, VGG, or EfficientNet (pre-trained on ImageNet)", "Linear Regression", "K-Means", "Naive Bayes"],
+        correctOption: 0,
+        explanation: "The correct answer is: ResNet, VGG, or EfficientNet (pre-trained on ImageNet)",
+      },
+      {
+        questionText: "When adapting a pre-trained image classification model to a new task with a different number of classes, what typically must be changed?",
+        options: ["The final output/classification layer must be replaced to match the new number of classes", "The entire architecture must be rebuilt from scratch", "Nothing needs to change", "Only the input image size needs to change"],
+        correctOption: 0,
+        explanation: "The correct answer is: The final output/classification layer must be replaced to match the new number of classes",
+      },
+      {
+        questionText: "In domains like NLP, what is an example of transfer learning?",
+        options: ["Fine-tuning a pre-trained language model like BERT on a specific downstream task such as sentiment analysis", "Training a bag-of-words model from scratch every time", "Manually labeling every word in a new corpus", "Using only rule-based systems with no pre-training"],
+        correctOption: 0,
+        explanation: "The correct answer is: Fine-tuning a pre-trained language model like BERT on a specific downstream task such as sentiment analysis",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using Keras, load a pre-trained model (e.g., 'MobileNetV2' with 'weights='imagenet'', 'include_top=False'), freeze its base layers, and add a new Dense classification head for a custom binary classification task.",
+        starterCode: "# Using Keras, load a pre-trained model (e.g., 'MobileNetV2' w\n\ndef model():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nbase_model = keras.applications.MobileNetV2(weights='imagenet', include_top=False, input_shape=(224,224,3))\nbase_model.trainable = False\nmodel = keras.Sequential([base_model, keras.layers.GlobalAveragePooling2D(), keras.layers.Dense(1, activation='sigmoid')])\nmodel.compile(optimizer='adam', loss='binary_crossentropy')\\n```",
+      },
+      {
+        questionText: "Write code that unfreezes the last few layers of a previously frozen pre-trained model and recompiles it with a low learning rate (e.g., 1e-5) to perform fine-tuning.",
+        starterCode: "# Write code that unfreezes the last few layers of a previousl\n\ndef rate():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nbase_model = keras.applications.MobileNetV2(weights='imagenet', include_top=False)\nfor layer in base_model.layers[-10:]:\n    layer.trainable = True\nmodel = keras.Sequential([base_model, keras.layers.GlobalAveragePooling2D(), keras.layers.Dense(1, activation='sigmoid')])\nmodel.compile(optimizer=keras.optimizers.Adam(learning_rate=1e-5), loss='binary_crossentropy')\\n```",
+      },
+    ],
+  },
+  141: {
+    topicTitle: "DL: DL - Data Augmentation",
+    mcqs: [
+      {
+        questionText: "What is data augmentation in the context of deep learning?",
+        options: ["Artificially expanding the training dataset by applying random transformations (e.g., rotation, flipping) to existing samples", "Collecting entirely new labeled data", "Removing outliers from the dataset", "Reducing the number of training samples"],
+        correctOption: 0,
+        explanation: "The correct answer is: Artificially expanding the training dataset by applying random transformations (e.g., rotation, flipping) to existing samples",
+      },
+      {
+        questionText: "Why is data augmentation particularly useful in image-based deep learning?",
+        options: ["It helps the model generalize better and reduces overfitting by exposing it to varied versions of the same underlying data", "It replaces the need for any real training data", "It always increases inference speed", "It has no effect on generalization"],
+        correctOption: 0,
+        explanation: "The correct answer is: It helps the model generalize better and reduces overfitting by exposing it to varied versions of the same underlying data",
+      },
+      {
+        questionText: "Which of the following is a common image data augmentation technique?",
+        options: ["Random rotation, horizontal flipping, zooming, and cropping", "Randomly deleting all labels", "Converting all images to grayscale as the only augmentation", "Randomly discarding random pixels' worth of the whole dataset"],
+        correctOption: 0,
+        explanation: "The correct answer is: Random rotation, horizontal flipping, zooming, and cropping",
+      },
+      {
+        questionText: "In Keras, which utility/layer type is commonly used to apply real-time data augmentation during training?",
+        options: ["'ImageDataGenerator' or Keras preprocessing layers like 'RandomFlip'/'RandomRotation'", "'Dropout' layer", "'Dense' layer", "'Embedding' layer"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'ImageDataGenerator' or Keras preprocessing layers like 'RandomFlip'/'RandomRotation'",
+      },
+      {
+        questionText: "What is a key consideration when choosing which augmentations to apply to a dataset?",
+        options: ["The augmentation should preserve the label's validity \u2014 e.g., flipping a digit \"6\" horizontally could make it look like a different digit", "Any augmentation can always be applied with no consideration of the task", "Augmentations should always include random label changes", "Augmentation choice has no effect on model performance"],
+        correctOption: 0,
+        explanation: "The correct answer is: The augmentation should preserve the label's validity \u2014 e.g., flipping a digit \"6\" horizontally could make it look like a different digit",
+      },
+      {
+        questionText: "What is Mixup, a more advanced data augmentation technique?",
+        options: ["Creating new training examples by linearly combining pairs of images and their labels", "Randomly deleting entire batches of data", "A technique used only for text data", "A method of hyperparameter tuning"],
+        correctOption: 0,
+        explanation: "The correct answer is: Creating new training examples by linearly combining pairs of images and their labels",
+      },
+      {
+        questionText: "How can data augmentation be applied to text data in NLP?",
+        options: ["Techniques like synonym replacement, back-translation, or random word insertion/deletion", "Text cannot be augmented in any way", "Only by translating to a different language and never translating back", "By removing all punctuation only"],
+        correctOption: 0,
+        explanation: "The correct answer is: Techniques like synonym replacement, back-translation, or random word insertion/deletion",
+      },
+      {
+        questionText: "Does data augmentation increase the actual number of unique underlying data-collection samples?",
+        options: ["No, it creates modified versions of existing samples rather than collecting genuinely new samples, but effectively increases training data diversity", "Yes, it collects entirely new real-world samples", "It removes samples instead", "It has no relationship to sample count"],
+        correctOption: 0,
+        explanation: "The correct answer is: No, it creates modified versions of existing samples rather than collecting genuinely new samples, but effectively increases training data diversity",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using Keras' 'ImageDataGenerator' (or 'tf.keras.layers.RandomFlip'/'RandomRotation'), write code to apply random horizontal flipping, rotation, and zoom to a training image dataset.",
+        starterCode: "# Using Keras' 'ImageDataGenerator' (or 'tf.keras.layers.Rando\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\naugment = keras.Sequential([\n    keras.layers.RandomFlip('horizontal'),\n    keras.layers.RandomRotation(0.2),\n    keras.layers.RandomZoom(0.2)\n])\\n```",
+      },
+      {
+        questionText: "Write a Python function using PIL/NumPy that takes an image array and returns an augmented version with random horizontal flip and random brightness adjustment applied.",
+        starterCode: "# Write a Python function using PIL/NumPy that takes an image \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import", "return"],
+        solutionDescription: "```python\\nimport numpy as np\nfrom PIL import Image, ImageEnhance\ndef augment_image(img_array):\n    img = Image.fromarray(img_array)\n    if np.random.rand() > 0.5:\n        img = img.transpose(Image.FLIP_LEFT_RIGHT)\n    enhancer = ImageEnhance.Brightness(img)\n    img = enhancer.enhance(np.random.uniform(0.7, 1.3))\n    return np.array(img)\\n```",
+      },
+    ],
+  },
+  142: {
+    topicTitle: "DL: DL - Transformer Architecture & Attention Mechanism",
+    mcqs: [
+      {
+        questionText: "What is the core innovation of the Transformer architecture, introduced in \"Attention Is All You Need\"?",
+        options: ["It relies entirely on self-attention mechanisms to process sequences in parallel, rather than sequential recurrence like RNNs", "It uses only convolutional layers", "It removes the need for any weights", "It processes data one token at a time like an RNN, sequentially"],
+        correctOption: 0,
+        explanation: "The correct answer is: It relies entirely on self-attention mechanisms to process sequences in parallel, rather than sequential recurrence like RNNs",
+      },
+      {
+        questionText: "What does the self-attention mechanism allow a model to do?",
+        options: ["Weigh the importance of different tokens in a sequence relative to each other when computing a representation for each token", "Only look at the immediately preceding token", "Ignore all context entirely", "Only process the first token in a sequence"],
+        correctOption: 0,
+        explanation: "The correct answer is: Weigh the importance of different tokens in a sequence relative to each other when computing a representation for each token",
+      },
+      {
+        questionText: "What are the Query, Key, and Value vectors used for in the attention mechanism?",
+        options: ["They are used to compute attention scores (via Query-Key similarity) that determine how much each Value contributes to the output representation", "They represent the three separate output layers of the network", "They are only used in the final classification layer", "They have no functional role in attention"],
+        correctOption: 0,
+        explanation: "The correct answer is: They are used to compute attention scores (via Query-Key similarity) that determine how much each Value contributes to the output representation",
+      },
+      {
+        questionText: "Why can Transformers be trained more efficiently in parallel compared to RNNs?",
+        options: ["Since Transformers process all tokens in a sequence simultaneously via attention, rather than sequentially step-by-step like RNNs", "Transformers actually cannot be parallelized at all", "RNNs are always faster to train than Transformers", "Transformers use fewer parameters than RNNs, guaranteeing speed"],
+        correctOption: 0,
+        explanation: "The correct answer is: Since Transformers process all tokens in a sequence simultaneously via attention, rather than sequentially step-by-step like RNNs",
+      },
+      {
+        questionText: "Why do Transformers need \"positional encoding\"?",
+        options: ["Because self-attention has no inherent sense of token order, positional encodings inject information about each token's position in the sequence", "Positional encoding replaces the need for attention", "It is used only for image data", "It has no real purpose and is optional decoration"],
+        correctOption: 0,
+        explanation: "The correct answer is: Because self-attention has no inherent sense of token order, positional encodings inject information about each token's position in the sequence",
+      },
+      {
+        questionText: "What is \"multi-head attention\"?",
+        options: ["Running several attention mechanisms in parallel with different learned projections, allowing the model to attend to information from different representation subspaces", "Using multiple separate models and averaging predictions", "A technique only used in CNNs", "Running attention once but with multiple loss functions"],
+        correctOption: 0,
+        explanation: "The correct answer is: Running several attention mechanisms in parallel with different learned projections, allowing the model to attend to information from different representation subspaces",
+      },
+      {
+        questionText: "What are the two main components of the original Transformer architecture used in sequence-to-sequence tasks?",
+        options: ["An encoder stack and a decoder stack", "Only a decoder stack", "A generator and a discriminator", "A convolutional block and a pooling block"],
+        correctOption: 0,
+        explanation: "The correct answer is: An encoder stack and a decoder stack",
+      },
+      {
+        questionText: "Which well-known models are built on the Transformer architecture?",
+        options: ["BERT and GPT", "Decision Trees and Random Forest", "K-Means and DBSCAN", "Linear and Logistic Regression"],
+        correctOption: 0,
+        explanation: "The correct answer is: BERT and GPT",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Implement a simplified scaled dot-product self-attention function from scratch in NumPy, given Query, Key, and Value matrices, including the softmax scaling step.",
+        starterCode: "# Implement a simplified scaled dot-product self-attention fun\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport numpy as np\ndef softmax(x):\n    e = np.exp(x - np.max(x, axis=-1, keepdims=True))\n    return e / e.sum(axis=-1, keepdims=True)\n\ndef self_attention(Q, K, V):\n    d_k = Q.shape[-1]\n    scores = Q @ K.T / np.sqrt(d_k)\n    weights = softmax(scores)\n    return weights @ V\n\nQ = np.random.rand(3, 4); K = np.random.rand(3, 4); V = np.random.rand(3, 4)\nprint(self_attention(Q, K, V))\\n```",
+      },
+      {
+        questionText: "Using the HuggingFace 'transformers' library, load a pre-trained BERT tokenizer and model, and write code to obtain the contextual embedding (last hidden state) for a sample sentence.",
+        starterCode: "# Using the HuggingFace 'transformers' library, load a pre-tra\n\ndef embedding():\n    pass",
+        expectedKeywords: ["def", "for", "import", "return"],
+        solutionDescription: "```python\\nfrom transformers import BertTokenizer, BertModel\ntokenizer = BertTokenizer.from_pretrained('bert-base-uncased')\nmodel = BertModel.from_pretrained('bert-base-uncased')\ninputs = tokenizer(\"Data science is fascinating.\", return_tensors='pt')\noutputs = model(**inputs)\nprint(outputs.last_hidden_state.shape)\\n```",
+      },
+    ],
+  },
+  143: {
+    topicTitle: "DL: DL - GANs (Generative Adversarial Networks)",
+    mcqs: [
+      {
+        questionText: "What are the two networks that make up a GAN?",
+        options: ["A generator, which creates fake samples, and a discriminator, which tries to distinguish real from fake samples", "An encoder and a decoder", "A forget gate and an input gate", "A convolutional layer and a pooling layer"],
+        correctOption: 0,
+        explanation: "The correct answer is: A generator, which creates fake samples, and a discriminator, which tries to distinguish real from fake samples",
+      },
+      {
+        questionText: "How are the generator and discriminator trained in a GAN?",
+        options: ["In an adversarial (competitive) process, where the generator tries to fool the discriminator and the discriminator tries to correctly classify real vs. fake", "They are trained completely independently with no interaction", "Only the generator is trained; the discriminator is fixed", "Only the discriminator is trained; the generator is fixed"],
+        correctOption: 0,
+        explanation: "The correct answer is: In an adversarial (competitive) process, where the generator tries to fool the discriminator and the discriminator tries to correctly classify real vs. fake",
+      },
+      {
+        questionText: "What is the generator's input typically composed of?",
+        options: ["A random noise vector sampled from a latent distribution", "The full training dataset", "Labels only, with no random component", "The discriminator's weights"],
+        correctOption: 0,
+        explanation: "The correct answer is: A random noise vector sampled from a latent distribution",
+      },
+      {
+        questionText: "What does it mean when a GAN reaches \"equilibrium\" during training, ideally?",
+        options: ["The generator produces samples realistic enough that the discriminator can no longer reliably distinguish them from real data (near 50% accuracy)", "The discriminator achieves 100% accuracy permanently", "The generator stops producing any output", "Training loss becomes exactly zero for both networks"],
+        correctOption: 0,
+        explanation: "The correct answer is: The generator produces samples realistic enough that the discriminator can no longer reliably distinguish them from real data (near 50% accuracy)",
+      },
+      {
+        questionText: "What is \"mode collapse\" in GAN training?",
+        options: ["A failure mode where the generator produces limited variety of outputs, often collapsing to a few similar samples that fool the discriminator", "A guaranteed successful convergence pattern", "A technique used intentionally to improve GANs", "A type of data preprocessing step"],
+        correctOption: 0,
+        explanation: "The correct answer is: A failure mode where the generator produces limited variety of outputs, often collapsing to a few similar samples that fool the discriminator",
+      },
+      {
+        questionText: "What is a common application of GANs?",
+        options: ["Generating realistic synthetic images, image-to-image translation, and data augmentation", "Only tabular data classification", "Only time series forecasting", "Only text tokenization"],
+        correctOption: 0,
+        explanation: "The correct answer is: Generating realistic synthetic images, image-to-image translation, and data augmentation",
+      },
+      {
+        questionText: "Why is GAN training often considered unstable or difficult compared to standard supervised learning?",
+        options: ["It involves a delicate balance between two competing networks, which can lead to oscillations, mode collapse, or vanishing gradients for the generator", "GANs never actually need to be trained", "GAN training has no known difficulties", "GANs only require one network, simplifying training"],
+        correctOption: 0,
+        explanation: "The correct answer is: It involves a delicate balance between two competing networks, which can lead to oscillations, mode collapse, or vanishing gradients for the generator",
+      },
+      {
+        questionText: "What is a Conditional GAN (cGAN)?",
+        options: ["A GAN variant where both generator and discriminator receive additional conditioning information (e.g., class labels) to control the type of output generated", "A GAN that can only generate unconditioned random noise", "A GAN with no discriminator", "A GAN used exclusively for text classification"],
+        correctOption: 0,
+        explanation: "The correct answer is: A GAN variant where both generator and discriminator receive additional conditioning information (e.g., class labels) to control the type of output generated",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using Keras, define a simple generator model (Dense layers with LeakyReLU, outputting a flattened image shape) and a simple discriminator model (Dense layers outputting a single sigmoid probability) for a basic GAN on MNIST-like data.",
+        starterCode: "# Using Keras, define a simple generator model (Dense layers w\n\ndef model():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\ngenerator = keras.Sequential([\n    keras.layers.Input(shape=(100,)),\n    keras.layers.Dense(128), keras.layers.LeakyReLU(0.2),\n    keras.layers.Dense(784, activation='tanh')\n])\ndiscriminator = keras.Sequential([\n    keras.layers.Input(shape=(784,)),\n    keras.layers.Dense(128), keras.layers.LeakyReLU(0.2),\n    keras.layers.Dense(1, activation='sigmoid')\n])\\n```",
+      },
+      {
+        questionText: "Write a Python function 'gan_loss(real_output, fake_output)' that computes the discriminator loss and generator loss using binary cross-entropy given the discriminator's outputs for real and fake samples.",
+        starterCode: "# Write a Python function 'gan_loss(real_output, fake_output)'\n\ndef gan_loss():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nbce = keras.losses.BinaryCrossentropy()\ndef gan_loss(real_output, fake_output):\n    d_loss = bce(tf_ones_like(real_output), real_output) + bce(tf_zeros_like(fake_output), fake_output)\n    g_loss = bce(tf_ones_like(fake_output), fake_output)\n    return d_loss, g_loss\n# (tf_ones_like/tf_zeros_like = tf.ones_like/tf.zeros_like)\\n```",
+      },
+    ],
+  },
+  144: {
+    topicTitle: "DL: DL - TensorFlow vs PyTorch",
+    mcqs: [
+      {
+        questionText: "What are TensorFlow and PyTorch?",
+        options: ["Two of the most widely used open-source deep learning frameworks for building and training neural networks", "Two competing programming languages", "Two types of neural network architectures", "Two cloud storage services"],
+        correctOption: 0,
+        explanation: "The correct answer is: Two of the most widely used open-source deep learning frameworks for building and training neural networks",
+      },
+      {
+        questionText: "Historically, what was a key architectural difference between TensorFlow (1.x) and PyTorch's computation graphs?",
+        options: ["TensorFlow 1.x used static (define-then-run) computation graphs, while PyTorch used dynamic (define-by-run) graphs, making PyTorch feel more Pythonic and easier to debug", "They both always used identical static graphs", "PyTorch never supported gradients", "TensorFlow never supported GPUs"],
+        correctOption: 0,
+        explanation: "The correct answer is: TensorFlow 1.x used static (define-then-run) computation graphs, while PyTorch used dynamic (define-by-run) graphs, making PyTorch feel more Pythonic and easier to debug",
+      },
+      {
+        questionText: "Since TensorFlow 2.x, what execution mode is enabled by default, aligning it more closely with PyTorch's style?",
+        options: ["Eager execution, allowing operations to run immediately as in standard Python", "Static graph-only execution", "No execution at all without explicit compilation", "Manual memory management only"],
+        correctOption: 0,
+        explanation: "The correct answer is: Eager execution, allowing operations to run immediately as in standard Python",
+      },
+      {
+        questionText: "Which high-level API is commonly used within TensorFlow to simplify model building?",
+        options: ["Keras", "scikit-learn", "NumPy", "Pandas"],
+        correctOption: 0,
+        explanation: "The correct answer is: Keras",
+      },
+      {
+        questionText: "What is 'torch.Tensor' roughly analogous to in TensorFlow?",
+        options: ["'tf.Tensor', both representing multi-dimensional arrays with autograd/gradient support", "A Python list", "A pandas DataFrame", "There is no equivalent"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'tf.Tensor', both representing multi-dimensional arrays with autograd/gradient support",
+      },
+      {
+        questionText: "Which framework is often noted for being particularly popular in research/academic settings due to its dynamic graph flexibility?",
+        options: ["PyTorch", "Excel", "SQL", "Neither framework is used in research"],
+        correctOption: 0,
+        explanation: "The correct answer is: PyTorch",
+      },
+      {
+        questionText: "What tool does TensorFlow provide for visualizing training metrics like loss and accuracy over time?",
+        options: ["TensorBoard", "Matplotlib is the only option", "There is no such tool", "Jupyter Notebook exclusively"],
+        correctOption: 0,
+        explanation: "The correct answer is: TensorBoard",
+      },
+      {
+        questionText: "Regarding production deployment, what has historically been cited as a TensorFlow strength (e.g., via TensorFlow Serving, TensorFlow Lite)?",
+        options: ["A mature ecosystem of tools for deploying models to servers, mobile, and edge devices", "TensorFlow cannot be deployed to production at all", "Only PyTorch supports any form of deployment", "Neither framework supports deployment"],
+        correctOption: 0,
+        explanation: "The correct answer is: A mature ecosystem of tools for deploying models to servers, mobile, and edge devices",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write equivalent code snippets in both TensorFlow/Keras and PyTorch that define a simple 2-layer fully connected neural network for a classification task with 10 input features and 2 output classes.",
+        starterCode: "# Write equivalent code snippets in both TensorFlow/Keras and \n\ndef solution():\n    pass",
+        expectedKeywords: ["class", "def", "for", "import", "return"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\ntf_model = keras.Sequential([keras.layers.Input(shape=(10,)), keras.layers.Dense(16, activation='relu'), keras.layers.Dense(2, activation='softmax')])\n\nimport torch.nn as nn\nclass TorchModel(nn.Module):\n    def __init__(self):\n        super().__init__()\n        self.fc1 = nn.Linear(10, 16)\n        self.relu = nn.ReLU()\n        self.fc2 = nn.Linear(16, 2)\n    def forward(self, x):\n        return self.fc2(self.relu(self.fc1(x)))\\n```",
+      },
+      {
+        questionText: "Write a short PyTorch training loop (forward pass, loss computation, backward pass, optimizer step) for one epoch over a small synthetic dataset, and compare it in a comment to the equivalent 'model.fit()' call in Keras.",
+        starterCode: "# Write a short PyTorch training loop (forward pass, loss comp\n\ndef loop():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport torch\nimport torch.nn as nn\nmodel = nn.Sequential(nn.Linear(10, 16), nn.ReLU(), nn.Linear(16, 2))\noptimizer = torch.optim.Adam(model.parameters())\ncriterion = nn.CrossEntropyLoss()\nX = torch.rand(32, 10); y = torch.randint(0, 2, (32,))\noptimizer.zero_grad()\noutput = model(X)\nloss = criterion(output, y)\nloss.backward()\noptimizer.step()\nprint(loss.item())\n# Keras equivalent: model.fit(X, y, epochs=1)\\n```",
+      },
+    ],
+  },
+  145: {
+    topicTitle: "DL: DL - Hyperparameter Tuning in Deep Learning",
+    mcqs: [
+      {
+        questionText: "Which of the following is a hyperparameter (set before training) rather than a learned parameter in a neural network?",
+        options: ["Learning rate", "The final weight values learned during training", "The bias values learned during training", "The gradient values computed each step"],
+        correctOption: 0,
+        explanation: "The correct answer is: Learning rate",
+      },
+      {
+        questionText: "What effect does a learning rate that is too high typically have on training?",
+        options: ["The loss may oscillate wildly or diverge instead of converging smoothly", "Training always converges faster with no downside", "It has no effect on convergence", "It guarantees the global minimum is found"],
+        correctOption: 0,
+        explanation: "The correct answer is: The loss may oscillate wildly or diverge instead of converging smoothly",
+      },
+      {
+        questionText: "What effect does a learning rate that is too low typically have?",
+        options: ["Training converges very slowly and may get stuck in poor local minima within a limited number of epochs", "Training becomes unstable and diverges", "It has no effect on training speed", "It always leads to the best possible model"],
+        correctOption: 0,
+        explanation: "The correct answer is: Training converges very slowly and may get stuck in poor local minima within a limited number of epochs",
+      },
+      {
+        questionText: "What is a \"learning rate schedule\" or \"learning rate decay\"?",
+        options: ["Gradually reducing the learning rate during training, often improving convergence in later stages", "Increasing the learning rate indefinitely", "Randomizing the learning rate every step", "Keeping the learning rate exactly fixed by definition"],
+        correctOption: 0,
+        explanation: "The correct answer is: Gradually reducing the learning rate during training, often improving convergence in later stages",
+      },
+      {
+        questionText: "What does batch size control during training?",
+        options: ["The number of training samples processed before the model's weights are updated", "The number of layers in the network", "The number of epochs", "The size of the test set"],
+        correctOption: 0,
+        explanation: "The correct answer is: The number of training samples processed before the model's weights are updated",
+      },
+      {
+        questionText: "What is a trade-off often associated with larger batch sizes?",
+        options: ["Faster computation per epoch (better hardware utilization) but potentially worse generalization and higher memory usage", "Always strictly better generalization with no downsides", "No effect on memory usage", "Always slower per epoch than smaller batches"],
+        correctOption: 0,
+        explanation: "The correct answer is: Faster computation per epoch (better hardware utilization) but potentially worse generalization and higher memory usage",
+      },
+      {
+        questionText: "Which automated hyperparameter search technique tries a predefined grid of hyperparameter combinations exhaustively?",
+        options: ["Grid Search", "Manual tuning only", "Random guessing with no structure", "Backpropagation"],
+        correctOption: 0,
+        explanation: "The correct answer is: Grid Search",
+      },
+      {
+        questionText: "What is Bayesian Optimization used for in the context of deep learning hyperparameter tuning?",
+        options: ["Intelligently searching the hyperparameter space by building a probabilistic model of performance, often more efficient than grid/random search", "It replaces backpropagation entirely", "It is a type of activation function", "It is used only for data preprocessing"],
+        correctOption: 0,
+        explanation: "The correct answer is: Intelligently searching the hyperparameter space by building a probabilistic model of performance, often more efficient than grid/random search",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using Keras Tuner (or a manual loop), write code to search over at least 2 different learning rates and 2 different numbers of hidden units for a simple neural network, and print the best validation accuracy found.",
+        starterCode: "# Using Keras Tuner (or a manual loop), write code to search o\n\ndef Tuner():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nimport numpy as np\nX = np.random.rand(100, 5); y = np.random.randint(0, 2, 100)\nbest_acc = 0\nfor lr in [0.01, 0.001]:\n    for units in [8, 16]:\n        model = keras.Sequential([keras.layers.Input(shape=(5,)), keras.layers.Dense(units, activation='relu'), keras.layers.Dense(1, activation='sigmoid')])\n        model.compile(optimizer=keras.optimizers.Adam(learning_rate=lr), loss='binary_crossentropy', metrics=['accuracy'])\n        history = model.fit(X, y, validation_split=0.2, epochs=5, verbose=0)\n        val_acc = history.history['val_accuracy'][-1]\n        best_acc = max(best_acc, val_acc)\nprint(\"Best val accuracy:\", best_acc)\\n```",
+      },
+      {
+        questionText: "Write a Python function that implements a simple step-based learning rate decay schedule (e.g., halving the learning rate every 10 epochs) for use in a training loop.",
+        starterCode: "# Write a Python function that implements a simple step-based \n\ndef schedule():\n    pass",
+        expectedKeywords: ["def", "for", "return"],
+        solutionDescription: "```python\\ndef step_decay(epoch, initial_lr=0.01, drop_every=10):\n    return initial_lr * (0.5 ** (epoch // drop_every))\n\nfor epoch in [0, 10, 20, 30]:\n    print(epoch, step_decay(epoch))\\n```",
+      },
+    ],
+  },
+  146: {
+    topicTitle: "DL: DL - Object Detection & Image Segmentation",
+    mcqs: [
+      {
+        questionText: "How does object detection differ from standard image classification?",
+        options: ["Object detection identifies both the class AND the location (bounding box) of one or more objects in an image, while classification only assigns a single label to the whole image", "They are identical tasks", "Object detection only works on grayscale images", "Classification requires bounding boxes but detection does not"],
+        correctOption: 0,
+        explanation: "The correct answer is: Object detection identifies both the class AND the location (bounding box) of one or more objects in an image, while classification only assigns a single label to the whole image",
+      },
+      {
+        questionText: "What does a bounding box typically represent in object detection?",
+        options: ["The rectangular region (coordinates) enclosing a detected object in an image", "The entire image", "A single pixel", "The color histogram of the image"],
+        correctOption: 0,
+        explanation: "The correct answer is: The rectangular region (coordinates) enclosing a detected object in an image",
+      },
+      {
+        questionText: "What is Intersection over Union (IoU) used for in object detection?",
+        options: ["Measuring the overlap between a predicted bounding box and the ground truth box, to evaluate localization accuracy", "Measuring classification accuracy only", "Computing the loss for text tasks", "Measuring the color similarity of two images"],
+        correctOption: 0,
+        explanation: "The correct answer is: Measuring the overlap between a predicted bounding box and the ground truth box, to evaluate localization accuracy",
+      },
+      {
+        questionText: "Which of the following is a well-known object detection model architecture?",
+        options: ["YOLO (You Only Look Once) or Faster R-CNN", "Linear Regression", "K-Means Clustering", "Naive Bayes"],
+        correctOption: 0,
+        explanation: "The correct answer is: YOLO (You Only Look Once) or Faster R-CNN",
+      },
+      {
+        questionText: "What is the key difference between semantic segmentation and instance segmentation?",
+        options: ["Semantic segmentation labels each pixel with a class but doesn't distinguish separate object instances of the same class, while instance segmentation distinguishes individual object instances", "They are exactly the same", "Semantic segmentation only works on video", "Instance segmentation doesn't use pixel-level labels"],
+        correctOption: 0,
+        explanation: "The correct answer is: Semantic segmentation labels each pixel with a class but doesn't distinguish separate object instances of the same class, while instance segmentation distinguishes individual object instances",
+      },
+      {
+        questionText: "What does image segmentation output, compared to object detection's bounding boxes?",
+        options: ["A pixel-level mask/label for every pixel in the image, indicating which class (or instance) it belongs to", "Only a single class label for the whole image", "Only the count of objects", "A bounding box only, identical to detection"],
+        correctOption: 0,
+        explanation: "The correct answer is: A pixel-level mask/label for every pixel in the image, indicating which class (or instance) it belongs to",
+      },
+      {
+        questionText: "Which architecture is commonly used for semantic segmentation, known for its symmetric encoder-decoder structure with skip connections?",
+        options: ["U-Net", "Simple Linear Regression", "K-Nearest Neighbors", "Naive Bayes"],
+        correctOption: 0,
+        explanation: "The correct answer is: U-Net",
+      },
+      {
+        questionText: "What does Non-Maximum Suppression (NMS) do in object detection pipelines?",
+        options: ["Removes duplicate/overlapping bounding box predictions for the same object, keeping only the highest-confidence box", "Increases the number of detected boxes", "It is used to train the model's weights", "It replaces the need for IoU"],
+        correctOption: 0,
+        explanation: "The correct answer is: Removes duplicate/overlapping bounding box predictions for the same object, keeping only the highest-confidence box",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python function 'compute_iou(box1, box2)' that computes the Intersection over Union between two bounding boxes, each given as '(x_min, y_min, x_max, y_max)'.",
+        starterCode: "# Write a Python function 'compute_iou(box1, box2)' that compu\n\ndef compute_iou():\n    pass",
+        expectedKeywords: ["def", "return"],
+        solutionDescription: "```python\\ndef compute_iou(box1, box2):\n    x1 = max(box1[0], box2[0]); y1 = max(box1[1], box2[1])\n    x2 = min(box1[2], box2[2]); y2 = min(box1[3], box2[3])\n    inter = max(0, x2-x1) * max(0, y2-y1)\n    area1 = (box1[2]-box1[0]) * (box1[3]-box1[1])\n    area2 = (box2[2]-box2[0]) * (box2[3]-box2[1])\n    union = area1 + area2 - inter\n    return inter / union if union > 0 else 0\n\nprint(compute_iou((0,0,10,10), (5,5,15,15)))\\n```",
+      },
+      {
+        questionText: "Using a pre-trained object detection model from a library such as 'torchvision' (e.g., Faster R-CNN) or TensorFlow Hub, write code to load the model and run inference on a sample image, printing the detected class labels and confidence scores.",
+        starterCode: "# Using a pre-trained object detection model from a library su\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport torchvision\nfrom torchvision.models.detection import fasterrcnn_resnet50_fpn\nfrom torchvision import transforms\nfrom PIL import Image\nmodel = fasterrcnn_resnet50_fpn(pretrained=True).eval()\nimg = Image.open('sample.jpg')\ntensor = transforms.ToTensor()(img)\nwith torch.no_grad():\n    predictions = model([tensor])\nprint(predictions[0]['labels'], predictions[0]['scores'])\\n```",
+      },
+    ],
+  },
+  147: {
+    topicTitle: "DL: DL - Deploying Deep Learning Models",
+    mcqs: [
+      {
+        questionText: "What is model deployment in the context of deep learning?",
+        options: ["Making a trained model available to serve predictions in a real-world application (e.g., via an API, mobile app, or embedded device)", "The process of training a model", "The process of collecting training data", "A synonym for hyperparameter tuning"],
+        correctOption: 0,
+        explanation: "The correct answer is: Making a trained model available to serve predictions in a real-world application (e.g., via an API, mobile app, or embedded device)",
+      },
+      {
+        questionText: "What format does TensorFlow's 'SavedModel' provide for deployment?",
+        options: ["A standard serialized format containing the model's architecture, weights, and computation graph, usable for serving", "A CSV file of predictions only", "A plain text file of hyperparameters", "An image file format"],
+        correctOption: 0,
+        explanation: "The correct answer is: A standard serialized format containing the model's architecture, weights, and computation graph, usable for serving",
+      },
+      {
+        questionText: "What is TensorFlow Lite primarily designed for?",
+        options: ["Deploying deep learning models efficiently on mobile and embedded/edge devices with limited resources", "Training very large models on distributed GPU clusters", "Visualizing training metrics only", "Data preprocessing exclusively"],
+        correctOption: 0,
+        explanation: "The correct answer is: Deploying deep learning models efficiently on mobile and embedded/edge devices with limited resources",
+      },
+      {
+        questionText: "What is ONNX (Open Neural Network Exchange)?",
+        options: ["An open format that allows models trained in one framework (e.g., PyTorch) to be exported and run in another (e.g., for optimized inference)", "A cloud hosting provider", "A type of neural network layer", "A dataset format only"],
+        correctOption: 0,
+        explanation: "The correct answer is: An open format that allows models trained in one framework (e.g., PyTorch) to be exported and run in another (e.g., for optimized inference)",
+      },
+      {
+        questionText: "What does model quantization do to reduce a deployed model's size and inference latency?",
+        options: ["Reduces the numerical precision of model weights/activations (e.g., from 32-bit floats to 8-bit integers) with minimal accuracy loss", "Removes all layers from the model", "Increases the model's precision to improve accuracy", "Converts the model into a different architecture entirely"],
+        correctOption: 0,
+        explanation: "The correct answer is: Reduces the numerical precision of model weights/activations (e.g., from 32-bit floats to 8-bit integers) with minimal accuracy loss",
+      },
+      {
+        questionText: "What is the purpose of serving a model via a REST API (e.g., using Flask, FastAPI, or TensorFlow Serving)?",
+        options: ["To allow other applications to send input data over HTTP and receive model predictions in response", "To train the model faster", "To visualize the training loss", "To store the training dataset"],
+        correctOption: 0,
+        explanation: "The correct answer is: To allow other applications to send input data over HTTP and receive model predictions in response",
+      },
+      {
+        questionText: "Why might model pruning be used before deployment?",
+        options: ["To remove less-important weights/connections, reducing model size and potentially speeding up inference with minimal accuracy loss", "To add more layers to the model", "To increase the dataset size", "To change the loss function"],
+        correctOption: 0,
+        explanation: "The correct answer is: To remove less-important weights/connections, reducing model size and potentially speeding up inference with minimal accuracy loss",
+      },
+      {
+        questionText: "What is a common consideration when monitoring a deployed deep learning model in production over time?",
+        options: ["Watching for data/model drift, where the incoming data distribution changes and degrades model performance, requiring retraining", "Deployed models never need any further monitoring", "Only training-time metrics matter, not production metrics", "Deployment eliminates the need for any versioning"],
+        correctOption: 0,
+        explanation: "The correct answer is: Watching for data/model drift, where the incoming data distribution changes and degrades model performance, requiring retraining",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using TensorFlow/Keras, write code to save a trained model in the 'SavedModel' format, and separately convert it into a '.tflite' file using 'tf.lite.TFLiteConverter'.",
+        starterCode: "# Using TensorFlow/Keras, write code to save a trained model i\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nimport tensorflow as tf\nmodel = keras.Sequential([keras.layers.Input(shape=(5,)), keras.layers.Dense(1)])\nmodel.save('saved_model_dir', save_format='tf')\nconverter = tf.lite.TFLiteConverter.from_saved_model('saved_model_dir')\ntflite_model = converter.convert()\nwith open('model.tflite', 'wb') as f:\n    f.write(tflite_model)\\n```",
+      },
+      {
+        questionText: "Using FastAPI (or Flask), write a minimal API endpoint '/predict' that loads a saved Keras model and returns a JSON prediction given a JSON input payload of feature values.",
+        starterCode: "# Using FastAPI (or Flask), write a minimal API endpoint '/pre\n\ndef FastAPI():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nfrom fastapi import FastAPI\nfrom tensorflow import keras\nimport numpy as np\n\napp = FastAPI()\nmodel = keras.models.load_model('final_model.h5')\n\n@app.post('/predict')\ndef predict(payload: dict):\n    features = np.array([payload['features']])\n    prediction = model.predict(features).tolist()\n    return {'prediction': prediction}\\n```",
+      },
+    ],
+  },
+  148: {
     topicTitle: "NLP: NLP - Introduction",
     mcqs: [
       {
@@ -5953,19 +9906,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Split a sample paragraph into sentences and then words using basic string methods.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Split a sample paragraph into sentences and then words using basic string method...",
+        starterCode: "# Split a sample paragraph into sentences and then words using\n\ndef solution():\n    pass",
+        expectedKeywords: ["def"],
+        solutionDescription: "```python\\ntext = \"Data science is fun. It combines statistics and coding.\"\nsentences = text.split('. ')\nwords = text.split()\nprint(sentences)\nprint(words)\\n```",
       },
       {
         questionText: "Use NLTK's 'word_tokenize()' and 'sent_tokenize()' to tokenize a paragraph and print the counts.",
-        starterCode: "def word_tokenize():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use NLTK's 'word_tokenize()' and 'sent_tokenize()' to tokenize a paragraph and p...",
+        starterCode: "# Use NLTK's 'word_tokenize()' and 'sent_tokenize()' to tokeni\n\ndef word_tokenize():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport nltk\nfrom nltk.tokenize import word_tokenize, sent_tokenize\ntext = \"Data science is fun. It combines statistics and coding.\"\nsentences = sent_tokenize(text)\nwords = word_tokenize(text)\nprint(len(sentences), len(words))\\n```",
       },
     ],
   },
-  90: {
+  149: {
     topicTitle: "NLP: NLP - Text Wrangling and Cleaning",
     mcqs: [
       {
@@ -5982,9 +9935,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Common Python approach to remove punctuation:",
-        options: ["str.translate() with a table from string.punctuation, or regex substitution", "str.remove_all()", "str.clean()", "str.no_punct()"],
+        options: ["'str.translate()' with a table from 'string.punctuation', or regex substitution", "'str.remove_all()'", "'str.clean()'", "'str.no_punct()'"],
         correctOption: 0,
-        explanation: "The correct answer is: str.translate() with a table from string.punctuation, or regex substitution",
+        explanation: "The correct answer is: 'str.translate()' with a table from 'string.punctuation', or regex substitution",
       },
       {
         questionText: "\"Stemming\" does:",
@@ -6000,9 +9953,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Regex approach to remove URLs from tweet/text data:",
-        options: ["A pattern like http\\S+ substituted with empty string", "Manual character deletion with no pattern", "Removing all text entirely", "Converting URLs into images"],
+        options: ["A pattern like 'http\\S+' substituted with empty string", "Manual character deletion with no pattern", "Removing all text entirely", "Converting URLs into images"],
         correctOption: 0,
-        explanation: "The correct answer is: A pattern like http\\S+ substituted with empty string",
+        explanation: "The correct answer is: A pattern like 'http\\S+' substituted with empty string",
       },
       {
         questionText: "Why handle contractions (e.g., \"don't\"\u2192\"do not\") during cleaning?",
@@ -6020,19 +9973,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Clean a raw text sample: lowercase, remove punctuation, remove stopwords (NLTK), print result.",
-        starterCode: "def stopwords():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Clean a raw text sample: lowercase, remove punctuation, remove stopwords (NLTK),...",
+        starterCode: "# Clean a raw text sample: lowercase, remove punctuation, remo\n\ndef stopwords():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport string\nfrom nltk.corpus import stopwords\ntext = \"This is an AMAZING day! I love data science.\"\ntext = text.lower().translate(str.maketrans('', '', string.punctuation))\nwords = [w for w in text.split() if w not in stopwords.words('english')]\nprint(words)\\n```",
       },
       {
         questionText: "Apply both stemming ('PorterStemmer') and lemmatization ('WordNetLemmatizer') to sample words; print a comparison table.",
-        starterCode: "def stemming():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Apply both stemming ('PorterStemmer') and lemmatization ('WordNetLemmatizer') to...",
+        starterCode: "# Apply both stemming ('PorterStemmer') and lemmatization ('Wo\n\ndef stemming():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom nltk.stem import PorterStemmer, WordNetLemmatizer\nwords = [\"running\", \"studies\", \"flies\", \"happily\"]\nstemmer = PorterStemmer()\nlemmatizer = WordNetLemmatizer()\nfor w in words:\n    print(w, stemmer.stem(w), lemmatizer.lemmatize(w))\\n```",
       },
     ],
   },
-  91: {
+  150: {
     topicTitle: "NLP: NLP - Replacing and Correcting Words",
     mcqs: [
       {
@@ -6043,9 +9996,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Common approach to correct simple spelling mistakes:",
-        options: ["Libraries like TextBlob or pyspellchecker, suggesting corrections via dictionaries/edit distance", "Manually retyping every document", "Ignoring spelling always", "Deleting all misspelled words"],
+        options: ["Libraries like 'TextBlob' or 'pyspellchecker', suggesting corrections via dictionaries/edit distance", "Manually retyping every document", "Ignoring spelling always", "Deleting all misspelled words"],
         correctOption: 0,
-        explanation: "The correct answer is: Libraries like TextBlob or pyspellchecker, suggesting corrections via dictionaries/edit distance",
+        explanation: "The correct answer is: Libraries like 'TextBlob' or 'pyspellchecker', suggesting corrections via dictionaries/edit distance",
       },
       {
         questionText: "\"Edit distance\" (e.g., Levenshtein) is used for:",
@@ -6055,9 +10008,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Simple Python approach to replace multiple specific words via a mapping dict:",
-        options: ["Loop the dict and use str.replace(old, new) per pair (or regex substitution)", "Not possible in Python", "Only regex can replace words", "Only manual editing works"],
+        options: ["Loop the dict and use 'str.replace(old, new)' per pair (or regex substitution)", "Not possible in Python", "Only regex can replace words", "Only manual editing works"],
         correctOption: 0,
-        explanation: "The correct answer is: Loop the dict and use str.replace(old, new) per pair (or regex substitution)",
+        explanation: "The correct answer is: Loop the dict and use 'str.replace(old, new)' per pair (or regex substitution)",
       },
       {
         questionText: "Why correct repeated characters (\"sooo goooood\"\u2192\"so good\") in social text?",
@@ -6067,9 +10020,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "Library with a simple '.correct()' method for basic spelling correction:",
-        options: ["TextBlob", "Matplotlib", "Seaborn", "OpenCV"],
+        options: ["'TextBlob'", "'Matplotlib'", "'Seaborn'", "'OpenCV'"],
         correctOption: 0,
-        explanation: "The correct answer is: TextBlob",
+        explanation: "The correct answer is: 'TextBlob'",
       },
       {
         questionText: "Word replacement dictionaries for slang (\"lol\", \"omg\") are useful because they:",
@@ -6087,19 +10040,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Use a dict of chat abbreviations to replace them with full forms in a sample sentence.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use a dict of chat abbreviations to replace them with full forms in a sample sen...",
+        starterCode: "# Use a dict of chat abbreviations to replace them with full f\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\nabbrev = {\"u\": \"you\", \"r\": \"are\", \"gr8\": \"great\", \"btw\": \"by the way\"}\nsentence = \"u r doing gr8 btw\"\nwords = [abbrev.get(w, w) for w in sentence.split()]\nprint(' '.join(words))\\n```",
       },
       {
         questionText: "Use 'TextBlob' (or 'pyspellchecker') to detect/correct spelling mistakes in a sample sentence.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use 'TextBlob' (or 'pyspellchecker') to detect/correct spelling mistakes in a sa...",
+        starterCode: "# Use 'TextBlob' (or 'pyspellchecker') to detect/correct spell\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom textblob import TextBlob\nsentence = \"I havv a speling mstake\"\ncorrected = TextBlob(sentence).correct()\nprint(corrected)\\n```",
       },
     ],
   },
-  92: {
+  151: {
     topicTitle: "NLP: NLP - Use Case",
     mcqs: [
       {
@@ -6154,19 +10107,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Clean a small labeled email dataset, vectorize with 'CountVectorizer'/'TfidfVectorizer', and train a Naive Bayes spam classifier.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["class", "def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Clean a small labeled email dataset, vectorize with 'CountVectorizer'/'TfidfVect...",
+        starterCode: "# Clean a small labeled email dataset, vectorize with 'CountVe\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.naive_bayes import MultinomialNB\nemails = [\"win free money now\", \"meeting at noon\", \"claim your prize\", \"project deadline tomorrow\"]\nlabels = [1, 0, 1, 0]\nvec = TfidfVectorizer()\nX = vec.fit_transform(emails)\nmodel = MultinomialNB().fit(X, labels)\nprint(model.predict(vec.transform([\"free money\"])))\\n```",
       },
       {
         questionText: "Convert star ratings to binary sentiment (\u22654 positive), and prepare cleaned text/labels ready for training.",
-        starterCode: "def sentiment():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Convert star ratings to binary sentiment (\u22654 positive), and prepare cleaned text...",
+        starterCode: "# Convert star ratings to binary sentiment (\u22654 positive), and \n\ndef sentiment():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport pandas as pd\ndf = pd.DataFrame({'rating': [5, 2, 4, 1, 3], 'review': ['great', 'bad', 'good', 'awful', 'ok']})\ndf['sentiment'] = (df['rating'] >= 4).astype(int)\nprint(df)\\n```",
       },
     ],
   },
-  93: {
+  152: {
     topicTitle: "NLP: NLP - Bag of Words, TF-IDF",
     mcqs: [
       {
@@ -6177,9 +10130,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "scikit-learn class for a Bag-of-Words representation:",
-        options: ["CountVectorizer", "TfidfTransformer only", "LabelEncoder", "StandardScaler"],
+        options: ["'CountVectorizer'", "'TfidfTransformer' only", "'LabelEncoder'", "'StandardScaler'"],
         correctOption: 0,
-        explanation: "The correct answer is: CountVectorizer",
+        explanation: "The correct answer is: 'CountVectorizer'",
       },
       {
         questionText: "TF-IDF stands for:",
@@ -6195,9 +10148,9 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "scikit-learn class computing TF-IDF vectors directly from raw text:",
-        options: ["TfidfVectorizer", "CountVectorizer only", "OneHotEncoder", "StandardScaler"],
+        options: ["'TfidfVectorizer'", "'CountVectorizer' only", "'OneHotEncoder'", "'StandardScaler'"],
         correctOption: 0,
-        explanation: "The correct answer is: TfidfVectorizer",
+        explanation: "The correct answer is: 'TfidfVectorizer'",
       },
       {
         questionText: "Key limitation of Bag-of-Words:",
@@ -6221,19 +10174,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Convert 4-5 sample sentences into a Bag-of-Words matrix using 'CountVectorizer'; print vocabulary and array.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Convert 4-5 sample sentences into a Bag-of-Words matrix using 'CountVectorizer';...",
+        starterCode: "# Convert 4-5 sample sentences into a Bag-of-Words matrix usin\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.feature_extraction.text import CountVectorizer\nsentences = [\"I love data science\", \"Data science is fun\", \"I love coding\", \"Coding is fun too\"]\nvec = CountVectorizer()\nX = vec.fit_transform(sentences)\nprint(vec.get_feature_names_out())\nprint(X.toarray())\\n```",
       },
       {
         questionText: "Convert the same sentences into TF-IDF vectors; print the top 3 highest-weighted words for one sentence.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Convert the same sentences into TF-IDF vectors; print the top 3 highest-weighted...",
+        starterCode: "# Convert the same sentences into TF-IDF vectors; print the to\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nimport numpy as np\nsentences = [\"I love data science\", \"Data science is fun\", \"I love coding\", \"Coding is fun too\"]\nvec = TfidfVectorizer()\nX = vec.fit_transform(sentences)\nrow = X.toarray()[0]\ntop3_idx = np.argsort(row)[-3:][::-1]\nprint([vec.get_feature_names_out()[i] for i in top3_idx])\\n```",
       },
     ],
   },
-  94: {
+  153: {
     topicTitle: "NLP: NLP - Twitter Sentiment Analysis",
     mcqs: [
       {
@@ -6288,19 +10241,19 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Clean sample tweets (remove mentions/URLs, keep hashtag text), convert to TF-IDF features.",
-        starterCode: "def tweets():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Clean sample tweets (remove mentions/URLs, keep hashtag text), convert to TF-IDF...",
+        starterCode: "# Clean sample tweets (remove mentions/URLs, keep hashtag text\n\ndef tweets():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport re\ntweets = [\"@user check this out http://link.com #excited\", \"loving the #weather today!\"]\ncleaned = [re.sub(r'@\\w+|http\\S+', '', t).strip() for t in tweets]\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nX = TfidfVectorizer().fit_transform(cleaned)\nprint(cleaned, X.shape)\\n```",
       },
       {
         questionText: "Use NLTK's VADER 'SentimentIntensityAnalyzer' to score tweets, labeling Positive/Negative/Neutral by compound score.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use NLTK's VADER 'SentimentIntensityAnalyzer' to score tweets, labeling Positive...",
+        starterCode: "# Use NLTK's VADER 'SentimentIntensityAnalyzer' to score tweet\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom nltk.sentiment import SentimentIntensityAnalyzer\nsia = SentimentIntensityAnalyzer()\ntweets = [\"I love this!\", \"This is terrible.\", \"It's okay I guess.\"]\nfor t in tweets:\n    score = sia.polarity_scores(t)['compound']\n    label = 'Positive' if score > 0.05 else 'Negative' if score < -0.05 else 'Neutral'\n    print(t, label)\\n```",
       },
     ],
   },
-  95: {
+  154: {
     topicTitle: "NLP: NLP - Spacy Library",
     mcqs: [
       {
@@ -6311,39 +10264,39 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
       },
       {
         questionText: "spaCy object representing processed text (tokens, entities, annotations):",
-        options: ["A Doc object, created via nlp(text)", "A String object only", "A List object", "A DataFrame object"],
+        options: ["A 'Doc' object, created via 'nlp(text)'", "A 'String' object only", "A 'List' object", "A 'DataFrame' object"],
         correctOption: 0,
-        explanation: "The correct answer is: A Doc object, created via nlp(text)",
+        explanation: "The correct answer is: A 'Doc' object, created via 'nlp(text)'",
       },
       {
         questionText: "spaCy token attribute giving its part-of-speech tag:",
-        options: ["token.pos_", "token.tag_only", "token.type_", "token.category"],
+        options: ["'token.pos_'", "'token.tag_only'", "'token.type_'", "'token.category'"],
         correctOption: 0,
-        explanation: "The correct answer is: token.pos_",
+        explanation: "The correct answer is: 'token.pos_'",
       },
       {
         questionText: "spaCy feature identifying named entities (people, orgs, locations):",
-        options: ["Named Entity Recognition (NER), via doc.ents", "Tokenization only", "Stemming", "TF-IDF vectorization"],
+        options: ["Named Entity Recognition (NER), via 'doc.ents'", "Tokenization only", "Stemming", "TF-IDF vectorization"],
         correctOption: 0,
-        explanation: "The correct answer is: Named Entity Recognition (NER), via doc.ents",
+        explanation: "The correct answer is: Named Entity Recognition (NER), via 'doc.ents'",
       },
       {
         questionText: "Loading a pre-trained small English model:",
-        options: ["nlp = spacy.load(\"en_core_web_sm\")", "nlp = spacy.get(\"english\")", "nlp = spacy.Model(\"en\")", "nlp = spacy.English()"],
+        options: ["'nlp = spacy.load(\"en_core_web_sm\")'", "'nlp = spacy.get(\"english\")'", "'nlp = spacy.Model(\"en\")'", "'nlp = spacy.English()'"],
         correctOption: 0,
-        explanation: "The correct answer is: nlp = spacy.load(\"en_core_web_sm\")",
+        explanation: "The correct answer is: 'nlp = spacy.load(\"en_core_web_sm\")'",
       },
       {
         questionText: "spaCy token attribute giving its lemma:",
-        options: ["token.lemma_", "token.stem_", "token.root_", "token.base_"],
+        options: ["'token.lemma_'", "'token.stem_'", "'token.root_'", "'token.base_'"],
         correctOption: 0,
-        explanation: "The correct answer is: token.lemma_",
+        explanation: "The correct answer is: 'token.lemma_'",
       },
       {
         questionText: "spaCy attribute checking if a token is a stopword:",
-        options: ["token.is_stop", "token.stopword", "token.check_stop()", "token.stop_flag"],
+        options: ["'token.is_stop'", "'token.stopword'", "'token.check_stop()'", "'token.stop_flag'"],
         correctOption: 0,
-        explanation: "The correct answer is: token.is_stop",
+        explanation: "The correct answer is: 'token.is_stop'",
       },
       {
         questionText: "How spaCy compares to NLTK in design philosophy:",
@@ -6355,20 +10308,891 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Use spaCy to process a paragraph and print each token with its POS tag and stopword status.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use spaCy to process a paragraph and print each token with its POS tag and stopw...",
+        starterCode: "# Use spaCy to process a paragraph and print each token with i\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport spacy\nnlp = spacy.load('en_core_web_sm')\ndoc = nlp(\"Data science combines statistics and programming.\")\nfor token in doc:\n    print(token.text, token.pos_, token.is_stop)\\n```",
       },
       {
         questionText: "Use spaCy's NER to extract and print named entities from a sample news paragraph.",
-        starterCode: "def solution():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Use spaCy's NER to extract and print named entities from a sample news paragraph...",
+        starterCode: "# Use spaCy's NER to extract and print named entities from a s\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport spacy\nnlp = spacy.load('en_core_web_sm')\ndoc = nlp(\"Apple was founded by Steve Jobs in Cupertino in 1976.\")\nfor ent in doc.ents:\n    print(ent.text, ent.label_)\\n```",
       },
     ],
   },
-  96: {
-    topicTitle: "Genai: Introduction to Gen-AI (Overview)",
+  155: {
+    topicTitle: "NLP: NLP - Tokenization Techniques",
+    mcqs: [
+      {
+        questionText: "What is tokenization in NLP?",
+        options: ["The process of breaking text into smaller units such as words, subwords, or characters", "The process of translating text to another language", "The process of removing all punctuation only", "The process of converting text to speech"],
+        correctOption: 0,
+        explanation: "The correct answer is: The process of breaking text into smaller units such as words, subwords, or characters",
+      },
+      {
+        questionText: "What is the difference between word-level and character-level tokenization?",
+        options: ["Word-level splits text into whole words, while character-level splits into individual characters", "They are the same thing", "Character-level always produces fewer tokens than word-level", "Word-level is only used for images"],
+        correctOption: 0,
+        explanation: "The correct answer is: Word-level splits text into whole words, while character-level splits into individual characters",
+      },
+      {
+        questionText: "What is subword tokenization (e.g., Byte-Pair Encoding, WordPiece) designed to handle?",
+        options: ["Rare and out-of-vocabulary words, by breaking them into common subword units", "Only whitespace removal", "Only sentence splitting", "Only numeric data"],
+        correctOption: 0,
+        explanation: "The correct answer is: Rare and out-of-vocabulary words, by breaking them into common subword units",
+      },
+      {
+        questionText: "Why do modern LLMs like GPT typically use subword tokenization instead of pure word-level tokenization?",
+        options: ["It keeps vocabulary size manageable while still handling rare/unseen words gracefully", "It requires no vocabulary at all", "It only works for a single language", "It eliminates the need for embeddings"],
+        correctOption: 0,
+        explanation: "The correct answer is: It keeps vocabulary size manageable while still handling rare/unseen words gracefully",
+      },
+      {
+        questionText: "What does sentence tokenization (sentence segmentation) do?",
+        options: ["Splits a block of text into individual sentences", "Splits sentences into individual characters", "Removes all sentences except the first", "Translates each sentence"],
+        correctOption: 0,
+        explanation: "The correct answer is: Splits a block of text into individual sentences",
+      },
+      {
+        questionText: "Which Python library is commonly used for tokenization in NLP pipelines?",
+        options: ["NLTK, spaCy, or HuggingFace 'tokenizers'", "Matplotlib", "NumPy exclusively", "Pandas exclusively"],
+        correctOption: 0,
+        explanation: "The correct answer is: NLTK, spaCy, or HuggingFace 'tokenizers'",
+      },
+      {
+        questionText: "What challenge does tokenization face with languages like Chinese or Japanese that don't use spaces between words?",
+        options: ["Word boundaries are ambiguous, requiring specialized segmentation algorithms rather than simple whitespace splitting", "These languages cannot be tokenized", "Tokenization is identical to English", "These languages require no tokenization"],
+        correctOption: 0,
+        explanation: "The correct answer is: Word boundaries are ambiguous, requiring specialized segmentation algorithms rather than simple whitespace splitting",
+      },
+      {
+        questionText: "What is a \"vocabulary\" in the context of tokenization?",
+        options: ["The fixed set of tokens (words/subwords) that a tokenizer/model recognizes, each mapped to a unique ID", "The list of stopwords only", "The set of all punctuation marks", "The grammar rules of a language"],
+        correctOption: 0,
+        explanation: "The correct answer is: The fixed set of tokens (words/subwords) that a tokenizer/model recognizes, each mapped to a unique ID",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using NLTK or spaCy, write code to tokenize a sample paragraph into both sentences and words, printing both results.",
+        starterCode: "# Using NLTK or spaCy, write code to tokenize a sample paragra\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport nltk\nfrom nltk.tokenize import word_tokenize, sent_tokenize\ntext = \"Tokenization splits text. It's the first NLP step.\"\nprint(sent_tokenize(text))\nprint(word_tokenize(text))\\n```",
+      },
+      {
+        questionText: "Using the HuggingFace 'tokenizers' (or 'transformers' 'AutoTokenizer'), write code to tokenize a sentence using a subword tokenizer (e.g., BERT's tokenizer) and print the resulting tokens and their IDs.",
+        starterCode: "# Using the HuggingFace 'tokenizers' (or 'transformers' 'AutoT\n\ndef tokenizer():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom transformers import AutoTokenizer\ntokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')\nencoded = tokenizer(\"Data science is fascinating\")\nprint(tokenizer.convert_ids_to_tokens(encoded['input_ids']))\nprint(encoded['input_ids'])\\n```",
+      },
+    ],
+  },
+  156: {
+    topicTitle: "NLP: NLP - Stemming & Lemmatization",
+    mcqs: [
+      {
+        questionText: "What is stemming?",
+        options: ["A rule-based process that chops word suffixes to reduce words to a root form, which may not be a real word (e.g., \"studies\" \u2192 \"studi\")", "Translating words to another language", "Counting word frequency", "Removing stopwords only"],
+        correctOption: 0,
+        explanation: "The correct answer is: A rule-based process that chops word suffixes to reduce words to a root form, which may not be a real word (e.g., \"studies\" \u2192 \"studi\")",
+      },
+      {
+        questionText: "What is lemmatization?",
+        options: ["Reducing a word to its dictionary base form (lemma) using vocabulary and morphological analysis, producing valid words (e.g., \"studies\" \u2192 \"study\")", "The same process as stemming with no differences", "Counting characters in a word", "Splitting text into sentences"],
+        correctOption: 0,
+        explanation: "The correct answer is: Reducing a word to its dictionary base form (lemma) using vocabulary and morphological analysis, producing valid words (e.g., \"studies\" \u2192 \"study\")",
+      },
+      {
+        questionText: "Which is generally more computationally expensive: stemming or lemmatization?",
+        options: ["Lemmatization, since it typically requires part-of-speech context and a dictionary lookup", "Stemming, because it uses deep learning", "They have identical computational cost", "Neither requires any computation"],
+        correctOption: 0,
+        explanation: "The correct answer is: Lemmatization, since it typically requires part-of-speech context and a dictionary lookup",
+      },
+      {
+        questionText: "Which popular stemming algorithm is commonly used in English NLP?",
+        options: ["The Porter Stemmer", "The Word2Vec Stemmer", "The BERT Stemmer", "The TF-IDF Stemmer"],
+        correctOption: 0,
+        explanation: "The correct answer is: The Porter Stemmer",
+      },
+      {
+        questionText: "Why might stemming produce a non-real word as output?",
+        options: ["It uses simple suffix-stripping rules without understanding actual word meaning or grammar", "Stemming always produces perfectly correct words", "Stemming translates words instead", "Stemming only works on numbers"],
+        correctOption: 0,
+        explanation: "The correct answer is: It uses simple suffix-stripping rules without understanding actual word meaning or grammar",
+      },
+      {
+        questionText: "Why does lemmatization often require knowing a word's part of speech (POS)?",
+        options: ["The correct lemma can depend on whether a word is used as a noun, verb, etc. (e.g., \"meeting\" as a noun vs. verb)", "POS has no impact on lemmatization", "Lemmatization never uses POS information", "POS is only relevant for stemming"],
+        correctOption: 0,
+        explanation: "The correct answer is: The correct lemma can depend on whether a word is used as a noun, verb, etc. (e.g., \"meeting\" as a noun vs. verb)",
+      },
+      {
+        questionText: "In which type of NLP task might lemmatization be preferred over stemming?",
+        options: ["Tasks where the output must be human-readable or grammatically valid, such as generating readable text", "Tasks that need the fastest possible processing regardless of output quality", "Tasks with no text at all", "Image classification tasks"],
+        correctOption: 0,
+        explanation: "The correct answer is: Tasks where the output must be human-readable or grammatically valid, such as generating readable text",
+      },
+      {
+        questionText: "Which library provides a 'WordNetLemmatizer' for performing lemmatization in Python?",
+        options: ["NLTK", "NumPy", "Matplotlib", "scikit-learn"],
+        correctOption: 0,
+        explanation: "The correct answer is: NLTK",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using NLTK's 'PorterStemmer', write code to stem a list of words like '[\"running\", \"studies\", \"flies\", \"happily\"]' and print the results.",
+        starterCode: "# Using NLTK's 'PorterStemmer', write code to stem a list of w\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom nltk.stem import PorterStemmer\nstemmer = PorterStemmer()\nwords = [\"running\", \"studies\", \"flies\", \"happily\"]\nprint([stemmer.stem(w) for w in words])\\n```",
+      },
+      {
+        questionText: "Using NLTK's 'WordNetLemmatizer' (or spaCy), write code to lemmatize the same list of words and print the results, comparing them to the stemming output.",
+        starterCode: "# Using NLTK's 'WordNetLemmatizer' (or spaCy), write code to l\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import", "return"],
+        solutionDescription: "```python\\nfrom nltk.stem import WordNetLemmatizer\nlemmatizer = WordNetLemmatizer()\nwords = [\"running\", \"studies\", \"flies\", \"happily\"]\nprint([lemmatizer.lemmatize(w) for w in words])\n# Lemmatization tends to return proper dictionary words vs stemming's crude cuts\\n```",
+      },
+    ],
+  },
+  157: {
+    topicTitle: "NLP: NLP - Stopwords & Text Normalization",
+    mcqs: [
+      {
+        questionText: "What are stopwords in NLP?",
+        options: ["Common words (like \"the\", \"is\", \"and\") that are often filtered out because they carry little unique meaning for many tasks", "Words that mark the end of a sentence", "Rare, unusual words", "Words that are misspelled"],
+        correctOption: 0,
+        explanation: "The correct answer is: Common words (like \"the\", \"is\", \"and\") that are often filtered out because they carry little unique meaning for many tasks",
+      },
+      {
+        questionText: "Why might stopwords be removed before certain NLP tasks like keyword extraction or topic modeling?",
+        options: ["They occur very frequently but usually add little discriminative value, so removing them can reduce noise", "Stopwords are always harmful to every NLP task", "Removing them is required by every algorithm", "They contain the most important information"],
+        correctOption: 0,
+        explanation: "The correct answer is: They occur very frequently but usually add little discriminative value, so removing them can reduce noise",
+      },
+      {
+        questionText: "When might removing stopwords actually hurt performance?",
+        options: ["Tasks like sentiment analysis or machine translation, where words like \"not\" (a stopword in some lists) carry crucial meaning", "It never hurts performance in any task", "Only in image classification tasks", "Stopword removal always improves every task"],
+        correctOption: 0,
+        explanation: "The correct answer is: Tasks like sentiment analysis or machine translation, where words like \"not\" (a stopword in some lists) carry crucial meaning",
+      },
+      {
+        questionText: "What does text normalization typically include?",
+        options: ["Lowercasing, removing punctuation/extra whitespace, and standardizing text format", "Adding random noise to text", "Translating text to multiple languages simultaneously", "Converting text into images"],
+        correctOption: 0,
+        explanation: "The correct answer is: Lowercasing, removing punctuation/extra whitespace, and standardizing text format",
+      },
+      {
+        questionText: "Why is lowercasing text often a normalization step in NLP preprocessing?",
+        options: ["It helps treat words like \"Apple\" and \"apple\" as the same token, reducing vocabulary size", "It always changes the meaning of the text", "It is required by Python syntax", "It has no effect on the vocabulary"],
+        correctOption: 0,
+        explanation: "The correct answer is: It helps treat words like \"Apple\" and \"apple\" as the same token, reducing vocabulary size",
+      },
+      {
+        questionText: "What does removing punctuation typically accomplish in text preprocessing?",
+        options: ["Reduces noise from characters that usually don't carry independent semantic meaning for many models", "Always improves accuracy for every task with no exceptions", "It deletes entire sentences", "It converts text to numbers directly"],
+        correctOption: 0,
+        explanation: "The correct answer is: Reduces noise from characters that usually don't carry independent semantic meaning for many models",
+      },
+      {
+        questionText: "Why might handling contractions (e.g., expanding \"don't\" to \"do not\") be part of text normalization?",
+        options: ["It standardizes the representation so the model doesn't treat contracted and expanded forms as different tokens", "Contractions have no impact on tokenization", "It is only relevant for numeric data", "It removes the need for tokenization"],
+        correctOption: 0,
+        explanation: "The correct answer is: It standardizes the representation so the model doesn't treat contracted and expanded forms as different tokens",
+      },
+      {
+        questionText: "Which Python library provides a built-in list of English stopwords commonly used in preprocessing?",
+        options: ["NLTK's 'stopwords' corpus (or spaCy's built-in stop word list)", "NumPy", "Matplotlib", "Requests"],
+        correctOption: 0,
+        explanation: "The correct answer is: NLTK's 'stopwords' corpus (or spaCy's built-in stop word list)",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using NLTK's stopwords list, write a function 'remove_stopwords(text)' that tokenizes a sentence and removes English stopwords, returning the cleaned list of words.",
+        starterCode: "# Using NLTK's stopwords list, write a function 'remove_stopwo\n\ndef remove_stopwords():\n    pass",
+        expectedKeywords: ["def", "for", "import", "return"],
+        solutionDescription: "```python\\nfrom nltk.corpus import stopwords\nfrom nltk.tokenize import word_tokenize\n\ndef remove_stopwords(text):\n    stop_words = set(stopwords.words('english'))\n    return [w for w in word_tokenize(text) if w.lower() not in stop_words]\n\nprint(remove_stopwords(\"This is a simple example sentence\"))\\n```",
+      },
+      {
+        questionText: "Write a Python function 'normalize_text(text)' that lowercases the text, removes punctuation using the 'string' module, and collapses multiple whitespace characters into a single space.",
+        starterCode: "# Write a Python function 'normalize_text(text)' that lowercas\n\ndef normalize_text():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport string, re\n\ndef normalize_text(text):\n    text = text.lower()\n    text = text.translate(str.maketrans('', '', string.punctuation))\n    text = re.sub(r'\\s+', ' ', text).strip()\n    return text\n\nprint(normalize_text(\"Hello,   World!!  This is   GREAT.\"))\\n```",
+      },
+    ],
+  },
+  158: {
+    topicTitle: "NLP: NLP - Part-of-Speech Tagging",
+    mcqs: [
+      {
+        questionText: "What is Part-of-Speech (POS) tagging?",
+        options: ["Assigning a grammatical category (noun, verb, adjective, etc.) to each word in a sentence", "Translating a sentence into another language", "Counting the number of words in a sentence", "Removing stopwords"],
+        correctOption: 0,
+        explanation: "The correct answer is: Assigning a grammatical category (noun, verb, adjective, etc.) to each word in a sentence",
+      },
+      {
+        questionText: "Why is POS tagging a useful preprocessing step for tasks like lemmatization or information extraction?",
+        options: ["Knowing a word's grammatical role helps disambiguate its meaning and correct base form", "POS tagging has no downstream use", "It only matters for translation tasks", "It replaces the need for tokenization"],
+        correctOption: 0,
+        explanation: "The correct answer is: Knowing a word's grammatical role helps disambiguate its meaning and correct base form",
+      },
+      {
+        questionText: "Which type of model architecture has historically been used for sequence labeling tasks like POS tagging?",
+        options: ["Hidden Markov Models (HMMs) or Conditional Random Fields (CRFs), and more recently neural sequence models", "Only unsupervised clustering algorithms", "Only convolutional networks for images", "POS tagging cannot be modeled statistically"],
+        correctOption: 0,
+        explanation: "The correct answer is: Hidden Markov Models (HMMs) or Conditional Random Fields (CRFs), and more recently neural sequence models",
+      },
+      {
+        questionText: "What challenge does POS tagging face with ambiguous words, e.g., \"book\" as a noun (\"a book\") vs. a verb (\"to book a flight\")?",
+        options: ["The correct tag depends on the surrounding context in the sentence, requiring context-aware models", "Ambiguous words are always tagged the same way regardless of context", "POS tagging ignores ambiguous words entirely", "Ambiguity doesn't exist in POS tagging"],
+        correctOption: 0,
+        explanation: "The correct answer is: The correct tag depends on the surrounding context in the sentence, requiring context-aware models",
+      },
+      {
+        questionText: "In the widely used Penn Treebank POS tagset, what does the tag \"NN\" typically represent?",
+        options: ["A singular common noun", "A verb in past tense", "An adjective", "A preposition"],
+        correctOption: 0,
+        explanation: "The correct answer is: A singular common noun",
+      },
+      {
+        questionText: "Which Python library provides an easy-to-use 'pos_tag()' function for POS tagging?",
+        options: ["NLTK", "NumPy", "Pandas", "Matplotlib"],
+        correctOption: 0,
+        explanation: "The correct answer is: NLTK",
+      },
+      {
+        questionText: "How can POS tagging assist in Named Entity Recognition (NER)?",
+        options: ["Nouns and proper nouns identified via POS tags are often good candidates for entities like names of people, places, or organizations", "POS tagging has no relevance to NER", "NER completely replaces POS tagging", "POS tagging works only after NER"],
+        correctOption: 0,
+        explanation: "The correct answer is: Nouns and proper nouns identified via POS tags are often good candidates for entities like names of people, places, or organizations",
+      },
+      {
+        questionText: "What does spaCy's 'token.pos_' attribute provide after processing text with a spaCy pipeline?",
+        options: ["The coarse-grained part-of-speech tag for that token", "The sentiment score of the token", "The token's stem", "The token's frequency in a corpus"],
+        correctOption: 0,
+        explanation: "The correct answer is: The coarse-grained part-of-speech tag for that token",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using NLTK, write code to POS-tag a sample sentence and print each word alongside its tag.",
+        starterCode: "# Using NLTK, write code to POS-tag a sample sentence and prin\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport nltk\nsentence = \"The quick brown fox jumps over the lazy dog\"\ntags = nltk.pos_tag(nltk.word_tokenize(sentence))\nprint(tags)\\n```",
+      },
+      {
+        questionText: "Using spaCy, write code to process a sentence and print each token's text along with its part-of-speech tag ('token.pos_') and detailed tag ('token.tag_').",
+        starterCode: "# Using spaCy, write code to process a sentence and print each\n\ndef tag():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport spacy\nnlp = spacy.load('en_core_web_sm')\ndoc = nlp(\"The quick brown fox jumps over the lazy dog\")\nfor token in doc:\n    print(token.text, token.pos_, token.tag_)\\n```",
+      },
+    ],
+  },
+  159: {
+    topicTitle: "NLP: NLP - Named Entity Recognition (NER)",
+    mcqs: [
+      {
+        questionText: "What is Named Entity Recognition (NER)?",
+        options: ["Identifying and classifying named entities in text (e.g., people, organizations, locations, dates) into predefined categories", "Translating named entities into another language", "Counting the number of sentences", "Removing named entities from text"],
+        correctOption: 0,
+        explanation: "The correct answer is: Identifying and classifying named entities in text (e.g., people, organizations, locations, dates) into predefined categories",
+      },
+      {
+        questionText: "Which of the following is a typical NER entity category?",
+        options: ["PERSON, ORGANIZATION, LOCATION, DATE", "Noun, Verb, Adjective (these are POS tags, not NER categories)", "Positive, Negative, Neutral", "Stopword, Non-stopword"],
+        correctOption: 0,
+        explanation: "The correct answer is: PERSON, ORGANIZATION, LOCATION, DATE",
+      },
+      {
+        questionText: "What real-world application commonly relies on NER?",
+        options: ["Extracting structured information from resumes, news articles, or medical records (e.g., extracting company names, dates)", "Only used for speech-to-text conversion", "Only used for image recognition", "NER has no real-world applications"],
+        correctOption: 0,
+        explanation: "The correct answer is: Extracting structured information from resumes, news articles, or medical records (e.g., extracting company names, dates)",
+      },
+      {
+        questionText: "What tagging scheme (e.g., B-PER, I-PER, O) is commonly used to label tokens for training NER models?",
+        options: ["BIO (or IO", "tagging, marking the Beginning, Inside, and Outside of entity spans", "POS tagging exclusively", "Sentiment tagging"],
+        correctOption: 0,
+        explanation: "The correct answer is: BIO (or IO",
+      },
+      {
+        questionText: "Which library provides pre-trained NER models ready to use out of the box in Python?",
+        options: ["spaCy (e.g., 'en_core_web_sm')", "Matplotlib", "NumPy", "Seaborn"],
+        correctOption: 0,
+        explanation: "The correct answer is: spaCy (e.g., 'en_core_web_sm')",
+      },
+      {
+        questionText: "Why might a generic pre-trained NER model perform poorly on domain-specific text, such as medical or legal documents?",
+        options: ["It was trained on general-domain text and may not recognize domain-specific entity types (e.g., drug names, legal clauses)", "NER models always perform perfectly regardless of domain", "Generic models cannot process any text", "NER doesn't depend on training data"],
+        correctOption: 0,
+        explanation: "The correct answer is: It was trained on general-domain text and may not recognize domain-specific entity types (e.g., drug names, legal clauses)",
+      },
+      {
+        questionText: "What is a common approach to improve NER performance on a specialized domain?",
+        options: ["Fine-tuning a pre-trained NER model on domain-specific labeled data", "Using only stopword removal", "Ignoring the domain entirely", "Increasing the font size of the input text"],
+        correctOption: 0,
+        explanation: "The correct answer is: Fine-tuning a pre-trained NER model on domain-specific labeled data",
+      },
+      {
+        questionText: "In spaCy, which attribute of a processed 'Doc' object gives access to the recognized named entities?",
+        options: ["'doc.ents'", "'doc.pos_'", "'doc.stopwords'", "'doc.lemma_'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'doc.ents'",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using spaCy, write code to process a paragraph of text and print all named entities found along with their entity labels (e.g., PERSON, ORG, GPE).",
+        starterCode: "# Using spaCy, write code to process a paragraph of text and p\n\ndef labels():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport spacy\nnlp = spacy.load('en_core_web_sm')\ndoc = nlp(\"Elon Musk founded SpaceX in California in 2002.\")\nfor ent in doc.ents:\n    print(ent.text, ent.label_)\\n```",
+      },
+      {
+        questionText: "Write a Python function 'extract_organizations(text)' that uses spaCy's NER to return a list of all entities labeled as \"ORG\" (organizations) found in a given text.",
+        starterCode: "# Write a Python function 'extract_organizations(text)' that u\n\ndef extract_organizations():\n    pass",
+        expectedKeywords: ["def", "for", "import", "return"],
+        solutionDescription: "```python\\nimport spacy\nnlp = spacy.load('en_core_web_sm')\n\ndef extract_organizations(text):\n    doc = nlp(text)\n    return [ent.text for ent in doc.ents if ent.label_ == 'ORG']\n\nprint(extract_organizations(\"Google and Microsoft are competing with OpenAI.\"))\\n```",
+      },
+    ],
+  },
+  160: {
+    topicTitle: "NLP: NLP - N-grams Language Models",
+    mcqs: [
+      {
+        questionText: "What is an n-gram in NLP?",
+        options: ["A contiguous sequence of n items (typically words or characters) from a given text", "A type of neural network layer", "A distance metric", "A stopword removal technique"],
+        correctOption: 0,
+        explanation: "The correct answer is: A contiguous sequence of n items (typically words or characters) from a given text",
+      },
+      {
+        questionText: "What does a \"bigram\" refer to?",
+        options: ["A sequence of 2 consecutive words/tokens", "A sequence of 1 word", "A sequence of 3 words", "A type of embedding"],
+        correctOption: 0,
+        explanation: "The correct answer is: A sequence of 2 consecutive words/tokens",
+      },
+      {
+        questionText: "What is the core assumption of an n-gram language model (the Markov assumption)?",
+        options: ["The probability of the next word depends only on the previous n-1 words, not the entire preceding context", "The probability of a word depends on the entire document", "All words are independent of each other", "N-gram models require no probability estimation"],
+        correctOption: 0,
+        explanation: "The correct answer is: The probability of the next word depends only on the previous n-1 words, not the entire preceding context",
+      },
+      {
+        questionText: "What is a major limitation of n-gram language models compared to neural language models?",
+        options: ["They cannot capture long-range dependencies beyond the fixed window size and suffer from data sparsity for larger n", "They always outperform neural models on every task", "They require no training data at all", "They can only model a single word at a time with no context"],
+        correctOption: 0,
+        explanation: "The correct answer is: They cannot capture long-range dependencies beyond the fixed window size and suffer from data sparsity for larger n",
+      },
+      {
+        questionText: "What technique is commonly used to handle n-grams that never appeared in training data (zero probability issue)?",
+        options: ["Smoothing techniques (e.g., Laplace/add-one smoothing)", "Ignoring the problem entirely, since it never occurs", "Removing all rare words from the vocabulary permanently", "Always assigning probability 1 to unseen n-grams"],
+        correctOption: 0,
+        explanation: "The correct answer is: Smoothing techniques (e.g., Laplace/add-one smoothing)",
+      },
+      {
+        questionText: "In feature engineering for traditional text classification, how can n-grams be used alongside TF-IDF or Bag-of-Words?",
+        options: ["Using n-grams instead of just single words as features can capture short phrases and local word order, improving representation", "N-grams cannot be combined with TF-IDF", "N-grams are unrelated to Bag-of-Words", "N-grams only work with neural networks"],
+        correctOption: 0,
+        explanation: "The correct answer is: Using n-grams instead of just single words as features can capture short phrases and local word order, improving representation",
+      },
+      {
+        questionText: "As n increases in an n-gram model, what typically happens to the model's data requirements?",
+        options: ["The number of possible n-grams grows exponentially, requiring much more training data to estimate probabilities reliably", "Data requirements decrease as n increases", "N has no effect on data requirements", "N-gram models require a fixed amount of data regardless of n"],
+        correctOption: 0,
+        explanation: "The correct answer is: The number of possible n-grams grows exponentially, requiring much more training data to estimate probabilities reliably",
+      },
+      {
+        questionText: "Which scikit-learn parameter allows you to include n-grams (e.g., unigrams and bigrams) when using 'CountVectorizer' or 'TfidfVectorizer'?",
+        options: ["'ngram_range=(1,2)'", "'ngrams=True'", "'n_gram=2'", "'window_size=2'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'ngram_range=(1,2)'",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python function 'generate_ngrams(text, n)' that takes a string and an integer 'n', and returns a list of all n-grams (as tuples of words) from the text.",
+        starterCode: "# Write a Python function 'generate_ngrams(text, n)' that take\n\ndef generate_ngrams():\n    pass",
+        expectedKeywords: ["def", "for", "return"],
+        solutionDescription: "```python\\ndef generate_ngrams(text, n):\n    words = text.split()\n    return [tuple(words[i:i+n]) for i in range(len(words)-n+1)]\n\nprint(generate_ngrams(\"data science is fun\", 2))\\n```",
+      },
+      {
+        questionText: "Using scikit-learn's 'CountVectorizer' with 'ngram_range=(1,2)', write code to transform a small corpus of sentences into a document-term matrix including both unigrams and bigrams, and print the resulting feature names.",
+        starterCode: "# Using scikit-learn's 'CountVectorizer' with 'ngram_range=(1,\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.feature_extraction.text import CountVectorizer\nsentences = [\"data science is fun\", \"I love data science\"]\nvec = CountVectorizer(ngram_range=(1,2))\nX = vec.fit_transform(sentences)\nprint(vec.get_feature_names_out())\\n```",
+      },
+    ],
+  },
+  161: {
+    topicTitle: "NLP: NLP - Word Embeddings (Word2Vec, GloVe)",
+    mcqs: [
+      {
+        questionText: "What is a word embedding?",
+        options: ["A dense, low-dimensional vector representation of a word that captures semantic meaning, learned from data", "A one-hot encoded sparse vector representing a word", "A dictionary mapping words to their character count", "A random vector with no semantic meaning"],
+        correctOption: 0,
+        explanation: "The correct answer is: A dense, low-dimensional vector representation of a word that captures semantic meaning, learned from data",
+      },
+      {
+        questionText: "What key advantage do word embeddings have over one-hot encoding for representing words?",
+        options: ["Embeddings capture semantic similarity (similar words have similar vectors) and are much lower-dimensional and dense", "One-hot encoding always captures more semantic information", "There is no advantage; they are equivalent", "Embeddings cannot be used in neural networks"],
+        correctOption: 0,
+        explanation: "The correct answer is: Embeddings capture semantic similarity (similar words have similar vectors) and are much lower-dimensional and dense",
+      },
+      {
+        questionText: "What are the two main training architectures used in Word2Vec?",
+        options: ["CBOW (Continuous Bag of Words) and Skip-gram", "Encoder and Decoder", "Generator and Discriminator", "Forward and Backward propagation only"],
+        correctOption: 0,
+        explanation: "The correct answer is: CBOW (Continuous Bag of Words) and Skip-gram",
+      },
+      {
+        questionText: "In the Skip-gram architecture, what does the model try to predict?",
+        options: ["The surrounding context words given a target (center) word", "The entire document's topic", "The part of speech of a word", "The sentiment of a sentence"],
+        correctOption: 0,
+        explanation: "The correct answer is: The surrounding context words given a target (center) word",
+      },
+      {
+        questionText: "How does GloVe (Global Vectors for Word Representation) primarily differ from Word2Vec's approach?",
+        options: ["GloVe leverages global word co-occurrence statistics across the whole corpus, while Word2Vec learns from local context windows via a predictive model", "GloVe and Word2Vec are identical algorithms", "GloVe does not produce vector representations", "GloVe only works on images"],
+        correctOption: 0,
+        explanation: "The correct answer is: GloVe leverages global word co-occurrence statistics across the whole corpus, while Word2Vec learns from local context windows via a predictive model",
+      },
+      {
+        questionText: "What is a famous example demonstrating that word embeddings capture semantic relationships through vector arithmetic?",
+        options: ["'king - man + woman \u2248 queen'", "'cat + dog = bird'", "Embeddings cannot support any arithmetic operations", "'the + a = stopword'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'king - man + woman \u2248 queen'",
+      },
+      {
+        questionText: "What is a key limitation of traditional word embeddings like Word2Vec and GloVe regarding word meaning?",
+        options: ["They produce a single fixed vector per word, regardless of context, so they can't handle polysemy (e.g., \"bank\" as a river bank vs. a financial bank)", "They handle every meaning of every word perfectly", "They require no training data", "They only work for numbers"],
+        correctOption: 0,
+        explanation: "The correct answer is: They produce a single fixed vector per word, regardless of context, so they can't handle polysemy (e.g., \"bank\" as a river bank vs. a financial bank)",
+      },
+      {
+        questionText: "What type of embeddings (e.g., from BERT) address the limitation of fixed, context-independent word vectors?",
+        options: ["Contextual embeddings, which produce different vectors for the same word depending on its surrounding context", "One-hot encodings", "TF-IDF vectors", "Bag-of-Words vectors"],
+        correctOption: 0,
+        explanation: "The correct answer is: Contextual embeddings, which produce different vectors for the same word depending on its surrounding context",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using the 'gensim' library, write code to train a Word2Vec model on a small sample corpus of sentences, then find the most similar words to a given word using 'model.wv.most_similar()'.",
+        starterCode: "# Using the 'gensim' library, write code to train a Word2Vec m\n\ndef most_similar():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom gensim.models import Word2Vec\nsentences = [[\"data\", \"science\", \"is\", \"fun\"], [\"I\", \"love\", \"data\", \"and\", \"coding\"]]\nmodel = Word2Vec(sentences, vector_size=50, window=3, min_count=1)\nprint(model.wv.most_similar(\"data\"))\\n```",
+      },
+      {
+        questionText: "Write code to load pre-trained GloVe embeddings from a file (or use 'gensim.downloader') and compute the cosine similarity between the vectors for two given words.",
+        starterCode: "# Write code to load pre-trained GloVe embeddings from a file \n\ndef file():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport gensim.downloader as api\nfrom numpy import dot\nfrom numpy.linalg import norm\nglove = api.load('glove-wiki-gigaword-50')\nv1, v2 = glove['king'], glove['queen']\nsimilarity = dot(v1, v2) / (norm(v1) * norm(v2))\nprint(similarity)\\n```",
+      },
+    ],
+  },
+  162: {
+    topicTitle: "NLP: NLP - Text Classification Pipelines",
+    mcqs: [
+      {
+        questionText: "What is the typical goal of a text classification pipeline?",
+        options: ["Assigning a predefined category or label to a piece of text (e.g., spam vs. not spam)", "Translating text between languages", "Generating new text from scratch", "Removing punctuation from text"],
+        correctOption: 0,
+        explanation: "The correct answer is: Assigning a predefined category or label to a piece of text (e.g., spam vs. not spam)",
+      },
+      {
+        questionText: "What are the typical stages in a traditional (non-deep-learning) text classification pipeline?",
+        options: ["Text preprocessing/cleaning \u2192 feature extraction (e.g., TF-IDF) \u2192 model training (e.g., Naive Bayes, SVM) \u2192 evaluation", "Only a single step: feeding raw text directly into any model", "Only image resizing and normalization", "Only translation and back-translation"],
+        correctOption: 0,
+        explanation: "The correct answer is: Text preprocessing/cleaning \u2192 feature extraction (e.g., TF-IDF) \u2192 model training (e.g., Naive Bayes, SVM) \u2192 evaluation",
+      },
+      {
+        questionText: "Why is TF-IDF a commonly used feature extraction technique before classical ML models in text classification?",
+        options: ["It converts text into numeric vectors that weigh words by their importance (frequency in a document vs. rarity across the corpus)", "It directly performs classification without any model", "It only works on images", "It removes the need for any labels"],
+        correctOption: 0,
+        explanation: "The correct answer is: It converts text into numeric vectors that weigh words by their importance (frequency in a document vs. rarity across the corpus)",
+      },
+      {
+        questionText: "Which classical ML algorithm is historically popular and effective for text classification tasks like spam detection?",
+        options: ["Naive Bayes", "K-Means Clustering (unsupervised, not typically used for labeled classification)", "Only Convolutional Neural Networks", "Only regression algorithms"],
+        correctOption: 0,
+        explanation: "The correct answer is: Naive Bayes",
+      },
+      {
+        questionText: "In modern NLP, how do deep learning-based text classification pipelines typically differ from classical pipelines?",
+        options: ["They often replace manual feature engineering (like TF-IDF) with learned embeddings and neural architectures (e.g., fine-tuned BERT)", "They require no data at all", "They cannot handle text data", "They are identical to classical pipelines with no differences"],
+        correctOption: 0,
+        explanation: "The correct answer is: They often replace manual feature engineering (like TF-IDF) with learned embeddings and neural architectures (e.g., fine-tuned BERT)",
+      },
+      {
+        questionText: "What evaluation metric, beyond accuracy, is often important for imbalanced text classification tasks like fraud/spam detection?",
+        options: ["Precision, Recall, and F1-score", "Only training loss", "Only the number of unique words", "Word count"],
+        correctOption: 0,
+        explanation: "The correct answer is: Precision, Recall, and F1-score",
+      },
+      {
+        questionText: "Why is train/test splitting important when building a text classification pipeline?",
+        options: ["To evaluate how well the model generalizes to unseen data, avoiding an overly optimistic performance estimate from testing on training data", "It is not necessary for text data", "It only matters for image data", "It always improves training speed"],
+        correctOption: 0,
+        explanation: "The correct answer is: To evaluate how well the model generalizes to unseen data, avoiding an overly optimistic performance estimate from testing on training data",
+      },
+      {
+        questionText: "What is a common way to handle class imbalance in a text classification dataset (e.g., far more \"not spam\" than \"spam\" examples)?",
+        options: ["Techniques like class weighting, oversampling the minority class, or undersampling the majority class", "Ignoring the imbalance entirely always yields good performance", "Removing all majority class examples is the only solution", "Class imbalance cannot be addressed in NLP"],
+        correctOption: 0,
+        explanation: "The correct answer is: Techniques like class weighting, oversampling the minority class, or undersampling the majority class",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using scikit-learn, build a text classification pipeline that vectorizes text with 'TfidfVectorizer' and classifies it using 'MultinomialNB', using 'Pipeline' to chain the steps together.",
+        starterCode: "# Using scikit-learn, build a text classification pipeline tha\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.pipeline import Pipeline\nfrom sklearn.feature_extraction.text import TfidfVectorizer\nfrom sklearn.naive_bayes import MultinomialNB\ntexts = [\"great movie\", \"bad film\", \"loved it\", \"hated it\"]\nlabels = [1, 0, 1, 0]\npipe = Pipeline([('tfidf', TfidfVectorizer()), ('clf', MultinomialNB())])\npipe.fit(texts, labels)\nprint(pipe.predict([\"amazing film\"]))\\n```",
+      },
+      {
+        questionText: "Write code to evaluate a trained text classification model using 'classification_report' from scikit-learn, printing precision, recall, and F1-score for each class.",
+        starterCode: "# Write code to evaluate a trained text classification model u\n\ndef solution():\n    pass",
+        expectedKeywords: ["class", "def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.metrics import classification_report\ny_true = [1, 0, 1, 0, 1]\ny_pred = [1, 0, 0, 0, 1]\nprint(classification_report(y_true, y_pred))\\n```",
+      },
+    ],
+  },
+  163: {
+    topicTitle: "NLP: NLP - Topic Modeling (LDA)",
+    mcqs: [
+      {
+        questionText: "What is topic modeling?",
+        options: ["An unsupervised technique for discovering abstract \"topics\" (clusters of co-occurring words) that occur in a collection of documents", "A supervised classification technique requiring labeled topics", "A method for translating documents", "A method for counting word frequency only"],
+        correctOption: 0,
+        explanation: "The correct answer is: An unsupervised technique for discovering abstract \"topics\" (clusters of co-occurring words) that occur in a collection of documents",
+      },
+      {
+        questionText: "What does LDA stand for in the context of topic modeling?",
+        options: ["Latent Dirichlet Allocation", "Linear Discriminant Analysis (a different, supervised technique)", "Local Data Aggregation", "Language Detection Algorithm"],
+        correctOption: 0,
+        explanation: "The correct answer is: Latent Dirichlet Allocation",
+      },
+      {
+        questionText: "What core assumption does LDA make about documents?",
+        options: ["Each document is a mixture of multiple topics, and each topic is a distribution over words", "Each document belongs to exactly one topic only", "Every word in a document belongs to a different, unrelated topic", "Documents have no relationship to topics at all"],
+        correctOption: 0,
+        explanation: "The correct answer is: Each document is a mixture of multiple topics, and each topic is a distribution over words",
+      },
+      {
+        questionText: "What must typically be specified in advance when running LDA?",
+        options: ["The number of topics (k) to discover", "The exact labels for each document", "The exact words that belong to each topic", "The sentiment of each document"],
+        correctOption: 0,
+        explanation: "The correct answer is: The number of topics (k) to discover",
+      },
+      {
+        questionText: "What does LDA output for each document after training?",
+        options: ["A probability distribution over topics, indicating how much each topic contributes to that document", "A single hard topic label with no uncertainty", "A translated version of the document", "A sentiment score"],
+        correctOption: 0,
+        explanation: "The correct answer is: A probability distribution over topics, indicating how much each topic contributes to that document",
+      },
+      {
+        questionText: "What preprocessing steps are typically important before running LDA on text data?",
+        options: ["Tokenization, stopword removal, and often lemmatization to reduce noise in the vocabulary", "No preprocessing is needed; raw text works best", "Only removing numbers is required", "Only converting text to images"],
+        correctOption: 0,
+        explanation: "The correct answer is: Tokenization, stopword removal, and often lemmatization to reduce noise in the vocabulary",
+      },
+      {
+        questionText: "How is LDA typically evaluated when there are no ground-truth topic labels?",
+        options: ["Using metrics like topic coherence, or qualitatively inspecting the top words per topic for interpretability", "Using standard classification accuracy only", "LDA cannot be evaluated in any way", "Using image classification metrics"],
+        correctOption: 0,
+        explanation: "The correct answer is: Using metrics like topic coherence, or qualitatively inspecting the top words per topic for interpretability",
+      },
+      {
+        questionText: "Which Python library is commonly used to implement LDA topic modeling?",
+        options: ["'gensim' (or scikit-learn's 'LatentDirichletAllocation')", "'matplotlib'", "'requests'", "'Pillow'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'gensim' (or scikit-learn's 'LatentDirichletAllocation')",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using 'gensim', write code to build a dictionary and corpus from a small collection of preprocessed documents, then train an LDA model with 3 topics and print the top words for each topic.",
+        starterCode: "# Using 'gensim', write code to build a dictionary and corpus \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom gensim import corpora, models\ndocs = [[\"data\", \"science\", \"machine\", \"learning\"], [\"cooking\", \"recipe\", \"food\"], [\"deep\", \"learning\", \"neural\", \"network\"]]\ndictionary = corpora.Dictionary(docs)\ncorpus = [dictionary.doc2bow(doc) for doc in docs]\nlda = models.LdaModel(corpus, num_topics=3, id2word=dictionary)\nfor topic in lda.print_topics():\n    print(topic)\\n```",
+      },
+      {
+        questionText: "Using scikit-learn's 'LatentDirichletAllocation' with a 'CountVectorizer'-transformed document-term matrix, write code to fit an LDA model and print the top 5 words for each discovered topic.",
+        starterCode: "# Using scikit-learn's 'LatentDirichletAllocation' with a 'Cou\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sklearn.decomposition import LatentDirichletAllocation\nfrom sklearn.feature_extraction.text import CountVectorizer\ndocs = [\"data science machine learning\", \"cooking recipe food\", \"deep learning neural network\"]\nX = CountVectorizer().fit_transform(docs)\nlda = LatentDirichletAllocation(n_components=3, random_state=42).fit(X)\nwords = CountVectorizer().fit(docs).get_feature_names_out()\nfor idx, topic in enumerate(lda.components_):\n    print(f\"Topic {idx}:\", [words[i] for i in topic.argsort()[-5:]])\\n```",
+      },
+    ],
+  },
+  164: {
+    topicTitle: "NLP: NLP - Sequence-to-Sequence Models",
+    mcqs: [
+      {
+        questionText: "What is a sequence-to-sequence (Seq2Seq) model designed to do?",
+        options: ["Map an input sequence to an output sequence, which may have a different length (e.g., machine translation)", "Classify a fixed-size input into a single category", "Cluster unlabeled data", "Perform dimensionality reduction only"],
+        correctOption: 0,
+        explanation: "The correct answer is: Map an input sequence to an output sequence, which may have a different length (e.g., machine translation)",
+      },
+      {
+        questionText: "What are the two main components of a classic Seq2Seq architecture?",
+        options: ["An encoder that processes the input sequence into a context representation, and a decoder that generates the output sequence from it", "A generator and a discriminator", "An input layer and an output layer with no intermediate structure", "A convolutional block and a pooling block"],
+        correctOption: 0,
+        explanation: "The correct answer is: An encoder that processes the input sequence into a context representation, and a decoder that generates the output sequence from it",
+      },
+      {
+        questionText: "What was a key limitation of early Seq2Seq models that relied on a single fixed-length context vector from the encoder?",
+        options: ["They struggled to retain information from long input sequences, since all information had to be compressed into one fixed vector", "They could only process a single word at a time with no sequence support", "They required no training data", "They could not be used for translation tasks"],
+        correctOption: 0,
+        explanation: "The correct answer is: They struggled to retain information from long input sequences, since all information had to be compressed into one fixed vector",
+      },
+      {
+        questionText: "How did the introduction of attention mechanisms improve Seq2Seq models?",
+        options: ["They allowed the decoder to selectively focus on relevant parts of the entire input sequence at each output step, rather than relying on one fixed context vector", "Attention eliminated the need for an encoder entirely", "Attention made the models purely convolutional", "Attention removed the need for a decoder"],
+        correctOption: 0,
+        explanation: "The correct answer is: They allowed the decoder to selectively focus on relevant parts of the entire input sequence at each output step, rather than relying on one fixed context vector",
+      },
+      {
+        questionText: "Which of the following is a classic real-world application of Seq2Seq models?",
+        options: ["Machine translation (e.g., English to French)", "Only image classification", "Only tabular regression", "Only unsupervised clustering"],
+        correctOption: 0,
+        explanation: "The correct answer is: Machine translation (e.g., English to French)",
+      },
+      {
+        questionText: "What technique is commonly used during Seq2Seq training where the true previous output token (rather than the model's own prediction) is fed as input to the decoder at each step?",
+        options: ["Teacher forcing", "Gradient clipping", "Batch normalization", "Dropout"],
+        correctOption: 0,
+        explanation: "The correct answer is: Teacher forcing",
+      },
+      {
+        questionText: "During inference (generation) in a Seq2Seq model, what strategy is commonly used to select the next output token instead of always picking the single highest-probability token?",
+        options: ["Beam search, which keeps track of multiple candidate sequences to find a higher-quality overall output", "Random shuffling of the vocabulary", "Ignoring probabilities entirely", "Always selecting the first token in the vocabulary"],
+        correctOption: 0,
+        explanation: "The correct answer is: Beam search, which keeps track of multiple candidate sequences to find a higher-quality overall output",
+      },
+      {
+        questionText: "What underlying architecture type have most modern Seq2Seq models (e.g., for translation) shifted to, replacing RNN-based encoders/decoders?",
+        options: ["Transformer-based architectures", "Simple linear regression", "K-Means clustering", "Decision trees"],
+        correctOption: 0,
+        explanation: "The correct answer is: Transformer-based architectures",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using Keras, sketch a simple Seq2Seq model architecture with an LSTM-based encoder and an LSTM-based decoder for a toy character-level sequence translation task, and print the model summary.",
+        starterCode: "# Using Keras, sketch a simple Seq2Seq model architecture with\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nfrom tensorflow import keras\nencoder_inputs = keras.layers.Input(shape=(None, 50))\nencoder_lstm = keras.layers.LSTM(64, return_state=True)\n_, state_h, state_c = encoder_lstm(encoder_inputs)\ndecoder_inputs = keras.layers.Input(shape=(None, 50))\ndecoder_lstm = keras.layers.LSTM(64, return_sequences=True)\ndecoder_outputs = decoder_lstm(decoder_inputs, initial_state=[state_h, state_c])\ndecoder_dense = keras.layers.Dense(50, activation='softmax')(decoder_outputs)\nmodel = keras.Model([encoder_inputs, decoder_inputs], decoder_dense)\nmodel.summary()\\n```",
+      },
+      {
+        questionText: "Write a Python function 'greedy_decode(model, input_seq, max_len)' (pseudocode acceptable) that describes/implements the greedy decoding loop: repeatedly predicting the next token and feeding it back into the decoder until an end token or max length is reached.",
+        starterCode: "# Write a Python function 'greedy_decode(model, input_seq, max\n\ndef greedy_decode():\n    pass",
+        expectedKeywords: ["def", "for", "return"],
+        solutionDescription: "```python\\ndef greedy_decode(model, input_seq, max_len, end_token=1):\n    # Pseudocode:\n    output_tokens = []\n    decoder_input = start_token\n    state = model.encode(input_seq)\n    for _ in range(max_len):\n        prediction, state = model.decode_step(decoder_input, state)\n        next_token = argmax(prediction)\n        if next_token == end_token:\n            break\n        output_tokens.append(next_token)\n        decoder_input = next_token\n    return output_tokens\\n```",
+      },
+    ],
+  },
+  165: {
+    topicTitle: "NLP: NLP - Attention in NLP",
+    mcqs: [
+      {
+        questionText: "What problem does the attention mechanism solve in NLP models?",
+        options: ["It allows a model to dynamically focus on the most relevant parts of the input when producing each part of the output, rather than relying on a single fixed summary", "It removes the need for any neural network layers", "It only works for classification tasks", "It replaces the need for tokenization"],
+        correctOption: 0,
+        explanation: "The correct answer is: It allows a model to dynamically focus on the most relevant parts of the input when producing each part of the output, rather than relying on a single fixed summary",
+      },
+      {
+        questionText: "In an attention mechanism, what do attention weights represent?",
+        options: ["The relative importance/relevance of each input element (e.g., word) when computing the representation for a given output step", "The learning rate for that step", "The number of layers in the network", "The vocabulary size"],
+        correctOption: 0,
+        explanation: "The correct answer is: The relative importance/relevance of each input element (e.g., word) when computing the representation for a given output step",
+      },
+      {
+        questionText: "How are attention weights typically computed?",
+        options: ["By calculating similarity scores (e.g., dot product) between a query and a set of keys, then normalizing with softmax", "By randomly assigning fixed weights that never change", "By counting word frequency only", "By using only the first word's representation"],
+        correctOption: 0,
+        explanation: "The correct answer is: By calculating similarity scores (e.g., dot product) between a query and a set of keys, then normalizing with softmax",
+      },
+      {
+        questionText: "What is \"self-attention,\" as used in Transformers?",
+        options: ["An attention mechanism where a sequence attends to itself \u2014 each token computes attention scores relative to every other token in the same sequence", "Attention that only looks at the very first token", "Attention used exclusively between two different sequences", "An attention mechanism that requires no learned parameters"],
+        correctOption: 0,
+        explanation: "The correct answer is: An attention mechanism where a sequence attends to itself \u2014 each token computes attention scores relative to every other token in the same sequence",
+      },
+      {
+        questionText: "Why is attention especially useful for handling long input sequences compared to older RNN-only approaches?",
+        options: ["It provides direct connections between any two positions in the sequence, rather than requiring information to pass through many sequential recurrent steps", "It shortens all input sequences to a fixed length of 1", "It ignores long sequences entirely", "It has no advantage in this scenario"],
+        correctOption: 0,
+        explanation: "The correct answer is: It provides direct connections between any two positions in the sequence, rather than requiring information to pass through many sequential recurrent steps",
+      },
+      {
+        questionText: "What visualization technique is often used to interpret which input words a model attended to when producing a given output word?",
+        options: ["Attention heatmaps/weight matrices", "Confusion matrices only", "ROC curves", "Box plots"],
+        correctOption: 0,
+        explanation: "The correct answer is: Attention heatmaps/weight matrices",
+      },
+      {
+        questionText: "In encoder-decoder attention (cross-attention), what do the queries typically come from, and what do the keys/values come from?",
+        options: ["Queries come from the decoder, while keys and values come from the encoder's output", "Queries and keys always come from the same sequence", "Values always come from a separate unrelated network", "There is no distinction between queries, keys, and values"],
+        correctOption: 0,
+        explanation: "The correct answer is: Queries come from the decoder, while keys and values come from the encoder's output",
+      },
+      {
+        questionText: "What is \"scaled\" in \"scaled dot-product attention,\" and why is scaling applied?",
+        options: ["The dot products are divided by the square root of the key dimension, to prevent overly large values that could destabilize the softmax gradient", "Scaling refers to resizing the input images", "Scaling means increasing the number of attention heads", "Scaling has no mathematical purpose in attention"],
+        correctOption: 0,
+        explanation: "The correct answer is: The dot products are divided by the square root of the key dimension, to prevent overly large values that could destabilize the softmax gradient",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Implement a basic additive (Bahdanau-style) or dot-product attention scoring function from scratch in NumPy that computes attention weights for a decoder hidden state against a set of encoder hidden states.",
+        starterCode: "# Implement a basic additive (Bahdanau-style) or dot-product a\n\ndef additive():\n    pass",
+        expectedKeywords: ["def", "for", "import", "return"],
+        solutionDescription: "```python\\nimport numpy as np\ndef additive_attention(decoder_hidden, encoder_hiddens):\n    scores = np.array([np.dot(decoder_hidden, eh) for eh in encoder_hiddens])\n    weights = np.exp(scores) / np.sum(np.exp(scores))\n    return weights\n\ndecoder_h = np.array([0.5, 0.2])\nencoder_hs = [np.array([0.1,0.3]), np.array([0.6,0.1]), np.array([0.4,0.4])]\nprint(additive_attention(decoder_h, encoder_hs))\\n```",
+      },
+      {
+        questionText: "Using the HuggingFace 'transformers' library, write code to extract and visualize (or print the shape of) the attention weights from a pre-trained BERT model for a sample input sentence, using 'output_attentions=True'.",
+        starterCode: "# Using the HuggingFace 'transformers' library, write code to \n\ndef visualize():\n    pass",
+        expectedKeywords: ["def", "for", "import", "return"],
+        solutionDescription: "```python\\nfrom transformers import BertTokenizer, BertModel\ntokenizer = BertTokenizer.from_pretrained('bert-base-uncased')\nmodel = BertModel.from_pretrained('bert-base-uncased', output_attentions=True)\ninputs = tokenizer(\"Attention is powerful\", return_tensors='pt')\noutputs = model(**inputs)\nprint(outputs.attentions[0].shape)\\n```",
+      },
+    ],
+  },
+  166: {
+    topicTitle: "NLP: NLP - Transformers for NLP (BERT, GPT)",
+    mcqs: [
+      {
+        questionText: "What is BERT (Bidirectional Encoder Representations from Transformers) primarily designed for?",
+        options: ["Producing deep bidirectional contextual representations of text, useful for understanding tasks like classification and question answering", "Only generating new text from left to right", "Only image classification", "Only translation between two fixed languages"],
+        correctOption: 0,
+        explanation: "The correct answer is: Producing deep bidirectional contextual representations of text, useful for understanding tasks like classification and question answering",
+      },
+      {
+        questionText: "Why is BERT called \"bidirectional\"?",
+        options: ["It considers context from both the left and right of a given word simultaneously, unlike traditional left-to-right language models", "It processes text backward only", "It has two separate unrelated models", "It only reads the first and last words of a sentence"],
+        correctOption: 0,
+        explanation: "The correct answer is: It considers context from both the left and right of a given word simultaneously, unlike traditional left-to-right language models",
+      },
+      {
+        questionText: "What pretraining objective does BERT use to learn bidirectional representations (masking some input tokens and predicting them)?",
+        options: ["Masked Language Modeling (MLM)", "Only next-word prediction (causal language modeling)", "Only sentiment classification", "Only image captioning"],
+        correctOption: 0,
+        explanation: "The correct answer is: Masked Language Modeling (MLM)",
+      },
+      {
+        questionText: "What is GPT (Generative Pre-trained Transformer) primarily designed for?",
+        options: ["Autoregressive text generation, predicting the next token given all previous tokens (left-to-right)", "Only bidirectional text understanding", "Only image generation", "Only numerical regression"],
+        correctOption: 0,
+        explanation: "The correct answer is: Autoregressive text generation, predicting the next token given all previous tokens (left-to-right)",
+      },
+      {
+        questionText: "What is the key architectural difference between BERT and GPT in terms of Transformer components used?",
+        options: ["BERT uses the Transformer encoder, while GPT uses the Transformer decoder (with causal/masked self-attention)", "They use identical architectures with no differences", "BERT uses only convolutional layers", "GPT uses no attention mechanism at all"],
+        correctOption: 0,
+        explanation: "The correct answer is: BERT uses the Transformer encoder, while GPT uses the Transformer decoder (with causal/masked self-attention)",
+      },
+      {
+        questionText: "What does \"fine-tuning\" a pre-trained BERT or GPT model typically involve?",
+        options: ["Taking the pre-trained weights and continuing training on a smaller, task-specific labeled dataset", "Training the entire model from scratch with random weights", "Only changing the tokenizer", "Only changing the hardware used for inference"],
+        correctOption: 0,
+        explanation: "The correct answer is: Taking the pre-trained weights and continuing training on a smaller, task-specific labeled dataset",
+      },
+      {
+        questionText: "What is a common downstream task BERT is fine-tuned for, using its special [CLS] token representation?",
+        options: ["Sentence/document classification tasks, using the [CLS] token's final hidden state as a summary representation", "Only image classification", "Only unsupervised clustering", "Only speech recognition"],
+        correctOption: 0,
+        explanation: "The correct answer is: Sentence/document classification tasks, using the [CLS] token's final hidden state as a summary representation",
+      },
+      {
+        questionText: "Why are large pre-trained Transformer models like BERT and GPT considered \"foundation models\"?",
+        options: ["They are trained on massive general-purpose data and can be adapted (fine-tuned or prompted) to a wide variety of downstream tasks", "They can only be used for the exact single task they were originally trained for", "They require no pretraining at all", "They only work with numeric tabular data"],
+        correctOption: 0,
+        explanation: "The correct answer is: They are trained on massive general-purpose data and can be adapted (fine-tuned or prompted) to a wide variety of downstream tasks",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using the HuggingFace 'transformers' library, load a pre-trained BERT model and tokenizer, and write code to fine-tune it (or set up the training arguments) for a binary text classification task using the 'Trainer' API.",
+        starterCode: "# Using the HuggingFace 'transformers' library, load a pre-tra\n\ndef it():\n    pass",
+        expectedKeywords: ["class", "def", "for", "import"],
+        solutionDescription: "```python\\nfrom transformers import BertTokenizer, BertForSequenceClassification, TrainingArguments, Trainer\ntokenizer = BertTokenizer.from_pretrained('bert-base-uncased')\nmodel = BertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2)\ntraining_args = TrainingArguments(output_dir='./results', num_train_epochs=3, per_device_train_batch_size=8)\n# trainer = Trainer(model=model, args=training_args, train_dataset=train_ds, eval_dataset=eval_ds)\\n```",
+      },
+      {
+        questionText: "Using the HuggingFace 'transformers' library, load a pre-trained GPT-2 model and write code to generate a text continuation for a given prompt, controlling the output length with 'max_length'.",
+        starterCode: "# Using the HuggingFace 'transformers' library, load a pre-tra\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import", "return"],
+        solutionDescription: "```python\\nfrom transformers import GPT2LMHeadModel, GPT2Tokenizer\ntokenizer = GPT2Tokenizer.from_pretrained('gpt2')\nmodel = GPT2LMHeadModel.from_pretrained('gpt2')\ninputs = tokenizer(\"The future of AI is\", return_tensors='pt')\noutput = model.generate(**inputs, max_length=30)\nprint(tokenizer.decode(output[0]))\\n```",
+      },
+    ],
+  },
+  167: {
+    topicTitle: "NLP: NLP - Text Summarization & Machine Translation",
+    mcqs: [
+      {
+        questionText: "What is the goal of automatic text summarization?",
+        options: ["Producing a shorter version of a text that retains its most important information", "Translating text into another language", "Classifying text into categories", "Removing all punctuation from text"],
+        correctOption: 0,
+        explanation: "The correct answer is: Producing a shorter version of a text that retains its most important information",
+      },
+      {
+        questionText: "What is the difference between extractive and abstractive summarization?",
+        options: ["Extractive summarization selects and combines existing sentences/phrases from the source text, while abstractive summarization generates new sentences that may not appear verbatim in the source", "They are identical techniques", "Extractive summarization always requires a neural network", "Abstractive summarization never uses neural networks"],
+        correctOption: 0,
+        explanation: "The correct answer is: Extractive summarization selects and combines existing sentences/phrases from the source text, while abstractive summarization generates new sentences that may not appear verbatim in the source",
+      },
+      {
+        questionText: "Which type of model architecture is commonly used for modern abstractive summarization?",
+        options: ["Sequence-to-sequence Transformer models (e.g., BART, T5, or PEGASUS)", "Only Naive Bayes classifiers", "Only K-Means clustering", "Only Decision Trees"],
+        correctOption: 0,
+        explanation: "The correct answer is: Sequence-to-sequence Transformer models (e.g., BART, T5, or PEGASUS)",
+      },
+      {
+        questionText: "What metric is commonly used to evaluate the quality of generated summaries against reference summaries?",
+        options: ["ROUGE score, measuring overlap of n-grams between generated and reference summaries", "Accuracy only", "Mean Squared Error", "Silhouette score"],
+        correctOption: 0,
+        explanation: "The correct answer is: ROUGE score, measuring overlap of n-grams between generated and reference summaries",
+      },
+      {
+        questionText: "What is the goal of machine translation?",
+        options: ["Automatically converting text from a source language into a target language while preserving meaning", "Summarizing a document into a shorter form", "Classifying the sentiment of a document", "Removing stopwords from a document"],
+        correctOption: 0,
+        explanation: "The correct answer is: Automatically converting text from a source language into a target language while preserving meaning",
+      },
+      {
+        questionText: "What metric, based on n-gram precision, is widely used to evaluate machine translation quality against reference translations?",
+        options: ["BLEU score", "Silhouette score", "R-squared", "F1-score for classification"],
+        correctOption: 0,
+        explanation: "The correct answer is: BLEU score",
+      },
+      {
+        questionText: "Which architecture type underlies most modern high-quality machine translation systems (e.g., Google Translate)?",
+        options: ["Transformer-based encoder-decoder (sequence-to-sequence) models", "Simple dictionary lookup/rule-based translation only", "K-Nearest Neighbors", "Naive Bayes classifiers"],
+        correctOption: 0,
+        explanation: "The correct answer is: Transformer-based encoder-decoder (sequence-to-sequence) models",
+      },
+      {
+        questionText: "What is \"back-translation,\" sometimes used as a data augmentation technique in machine translation?",
+        options: ["Translating text to another language and then translating it back to the original language to generate paraphrased training data", "Reversing the character order of a sentence", "Removing translated text entirely", "A technique used only for image data"],
+        correctOption: 0,
+        explanation: "The correct answer is: Translating text to another language and then translating it back to the original language to generate paraphrased training data",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using the HuggingFace 'transformers' 'pipeline' API, write code to load a pre-trained summarization model (e.g., BART or T5) and generate a summary for a sample long paragraph of text.",
+        starterCode: "# Using the HuggingFace 'transformers' 'pipeline' API, write c\n\ndef model():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom transformers import pipeline\nsummarizer = pipeline('summarization', model='facebook/bart-large-cnn')\ntext = \"Data science is a multidisciplinary field... (long paragraph)\"\nsummary = summarizer(text, max_length=50, min_length=10)\nprint(summary[0]['summary_text'])\\n```",
+      },
+      {
+        questionText: "Using the HuggingFace 'transformers' 'pipeline' API, write code to load a pre-trained translation model (e.g., an English-to-French model) and translate a sample English sentence.",
+        starterCode: "# Using the HuggingFace 'transformers' 'pipeline' API, write c\n\ndef model():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom transformers import pipeline\ntranslator = pipeline('translation_en_to_fr', model='Helsinki-NLP/opus-mt-en-fr')\nresult = translator(\"Data science is fascinating.\")\nprint(result[0]['translation_text'])\\n```",
+      },
+    ],
+  },
+  168: {
+    topicTitle: "GenAI: Introduction to Gen-AI (Overview)",
     mcqs: [
       {
         questionText: "Generative AI refers to AI systems that:",
@@ -6422,20 +11246,20 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Write a Python program defining two simple mock functions, 'discriminative_model(text)' (returns a fixed label like \"spam\"/\"not spam\") and 'generative_model(prompt)' (returns a newly constructed string based on the prompt), illustrating the conceptual difference between discriminative and generative approaches.",
-        starterCode: "def discriminative_model():\n    pass",
+        starterCode: "# Write a Python program defining two simple mock functions, '\n\ndef discriminative_model():\n    pass",
         expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a Python program defining two simple mock functions, 'discriminative_model...",
+        solutionDescription: "```python\\ndef discriminative_model(text):\n    return \"spam\" if \"free\" in text.lower() else \"not spam\"\n\ndef generative_model(prompt):\n    return prompt + \" ... and that's how data changes the world.\"\n\nprint(discriminative_model(\"free money now\"))\nprint(generative_model(\"Once upon a time\"))\\n```",
       },
       {
         questionText: "Write a Python program using the HuggingFace 'transformers' 'pipeline' function to load a text-generation pipeline (e.g., with 'distilgpt2') and generate a short continuation for a given prompt.",
-        starterCode: "def pipeline():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a Python program using the HuggingFace 'transformers' 'pipeline' function ...",
+        starterCode: "# Write a Python program using the HuggingFace 'transformers' \n\ndef pipeline():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom transformers import pipeline\ngenerator = pipeline('text-generation', model='distilgpt2')\nresult = generator(\"The future of data science is\", max_length=30)\nprint(result[0]['generated_text'])\\n```",
       },
     ],
   },
-  97: {
-    topicTitle: "Genai: AI Powered Transformers",
+  169: {
+    topicTitle: "GenAI: AI Powered Transformers",
     mcqs: [
       {
         questionText: "The Transformer architecture primarily relies on which mechanism to process sequences?",
@@ -6489,20 +11313,20 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Using the HuggingFace Transformers library, write code to load a pre-trained model (e.g., BERT) and tokenizer, and use it to generate embeddings for a sample sentence.",
-        starterCode: "def model():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Using the HuggingFace Transformers library, write code to load a pre-trained mod...",
+        starterCode: "# Using the HuggingFace Transformers library, write code to lo\n\ndef model():\n    pass",
+        expectedKeywords: ["def", "for", "import", "return"],
+        solutionDescription: "```python\\nfrom transformers import BertTokenizer, BertModel\ntokenizer = BertTokenizer.from_pretrained('bert-base-uncased')\nmodel = BertModel.from_pretrained('bert-base-uncased')\ninputs = tokenizer(\"Transformers are powerful\", return_tensors='pt')\noutputs = model(**inputs)\nprint(outputs.last_hidden_state.shape)\\n```",
       },
       {
         questionText: "Write Python (NumPy) code to implement a simplified scaled dot-product self-attention function that takes Query, Key, and Value matrices and returns the attention output.",
-        starterCode: "def Python():\n    pass",
-        expectedKeywords: ["def", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write Python (NumPy) code to implement a simplified scaled dot-product self-atte...",
+        starterCode: "# Write Python (NumPy) code to implement a simplified scaled d\n\ndef Python():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport numpy as np\ndef softmax(x):\n    e = np.exp(x - np.max(x, axis=-1, keepdims=True))\n    return e / e.sum(axis=-1, keepdims=True)\n\ndef scaled_dot_product_attention(Q, K, V):\n    d_k = Q.shape[-1]\n    scores = Q @ K.T / np.sqrt(d_k)\n    weights = softmax(scores)\n    return weights @ V\n\nQ = np.random.rand(2,4); K = np.random.rand(2,4); V = np.random.rand(2,4)\nprint(scaled_dot_product_attention(Q, K, V))\\n```",
       },
     ],
   },
-  98: {
-    topicTitle: "Genai: Prompt Engineering",
+  170: {
+    topicTitle: "GenAI: Prompt Engineering",
     mcqs: [
       {
         questionText: "Generative AI models primarily aim to:",
@@ -6556,20 +11380,20 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Using the HuggingFace 'transformers' library, write code to load an open-source text-generation model (e.g., GPT-2) and generate a continuation for a given input prompt.",
-        starterCode: "def model():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Using the HuggingFace 'transformers' library, write code to load an open-source ...",
+        starterCode: "# Using the HuggingFace 'transformers' library, write code to \n\ndef model():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom transformers import pipeline\ngenerator = pipeline('text-generation', model='gpt2')\nresult = generator(\"In the future, data scientists will\", max_length=30)\nprint(result[0]['generated_text'])\\n```",
       },
       {
         questionText: "Write a Python function 'simple_gan_loss(real_output, fake_output)' that computes a simplified generator and discriminator loss (using binary cross-entropy concepts) given arrays of discriminator outputs for real and fake samples.",
-        starterCode: "def simple_gan_loss():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a Python function 'simple_gan_loss(real_output, fake_output)' that compute...",
+        starterCode: "# Write a Python function 'simple_gan_loss(real_output, fake_o\n\ndef simple_gan_loss():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport numpy as np\ndef simple_gan_loss(real_output, fake_output):\n    eps = 1e-7\n    d_loss = -np.mean(np.log(real_output+eps) + np.log(1-fake_output+eps))\n    g_loss = -np.mean(np.log(fake_output+eps))\n    return d_loss, g_loss\n\nprint(simple_gan_loss(np.array([0.9,0.8]), np.array([0.2,0.3])))\\n```",
       },
     ],
   },
-  99: {
-    topicTitle: "Genai: Prompting Techniques for Generative Models",
+  171: {
+    topicTitle: "GenAI: Prompting Techniques for Generative Models",
     mcqs: [
       {
         questionText: "Prompt Engineering is best defined as:",
@@ -6623,87 +11447,1427 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Write a Python script that uses an LLM API (or a mock function) to send a zero-shot prompt and a few-shot prompt (with 2 examples) for a sentiment classification task, and compares the outputs.",
-        starterCode: "def API():\n    pass",
-        expectedKeywords: ["class", "def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a Python script that uses an LLM API (or a mock function) to send a zero-s...",
+        starterCode: "# Write a Python script that uses an LLM API (or a mock functi\n\ndef API():\n    pass",
+        expectedKeywords: ["class", "def", "return"],
+        solutionDescription: "```python\\ndef mock_llm(prompt):\n    return f\"[response to: {prompt[:30]}...]\"\n\nzero_shot = \"Classify sentiment: 'I loved this movie'\"\nfew_shot = \"Examples:\\n'great!' -> positive\\n'awful' -> negative\\nClassify: 'I loved this movie'\"\nprint(mock_llm(zero_shot))\nprint(mock_llm(few_shot))\\n```",
       },
       {
         questionText: "Write a Python function 'build_cot_prompt(question)' that takes a question and returns a formatted Chain-of-Thought prompt string instructing the model to \"think step by step\" before answering.",
-        starterCode: "def build_cot_prompt():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a Python function 'build_cot_prompt(question)' that takes a question and r...",
+        starterCode: "# Write a Python function 'build_cot_prompt(question)' that ta\n\ndef build_cot_prompt():\n    pass",
+        expectedKeywords: ["def", "return"],
+        solutionDescription: "```python\\ndef build_cot_prompt(question):\n    return f\"{question}\\nLet's think step by step.\"\n\nprint(build_cot_prompt(\"What is 15% of 240?\"))\\n```",
       },
     ],
   },
-  100: {
-    topicTitle: "Genai: Introduction to Vector DB",
+  172: {
+    topicTitle: "GenAI: Gen AI - Discriminative vs Generative Models",
     mcqs: [
       {
-        questionText: "A vector database is primarily designed to:",
-        options: ["Store and efficiently search high-dimensional numeric vector embeddings, typically via similarity search", "Store only relational tables with foreign keys", "Replace all traditional file systems", "Store only image files directly"],
+        questionText: "What is the fundamental difference between a discriminative and a generative model?",
+        options: ["A discriminative model learns a decision boundary to distinguish between classes (e.g., P(y|x)), while a generative model learns the underlying data distribution and can generate new samples (e.g., P(x) or P(x,y))", "They are identical types of models", "Generative models can only classify, never generate", "Discriminative models can only generate, never classify"],
         correctOption: 0,
-        explanation: "The correct answer is: Store and efficiently search high-dimensional numeric vector embeddings, typically via similarity search",
+        explanation: "The correct answer is: A discriminative model learns a decision boundary to distinguish between classes (e.g., P(y|x)), while a generative model learns the underlying data distribution and can generate new samples (e.g., P(x) or P(x,y))",
       },
       {
-        questionText: "How does a vector database primarily differ from a traditional SQL database?",
-        options: ["There is no meaningful difference", "Vector databases are optimized for similarity search over embeddings (e.g., nearest-neighbor search), while SQL databases are optimized for structured, exact-match relational queries", "SQL databases cannot store any numbers", "Vector databases cannot store any metadata"],
-        correctOption: 1,
-        explanation: "The correct answer is: Vector databases are optimized for similarity search over embeddings (e.g., nearest-neighbor search), while SQL databases are optimized for structured, exact-match relational queries",
-      },
-      {
-        questionText: "Which algorithm family is commonly used internally by vector databases to speed up approximate nearest-neighbor search?",
-        options: ["HNSW (Hierarchical Navigable Small World) graphs, or similar ANN algorithms", "Standard B-tree indexes only", "Bubble sort", "Linear regression"],
+        questionText: "Which of the following is a classic example of a discriminative model?",
+        options: ["Logistic Regression, which directly models the decision boundary between classes", "A GAN, which generates new images", "A VAE, which generates new samples", "A diffusion model"],
         correctOption: 0,
-        explanation: "The correct answer is: HNSW (Hierarchical Navigable Small World) graphs, or similar ANN algorithms",
+        explanation: "The correct answer is: Logistic Regression, which directly models the decision boundary between classes",
       },
       {
-        questionText: "Which of these is a popular vector database/library used in AI applications?",
-        options: ["FAISS, Pinecone, Chroma, Weaviate, or Milvus (any of these)", "MySQL only", "Redis only, with no vector-specific features", "Excel"],
+        questionText: "Which of the following is a classic example of a generative model?",
+        options: ["A Generative Adversarial Network (GAN), which learns to produce new realistic samples", "Logistic Regression", "A standard Support Vector Machine", "A Decision Tree classifier"],
         correctOption: 0,
-        explanation: "The correct answer is: FAISS, Pinecone, Chroma, Weaviate, or Milvus (any of these)",
+        explanation: "The correct answer is: A Generative Adversarial Network (GAN), which learns to produce new realistic samples",
       },
       {
-        questionText: "What is typically stored alongside each vector embedding in a vector database to make results interpretable?",
-        options: ["Nothing else is ever stored", "Metadata (e.g., original text, document ID, source) associated with that vector, retrievable alongside search results", "Only a random number", "A separate unrelated SQL table with no link"],
-        correctOption: 1,
-        explanation: "The correct answer is: Metadata (e.g., original text, document ID, source) associated with that vector, retrievable alongside search results",
-      },
-      {
-        questionText: "Why can't a traditional SQL database efficiently perform semantic similarity search over embeddings without specialized extensions?",
-        options: ["SQL databases are not designed for computing distance/similarity metrics (e.g., cosine similarity) across high-dimensional vectors at scale efficiently", "SQL databases cannot store numbers", "SQL databases cannot store any data types other than text", "SQL is incapable of any mathematical operation"],
+        questionText: "Can generative models be used for classification tasks as well?",
+        options: ["Yes, by modeling P(x|y) for each class and using Bayes' rule to derive P(y|x), as in Naive Bayes", "No, generative models can never be used for classification", "Only discriminative models exist for classification", "Generative models can only work with images"],
         correctOption: 0,
-        explanation: "The correct answer is: SQL databases are not designed for computing distance/similarity metrics (e.g., cosine similarity) across high-dimensional vectors at scale efficiently",
+        explanation: "The correct answer is: Yes, by modeling P(x|y) for each class and using Bayes' rule to derive P(y|x), as in Naive Bayes",
       },
       {
-        questionText: "In the context of Retrieval-Augmented Generation (RAG), a vector database is primarily used to:",
-        options: ["Store the LLM's weights directly", "Retrieve the most relevant document chunks (via embedding similarity) to provide as context to the LLM", "Replace the LLM entirely", "Store the final generated output only"],
-        correctOption: 1,
-        explanation: "The correct answer is: Retrieve the most relevant document chunks (via embedding similarity) to provide as context to the LLM",
+        questionText: "Why might generative models require more data or be harder to train than discriminative models for a pure classification task?",
+        options: ["They aim to model the full data distribution, a more complex objective, whereas discriminative models only need to learn the decision boundary", "Generative models always require less data", "There is no additional complexity involved", "Discriminative models cannot be trained with any amount of data"],
+        correctOption: 0,
+        explanation: "The correct answer is: They aim to model the full data distribution, a more complex objective, whereas discriminative models only need to learn the decision boundary",
       },
       {
-        questionText: "What does \"vector search with NoSQL databases\" typically mean, as some NoSQL databases now offer vector search capabilities?",
-        options: ["NoSQL databases can never support vector operations", "Some NoSQL databases (e.g., MongoDB Atlas, Redis) have added vector indexing/search features alongside their traditional document/key-value capabilities", "It means converting NoSQL databases into SQL databases", "It means vectors must always be stored in plain text files instead"],
-        correctOption: 1,
-        explanation: "The correct answer is: Some NoSQL databases (e.g., MongoDB Atlas, Redis) have added vector indexing/search features alongside their traditional document/key-value capabilities",
+        questionText: "What is a key use case unique to generative models that discriminative models cannot perform?",
+        options: ["Generating entirely new, realistic synthetic data samples (e.g., new images or text)", "Classifying images into categories", "Predicting a numeric value from input features", "Detecting the sentiment of a sentence"],
+        correctOption: 0,
+        explanation: "The correct answer is: Generating entirely new, realistic synthetic data samples (e.g., new images or text)",
+      },
+      {
+        questionText: "Which term describes today's large models like GPT, which generate new text token by token?",
+        options: ["Generative models", "Purely discriminative models", "Purely unsupervised clustering models", "Purely dimensionality-reduction models"],
+        correctOption: 0,
+        explanation: "The correct answer is: Generative models",
+      },
+      {
+        questionText: "In terms of \"Generative AI\" as a broader field, what unifies most techniques (GANs, VAEs, diffusion models, LLMs) under this umbrella?",
+        options: ["They are all designed to generate new content (text, images, audio, etc.) by modeling the underlying data distribution", "They all only perform classification", "They all require no training data", "They are all identical algorithms with different names"],
+        correctOption: 0,
+        explanation: "The correct answer is: They are all designed to generate new content (text, images, audio, etc.) by modeling the underlying data distribution",
       },
     ],
     coding: [
       {
-        questionText: "Write a Python program using the FAISS library to create a simple flat vector index, add 5 sample embeddings (random vectors), and perform a nearest-neighbor search for a given query vector, printing the closest matches.",
-        starterCode: "def embeddings():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a Python program using the FAISS library to create a simple flat vector in...",
+        questionText: "Write a short Python explanation/demo (with comments) contrasting how a discriminative model ('LogisticRegression' from scikit-learn) and a generative model ('GaussianNB') are trained on the same toy classification dataset.",
+        starterCode: "# Write a short Python explanation/demo (with comments) contra\n\ndef demo():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.naive_bayes import GaussianNB\nimport numpy as np\nX = np.random.rand(50, 2); y = np.random.randint(0, 2, 50)\n# Discriminative: models P(y|X) directly, learns a decision boundary\ndisc = LogisticRegression().fit(X, y)\n# Generative: models P(X|y) and P(y), can also generate new samples\ngen = GaussianNB().fit(X, y)\nprint(disc.predict(X[:5]), gen.predict(X[:5]))\\n```",
       },
       {
-        questionText: "Write a Python program using the Chroma vector database (or a simple in-memory cosine-similarity function if Chroma isn't available) to store a few text documents with their embeddings (using a sentence-transformer model) and retrieve the most similar document to a given query text.",
-        starterCode: "def database():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Write a Python program using the Chroma vector database (or a simple in-memory c...",
+        questionText: "Write a Python function 'sample_from_gaussian_generative_model(mean, cov, n_samples)' using NumPy that generates new synthetic data points from a fitted Gaussian distribution, illustrating the core idea of a generative model producing new samples.",
+        starterCode: "# Write a Python function 'sample_from_gaussian_generative_mod\n\ndef sample_from_gaussian_generative_model():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport numpy as np\ndef sample_from_gaussian_generative_model(mean, cov, n_samples):\n    return np.random.multivariate_normal(mean, cov, n_samples)\n\nsamples = sample_from_gaussian_generative_model([0,0], [[1,0],[0,1]], 5)\nprint(samples)\\n```",
       },
     ],
   },
-  101: {
-    topicTitle: "Genai: Introduction to Retrieval-Augmented Generation (RAG)",
+  173: {
+    topicTitle: "GenAI: Gen AI - Diffusion Models",
+    mcqs: [
+      {
+        questionText: "What is the core idea behind diffusion models for generative AI?",
+        options: ["They learn to reverse a gradual noising process, starting from random noise and iteratively denoising it into a coherent sample", "They directly copy training images pixel by pixel", "They use only decision trees to generate images", "They require no training data"],
+        correctOption: 0,
+        explanation: "The correct answer is: They learn to reverse a gradual noising process, starting from random noise and iteratively denoising it into a coherent sample",
+      },
+      {
+        questionText: "What are the two main processes in a diffusion model's training?",
+        options: ["A forward process that gradually adds noise to data, and a reverse process the model learns to remove that noise step by step", "An encoder process and a decoder process identical to autoencoders", "A generator process and a discriminator process identical to GANs", "A tokenization process and a detokenization process"],
+        correctOption: 0,
+        explanation: "The correct answer is: A forward process that gradually adds noise to data, and a reverse process the model learns to remove that noise step by step",
+      },
+      {
+        questionText: "What does a diffusion model typically learn to predict at each denoising step?",
+        options: ["The noise that was added at that step, so it can be subtracted to move closer to a clean sample", "The final image directly in a single step", "The class label of the image", "The text caption of the image"],
+        correctOption: 0,
+        explanation: "The correct answer is: The noise that was added at that step, so it can be subtracted to move closer to a clean sample",
+      },
+      {
+        questionText: "Which well-known text-to-image generation systems are based on diffusion models?",
+        options: ["Stable Diffusion and DALL-E 2", "Only GPT-based systems", "Only rule-based image editors", "Only traditional CNN classifiers"],
+        correctOption: 0,
+        explanation: "The correct answer is: Stable Diffusion and DALL-E 2",
+      },
+      {
+        questionText: "Compared to GANs, what is often cited as an advantage of diffusion models for image generation?",
+        options: ["Often more stable training and higher sample diversity/quality, avoiding some GAN training instabilities like mode collapse", "They always train much faster with fewer computational resources", "They require no neural network at all", "They cannot generate high-resolution images"],
+        correctOption: 0,
+        explanation: "The correct answer is: Often more stable training and higher sample diversity/quality, avoiding some GAN training instabilities like mode collapse",
+      },
+      {
+        questionText: "What is a commonly cited drawback of diffusion models compared to GANs?",
+        options: ["Generating a sample typically requires many iterative denoising steps, making inference slower", "They cannot generate realistic images at all", "They require no training data", "They are incapable of conditioning on text prompts"],
+        correctOption: 0,
+        explanation: "The correct answer is: Generating a sample typically requires many iterative denoising steps, making inference slower",
+      },
+      {
+        questionText: "How can diffusion models be conditioned to generate images matching a text prompt (as in text-to-image generation)?",
+        options: ["By incorporating text embeddings (e.g., from a language model like CLIP) into the denoising process to guide generation", "Diffusion models cannot be conditioned on text", "Only by manually editing pixels after generation", "By training a completely separate classifier with no connection to the diffusion process"],
+        correctOption: 0,
+        explanation: "The correct answer is: By incorporating text embeddings (e.g., from a language model like CLIP) into the denoising process to guide generation",
+      },
+      {
+        questionText: "What role does a \"noise schedule\" play in training a diffusion model?",
+        options: ["It defines how much noise is added at each step of the forward process, affecting how the model learns to denoise", "It has no impact on training", "It only determines the output image resolution", "It is used only during inference, never training"],
+        correctOption: 0,
+        explanation: "The correct answer is: It defines how much noise is added at each step of the forward process, affecting how the model learns to denoise",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a simplified NumPy simulation of the forward diffusion process: starting with a clean 1D signal (array), progressively add Gaussian noise over several steps according to a simple linear noise schedule, and print/plot the signal at each step.",
+        starterCode: "# Write a simplified NumPy simulation of the forward diffusion\n\ndef signal():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport numpy as np\nsignal = np.sin(np.linspace(0, 10, 50))\nsteps = 5\nfor t in range(steps):\n    noise_level = t / steps\n    noisy = signal * (1 - noise_level) + np.random.normal(0, noise_level, len(signal))\n    print(f\"step {t}: sample values {noisy[:5]}\")\\n```",
+      },
+      {
+        questionText: "Using the HuggingFace 'diffusers' library, write code to load a pre-trained Stable Diffusion pipeline and generate an image from a text prompt.",
+        starterCode: "# Using the HuggingFace 'diffusers' library, write code to loa\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom diffusers import StableDiffusionPipeline\nimport torch\npipe = StableDiffusionPipeline.from_pretrained(\"runwayml/stable-diffusion-v1-5\", torch_dtype=torch.float16)\nimage = pipe(\"a scenic mountain landscape at sunset\").images[0]\nimage.save('output.png')\\n```",
+      },
+    ],
+  },
+  174: {
+    topicTitle: "GenAI: Gen AI - Text-to-Image Generation",
+    mcqs: [
+      {
+        questionText: "What is the general goal of text-to-image generation models?",
+        options: ["Taking a natural language description as input and generating a corresponding image as output", "Taking an image and generating a caption", "Translating text between languages", "Classifying images into predefined categories"],
+        correctOption: 0,
+        explanation: "The correct answer is: Taking a natural language description as input and generating a corresponding image as output",
+      },
+      {
+        questionText: "Which component is commonly used in text-to-image systems to align text and image representations in a shared embedding space (e.g., used to guide diffusion models)?",
+        options: ["CLIP (Contrastive Language-Image Pretraining)", "A Decision Tree", "K-Means clustering", "A Naive Bayes classifier"],
+        correctOption: 0,
+        explanation: "The correct answer is: CLIP (Contrastive Language-Image Pretraining)",
+      },
+      {
+        questionText: "What role does \"classifier-free guidance\" play in text-to-image diffusion models?",
+        options: ["It's a technique to strengthen how closely the generated image follows the text prompt, by combining conditional and unconditional model predictions", "It removes the need for text conditioning entirely", "It is a classification technique unrelated to generation", "It only works for black-and-white images"],
+        correctOption: 0,
+        explanation: "The correct answer is: It's a technique to strengthen how closely the generated image follows the text prompt, by combining conditional and unconditional model predictions",
+      },
+      {
+        questionText: "What is \"prompt engineering\" in the context of text-to-image models like Stable Diffusion or DALL-E?",
+        options: ["Crafting the wording, style descriptors, and details of a text prompt to guide the model toward the desired visual output", "Writing the source code of the model itself", "Training the model from scratch", "A step required only for text classification models"],
+        correctOption: 0,
+        explanation: "The correct answer is: Crafting the wording, style descriptors, and details of a text prompt to guide the model toward the desired visual output",
+      },
+      {
+        questionText: "What does \"inpainting\" refer to in text-to-image generation tools?",
+        options: ["Generating or filling in a specific masked region of an existing image based on a text prompt or context", "Fully regenerating an entire new unrelated image", "Deleting an image entirely", "Converting an image into text"],
+        correctOption: 0,
+        explanation: "The correct answer is: Generating or filling in a specific masked region of an existing image based on a text prompt or context",
+      },
+      {
+        questionText: "What is \"image-to-image\" generation, as distinct from pure text-to-image generation?",
+        options: ["Using an existing image (plus optionally a text prompt) as a starting point to guide/generate a new, modified image", "Generating text descriptions from images only", "It is identical to plain text-to-image generation", "It refers to compressing images for storage"],
+        correctOption: 0,
+        explanation: "The correct answer is: Using an existing image (plus optionally a text prompt) as a starting point to guide/generate a new, modified image",
+      },
+      {
+        questionText: "Why is copyright and attribution a notable ethical/legal consideration in text-to-image generation?",
+        options: ["Models are trained on large datasets of images that may include copyrighted works, raising questions about derivative content and artist rights", "There are no legal or ethical considerations with generated images", "All generated images are automatically public domain", "Text-to-image generation never uses any training data"],
+        correctOption: 0,
+        explanation: "The correct answer is: Models are trained on large datasets of images that may include copyrighted works, raising questions about derivative content and artist rights",
+      },
+      {
+        questionText: "What does \"negative prompting\" allow a user to do in many text-to-image tools?",
+        options: ["Specify concepts, styles, or elements that should be avoided/excluded from the generated image", "Reverse the colors of the generated image", "Delete the generated image", "Specify a completely different unrelated model to use"],
+        correctOption: 0,
+        explanation: "The correct answer is: Specify concepts, styles, or elements that should be avoided/excluded from the generated image",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using the HuggingFace 'diffusers' library, write code to generate an image from a text prompt and also demonstrate passing a 'negative_prompt' parameter to exclude unwanted elements.",
+        starterCode: "# Using the HuggingFace 'diffusers' library, write code to gen\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom diffusers import StableDiffusionPipeline\nimport torch\npipe = StableDiffusionPipeline.from_pretrained(\"runwayml/stable-diffusion-v1-5\", torch_dtype=torch.float16)\nimage = pipe(\"a futuristic city\", negative_prompt=\"blurry, low quality\").images[0]\nimage.save('city.png')\\n```",
+      },
+      {
+        questionText: "Write a Python function 'build_prompt(subject, style, details)' that constructs a well-structured text-to-image prompt string by combining a subject, an artistic style, and additional descriptive details.",
+        starterCode: "# Write a Python function 'build_prompt(subject, style, detail\n\ndef build_prompt():\n    pass",
+        expectedKeywords: ["def", "return"],
+        solutionDescription: "```python\\ndef build_prompt(subject, style, details):\n    return f\"{subject}, in the style of {style}, {details}\"\n\nprint(build_prompt(\"a robot\", \"cyberpunk art\", \"neon lights, rain, highly detailed\"))\\n```",
+      },
+    ],
+  },
+  175: {
+    topicTitle: "GenAI: Gen AI - Multimodal Generative Models",
+    mcqs: [
+      {
+        questionText: "What does \"multimodal\" mean in the context of generative AI models?",
+        options: ["The model can process and/or generate content across multiple data modalities, such as text, images, audio, or video", "The model can only process text data", "The model requires no training data", "The model can only generate a single fixed output format regardless of input"],
+        correctOption: 0,
+        explanation: "The correct answer is: The model can process and/or generate content across multiple data modalities, such as text, images, audio, or video",
+      },
+      {
+        questionText: "What is a vision-language model (VLM) generally capable of doing?",
+        options: ["Jointly understanding and reasoning over both images and text, e.g., answering questions about an image's content", "Only generating text with no image understanding", "Only classifying images with no text involvement", "Only compressing images for storage"],
+        correctOption: 0,
+        explanation: "The correct answer is: Jointly understanding and reasoning over both images and text, e.g., answering questions about an image's content",
+      },
+      {
+        questionText: "What is a common architecture pattern used to combine visual and textual information in multimodal models?",
+        options: ["Using a vision encoder (e.g., a CNN or Vision Transformer) to produce image embeddings, which are then combined with text embeddings/tokens for joint processing", "Only stacking two unrelated separate models with no shared representation", "Ignoring image data entirely and using text only", "Only using rule-based image-to-text mapping"],
+        correctOption: 0,
+        explanation: "The correct answer is: Using a vision encoder (e.g., a CNN or Vision Transformer) to produce image embeddings, which are then combined with text embeddings/tokens for joint processing",
+      },
+      {
+        questionText: "What is an example task that a multimodal generative model can perform, combining text and image modalities?",
+        options: ["Image captioning (generating a text description of an image)", "Only numeric regression on tabular data", "Only translating between two spoken languages with no visual component", "Only speech-to-text with no other modality"],
+        correctOption: 0,
+        explanation: "The correct answer is: Image captioning (generating a text description of an image)",
+      },
+      {
+        questionText: "What does \"text-to-speech\" (TTS) generation involve as a multimodal generative task?",
+        options: ["Converting written text input into synthesized spoken audio output", "Converting spoken audio into text", "Generating images from text", "Classifying audio into genres"],
+        correctOption: 0,
+        explanation: "The correct answer is: Converting written text input into synthesized spoken audio output",
+      },
+      {
+        questionText: "Why are multimodal foundation models considered valuable for building versatile AI applications?",
+        options: ["A single model can potentially handle diverse tasks across modalities, reducing the need for separate specialized models for each modality", "They can only be used for a single, narrow task", "They eliminate the need for any training data across all modalities", "They cannot be fine-tuned for specific applications"],
+        correctOption: 0,
+        explanation: "The correct answer is: A single model can potentially handle diverse tasks across modalities, reducing the need for separate specialized models for each modality",
+      },
+      {
+        questionText: "What challenge is specific to training multimodal models compared to single-modality models?",
+        options: ["Aligning representations from fundamentally different data types (e.g., pixels vs. tokens) into a shared, meaningful joint representation space", "There is no additional challenge compared to single-modality models", "Multimodal models require no image or text data at all", "Multimodal training is always faster than single-modality training"],
+        correctOption: 0,
+        explanation: "The correct answer is: Aligning representations from fundamentally different data types (e.g., pixels vs. tokens) into a shared, meaningful joint representation space",
+      },
+      {
+        questionText: "Which of these is an example of a widely known multimodal generative model capable of processing both images and text?",
+        options: ["GPT-4V (vision-enabled) or similar vision-language models", "A simple linear regression model", "K-Means clustering", "A basic decision tree"],
+        correctOption: 0,
+        explanation: "The correct answer is: GPT-4V (vision-enabled) or similar vision-language models",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using the HuggingFace 'transformers' library, write code to load a pre-trained image captioning model (e.g., BLIP) and generate a text caption for a given image.",
+        starterCode: "# Using the HuggingFace 'transformers' library, write code to \n\ndef model():\n    pass",
+        expectedKeywords: ["def", "for", "import", "return"],
+        solutionDescription: "```python\\nfrom transformers import BlipProcessor, BlipForConditionalGeneration\nfrom PIL import Image\nprocessor = BlipProcessor.from_pretrained(\"Salesforce/blip-image-captioning-base\")\nmodel = BlipForConditionalGeneration.from_pretrained(\"Salesforce/blip-image-captioning-base\")\nimage = Image.open('sample.jpg')\ninputs = processor(image, return_tensors='pt')\nout = model.generate(**inputs)\nprint(processor.decode(out[0], skip_special_tokens=True))\\n```",
+      },
+      {
+        questionText: "Using a vision-language model available via a HuggingFace 'pipeline' (e.g., a visual question answering pipeline), write code to ask a question about the content of an input image and print the model's answer.",
+        starterCode: "# Using a vision-language model available via a HuggingFace 'p\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom transformers import pipeline\nvqa = pipeline('visual-question-answering')\nresult = vqa(image='sample.jpg', question='What is in this picture?')\nprint(result)\\n```",
+      },
+    ],
+  },
+  176: {
+    topicTitle: "GenAI: Gen AI - Foundation Models Overview",
+    mcqs: [
+      {
+        questionText: "What is a \"foundation model\" in the context of AI?",
+        options: ["A large model pre-trained on broad, diverse data at scale, which can be adapted (via fine-tuning or prompting) to a wide range of downstream tasks", "A small model trained only on a single narrow task", "A rule-based expert system with no learning component", "A model that can only be used once and then discarded"],
+        correctOption: 0,
+        explanation: "The correct answer is: A large model pre-trained on broad, diverse data at scale, which can be adapted (via fine-tuning or prompting) to a wide range of downstream tasks",
+      },
+      {
+        questionText: "Why is the term \"foundation\" used to describe these models?",
+        options: ["They serve as a base/foundation upon which many specialized applications can be built via adaptation, rather than training each application from scratch", "They are the very first models ever created in AI history", "They can only be used for foundational (basic) tasks like addition", "They have no relationship to downstream applications"],
+        correctOption: 0,
+        explanation: "The correct answer is: They serve as a base/foundation upon which many specialized applications can be built via adaptation, rather than training each application from scratch",
+      },
+      {
+        questionText: "What distinguishes foundation models from traditional task-specific ML models trained from scratch for one purpose?",
+        options: ["Foundation models are pre-trained on massive, broad datasets and generalize across many tasks, while task-specific models are trained narrowly for one purpose", "There is no meaningful distinction", "Task-specific models are always larger than foundation models", "Foundation models cannot be adapted to new tasks"],
+        correctOption: 0,
+        explanation: "The correct answer is: Foundation models are pre-trained on massive, broad datasets and generalize across many tasks, while task-specific models are trained narrowly for one purpose",
+      },
+      {
+        questionText: "What are the two primary ways to adapt a foundation model to a specific downstream task?",
+        options: ["Fine-tuning (further training on task-specific data) and prompting (providing instructions/examples at inference time without updating weights)", "Only rebuilding the entire model architecture from scratch", "Only manual rule writing", "Only changing the model's programming language"],
+        correctOption: 0,
+        explanation: "The correct answer is: Fine-tuning (further training on task-specific data) and prompting (providing instructions/examples at inference time without updating weights)",
+      },
+      {
+        questionText: "Which of these is an example of a text-based foundation model?",
+        options: ["GPT-4 or similar large language models", "A simple linear regression trained on housing prices", "A decision tree trained on a small tabular dataset", "A basic K-Means clustering model"],
+        correctOption: 0,
+        explanation: "The correct answer is: GPT-4 or similar large language models",
+      },
+      {
+        questionText: "What is a key risk associated with foundation models due to their broad training data and wide deployment?",
+        options: ["Biases present in the training data can propagate to many downstream applications built on top of the foundation model", "Foundation models are inherently free of any bias", "There is no risk because they are pre-trained", "Foundation models cannot be deployed in any real application"],
+        correctOption: 0,
+        explanation: "The correct answer is: Biases present in the training data can propagate to many downstream applications built on top of the foundation model",
+      },
+      {
+        questionText: "Why do foundation models typically require significant computational resources to train from scratch?",
+        options: ["They are trained on massive datasets with billions of parameters, requiring extensive compute (e.g., large GPU/TPU clusters) over long periods", "They require no computational resources at all", "They can be trained on a single laptop CPU in minutes", "Training compute has no relationship to model size or data"],
+        correctOption: 0,
+        explanation: "The correct answer is: They are trained on massive datasets with billions of parameters, requiring extensive compute (e.g., large GPU/TPU clusters) over long periods",
+      },
+      {
+        questionText: "What is the benefit of using an existing foundation model via an API rather than training one from scratch for most organizations?",
+        options: ["It avoids the massive cost and expertise required for pretraining, letting organizations focus on adapting the model to their specific use case", "APIs are always slower and more expensive than training from scratch", "There is no benefit; training from scratch is always preferred", "Foundation models cannot be accessed via APIs"],
+        correctOption: 0,
+        explanation: "The correct answer is: It avoids the massive cost and expertise required for pretraining, letting organizations focus on adapting the model to their specific use case",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write Python code using the 'openai' (or another LLM provider's) API client to send a prompt to a foundation model and print the generated response, illustrating \"adaptation via prompting\" without any fine-tuning.",
+        starterCode: "# Write Python code using the 'openai' (or another LLM provide\n\ndef solution():\n    pass",
+        expectedKeywords: ["class", "def", "import"],
+        solutionDescription: "```python\\nfrom openai import OpenAI\nclient = OpenAI()\nresponse = client.chat.completions.create(\n    model='gpt-4o',\n    messages=[{'role': 'user', 'content': 'Classify sentiment: I love this product!'}]\n)\nprint(response.choices[0].message.content)\\n```",
+      },
+      {
+        questionText: "Write a short Python script (pseudocode acceptable for the training loop) illustrating the conceptual difference between \"fine-tuning\" (updating model weights on a labeled dataset) and \"prompting\" (constructing an input string) when adapting a foundation model to a sentiment classification task.",
+        starterCode: "# Write a short Python script (pseudocode acceptable for the t\n\ndef script():\n    pass",
+        expectedKeywords: ["class", "def", "for", "return"],
+        solutionDescription: "```python\\n# Fine-tuning (conceptual pseudocode): updates model weights\n# for batch in labeled_dataset:\n#     loss = model.train_step(batch)\n#     update_weights(model, loss)\n\n# Prompting: no weight updates, just constructs input text\ndef prompt_for_sentiment(text):\n    return f\"Classify the sentiment of: '{text}'. Answer positive or negative.\"\nprint(prompt_for_sentiment(\"I love this product!\"))\\n```",
+      },
+    ],
+  },
+  177: {
+    topicTitle: "GenAI: Gen AI - Fine-Tuning vs Prompting",
+    mcqs: [
+      {
+        questionText: "What is prompting, as a way to adapt a foundation model to a task?",
+        options: ["Crafting the input text (instructions, context, examples) given to the model at inference time, without updating the model's weights", "Physically retraining the entire model on new labeled data", "Changing the model's underlying architecture", "Compiling the model into machine code"],
+        correctOption: 0,
+        explanation: "The correct answer is: Crafting the input text (instructions, context, examples) given to the model at inference time, without updating the model's weights",
+      },
+      {
+        questionText: "What is fine-tuning, as a way to adapt a foundation model?",
+        options: ["Continuing to train (updating the weights of) a pre-trained model on a smaller, task-specific labeled dataset", "Only changing the prompt wording", "Only changing the temperature parameter", "Deploying the model without any further steps"],
+        correctOption: 0,
+        explanation: "The correct answer is: Continuing to train (updating the weights of) a pre-trained model on a smaller, task-specific labeled dataset",
+      },
+      {
+        questionText: "What is a key advantage of prompting over fine-tuning for quick experimentation?",
+        options: ["It requires no additional training or labeled dataset \u2014 just crafting an effective prompt, making it fast and cheap to iterate", "Prompting always produces better results than fine-tuning in every case", "Prompting permanently changes the model's weights", "Prompting requires more computational resources than fine-tuning"],
+        correctOption: 0,
+        explanation: "The correct answer is: It requires no additional training or labeled dataset \u2014 just crafting an effective prompt, making it fast and cheap to iterate",
+      },
+      {
+        questionText: "When might fine-tuning be preferred over prompting?",
+        options: ["When you need consistent, specialized behavior on a narrow task with enough labeled data, or need to reduce prompt length/latency in production", "When you have no labeled data whatsoever and need results immediately", "Fine-tuning is never preferred over prompting", "Fine-tuning is only used for image models, never text"],
+        correctOption: 0,
+        explanation: "The correct answer is: When you need consistent, specialized behavior on a narrow task with enough labeled data, or need to reduce prompt length/latency in production",
+      },
+      {
+        questionText: "What does \"few-shot prompting\" refer to?",
+        options: ["Including a small number of input-output examples directly within the prompt to guide the model's behavior", "Fine-tuning the model with very few data points", "Using zero examples and zero instructions", "Retraining only a few of the model's layers"],
+        correctOption: 0,
+        explanation: "The correct answer is: Including a small number of input-output examples directly within the prompt to guide the model's behavior",
+      },
+      {
+        questionText: "What is Parameter-Efficient Fine-Tuning (PEFT), and why is it useful?",
+        options: ["A family of techniques (e.g., LoR", "that fine-tune only a small subset of additional parameters instead of the entire model, reducing computational and memory cost", "A technique that fine-tunes every single parameter of the model with no exceptions", "A method that only works with prompting, not fine-tuning"],
+        correctOption: 0,
+        explanation: "The correct answer is: A family of techniques (e.g., LoR",
+      },
+      {
+        questionText: "What risk does full fine-tuning on a small, narrow dataset carry?",
+        options: ["Catastrophic forgetting or overfitting, where the model loses some of its general capabilities or overfits to the small dataset", "Full fine-tuning has no risks whatsoever", "It always improves the model's general knowledge", "It requires no labeled data at all"],
+        correctOption: 0,
+        explanation: "The correct answer is: Catastrophic forgetting or overfitting, where the model loses some of its general capabilities or overfits to the small dataset",
+      },
+      {
+        questionText: "In practice, how are prompting and fine-tuning often combined in a typical Gen AI application development workflow?",
+        options: ["Teams often start with prompting to validate an approach quickly, then consider fine-tuning if further specialization or consistency is needed", "They are always mutually exclusive and can never be combined", "Fine-tuning must always happen before any prompting is attempted", "Prompting is only used after a model has been fully deprecated"],
+        correctOption: 0,
+        explanation: "The correct answer is: Teams often start with prompting to validate an approach quickly, then consider fine-tuning if further specialization or consistency is needed",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write Python code demonstrating a few-shot prompt (with 3 examples) for a text classification task sent to an LLM API, compared in a comment to a zero-shot version of the same prompt.",
+        starterCode: "# Write Python code demonstrating a few-shot prompt (with 3 ex\n\ndef prompt():\n    pass",
+        expectedKeywords: ["class", "def"],
+        solutionDescription: "```python\\nfew_shot_prompt = '''Classify sentiment:\n\"great service\" -> positive\n\"terrible food\" -> negative\n\"amazing experience\" -> positive\n\"awful wait time\" -> ?'''\n# Zero-shot version (no examples):\nzero_shot_prompt = 'Classify sentiment: \"awful wait time\"'\nprint(few_shot_prompt)\\n```",
+      },
+      {
+        questionText: "Using the HuggingFace 'peft' library, write code sketching how to apply LoRA fine-tuning configuration to a pre-trained language model for a downstream task.",
+        starterCode: "# Using the HuggingFace 'peft' library, write code sketching h\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom peft import LoraConfig, get_peft_model\nfrom transformers import AutoModelForCausalLM\nmodel = AutoModelForCausalLM.from_pretrained('gpt2')\nlora_config = LoraConfig(r=8, lora_alpha=16, target_modules=['c_attn'], lora_dropout=0.05)\npeft_model = get_peft_model(model, lora_config)\npeft_model.print_trainable_parameters()\\n```",
+      },
+    ],
+  },
+  178: {
+    topicTitle: "GenAI: Gen AI - Instruction Tuning",
+    mcqs: [
+      {
+        questionText: "What is instruction tuning?",
+        options: ["Fine-tuning a pre-trained language model on a dataset of (instruction, response) pairs so it learns to better follow natural language instructions", "A method for tuning only the model's hyperparameters, unrelated to data", "A technique used exclusively for image models", "A method that removes the model's ability to follow instructions"],
+        correctOption: 0,
+        explanation: "The correct answer is: Fine-tuning a pre-trained language model on a dataset of (instruction, response) pairs so it learns to better follow natural language instructions",
+      },
+      {
+        questionText: "Why do base (non-instruction-tuned) language models often perform poorly at directly following user instructions?",
+        options: ["They are primarily trained to predict the next token based on general text patterns, not specifically to follow explicit commands or instructions", "Base models are always better at following instructions than tuned ones", "Base models have no knowledge of language at all", "Base models cannot generate any text"],
+        correctOption: 0,
+        explanation: "The correct answer is: They are primarily trained to predict the next token based on general text patterns, not specifically to follow explicit commands or instructions",
+      },
+      {
+        questionText: "What kind of dataset is typically used for instruction tuning?",
+        options: ["A collection of diverse instructions paired with high-quality example responses covering many different types of tasks", "Only raw, unstructured web text with no labels", "Only numeric tabular data", "Only images with no text"],
+        correctOption: 0,
+        explanation: "The correct answer is: A collection of diverse instructions paired with high-quality example responses covering many different types of tasks",
+      },
+      {
+        questionText: "How does instruction tuning relate to RLHF (Reinforcement Learning from Human Feedback)?",
+        options: ["Instruction tuning is often an initial supervised fine-tuning step, which is frequently followed by RLHF to further align the model with human preferences", "They are the exact same process with no differences", "RLHF always happens before instruction tuning", "They are entirely unrelated processes with no connection"],
+        correctOption: 0,
+        explanation: "The correct answer is: Instruction tuning is often an initial supervised fine-tuning step, which is frequently followed by RLHF to further align the model with human preferences",
+      },
+      {
+        questionText: "What practical benefit does instruction tuning provide for chat-based AI assistants?",
+        options: ["It helps the model respond helpfully and appropriately to a wide variety of user requests phrased as natural instructions or questions", "It removes the model's ability to answer any questions", "It restricts the model to a single hard-coded task", "It has no effect on assistant behavior"],
+        correctOption: 0,
+        explanation: "The correct answer is: It helps the model respond helpfully and appropriately to a wide variety of user requests phrased as natural instructions or questions",
+      },
+      {
+        questionText: "What does the term \"alignment\" broadly refer to in the context of instruction-tuned and RLHF-trained models?",
+        options: ["The process of making a model's outputs better match human intentions, values, and preferences", "Aligning the physical hardware running the model", "A purely mathematical matrix alignment operation with no relation to behavior", "Aligning the model's file storage format"],
+        correctOption: 0,
+        explanation: "The correct answer is: The process of making a model's outputs better match human intentions, values, and preferences",
+      },
+      {
+        questionText: "Why might instruction-tuned models be considered easier to use for non-expert users compared to raw base models?",
+        options: ["They can better understand and respond to natural, conversational instructions without needing carefully engineered prompts", "They require significantly more technical expertise to use", "They cannot be used by non-expert users at all", "They eliminate the need for any prompt whatsoever"],
+        correctOption: 0,
+        explanation: "The correct answer is: They can better understand and respond to natural, conversational instructions without needing carefully engineered prompts",
+      },
+      {
+        questionText: "What is a potential downside if an instruction-tuned dataset is narrow or biased?",
+        options: ["The resulting model may perform well only on similar instruction styles/topics and could inherit or amplify biases present in that dataset", "There is no possible downside to any dataset choice", "Instruction tuning always removes all bias completely", "Instruction tuning cannot be affected by dataset quality"],
+        correctOption: 0,
+        explanation: "The correct answer is: The resulting model may perform well only on similar instruction styles/topics and could inherit or amplify biases present in that dataset",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python function 'format_instruction_example(instruction, input_text, response)' that formats a single training example into a standard instruction-tuning template string (e.g., \"### Instruction: ...\\n### Input: ...\\n### Response: ...\").",
+        starterCode: "# Write a Python function 'format_instruction_example(instruct\n\ndef format_instruction_example():\n    pass",
+        expectedKeywords: ["def", "for", "return"],
+        solutionDescription: "```python\\ndef format_instruction_example(instruction, input_text, response):\n    return f\"### Instruction:\\n{instruction}\\n### Input:\\n{input_text}\\n### Response:\\n{response}\"\n\nprint(format_instruction_example(\"Summarize the text\", \"Long article...\", \"Short summary\"))\\n```",
+      },
+      {
+        questionText: "Write code sketching (pseudocode acceptable) how you would load an instruction-tuning dataset (e.g., using HuggingFace 'datasets') and set up a 'Trainer' to fine-tune a small pre-trained language model on it.",
+        starterCode: "# Write code sketching (pseudocode acceptable) how you would l\n\ndef sketching():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\n# Pseudocode\n# from datasets import load_dataset\n# dataset = load_dataset('json', data_files='instructions.json')\n# from transformers import Trainer, TrainingArguments\n# trainer = Trainer(model=model, args=TrainingArguments(output_dir='./out'), train_dataset=dataset['train'])\n# trainer.train()\\n```",
+      },
+    ],
+  },
+  179: {
+    topicTitle: "GenAI: Gen AI - RLHF (Reinforcement Learning from Human Feedback)",
+    mcqs: [
+      {
+        questionText: "What is RLHF (Reinforcement Learning from Human Feedback) used for in modern LLM training?",
+        options: ["Further refining a language model's behavior to better align with human preferences, using human feedback as a training signal", "A method to increase the size of the model's vocabulary only", "A purely unsupervised clustering technique", "A technique used only for image classification"],
+        correctOption: 0,
+        explanation: "The correct answer is: Further refining a language model's behavior to better align with human preferences, using human feedback as a training signal",
+      },
+      {
+        questionText: "What are the typical high-level stages of the RLHF pipeline?",
+        options: ["Supervised fine-tuning, training a reward model from human preference data, then fine-tuning the language model using reinforcement learning guided by that reward model", "A single step involving only supervised learning with no reinforcement learning", "Training only on unlabeled text with no human involvement", "Only manual rule-writing with no model training"],
+        correctOption: 0,
+        explanation: "The correct answer is: Supervised fine-tuning, training a reward model from human preference data, then fine-tuning the language model using reinforcement learning guided by that reward model",
+      },
+      {
+        questionText: "What is a \"reward model\" in the RLHF pipeline?",
+        options: ["A separate model trained to predict a human preference score for a given model output, used to guide the reinforcement learning fine-tuning step", "The main language model itself", "A model used only to generate random noise", "A rule-based scoring system with no learning involved"],
+        correctOption: 0,
+        explanation: "The correct answer is: A separate model trained to predict a human preference score for a given model output, used to guide the reinforcement learning fine-tuning step",
+      },
+      {
+        questionText: "How is human preference data typically collected to train the reward model?",
+        options: ["Human annotators compare pairs (or rankings) of model outputs for the same prompt and indicate which one they prefer", "By randomly assigning scores with no human involvement", "By using only automated metrics like BLEU score", "By collecting data exclusively from web scraping with no human judgment"],
+        correctOption: 0,
+        explanation: "The correct answer is: Human annotators compare pairs (or rankings) of model outputs for the same prompt and indicate which one they prefer",
+      },
+      {
+        questionText: "Which reinforcement learning algorithm is commonly used to fine-tune the language model's policy in RLHF?",
+        options: ["Proximal Policy Optimization (PPO)", "K-Means clustering", "Linear regression", "Decision tree induction"],
+        correctOption: 0,
+        explanation: "The correct answer is: Proximal Policy Optimization (PPO)",
+      },
+      {
+        questionText: "What problem can occur if a language model is optimized too aggressively against the reward model during RLHF (reward hacking)?",
+        options: ["The model may learn to exploit weaknesses in the reward model, producing outputs that score highly but aren't actually good/aligned with true human intent", "The model always becomes more accurate with no downside", "It has no possible negative consequences", "It guarantees perfectly aligned behavior"],
+        correctOption: 0,
+        explanation: "The correct answer is: The model may learn to exploit weaknesses in the reward model, producing outputs that score highly but aren't actually good/aligned with true human intent",
+      },
+      {
+        questionText: "Why is a KL-divergence penalty often included in the RLHF objective, keeping the fine-tuned model close to the original supervised fine-tuned model?",
+        options: ["To prevent the model from drifting too far from reasonable, fluent behavior while optimizing for the reward signal", "It has no functional purpose in RLHF", "It is used only to speed up training", "It removes the need for a reward model"],
+        correctOption: 0,
+        explanation: "The correct answer is: To prevent the model from drifting too far from reasonable, fluent behavior while optimizing for the reward signal",
+      },
+      {
+        questionText: "What is a criticism/limitation of RLHF regarding scalability and consistency?",
+        options: ["Collecting high-quality human preference data is expensive and time-consuming, and human preferences can be inconsistent or biased", "RLHF requires no human involvement whatsoever", "RLHF is a purely automated process needing no data collection", "RLHF guarantees perfectly consistent and unbiased model behavior"],
+        correctOption: 0,
+        explanation: "The correct answer is: Collecting high-quality human preference data is expensive and time-consuming, and human preferences can be inconsistent or biased",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python function 'simulate_preference_comparison(response_a, response_b, human_rater_func)' (pseudocode acceptable) that models the process of collecting a human preference label between two candidate model responses to the same prompt.",
+        starterCode: "# Write a Python function 'simulate_preference_comparison(resp\n\ndef simulate_preference_comparison():\n    pass",
+        expectedKeywords: ["def", "return"],
+        solutionDescription: "```python\\ndef simulate_preference_comparison(response_a, response_b, human_rater_func):\n    preferred = human_rater_func(response_a, response_b)\n    return preferred\n\ndef mock_rater(a, b):\n    return a if len(a) > len(b) else b\n\nprint(simulate_preference_comparison(\"short\", \"a longer response\", mock_rater))\\n```",
+      },
+      {
+        questionText: "Write pseudocode-style Python outlining the three stages of an RLHF training loop (supervised fine-tuning, reward model training, PPO fine-tuning), with comments explaining what happens conceptually at each stage.",
+        starterCode: "# Write pseudocode-style Python outlining the three stages of \n\ndef loop():\n    pass",
+        expectedKeywords: ["def"],
+        solutionDescription: "```python\\n# RLHF pseudocode:\n# Stage 1: Supervised fine-tuning (SFT) - train base model on human demonstrations\n# sft_model = fine_tune(base_model, demonstration_data)\n# Stage 2: Reward model training - train a model to score outputs based on human preferences\n# reward_model = train_reward_model(comparison_data)\n# Stage 3: PPO fine-tuning - use RL (PPO) to optimize the policy against the reward model\n# final_model = ppo_train(sft_model, reward_model)\\n```",
+      },
+    ],
+  },
+  180: {
+    topicTitle: "GenAI: Gen AI - Evaluation of Generative Models",
+    mcqs: [
+      {
+        questionText: "Why is evaluating generative AI models generally harder than evaluating traditional classification models?",
+        options: ["There is often no single \"correct\" output \u2014 quality can be subjective, and outputs must be judged on dimensions like coherence, relevance, and creativity", "Generative models never need any evaluation", "Generative models always produce a single deterministic correct answer", "Evaluation is identical to standard classification accuracy"],
+        correctOption: 0,
+        explanation: "The correct answer is: There is often no single \"correct\" output \u2014 quality can be subjective, and outputs must be judged on dimensions like coherence, relevance, and creativity",
+      },
+      {
+        questionText: "What does the BLEU score measure, and in which context is it commonly used?",
+        options: ["N-gram overlap precision between generated text and reference text, commonly used for machine translation", "Image quality only", "Audio clarity", "Model training speed"],
+        correctOption: 0,
+        explanation: "The correct answer is: N-gram overlap precision between generated text and reference text, commonly used for machine translation",
+      },
+      {
+        questionText: "What does the ROUGE score measure, and in which context is it commonly used?",
+        options: ["N-gram/sequence overlap (recall-oriented) between generated and reference text, commonly used for summarization evaluation", "Model training speed", "Image resolution", "Number of parameters in a model"],
+        correctOption: 0,
+        explanation: "The correct answer is: N-gram/sequence overlap (recall-oriented) between generated and reference text, commonly used for summarization evaluation",
+      },
+      {
+        questionText: "What is \"perplexity\" as a metric for evaluating language models?",
+        options: ["A measure of how well a probability model predicts a sample, where lower perplexity indicates the model is less \"surprised\" by the text (better fit)", "A measure of image sharpness", "A measure of training dataset size", "A measure of how many GPUs were used for training"],
+        correctOption: 0,
+        explanation: "The correct answer is: A measure of how well a probability model predicts a sample, where lower perplexity indicates the model is less \"surprised\" by the text (better fit)",
+      },
+      {
+        questionText: "Why do automated metrics like BLEU/ROUGE often fail to fully capture the quality of generated text?",
+        options: ["They rely on surface-level n-gram overlap and may not capture semantic meaning, fluency, factual correctness, or creativity", "They perfectly capture every aspect of quality with no limitations", "They only work for image data", "They are the same as classification accuracy"],
+        correctOption: 0,
+        explanation: "The correct answer is: They rely on surface-level n-gram overlap and may not capture semantic meaning, fluency, factual correctness, or creativity",
+      },
+      {
+        questionText: "What is \"human evaluation\" in the context of assessing generative models, and why is it still important?",
+        options: ["Having human raters judge outputs directly on criteria like helpfulness, coherence, and correctness \u2014 important because automated metrics have limitations", "A fully automated process requiring no humans", "It's the same as computing BLEU score", "It is never used in practice"],
+        correctOption: 0,
+        explanation: "The correct answer is: Having human raters judge outputs directly on criteria like helpfulness, coherence, and correctness \u2014 important because automated metrics have limitations",
+      },
+      {
+        questionText: "What does \"LLM-as-a-judge\" refer to as an evaluation technique?",
+        options: ["Using a separate large language model to rate or compare the quality of outputs from another model, as a scalable proxy for human judgment", "Using only rule-based scripts with no model involved", "A technique used exclusively for image classification", "A method for training rather than evaluation"],
+        correctOption: 0,
+        explanation: "The correct answer is: Using a separate large language model to rate or compare the quality of outputs from another model, as a scalable proxy for human judgment",
+      },
+      {
+        questionText: "Why is evaluating factual accuracy/faithfulness particularly important for generative models used in real-world applications?",
+        options: ["Generated content that sounds fluent but is factually incorrect (hallucinated) can mislead users and cause real-world harm", "Factual accuracy is never a concern for generative models", "All generated content is guaranteed to be factually correct", "Fluency and factual accuracy are always identical in generative models"],
+        correctOption: 0,
+        explanation: "The correct answer is: Generated content that sounds fluent but is factually incorrect (hallucinated) can mislead users and cause real-world harm",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using the 'nltk' or 'rouge-score' library, write code to compute the ROUGE score between a generated summary and a reference summary for a sample piece of text.",
+        starterCode: "# Using the 'nltk' or 'rouge-score' library, write code to com\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom rouge_score import rouge_scorer\nscorer = rouge_scorer.RougeScorer(['rouge1', 'rougeL'], use_stemmer=True)\ngenerated = \"The cat sat on the mat\"\nreference = \"A cat was sitting on the mat\"\nscores = scorer.score(reference, generated)\nprint(scores)\\n```",
+      },
+      {
+        questionText: "Write a Python function 'compute_perplexity(model, tokenizer, text)' (pseudocode acceptable using HuggingFace 'transformers') that computes the perplexity of a given text under a pre-trained language model.",
+        starterCode: "# Write a Python function 'compute_perplexity(model, tokenizer\n\ndef compute_perplexity():\n    pass",
+        expectedKeywords: ["def", "return"],
+        solutionDescription: "```python\\n# Pseudocode\ndef compute_perplexity(model, tokenizer, text):\n    inputs = tokenizer(text, return_tensors='pt')\n    with torch.no_grad():\n        loss = model(**inputs, labels=inputs['input_ids']).loss\n    return torch.exp(loss).item()\\n```",
+      },
+    ],
+  },
+  181: {
+    topicTitle: "GenAI: Gen AI - Ethics, Bias & Responsible AI",
+    mcqs: [
+      {
+        questionText: "What is a primary source of bias in generative AI models?",
+        options: ["Biases present in the large-scale training data (e.g., reflecting societal stereotypes) can be learned and reproduced by the model", "Generative models are inherently free of any bias by design", "Bias can only occur in traditional statistical models, not generative AI", "Bias only affects the model's inference speed"],
+        correctOption: 0,
+        explanation: "The correct answer is: Biases present in the large-scale training data (e.g., reflecting societal stereotypes) can be learned and reproduced by the model",
+      },
+      {
+        questionText: "What does \"hallucination\" mean in the context of generative AI outputs?",
+        options: ["The model generates plausible-sounding but factually incorrect or fabricated information", "The model refuses to generate any output", "The model only generates images, never text", "The model crashes during generation"],
+        correctOption: 0,
+        explanation: "The correct answer is: The model generates plausible-sounding but factually incorrect or fabricated information",
+      },
+      {
+        questionText: "Why is transparency about AI-generated content (e.g., watermarking or disclosure) considered important from a responsible AI perspective?",
+        options: ["It helps users distinguish AI-generated content from human-created content, reducing risks of misinformation or deception", "Transparency has no practical benefit", "It is required only for images, never text", "It always degrades model performance"],
+        correctOption: 0,
+        explanation: "The correct answer is: It helps users distinguish AI-generated content from human-created content, reducing risks of misinformation or deception",
+      },
+      {
+        questionText: "What is a \"red-teaming\" exercise in the context of evaluating generative AI systems?",
+        options: ["Deliberately probing a model with adversarial or edge-case inputs to uncover harmful, biased, or unsafe outputs before deployment", "A method for speeding up model training", "A purely marketing exercise unrelated to safety", "A technique for compressing model size"],
+        correctOption: 0,
+        explanation: "The correct answer is: Deliberately probing a model with adversarial or edge-case inputs to uncover harmful, biased, or unsafe outputs before deployment",
+      },
+      {
+        questionText: "Why is data privacy a concern when training or deploying generative AI models?",
+        options: ["Training data or user inputs may contain sensitive personal information that could be inadvertently memorized or exposed by the model", "Generative models never process any personal data", "Privacy concerns only apply to traditional databases, not AI models", "There is no relationship between training data and privacy"],
+        correctOption: 0,
+        explanation: "The correct answer is: Training data or user inputs may contain sensitive personal information that could be inadvertently memorized or exposed by the model",
+      },
+      {
+        questionText: "What does \"content moderation\" typically involve in the deployment of generative AI applications?",
+        options: ["Filtering or blocking outputs that violate safety guidelines, such as harmful, hateful, or explicit content", "Removing all restrictions on model outputs", "Only applies to human-generated content, not AI outputs", "A step that has no bearing on user trust or safety"],
+        correctOption: 0,
+        explanation: "The correct answer is: Filtering or blocking outputs that violate safety guidelines, such as harmful, hateful, or explicit content",
+      },
+      {
+        questionText: "Why might over-reliance on generative AI outputs without human oversight be risky in high-stakes domains like healthcare or law?",
+        options: ["Models can produce plausible but incorrect or misleading information, and errors in these domains can have serious real-world consequences", "There is no risk in any domain, regardless of stakes", "Generative AI models are always 100% accurate in every domain", "Human oversight is never necessary in any application"],
+        correctOption: 0,
+        explanation: "The correct answer is: Models can produce plausible but incorrect or misleading information, and errors in these domains can have serious real-world consequences",
+      },
+      {
+        questionText: "What is the concept of \"AI alignment\" broadly concerned with?",
+        options: ["Ensuring AI systems act in accordance with human values, intentions, and safety considerations", "Aligning the physical servers running an AI model", "A purely mathematical concept with no relation to ethics or safety", "Aligning the model's code style with a formatting standard"],
+        correctOption: 0,
+        explanation: "The correct answer is: Ensuring AI systems act in accordance with human values, intentions, and safety considerations",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python function 'check_for_flagged_terms(text, flagged_terms)' that scans generated text output against a list of flagged/sensitive terms and flags the text if any are found, as a simple example of basic content moderation logic.",
+        starterCode: "# Write a Python function 'check_for_flagged_terms(text, flagg\n\ndef check_for_flagged_terms():\n    pass",
+        expectedKeywords: ["def", "for", "return"],
+        solutionDescription: "```python\\ndef check_for_flagged_terms(text, flagged_terms):\n    found = [term for term in flagged_terms if term.lower() in text.lower()]\n    return {'flagged': len(found) > 0, 'terms_found': found}\n\nprint(check_for_flagged_terms(\"This contains a bad word\", [\"bad word\", \"hate\"]))\\n```",
+      },
+      {
+        questionText: "Write pseudocode-style Python outlining a red-teaming test harness that sends a list of adversarial prompts to a model API and logs any outputs flagged by a moderation check for manual review.",
+        starterCode: "# Write pseudocode-style Python outlining a red-teaming test h\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\n# Pseudocode red-teaming harness\nadversarial_prompts = [\"prompt1\", \"prompt2\"]\nflagged_log = []\nfor prompt in adversarial_prompts:\n    response = call_model_api(prompt)\n    if moderation_check(response):\n        flagged_log.append({'prompt': prompt, 'response': response})\nprint(flagged_log)\\n```",
+      },
+    ],
+  },
+  182: {
+    topicTitle: "GenAI: Gen AI - Hallucination & Mitigation Strategies",
+    mcqs: [
+      {
+        questionText: "What is a \"hallucination\" in the context of large language models?",
+        options: ["An output that is fluent and confident-sounding but factually incorrect, fabricated, or unsupported by any real source", "A model crash or error message", "An intentional creative writing feature", "A type of image generation artifact only"],
+        correctOption: 0,
+        explanation: "The correct answer is: An output that is fluent and confident-sounding but factually incorrect, fabricated, or unsupported by any real source",
+      },
+      {
+        questionText: "Why do LLMs sometimes hallucinate facts, even when trained on large amounts of accurate data?",
+        options: ["They generate text by predicting statistically likely next tokens, not by verifying facts against a ground-truth knowledge source at generation time", "LLMs always verify every fact against a live database before responding", "Hallucination is a deliberate designed feature", "LLMs never hallucinate under any circumstances"],
+        correctOption: 0,
+        explanation: "The correct answer is: They generate text by predicting statistically likely next tokens, not by verifying facts against a ground-truth knowledge source at generation time",
+      },
+      {
+        questionText: "How can Retrieval-Augmented Generation (RAG) help reduce hallucinations?",
+        options: ["By grounding the model's responses in retrieved, relevant real documents/passages rather than relying solely on the model's internal parametric memory", "RAG has no effect on hallucination rates", "RAG always increases hallucination", "RAG removes the need for any generation step"],
+        correctOption: 0,
+        explanation: "The correct answer is: By grounding the model's responses in retrieved, relevant real documents/passages rather than relying solely on the model's internal parametric memory",
+      },
+      {
+        questionText: "What is one prompting-based strategy that can help reduce hallucination, such as asking the model to cite sources or say \"I don't know\" when uncertain?",
+        options: ["Explicitly instructing the model in the prompt to only answer based on given context, and to express uncertainty rather than guessing", "Never providing any instructions in the prompt", "Removing all context from the prompt", "Always asking for the longest possible response"],
+        correctOption: 0,
+        explanation: "The correct answer is: Explicitly instructing the model in the prompt to only answer based on given context, and to express uncertainty rather than guessing",
+      },
+      {
+        questionText: "Why can hallucination be particularly problematic in domains like medicine, law, or finance?",
+        options: ["Confidently stated but incorrect information in these domains can lead to serious real-world harm or poor decisions", "Hallucination has no real consequences in any domain", "These domains are immune to hallucination by design", "Hallucination only affects casual conversational use cases"],
+        correctOption: 0,
+        explanation: "The correct answer is: Confidently stated but incorrect information in these domains can lead to serious real-world harm or poor decisions",
+      },
+      {
+        questionText: "What is \"self-consistency\" or ensemble-based checking as a hallucination mitigation technique?",
+        options: ["Generating multiple responses to the same query and checking for agreement/consistency across them to flag potentially unreliable answers", "Generating only a single response with no comparison", "A technique that guarantees zero hallucination", "A method used only for image generation"],
+        correctOption: 0,
+        explanation: "The correct answer is: Generating multiple responses to the same query and checking for agreement/consistency across them to flag potentially unreliable answers",
+      },
+      {
+        questionText: "How can fine-tuning on high-quality, factually verified data help reduce hallucination compared to a base pre-trained model?",
+        options: ["It can help the model learn to produce more accurate, grounded responses for the specific domain/task it was fine-tuned on", "Fine-tuning always increases hallucination regardless of data quality", "Fine-tuning has no relationship to factual accuracy", "Fine-tuning removes the model's ability to generate any text"],
+        correctOption: 0,
+        explanation: "The correct answer is: It can help the model learn to produce more accurate, grounded responses for the specific domain/task it was fine-tuned on",
+      },
+      {
+        questionText: "Why is it important for applications using LLMs to communicate that outputs may sometimes be incorrect (a user-facing mitigation)?",
+        options: ["It manages user expectations and encourages verification of important information, reducing potential harm from unverified hallucinated content", "Communicating limitations always confuses users and should be avoided", "LLM outputs are always perfectly accurate so no disclaimer is needed", "This has no practical value for responsible deployment"],
+        correctOption: 0,
+        explanation: "The correct answer is: It manages user expectations and encourages verification of important information, reducing potential harm from unverified hallucinated content",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python function 'answer_with_context(question, context_docs, llm_client)' (pseudocode acceptable) that constructs a prompt instructing the model to answer only using the provided context documents and to respond \"I don't know\" if the answer isn't found in them.",
+        starterCode: "# Write a Python function 'answer_with_context(question, conte\n\ndef answer_with_context():\n    pass",
+        expectedKeywords: ["def", "return"],
+        solutionDescription: "```python\\ndef answer_with_context(question, context_docs, llm_client):\n    context = '\\n'.join(context_docs)\n    prompt = f\"Answer using ONLY the context below. If not found, say 'I don't know'.\\nContext:\\n{context}\\nQuestion: {question}\"\n    return llm_client.generate(prompt)\\n```",
+      },
+      {
+        questionText: "Write a Python function 'check_self_consistency(responses)' that takes a list of multiple LLM-generated responses to the same question and returns whether they broadly agree (e.g., using simple string/keyword overlap) as a rough hallucination-risk signal.",
+        starterCode: "# Write a Python function 'check_self_consistency(responses)' \n\ndef check_self_consistency():\n    pass",
+        expectedKeywords: ["def", "for", "return"],
+        solutionDescription: "```python\\ndef check_self_consistency(responses):\n    words_sets = [set(r.lower().split()) for r in responses]\n    overlap = words_sets[0]\n    for s in words_sets[1:]:\n        overlap &= s\n    consistency_ratio = len(overlap) / max(len(words_sets[0]), 1)\n    return consistency_ratio > 0.5\n\nprint(check_self_consistency([\"The answer is 42\", \"It is 42\", \"The result equals 42\"]))\\n```",
+      },
+    ],
+  },
+  183: {
+    topicTitle: "GenAI: Gen AI - AI Agents Overview",
+    mcqs: [
+      {
+        questionText: "What is an AI agent, in the context of LLM-powered systems?",
+        options: ["A system that uses an LLM to reason, plan, and take actions (often via tools) autonomously toward achieving a given goal", "A purely static chatbot that only replies with pre-written responses", "A single fixed rule-based script with no reasoning capability", "A database management system"],
+        correctOption: 0,
+        explanation: "The correct answer is: A system that uses an LLM to reason, plan, and take actions (often via tools) autonomously toward achieving a given goal",
+      },
+      {
+        questionText: "What is the general \"reasoning and acting\" (ReAct-style) loop commonly used in LLM agent frameworks?",
+        options: ["The agent alternates between reasoning about what to do next and taking an action (e.g., calling a tool), observing the result, and repeating", "The agent only performs a single action with no reasoning involved", "The agent never observes the results of its actions", "The agent requires no LLM at all"],
+        correctOption: 0,
+        explanation: "The correct answer is: The agent alternates between reasoning about what to do next and taking an action (e.g., calling a tool), observing the result, and repeating",
+      },
+      {
+        questionText: "What role does \"memory\" play in more advanced AI agent architectures?",
+        options: ["It allows the agent to retain and recall relevant information from earlier in a task or across sessions, informing future decisions", "Memory has no role in agent architectures", "Agents never need to retain any information", "Memory only refers to GPU hardware memory"],
+        correctOption: 0,
+        explanation: "The correct answer is: It allows the agent to retain and recall relevant information from earlier in a task or across sessions, informing future decisions",
+      },
+      {
+        questionText: "What does \"planning\" refer to in the context of AI agents tackling complex, multi-step tasks?",
+        options: ["Breaking a complex goal down into a sequence of smaller sub-tasks or steps the agent can execute", "Executing a single unplanned action with no structure", "Skipping the task entirely", "A step only relevant to image generation"],
+        correctOption: 0,
+        explanation: "The correct answer is: Breaking a complex goal down into a sequence of smaller sub-tasks or steps the agent can execute",
+      },
+      {
+        questionText: "Why might an AI agent need access to external tools (e.g., a calculator, search engine, or code interpreter)?",
+        options: ["LLMs alone can be unreliable at precise computation or accessing real-time information, so tools extend their capabilities beyond pure text generation", "LLMs never need any external capability under any circumstances", "Tools replace the need for an LLM entirely", "Tools are only used for image generation tasks"],
+        correctOption: 0,
+        explanation: "The correct answer is: LLMs alone can be unreliable at precise computation or accessing real-time information, so tools extend their capabilities beyond pure text generation",
+      },
+      {
+        questionText: "What is a \"multi-agent\" system in the context of Gen AI applications?",
+        options: ["An architecture where multiple specialized AI agents collaborate (e.g., each handling a different sub-task) to accomplish a larger goal", "A system that uses only a single agent with no collaboration", "A system with no LLMs involved at all", "A purely rule-based system with no AI component"],
+        correctOption: 0,
+        explanation: "The correct answer is: An architecture where multiple specialized AI agents collaborate (e.g., each handling a different sub-task) to accomplish a larger goal",
+      },
+      {
+        questionText: "What is a key risk of giving an autonomous AI agent broad permissions to take real-world actions (e.g., sending emails, making purchases)?",
+        options: ["The agent could take unintended, incorrect, or harmful actions if its reasoning is flawed or it's manipulated by malicious input", "Autonomous agents are always perfectly safe with unlimited permissions", "There is no risk associated with agent autonomy", "Agents cannot take any real-world actions by definition"],
+        correctOption: 0,
+        explanation: "The correct answer is: The agent could take unintended, incorrect, or harmful actions if its reasoning is flawed or it's manipulated by malicious input",
+      },
+      {
+        questionText: "Why is human-in-the-loop oversight often recommended for higher-stakes AI agent applications?",
+        options: ["It allows a human to review or approve critical agent actions/decisions before they are executed, reducing risk from agent errors", "Human oversight always slows down and adds no value to agent systems", "Agents should always operate with zero human involvement in every scenario", "Human-in-the-loop is only relevant for image generation tasks"],
+        correctOption: 0,
+        explanation: "The correct answer is: It allows a human to review or approve critical agent actions/decisions before they are executed, reducing risk from agent errors",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write pseudocode-style Python implementing a simplified ReAct-style agent loop: given a user query, the agent decides whether to call a \"search\" tool or answer directly, executes the chosen action, and produces a final response.",
+        starterCode: "# Write pseudocode-style Python implementing a simplified ReAc\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "return"],
+        solutionDescription: "```python\\ndef react_agent(query, tools):\n    # Pseudocode ReAct loop\n    if \"search\" in query.lower():\n        thought = \"I need to search for information\"\n        action_result = tools['search'](query)\n    else:\n        thought = \"I can answer directly\"\n        action_result = None\n    final_response = f\"Thought: {thought}\\nAnswer based on: {action_result or 'internal knowledge'}\"\n    return final_response\\n```",
+      },
+      {
+        questionText: "Using a framework like LangChain (pseudocode acceptable), write code sketching how to define a simple agent with access to two tools (e.g., a calculator tool and a search tool) and have it answer a multi-step question.",
+        starterCode: "# Using a framework like LangChain (pseudocode acceptable), wr\n\ndef LangChain():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\n# LangChain pseudocode\n# from langchain.agents import initialize_agent, Tool\n# tools = [Tool(name='calculator', func=calc_func), Tool(name='search', func=search_func)]\n# agent = initialize_agent(tools, llm, agent='zero-shot-react-description')\n# agent.run(\"What is 15% of the population of France?\")\\n```",
+      },
+    ],
+  },
+  184: {
+    topicTitle: "GenAI: Gen AI - Tool Use / Function Calling",
+    mcqs: [
+      {
+        questionText: "What is \"function calling\" (or \"tool use\") in the context of LLM APIs?",
+        options: ["A capability where the model can output a structured request to invoke a predefined external function/tool with specific arguments, based on the user's query", "A feature that lets the model directly execute arbitrary code on the server without any structure", "A method for training the model, unrelated to inference", "A feature only available for image generation"],
+        correctOption: 0,
+        explanation: "The correct answer is: A capability where the model can output a structured request to invoke a predefined external function/tool with specific arguments, based on the user's query",
+      },
+      {
+        questionText: "Why is function calling useful for building applications with LLMs?",
+        options: ["It allows the model to reliably interact with external systems (e.g., databases, APIs, calculators) in a structured, predictable way rather than relying purely on free-form text", "It removes the need for the LLM to generate any text at all", "It only works for translating between languages", "It has no practical application in real systems"],
+        correctOption: 0,
+        explanation: "The correct answer is: It allows the model to reliably interact with external systems (e.g., databases, APIs, calculators) in a structured, predictable way rather than relying purely on free-form text",
+      },
+      {
+        questionText: "In a typical function-calling setup, who is responsible for actually executing the requested function?",
+        options: ["The calling application/developer's code executes the function using the arguments the model provided, not the LLM itself", "The LLM directly executes the function inside its own weights", "Function calling requires no execution step at all", "The end user must manually execute every function call"],
+        correctOption: 0,
+        explanation: "The correct answer is: The calling application/developer's code executes the function using the arguments the model provided, not the LLM itself",
+      },
+      {
+        questionText: "What is typically included when defining a \"tool\" or \"function\" that an LLM can call via a function-calling API?",
+        options: ["A name, a description of what it does, and a schema describing its expected input parameters", "Only the function's name with no other information", "The complete source code of every possible function in the universe", "A random unique identifier with no semantic information"],
+        correctOption: 0,
+        explanation: "The correct answer is: A name, a description of what it does, and a schema describing its expected input parameters",
+      },
+      {
+        questionText: "How does providing a clear, descriptive explanation of each available tool typically affect an LLM's ability to use it correctly?",
+        options: ["Better descriptions help the model more accurately decide when and how to call the appropriate tool with correct arguments", "Tool descriptions have no effect on the model's tool-selection behavior", "The model ignores all provided descriptions", "Only the tool's name matters, not its description"],
+        correctOption: 0,
+        explanation: "The correct answer is: Better descriptions help the model more accurately decide when and how to call the appropriate tool with correct arguments",
+      },
+      {
+        questionText: "What might happen if an LLM calls a tool with incorrectly formatted or invalid arguments?",
+        options: ["The application code should validate the arguments and can return an error back to the model, which may then retry with corrected arguments", "The system always crashes irrecoverably with no ability to handle the error", "Invalid arguments are always silently accepted and executed anyway", "Function calling never produces invalid arguments"],
+        correctOption: 0,
+        explanation: "The correct answer is: The application code should validate the arguments and can return an error back to the model, which may then retry with corrected arguments",
+      },
+      {
+        questionText: "How does function calling relate to building AI agents that use external tools?",
+        options: ["Function calling is often the underlying mechanism that lets an agent decide to invoke tools like search, code execution, or database queries", "Function calling and agent tool use are entirely unrelated concepts", "Agents never use function calling in any implementation", "Function calling replaces the need for agents entirely"],
+        correctOption: 0,
+        explanation: "The correct answer is: Function calling is often the underlying mechanism that lets an agent decide to invoke tools like search, code execution, or database queries",
+      },
+      {
+        questionText: "Why might a developer restrict which functions/tools are exposed to an LLM in a production application?",
+        options: ["To limit the model's capabilities to safe, intended actions and reduce the risk of misuse or unintended side effects", "Exposing more tools always improves safety with no downside", "Restricting tools has no security or safety benefit", "All available functions should always be exposed with no restriction"],
+        correctOption: 0,
+        explanation: "The correct answer is: To limit the model's capabilities to safe, intended actions and reduce the risk of misuse or unintended side effects",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using an LLM provider's API (e.g., OpenAI or Anthropic's function/tool calling feature), write code defining a simple 'get_weather(location)' tool schema and sending a user query that should trigger the model to request that tool call.",
+        starterCode: "# Using an LLM provider's API (e.g., OpenAI or Anthropic's fun\n\ndef API():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\ntools = [{\n    \"type\": \"function\",\n    \"function\": {\n        \"name\": \"get_weather\",\n        \"description\": \"Get current weather for a location\",\n        \"parameters\": {\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\"}}, \"required\": [\"location\"]}\n    }\n}]\n# response = client.chat.completions.create(model='gpt-4o', messages=[{'role':'user','content':'Weather in Paris?'}], tools=tools)\\n```",
+      },
+      {
+        questionText: "Write a Python function 'execute_tool_call(tool_name, arguments, tool_registry)' that takes a tool name and arguments (as returned by an LLM's function-calling response) and dispatches the call to the appropriate registered Python function.",
+        starterCode: "# Write a Python function 'execute_tool_call(tool_name, argume\n\ndef execute_tool_call():\n    pass",
+        expectedKeywords: ["def", "return", "try"],
+        solutionDescription: "```python\\ndef execute_tool_call(tool_name, arguments, tool_registry):\n    if tool_name not in tool_registry:\n        raise ValueError(f\"Unknown tool: {tool_name}\")\n    return tool_registry[tool_name](**arguments)\n\nregistry = {'get_weather': lambda location: f\"Sunny in {location}\"}\nprint(execute_tool_call('get_weather', {'location': 'Paris'}, registry))\\n```",
+      },
+    ],
+  },
+  185: {
+    topicTitle: "GenAI: Gen AI - Copyright & IP Considerations",
+    mcqs: [
+      {
+        questionText: "Why has the training data used for large generative AI models raised copyright concerns?",
+        options: ["Models are often trained on large amounts of text/images scraped from the internet, which may include copyrighted works used without explicit permission", "Training data never includes any copyrighted material by definition", "Copyright law does not apply to any digital content", "There are no legal questions surrounding AI training data"],
+        correctOption: 0,
+        explanation: "The correct answer is: Models are often trained on large amounts of text/images scraped from the internet, which may include copyrighted works used without explicit permission",
+      },
+      {
+        questionText: "What is a central legal question courts and lawmakers have been grappling with regarding AI training on copyrighted works?",
+        options: ["Whether training on copyrighted material qualifies as fair use or requires licensing/permission from rights holders", "This question has been fully and universally settled with no disagreement", "Copyright law explicitly permitted AI training on all data decades before generative AI existed", "There is no legal ambiguity in any jurisdiction"],
+        correctOption: 0,
+        explanation: "The correct answer is: Whether training on copyrighted material qualifies as fair use or requires licensing/permission from rights holders",
+      },
+      {
+        questionText: "What is a concern regarding AI-generated content that closely resembles a specific artist's style or a copyrighted character?",
+        options: ["It may raise questions about derivative works, infringement, or the ethical use of an artist's identifiable style without consent or compensation", "Style similarity has no legal or ethical implications whatsoever", "Only exact pixel-for-pixel copies raise any concern", "Generated content can never resemble any existing work"],
+        correctOption: 0,
+        explanation: "The correct answer is: It may raise questions about derivative works, infringement, or the ethical use of an artist's identifiable style without consent or compensation",
+      },
+      {
+        questionText: "In many jurisdictions, what has historically been a point of debate regarding whether AI-generated works themselves can be copyrighted?",
+        options: ["Whether sufficient human authorship/creative input exists for the output to qualify for copyright protection under existing law", "All AI-generated content is automatically copyrighted worldwide with no exceptions", "AI-generated content can never be used commercially anywhere", "This question has no relevance to businesses using generative AI"],
+        correctOption: 0,
+        explanation: "The correct answer is: Whether sufficient human authorship/creative input exists for the output to qualify for copyright protection under existing law",
+      },
+      {
+        questionText: "Why might companies deploying generative AI tools implement content filters or indemnification policies related to IP?",
+        options: ["To reduce legal risk from users generating content that infringes on existing copyrights or trademarks", "IP risk has no relevance to commercial AI products", "Indemnification is unrelated to intellectual property concerns", "Content filters serve no purpose regarding IP"],
+        correctOption: 0,
+        explanation: "The correct answer is: To reduce legal risk from users generating content that infringes on existing copyrights or trademarks",
+      },
+      {
+        questionText: "What does \"data provenance\" refer to in discussions about responsible generative AI training?",
+        options: ["Understanding and documenting the origin and rights status of the data used to train a model", "The physical location of the GPU servers used for training", "The programming language used to build the model", "The model's inference speed"],
+        correctOption: 0,
+        explanation: "The correct answer is: Understanding and documenting the origin and rights status of the data used to train a model",
+      },
+      {
+        questionText: "Why is this area of law and policy considered to be actively evolving?",
+        options: ["Existing copyright frameworks were largely established before generative AI existed, and courts/legislators are still working out how they apply", "Copyright law has never changed since it was first created", "There is complete global legal consensus with no ongoing litigation or debate", "This area of law is entirely settled and unrelated to current events"],
+        correctOption: 0,
+        explanation: "The correct answer is: Existing copyright frameworks were largely established before generative AI existed, and courts/legislators are still working out how they apply",
+      },
+      {
+        questionText: "As a general best practice, why might organizations building on generative AI want to stay informed about evolving copyright rulings and regulations?",
+        options: ["To manage legal and business risk as the legal landscape around AI-generated content continues to develop", "Because copyright rulings have no bearing on how they can use or deploy generative AI products", "Because this area of law will never change again", "Because staying informed is legally irrelevant to using generative AI commercially"],
+        correctOption: 0,
+        explanation: "The correct answer is: To manage legal and business risk as the legal landscape around AI-generated content continues to develop",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python function 'flag_potential_ip_risk(prompt, protected_terms)' that checks whether a user's image/text generation prompt contains references to specific protected character names or trademarks from a provided list, flagging it for review.",
+        starterCode: "# Write a Python function 'flag_potential_ip_risk(prompt, prot\n\ndef flag_potential_ip_risk():\n    pass",
+        expectedKeywords: ["def", "for", "return"],
+        solutionDescription: "```python\\ndef flag_potential_ip_risk(prompt, protected_terms):\n    found = [term for term in protected_terms if term.lower() in prompt.lower()]\n    return {'flagged': len(found) > 0, 'matches': found}\n\nprint(flag_potential_ip_risk(\"draw Mickey Mouse on a beach\", [\"Mickey Mouse\", \"Batman\"]))\\n```",
+      },
+      {
+        questionText: "Write pseudocode-style Python outlining a simple content-review pipeline where generated outputs are checked against a list of restricted terms/styles before being returned to the end user, logging any flagged generations for manual review.",
+        starterCode: "# Write pseudocode-style Python outlining a simple content-rev\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "return"],
+        solutionDescription: "```python\\n# Pseudocode content-review pipeline\nrestricted_terms = [\"restricted1\", \"restricted2\"]\nflagged_log = []\ndef review_pipeline(prompt, generated_output):\n    if any(term in generated_output for term in restricted_terms):\n        flagged_log.append({'prompt': prompt, 'output': generated_output})\n        return None  # blocked\n    return generated_output\\n```",
+      },
+    ],
+  },
+  186: {
+    topicTitle: "GenAI: Gen AI - Gen AI Application Architecture",
+    mcqs: [
+      {
+        questionText: "What are the typical high-level components of a production Generative AI application (e.g., an AI chat assistant)?",
+        options: ["A user interface, an orchestration/application layer, one or more LLM API calls, and often supporting systems like a vector database or external tools", "Only a single LLM API call with no supporting infrastructure", "Only a static webpage with no backend logic", "A traditional relational database with no AI component involved"],
+        correctOption: 0,
+        explanation: "The correct answer is: A user interface, an orchestration/application layer, one or more LLM API calls, and often supporting systems like a vector database or external tools",
+      },
+      {
+        questionText: "What role does an \"orchestration layer\" (e.g., using a framework like LangChain or a custom backend) typically play in a Gen AI application?",
+        options: ["It manages the flow of data between the user, the LLM, retrieval systems, tools, and any business logic needed to produce a final response", "It replaces the need for an LLM entirely", "It has no functional role in the application", "It is only used for logging, with no other purpose"],
+        correctOption: 0,
+        explanation: "The correct answer is: It manages the flow of data between the user, the LLM, retrieval systems, tools, and any business logic needed to produce a final response",
+      },
+      {
+        questionText: "Why might a Gen AI application maintain conversation history/context across multiple user turns?",
+        options: ["To provide the LLM with relevant prior context so it can generate coherent, contextually appropriate responses in an ongoing conversation", "LLMs never need any conversation context to function", "Conversation history has no impact on response quality", "Maintaining history is only relevant for image generation apps"],
+        correctOption: 0,
+        explanation: "The correct answer is: To provide the LLM with relevant prior context so it can generate coherent, contextually appropriate responses in an ongoing conversation",
+      },
+      {
+        questionText: "What is the purpose of a system prompt in many Gen AI application architectures?",
+        options: ["To set the model's behavior, persona, constraints, and instructions that apply throughout the conversation, distinct from user messages", "System prompts have no effect on model behavior", "System prompts are visible and editable by end users in every application", "System prompts replace the need for any user input"],
+        correctOption: 0,
+        explanation: "The correct answer is: To set the model's behavior, persona, constraints, and instructions that apply throughout the conversation, distinct from user messages",
+      },
+      {
+        questionText: "Why might a Gen AI application include caching of LLM responses for repeated or similar queries?",
+        options: ["To reduce latency and API costs by avoiding redundant calls to the LLM for requests that have already been answered", "Caching always produces incorrect results and should be avoided", "LLM APIs have no associated cost or latency to optimize", "Caching is only relevant for image storage, not text"],
+        correctOption: 0,
+        explanation: "The correct answer is: To reduce latency and API costs by avoiding redundant calls to the LLM for requests that have already been answered",
+      },
+      {
+        questionText: "What is the role of guardrails/validation layers in a Gen AI application architecture?",
+        options: ["Checking or filtering model inputs/outputs against safety, format, or business rules before they reach the end user or downstream systems", "Guardrails have no practical role in application design", "Guardrails are only used in image generation pipelines", "Guardrails replace the need for the LLM itself"],
+        correctOption: 0,
+        explanation: "The correct answer is: Checking or filtering model inputs/outputs against safety, format, or business rules before they reach the end user or downstream systems",
+      },
+      {
+        questionText: "Why might a Gen AI application architecture include fallback logic (e.g., a default response) if the LLM call fails or times out?",
+        options: ["To maintain a reasonable user experience and application reliability even when the underlying model API is unavailable or slow", "Fallback logic is unnecessary since LLM APIs never fail", "Fallback logic always degrades user experience with no benefit", "LLM APIs are guaranteed 100% uptime with zero latency"],
+        correctOption: 0,
+        explanation: "The correct answer is: To maintain a reasonable user experience and application reliability even when the underlying model API is unavailable or slow",
+      },
+      {
+        questionText: "Why is logging and monitoring of LLM inputs/outputs important in a production Gen AI application?",
+        options: ["It helps track application performance, debug issues, and monitor for problematic or unexpected model outputs over time", "Logging has no value in a production Gen AI system", "LLM outputs never need to be monitored once deployed", "Monitoring is only relevant for traditional software, not AI applications"],
+        correctOption: 0,
+        explanation: "The correct answer is: It helps track application performance, debug issues, and monitor for problematic or unexpected model outputs over time",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python class 'ChatSession' that maintains a conversation history list, appends new user/assistant messages, and constructs the full message list (including a system prompt) to send to an LLM API for each new turn.",
+        starterCode: "# Write a Python class 'ChatSession' that maintains a conversa\n\ndef list():\n    pass",
+        expectedKeywords: ["class", "def", "return"],
+        solutionDescription: "```python\\nclass ChatSession:\n    def __init__(self, system_prompt):\n        self.history = [{'role': 'system', 'content': system_prompt}]\n\n    def add_message(self, role, content):\n        self.history.append({'role': role, 'content': content})\n\n    def get_messages(self):\n        return self.history\n\nsession = ChatSession(\"You are a helpful assistant.\")\nsession.add_message('user', 'Hello!')\nprint(session.get_messages())\\n```",
+      },
+      {
+        questionText: "Write a Python function 'call_llm_with_fallback(prompt, llm_client, fallback_response)' that attempts to call an LLM API, catches exceptions/timeouts, and returns a fallback response if the call fails.",
+        starterCode: "# Write a Python function 'call_llm_with_fallback(prompt, llm_\n\ndef call_llm_with_fallback():\n    pass",
+        expectedKeywords: ["def", "return", "try"],
+        solutionDescription: "```python\\ndef call_llm_with_fallback(prompt, llm_client, fallback_response):\n    try:\n        return llm_client.generate(prompt)\n    except Exception as e:\n        print(f\"LLM call failed: {e}\")\n        return fallback_response\n\nprint(call_llm_with_fallback(\"Hello\", None, \"Sorry, I'm unavailable right now.\"))\\n```",
+      },
+    ],
+  },
+  187: {
+    topicTitle: "GenAI: Gen AI - Cost & Latency Optimization",
+    mcqs: [
+      {
+        questionText: "What are the two primary factors that typically drive the monetary cost of using a commercial LLM API?",
+        options: ["The number of input and output tokens processed, often billed per token, and the choice of model (larger/more capable models usually cost more)", "Only the number of user accounts using the application", "Only the physical location of the end users", "Cost is always a flat fee regardless of usage"],
+        correctOption: 0,
+        explanation: "The correct answer is: The number of input and output tokens processed, often billed per token, and the choice of model (larger/more capable models usually cost more)",
+      },
+      {
+        questionText: "Why might choosing a smaller or more specialized model for a specific task help reduce both cost and latency?",
+        options: ["Smaller models often require less compute per request, reducing both API cost per token and response time, if they're sufficient for the task's complexity", "Smaller models are always exactly as expensive as the largest available models", "Model size has no relationship to cost or latency", "Latency is completely independent of model choice"],
+        correctOption: 0,
+        explanation: "The correct answer is: Smaller models often require less compute per request, reducing both API cost per token and response time, if they're sufficient for the task's complexity",
+      },
+      {
+        questionText: "How can prompt/response caching help reduce cost in a Gen AI application?",
+        options: ["By storing and reusing responses for identical or very similar previous requests, avoiding redundant LLM API calls", "Caching always increases the number of API calls needed", "Caching has no effect on cost since LLM APIs are always free", "Caching only applies to database queries, never LLM responses"],
+        correctOption: 0,
+        explanation: "The correct answer is: By storing and reusing responses for identical or very similar previous requests, avoiding redundant LLM API calls",
+      },
+      {
+        questionText: "What does \"streaming\" a model's response typically improve from a user experience/latency perspective?",
+        options: ["It allows the user to start seeing partial output as it's generated, rather than waiting for the entire response to complete before displaying anything", "Streaming has no effect on perceived latency", "Streaming always increases the total generation time", "Streaming is only relevant for image generation"],
+        correctOption: 0,
+        explanation: "The correct answer is: It allows the user to start seeing partial output as it's generated, rather than waiting for the entire response to complete before displaying anything",
+      },
+      {
+        questionText: "Why might reducing the length of a prompt (e.g., trimming unnecessary context) help with both cost and latency?",
+        options: ["Since many providers charge per token and processing time scales with input length, shorter prompts generally cost less and process faster", "Prompt length has no bearing on cost or processing time", "Longer prompts are always cheaper than shorter ones", "Cost is entirely independent of the number of tokens processed"],
+        correctOption: 0,
+        explanation: "The correct answer is: Since many providers charge per token and processing time scales with input length, shorter prompts generally cost less and process faster",
+      },
+      {
+        questionText: "What is \"batching\" of requests, and how can it help with throughput/cost in some deployment scenarios?",
+        options: ["Grouping multiple requests together to process more efficiently, which can improve hardware utilization in self-hosted deployment scenarios", "Batching always increases per-request latency with no benefit", "Batching is only applicable to image data", "Batching eliminates the need for any model inference"],
+        correctOption: 0,
+        explanation: "The correct answer is: Grouping multiple requests together to process more efficiently, which can improve hardware utilization in self-hosted deployment scenarios",
+      },
+      {
+        questionText: "Why might limiting the maximum output length (e.g., 'max_tokens') of an LLM response help control cost?",
+        options: ["Since output tokens are also typically billed, capping the response length prevents unexpectedly long (and costly) generations", "Output length has no impact on API billing", "Limiting output length always increases cost", "'max_tokens' only affects input processing, not billing"],
+        correctOption: 0,
+        explanation: "The correct answer is: Since output tokens are also typically billed, capping the response length prevents unexpectedly long (and costly) generations",
+      },
+      {
+        questionText: "How can model quantization or distillation help reduce inference cost for self-hosted generative AI models?",
+        options: ["They reduce the model's computational/memory footprint, allowing faster and cheaper inference with often minimal accuracy trade-offs", "These techniques always make models slower and more expensive to run", "Quantization and distillation have no relationship to inference cost", "These techniques only apply to training, not inference"],
+        correctOption: 0,
+        explanation: "The correct answer is: They reduce the model's computational/memory footprint, allowing faster and cheaper inference with often minimal accuracy trade-offs",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python function 'estimate_llm_cost(input_tokens, output_tokens, price_per_1k_input, price_per_1k_output)' that calculates the estimated monetary cost of an LLM API call given token counts and per-1000-token pricing.",
+        starterCode: "# Write a Python function 'estimate_llm_cost(input_tokens, out\n\ndef estimate_llm_cost():\n    pass",
+        expectedKeywords: ["def", "return"],
+        solutionDescription: "```python\\ndef estimate_llm_cost(input_tokens, output_tokens, price_per_1k_input, price_per_1k_output):\n    cost = (input_tokens/1000)*price_per_1k_input + (output_tokens/1000)*price_per_1k_output\n    return round(cost, 4)\n\nprint(estimate_llm_cost(1500, 500, 0.005, 0.015))\\n```",
+      },
+      {
+        questionText: "Write a Python function 'truncate_prompt(prompt, max_tokens, tokenizer)' (pseudocode acceptable using a tokenizer like 'tiktoken') that truncates a prompt to fit within a maximum token budget before sending it to an LLM API.",
+        starterCode: "# Write a Python function 'truncate_prompt(prompt, max_tokens,\n\ndef truncate_prompt():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport tiktoken\n\ndef truncate_prompt(prompt, max_tokens, tokenizer_name='cl100k_base'):\n    enc = tiktoken.get_encoding(tokenizer_name)\n    tokens = enc.encode(prompt)\n    if len(tokens) > max_tokens:\n        tokens = tokens[:max_tokens]\n    return enc.decode(tokens)\n\nprint(truncate_prompt(\"This is a long prompt \" * 100, 20))\\n```",
+      },
+    ],
+  },
+  188: {
+    topicTitle: "GenAI: LLM - Tokenizers & Tokenization in LLMs",
+    mcqs: [
+      {
+        questionText: "Why do Large Language Models operate on tokens rather than raw characters or whole words directly?",
+        options: ["Tokenization (often subword-based) balances vocabulary size and the ability to represent rare/unseen words, making training and inference efficient", "LLMs process raw text character by character with no tokenization step", "Tokens have no relationship to how LLMs process text", "Tokenization is only used for image-based models"],
+        correctOption: 0,
+        explanation: "The correct answer is: Tokenization (often subword-based) balances vocabulary size and the ability to represent rare/unseen words, making training and inference efficient",
+      },
+      {
+        questionText: "What tokenization algorithm is commonly used by GPT-family models?",
+        options: ["Byte-Pair Encoding (BPE) or its variants", "Simple whitespace splitting only", "Character-by-character encoding only", "Random token assignment"],
+        correctOption: 0,
+        explanation: "The correct answer is: Byte-Pair Encoding (BPE) or its variants",
+      },
+      {
+        questionText: "How does Byte-Pair Encoding build its vocabulary?",
+        options: ["It iteratively merges the most frequent pairs of characters/subwords in the training corpus to form a vocabulary of common subword units", "It randomly selects a fixed number of words", "It uses only single characters with no merging", "It requires manual definition of every token"],
+        correctOption: 0,
+        explanation: "The correct answer is: It iteratively merges the most frequent pairs of characters/subwords in the training corpus to form a vocabulary of common subword units",
+      },
+      {
+        questionText: "Why does the number of tokens in a piece of text not always exactly equal the number of words?",
+        options: ["Subword tokenization can split a single word into multiple tokens (especially rare/long words) or combine short common words, so token count differs from word count", "Tokens and words are always exactly equivalent in every language", "Tokenization always produces exactly one token per character", "Tokenization always produces exactly one token per sentence"],
+        correctOption: 0,
+        explanation: "The correct answer is: Subword tokenization can split a single word into multiple tokens (especially rare/long words) or combine short common words, so token count differs from word count",
+      },
+      {
+        questionText: "Why is understanding token count important when working with LLM APIs?",
+        options: ["API usage/cost is typically billed per token, and models have a maximum context window measured in tokens, both of which depend on tokenization", "Token count has no relevance to API usage or cost", "LLMs have unlimited context regardless of token count", "Token count only matters for image models"],
+        correctOption: 0,
+        explanation: "The correct answer is: API usage/cost is typically billed per token, and models have a maximum context window measured in tokens, both of which depend on tokenization",
+      },
+      {
+        questionText: "What can happen if the same text is tokenized differently by two different LLMs' tokenizers?",
+        options: ["The token counts, and therefore cost/context usage, can differ significantly between models for the same input text", "All LLMs always use an identical shared tokenizer with no differences", "Tokenizer choice has no effect on cost calculations", "Different tokenizers always produce the exact same token count"],
+        correctOption: 0,
+        explanation: "The correct answer is: The token counts, and therefore cost/context usage, can differ significantly between models for the same input text",
+      },
+      {
+        questionText: "What is a practical Python library commonly used to count/estimate tokens for OpenAI models before sending a request?",
+        options: ["'tiktoken'", "'pandas'", "'matplotlib'", "'requests' alone, with no tokenizer library"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'tiktoken'",
+      },
+      {
+        questionText: "Why might non-English languages sometimes require more tokens to represent the same amount of text compared to English, depending on the tokenizer's training data?",
+        options: ["If the tokenizer's vocabulary was built predominantly from English text, non-English text may be split into more, smaller subword tokens", "All languages are always tokenized with identical efficiency regardless of training data", "Tokenizers cannot process non-English text at all", "Token count is entirely independent of the tokenizer's training data"],
+        correctOption: 0,
+        explanation: "The correct answer is: If the tokenizer's vocabulary was built predominantly from English text, non-English text may be split into more, smaller subword tokens",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using the 'tiktoken' library, write code to count the number of tokens in a given piece of text for a specified OpenAI model's encoding.",
+        starterCode: "# Using the 'tiktoken' library, write code to count the number\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport tiktoken\nenc = tiktoken.encoding_for_model('gpt-4')\ntext = \"Data science with LLMs is fascinating.\"\ntokens = enc.encode(text)\nprint(len(tokens))\\n```",
+      },
+      {
+        questionText: "Using the HuggingFace 'AutoTokenizer', write code to tokenize the same sentence using two different pre-trained tokenizers (e.g., BERT and GPT-2) and compare the resulting token counts and token strings.",
+        starterCode: "# Using the HuggingFace 'AutoTokenizer', write code to tokeniz\n\ndef tokenizers():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom transformers import AutoTokenizer\nbert_tok = AutoTokenizer.from_pretrained('bert-base-uncased')\ngpt2_tok = AutoTokenizer.from_pretrained('gpt2')\ntext = \"Tokenization varies across models.\"\nprint(\"BERT:\", len(bert_tok.tokenize(text)), bert_tok.tokenize(text))\nprint(\"GPT2:\", len(gpt2_tok.tokenize(text)), gpt2_tok.tokenize(text))\\n```",
+      },
+    ],
+  },
+  189: {
+    topicTitle: "GenAI: LLM - Context Window & Positional Encoding",
+    mcqs: [
+      {
+        questionText: "What is the \"context window\" of an LLM?",
+        options: ["The maximum number of tokens (input + output combined, or input alone depending on the model) that the model can process/attend to at once", "The physical screen size used to display the model's output", "The number of layers in the model", "The number of GPUs used during training"],
+        correctOption: 0,
+        explanation: "The correct answer is: The maximum number of tokens (input + output combined, or input alone depending on the model) that the model can process/attend to at once",
+      },
+      {
+        questionText: "What practical limitation does a model's context window impose on an application?",
+        options: ["Input text (plus any conversation history or retrieved context) exceeding the context window must be truncated or summarized before being sent to the model", "There is no limitation; models can process infinitely long text", "The context window only affects image inputs, not text", "Context window size has no effect on application design"],
+        correctOption: 0,
+        explanation: "The correct answer is: Input text (plus any conversation history or retrieved context) exceeding the context window must be truncated or summarized before being sent to the model",
+      },
+      {
+        questionText: "Why do Transformer-based models need positional encoding at all, given that self-attention itself processes tokens without regard to order?",
+        options: ["Self-attention is permutation-invariant by default, so positional information must be explicitly injected for the model to understand token order", "Self-attention already inherently understands word order without any additional information", "Positional encoding is an optional decorative feature with no functional purpose", "Token order is irrelevant to language understanding"],
+        correctOption: 0,
+        explanation: "The correct answer is: Self-attention is permutation-invariant by default, so positional information must be explicitly injected for the model to understand token order",
+      },
+      {
+        questionText: "What is the difference between the original sinusoidal positional encodings (from \"Attention Is All You Need\") and learned positional embeddings?",
+        options: ["Sinusoidal encodings are fixed mathematical functions of position, while learned positional embeddings are trainable parameters optimized during training", "They are identical in every respect", "Learned embeddings never require any training", "Sinusoidal encodings are trainable, learned embeddings are fixed"],
+        correctOption: 0,
+        explanation: "The correct answer is: Sinusoidal encodings are fixed mathematical functions of position, while learned positional embeddings are trainable parameters optimized during training",
+      },
+      {
+        questionText: "What technique, used in models like RoPE (Rotary Positional Embeddings), has helped enable longer context windows in modern LLMs?",
+        options: ["Encoding relative positional information directly into the attention computation in a way that generalizes better to longer sequences than some earlier methods", "Removing positional information entirely", "Only works for very short sequences of fixed length", "RoPE has no relationship to context length"],
+        correctOption: 0,
+        explanation: "The correct answer is: Encoding relative positional information directly into the attention computation in a way that generalizes better to longer sequences than some earlier methods",
+      },
+      {
+        questionText: "Why can very long context windows increase both computational cost and latency?",
+        options: ["Self-attention's computational cost typically scales quadratically with sequence length, so longer contexts require significantly more computation", "Context length has no impact on computational cost", "Cost always decreases as context length increases", "Longer context windows always reduce latency"],
+        correctOption: 0,
+        explanation: "The correct answer is: Self-attention's computational cost typically scales quadratically with sequence length, so longer contexts require significantly more computation",
+      },
+      {
+        questionText: "Why might a chatbot application need a strategy (e.g., summarizing older messages) for handling long conversations that exceed the context window?",
+        options: ["Once the conversation history exceeds the model's context window, older messages must be trimmed, summarized, or otherwise managed to fit within the limit", "Context windows are always large enough to hold infinite conversation history", "Long conversations never exceed any context window", "This is not a real practical concern for chatbot applications"],
+        correctOption: 0,
+        explanation: "The correct answer is: Once the conversation history exceeds the model's context window, older messages must be trimmed, summarized, or otherwise managed to fit within the limit",
+      },
+      {
+        questionText: "What does \"context window utilization\" refer to when evaluating an LLM application's efficiency?",
+        options: ["How effectively the available token budget is used (e.g., including only the most relevant retrieved context rather than excessive/irrelevant text)", "The number of GPUs used to serve the model", "The number of users connected simultaneously", "The physical memory of the user's device"],
+        correctOption: 0,
+        explanation: "The correct answer is: How effectively the available token budget is used (e.g., including only the most relevant retrieved context rather than excessive/irrelevant text)",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python function 'fits_context_window(prompt, max_tokens, tokenizer)' (pseudocode acceptable using 'tiktoken') that checks whether a given prompt's token count fits within a specified context window limit.",
+        starterCode: "# Write a Python function 'fits_context_window(prompt, max_tok\n\ndef fits_context_window():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport tiktoken\n\ndef fits_context_window(prompt, max_tokens, encoding_name='cl100k_base'):\n    enc = tiktoken.get_encoding(encoding_name)\n    return len(enc.encode(prompt)) <= max_tokens\n\nprint(fits_context_window(\"short prompt\", 100))\\n```",
+      },
+      {
+        questionText: "Implement a simplified sinusoidal positional encoding function from scratch in NumPy that generates a positional encoding matrix for a given sequence length and embedding dimension.",
+        starterCode: "# Implement a simplified sinusoidal positional encoding functi\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport numpy as np\ndef sinusoidal_positional_encoding(seq_len, d_model):\n    pos = np.arange(seq_len)[:, np.newaxis]\n    i = np.arange(d_model)[np.newaxis, :]\n    angle_rates = 1 / np.power(10000, (2*(i//2)) / d_model)\n    angles = pos * angle_rates\n    pe = np.zeros((seq_len, d_model))\n    pe[:, 0::2] = np.sin(angles[:, 0::2])\n    pe[:, 1::2] = np.cos(angles[:, 1::2])\n    return pe\n\nprint(sinusoidal_positional_encoding(5, 8).shape)\\n```",
+      },
+    ],
+  },
+  190: {
+    topicTitle: "GenAI: LLM - Fine-Tuning LLMs (LoRA, PEFT)",
+    mcqs: [
+      {
+        questionText: "Why is full fine-tuning of a very large LLM (billions of parameters) often impractical for many organizations?",
+        options: ["It requires substantial GPU memory and compute to update and store gradients for all parameters, making it costly and resource-intensive", "Full fine-tuning always requires no computational resources", "Full fine-tuning is impossible for any model size", "Full fine-tuning is always faster than any alternative method"],
+        correctOption: 0,
+        explanation: "The correct answer is: It requires substantial GPU memory and compute to update and store gradients for all parameters, making it costly and resource-intensive",
+      },
+      {
+        questionText: "What does LoRA (Low-Rank Adaptation) do to make fine-tuning more efficient?",
+        options: ["It freezes the original pre-trained weights and injects small trainable low-rank matrices into certain layers, drastically reducing the number of trainable parameters", "It fine-tunes every single parameter in the model with no exceptions", "It removes the need for any pre-trained weights", "It only works for image models, never language models"],
+        correctOption: 0,
+        explanation: "The correct answer is: It freezes the original pre-trained weights and injects small trainable low-rank matrices into certain layers, drastically reducing the number of trainable parameters",
+      },
+      {
+        questionText: "What does PEFT (Parameter-Efficient Fine-Tuning) refer to as a broader category?",
+        options: ["A family of techniques (including LoRA, adapters, prefix tuning) that fine-tune only a small number of additional parameters instead of the full model", "A single specific algorithm with no variants", "A technique that always requires modifying 100% of model parameters", "A method exclusively for training models from scratch"],
+        correctOption: 0,
+        explanation: "The correct answer is: A family of techniques (including LoRA, adapters, prefix tuning) that fine-tune only a small number of additional parameters instead of the full model",
+      },
+      {
+        questionText: "What is a key practical benefit of LoRA adapters being small, separate weight files?",
+        options: ["Multiple task-specific LoRA adapters can be trained and swapped in/out on top of the same base model without duplicating the entire large base model", "Each fine-tuned task requires storing an entirely separate full copy of the base model", "LoRA adapters cannot be reused across different deployments", "LoRA adapters are always larger than the full model"],
+        correctOption: 0,
+        explanation: "The correct answer is: Multiple task-specific LoRA adapters can be trained and swapped in/out on top of the same base model without duplicating the entire large base model",
+      },
+      {
+        questionText: "What does QLoRA add on top of standard LoRA to further reduce memory requirements?",
+        options: ["Quantizing the base model's weights (e.g., to 4-bit precision) while fine-tuning LoRA adapters on top, significantly reducing memory usage", "It removes LoRA entirely and performs full fine-tuning instead", "It has no relationship to memory reduction", "It only works for very small models under 1 million parameters"],
+        correctOption: 0,
+        explanation: "The correct answer is: Quantizing the base model's weights (e.g., to 4-bit precision) while fine-tuning LoRA adapters on top, significantly reducing memory usage",
+      },
+      {
+        questionText: "What is \"prefix tuning\" as another PEFT technique?",
+        options: ["Learning a small set of trainable continuous vectors (\"virtual tokens\") prepended to the input, while keeping the base model's weights frozen", "Fully retraining the entire model's weights from scratch", "A technique that requires modifying only the tokenizer, not any model weights", "A method used exclusively for image classification"],
+        correctOption: 0,
+        explanation: "The correct answer is: Learning a small set of trainable continuous vectors (\"virtual tokens\") prepended to the input, while keeping the base model's weights frozen",
+      },
+      {
+        questionText: "Why might a team choose full fine-tuning over LoRA/PEFT despite the higher cost, in certain scenarios?",
+        options: ["When maximum task-specific performance and full model adaptability are required, and the necessary compute/data resources are available", "Full fine-tuning is always strictly worse than LoRA in every scenario", "LoRA always outperforms full fine-tuning universally with no trade-offs", "There is never a valid reason to choose full fine-tuning"],
+        correctOption: 0,
+        explanation: "The correct answer is: When maximum task-specific performance and full model adaptability are required, and the necessary compute/data resources are available",
+      },
+      {
+        questionText: "Which HuggingFace library is commonly used to implement LoRA and other PEFT techniques in practice?",
+        options: ["'peft'", "'pandas'", "'matplotlib'", "'requests'"],
+        correctOption: 0,
+        explanation: "The correct answer is: 'peft'",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using the HuggingFace 'peft' library, write code to configure a 'LoraConfig' (specifying rank, target modules, etc.) and wrap a pre-trained causal language model with it using 'get_peft_model'.",
+        starterCode: "# Using the HuggingFace 'peft' library, write code to configur\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom peft import LoraConfig, get_peft_model\nfrom transformers import AutoModelForCausalLM\nmodel = AutoModelForCausalLM.from_pretrained('gpt2')\nconfig = LoraConfig(r=8, lora_alpha=32, target_modules=['c_attn'], lora_dropout=0.1, task_type='CAUSAL_LM')\npeft_model = get_peft_model(model, config)\npeft_model.print_trainable_parameters()\\n```",
+      },
+      {
+        questionText: "Write a Python snippet showing how to load a base pre-trained model in 4-bit precision (using 'bitsandbytes') and attach LoRA adapters for QLoRA-style fine-tuning, printing the trainable parameter count versus total parameter count.",
+        starterCode: "# Write a Python snippet showing how to load a base pre-traine\n\ndef precision():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom transformers import AutoModelForCausalLM, BitsAndBytesConfig\nfrom peft import LoraConfig, get_peft_model\nbnb_config = BitsAndBytesConfig(load_in_4bit=True)\nmodel = AutoModelForCausalLM.from_pretrained('gpt2', quantization_config=bnb_config)\nlora_config = LoraConfig(r=8, lora_alpha=32, target_modules=['c_attn'])\nmodel = get_peft_model(model, lora_config)\nmodel.print_trainable_parameters()\\n```",
+      },
+    ],
+  },
+  191: {
+    topicTitle: "GenAI: LLM - LLM Evaluation Benchmarks",
+    mcqs: [
+      {
+        questionText: "Why are standardized benchmarks important for comparing different LLMs?",
+        options: ["They provide a consistent, reproducible way to measure and compare model capabilities across tasks like reasoning, knowledge, and coding", "Benchmarks have no value since all LLMs perform identically", "Benchmarks are only relevant for image models", "LLMs cannot be meaningfully compared in any way"],
+        correctOption: 0,
+        explanation: "The correct answer is: They provide a consistent, reproducible way to measure and compare model capabilities across tasks like reasoning, knowledge, and coding",
+      },
+      {
+        questionText: "What does the MMLU (Massive Multitask Language Understanding) benchmark evaluate?",
+        options: ["A model's knowledge and reasoning across a wide range of academic subjects via multiple-choice questions", "Only the model's image generation quality", "Only the model's code execution speed", "Only the model's ability to write poetry"],
+        correctOption: 0,
+        explanation: "The correct answer is: A model's knowledge and reasoning across a wide range of academic subjects via multiple-choice questions",
+      },
+      {
+        questionText: "What is HumanEval, and what does it measure?",
+        options: ["A benchmark that measures an LLM's ability to generate correct, functioning code by testing generated solutions against unit tests", "A benchmark exclusively for evaluating human annotators", "A benchmark for measuring image classification accuracy", "A benchmark unrelated to any coding tasks"],
+        correctOption: 0,
+        explanation: "The correct answer is: A benchmark that measures an LLM's ability to generate correct, functioning code by testing generated solutions against unit tests",
+      },
+      {
+        questionText: "Why is \"benchmark contamination\" (where benchmark data may have leaked into a model's training set) a concern when interpreting reported LLM benchmark scores?",
+        options: ["If a model has seen benchmark questions/answers during training, its performance on that benchmark may be artificially inflated and not reflect true generalization", "Contamination is not a real concern in LLM evaluation", "All benchmarks are guaranteed to be completely free of any training data overlap", "Contamination always lowers reported scores rather than inflating them"],
+        correctOption: 0,
+        explanation: "The correct answer is: If a model has seen benchmark questions/answers during training, its performance on that benchmark may be artificially inflated and not reflect true generalization",
+      },
+      {
+        questionText: "What do benchmarks like HellaSwag or Winogrande primarily test?",
+        options: ["Commonsense reasoning abilities of a language model", "Only mathematical calculation speed", "Only image recognition accuracy", "Only audio transcription accuracy"],
+        correctOption: 0,
+        explanation: "The correct answer is: Commonsense reasoning abilities of a language model",
+      },
+      {
+        questionText: "Why might benchmark leaderboards not fully capture a model's real-world usefulness for a specific application?",
+        options: ["Benchmarks test general capabilities on fixed tasks, which may not reflect performance on a company's specific domain, data, or use case", "Benchmarks always perfectly predict performance for every possible real-world application", "Real-world usefulness is identical to benchmark scores in all cases", "Benchmarks are the only meaningful measure of model quality with no other considerations"],
+        correctOption: 0,
+        explanation: "The correct answer is: Benchmarks test general capabilities on fixed tasks, which may not reflect performance on a company's specific domain, data, or use case",
+      },
+      {
+        questionText: "What is the purpose of \"chatbot arena\"-style evaluations, where human users compare pairs of model responses head-to-head?",
+        options: ["To capture human preference-based rankings of models on open-ended conversational quality, complementing fixed-answer benchmarks", "To replace all automated coding benchmarks entirely", "To measure only image generation quality", "To measure only training compute cost"],
+        correctOption: 0,
+        explanation: "The correct answer is: To capture human preference-based rankings of models on open-ended conversational quality, complementing fixed-answer benchmarks",
+      },
+      {
+        questionText: "Why is it good practice to evaluate an LLM on benchmarks/tasks relevant to your specific application, rather than relying solely on general leaderboards?",
+        options: ["General leaderboard rankings may not correlate strongly with performance on your particular domain, data distribution, or task requirements", "General benchmarks always perfectly predict performance on every specific task", "Application-specific evaluation is never necessary", "All models perform identically on every possible task regardless of benchmark"],
+        correctOption: 0,
+        explanation: "The correct answer is: General leaderboard rankings may not correlate strongly with performance on your particular domain, data distribution, or task requirements",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python function 'evaluate_multiple_choice_accuracy(model_responses, correct_answers)' that computes the accuracy of a model's answers on a list of multiple-choice questions, given the model's selected answers and the correct answer key.",
+        starterCode: "# Write a Python function 'evaluate_multiple_choice_accuracy(m\n\ndef evaluate_multiple_choice_accuracy():\n    pass",
+        expectedKeywords: ["def", "for", "return"],
+        solutionDescription: "```python\\ndef evaluate_multiple_choice_accuracy(model_responses, correct_answers):\n    correct = sum(1 for r, c in zip(model_responses, correct_answers) if r == c)\n    return correct / len(correct_answers)\n\nprint(evaluate_multiple_choice_accuracy(['A','B','C'], ['A','B','D']))\\n```",
+      },
+      {
+        questionText: "Write a Python function 'run_code_eval(generated_code, test_cases)' (pseudocode acceptable) that executes a piece of LLM-generated code against a list of test cases and reports the pass/fail rate, illustrating the core idea behind HumanEval-style code evaluation.",
+        starterCode: "# Write a Python function 'run_code_eval(generated_code, test_\n\ndef run_code_eval():\n    pass",
+        expectedKeywords: ["def", "for", "return", "try"],
+        solutionDescription: "```python\\ndef run_code_eval(generated_code, test_cases):\n    namespace = {}\n    exec(generated_code, namespace)\n    passed = 0\n    for test_input, expected in test_cases:\n        try:\n            result = namespace['solution'](*test_input)\n            if result == expected:\n                passed += 1\n        except Exception:\n            pass\n    return passed / len(test_cases)\\n```",
+      },
+    ],
+  },
+  192: {
+    topicTitle: "GenAI: LLM - Popular LLM Families (GPT, Claude, Llama, Gemini)",
+    mcqs: [
+      {
+        questionText: "What is the GPT family of models (developed by OpenAI) generally known for?",
+        options: ["A widely used series of large autoregressive language models, accessible via API and powering products like ChatGPT", "A family of purely open-source image classification models", "A database management system", "A family of models used exclusively for tabular data"],
+        correctOption: 0,
+        explanation: "The correct answer is: A widely used series of large autoregressive language models, accessible via API and powering products like ChatGPT",
+      },
+      {
+        questionText: "What is Claude (developed by Anthropic) generally known for?",
+        options: ["A family of large language models developed with an emphasis on helpfulness and safety, accessible via API and consumer chat products", "A computer vision-only model family", "A relational database engine", "A model family used exclusively for audio processing"],
+        correctOption: 0,
+        explanation: "The correct answer is: A family of large language models developed with an emphasis on helpfulness and safety, accessible via API and consumer chat products",
+      },
+      {
+        questionText: "What distinguishes the Llama family of models (developed by Meta) in terms of accessibility?",
+        options: ["Llama models have been released with openly available weights under specific licenses, enabling broader research and self-hosted use compared to some closed API-only models", "Llama models are never available for any form of download or self-hosting", "Llama is a proprietary database system unrelated to language models", "Llama models can only be accessed through a single closed API with no weights ever released"],
+        correctOption: 0,
+        explanation: "The correct answer is: Llama models have been released with openly available weights under specific licenses, enabling broader research and self-hosted use compared to some closed API-only models",
+      },
+      {
+        questionText: "What is Gemini (developed by Google/DeepMind) generally known for?",
+        options: ["A family of multimodal large language models capable of processing text, images, and other modalities, integrated into various Google products", "A model family limited strictly to text-only processing with no multimodal capability", "A traditional statistical regression tool", "A spreadsheet application"],
+        correctOption: 0,
+        explanation: "The correct answer is: A family of multimodal large language models capable of processing text, images, and other modalities, integrated into various Google products",
+      },
+      {
+        questionText: "Why might different LLM families vary significantly in performance across different types of tasks (e.g., coding vs. creative writing vs. reasoning)?",
+        options: ["Differences in training data, architecture choices, fine-tuning/alignment approaches, and model scale can all lead to varying strengths across task types", "All LLM families always perform identically on every task type", "Task performance is entirely random and unrelated to any design choices", "Only model size affects performance, with no other factors mattering"],
+        correctOption: 0,
+        explanation: "The correct answer is: Differences in training data, architecture choices, fine-tuning/alignment approaches, and model scale can all lead to varying strengths across task types",
+      },
+      {
+        questionText: "What is a practical reason a developer might choose an open-weight model (like some Llama variants) over a closed API-only model for a given application?",
+        options: ["The ability to self-host, fine-tune extensively, and avoid ongoing per-token API costs, along with greater control over data privacy", "Open-weight models are always strictly more capable than every closed model", "There is no practical difference between open-weight and API-only models", "Closed API models can never be fine-tuned in any way, while open models always can"],
+        correctOption: 0,
+        explanation: "The correct answer is: The ability to self-host, fine-tune extensively, and avoid ongoing per-token API costs, along with greater control over data privacy",
+      },
+      {
+        questionText: "Why is it useful to periodically check for updated information on LLM releases and versions when building production applications?",
+        options: ["The LLM landscape evolves rapidly, with new model versions, capabilities, and pricing being released frequently, which can affect application design decisions", "LLM releases never change once a family is announced", "There is no practical value in staying updated on model releases", "All model versions within a family always behave identically forever"],
+        correctOption: 0,
+        explanation: "The correct answer is: The LLM landscape evolves rapidly, with new model versions, capabilities, and pricing being released frequently, which can affect application design decisions",
+      },
+      {
+        questionText: "What is a \"model card,\" often published alongside major LLM releases?",
+        options: ["Documentation describing a model's intended uses, limitations, training data characteristics, and evaluation results", "A physical hardware component required to run the model", "A credit card used to pay for API access", "A visual diagram of the model's neural network architecture only"],
+        correctOption: 0,
+        explanation: "The correct answer is: Documentation describing a model's intended uses, limitations, training data characteristics, and evaluation results",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write Python code demonstrating how to send the same prompt to two different LLM provider APIs (e.g., OpenAI's and Anthropic's, using their respective SDKs) and print both responses side by side for comparison.",
+        starterCode: "# Write Python code demonstrating how to send the same prompt \n\ndef APIs():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom openai import OpenAI\nimport anthropic\nopenai_client = OpenAI()\nanthropic_client = anthropic.Anthropic()\nprompt = \"Explain gradient descent in one sentence.\"\nopenai_resp = openai_client.chat.completions.create(model='gpt-4o', messages=[{'role':'user','content':prompt}])\nclaude_resp = anthropic_client.messages.create(model='claude-sonnet-4-6', max_tokens=100, messages=[{'role':'user','content':prompt}])\nprint(\"OpenAI:\", openai_resp.choices[0].message.content)\nprint(\"Claude:\", claude_resp.content[0].text)\\n```",
+      },
+      {
+        questionText: "Write a Python function 'select_model_for_task(task_type, available_models)' (pseudocode acceptable) that takes a task type (e.g., \"coding\", \"creative_writing\", \"summarization\") and a dictionary of available models with their strengths, returning a recommended model choice based on simple rule-based matching.",
+        starterCode: "# Write a Python function 'select_model_for_task(task_type, av\n\ndef select_model_for_task():\n    pass",
+        expectedKeywords: ["def", "for", "return"],
+        solutionDescription: "```python\\ndef select_model_for_task(task_type, available_models):\n    for model, strengths in available_models.items():\n        if task_type in strengths:\n            return model\n    return list(available_models.keys())[0]\n\nmodels = {'gpt-4o': ['coding', 'summarization'], 'claude-sonnet-5': ['creative_writing', 'coding']}\nprint(select_model_for_task('creative_writing', models))\\n```",
+      },
+    ],
+  },
+  193: {
+    topicTitle: "RAG: Introduction to Retrieval-Augmented Generation (RAG)",
     mcqs: [
       {
         questionText: "RAG primarily combines:",
@@ -6757,15 +12921,618 @@ export const PRESET_DAILY_QUIZZES: Record<number, { topicTitle: string; mcqs: MC
     coding: [
       {
         questionText: "Using a vector database library (e.g., FAISS or Chroma) and a sentence embedding model, write code to index a small set of text documents and retrieve the top-3 most relevant documents for a given query.",
-        starterCode: "def library():\n    pass",
-        expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Using a vector database library (e.g., FAISS or Chroma) and a sentence embedding...",
+        starterCode: "# Using a vector database library (e.g., FAISS or Chroma) and \n\ndef library():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nimport faiss\nimport numpy as np\nfrom sentence_transformers import SentenceTransformer\ndocs = [\"Cats are mammals\", \"Python is a language\", \"Dogs bark\", \"Java is also a language\"]\nmodel = SentenceTransformer('all-MiniLM-L6-v2')\nembeddings = model.encode(docs)\nindex = faiss.IndexFlatL2(embeddings.shape[1])\nindex.add(np.array(embeddings))\nquery_embedding = model.encode([\"Tell me about programming languages\"])\ndistances, indices = index.search(np.array(query_embedding), 3)\nprint([docs[i] for i in indices[0]])\\n```",
       },
       {
         questionText: "Using LangChain (or a similar framework) and an LLM, write code to build a simple RAG pipeline: retrieve relevant context for a question from a small document store, then pass the context plus question to the LLM to generate an answer.",
-        starterCode: "def LangChain():\n    pass",
+        starterCode: "# Using LangChain (or a similar framework) and an LLM, write c\n\ndef LangChain():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom langchain.chains import RetrievalQA\n# Pseudocode:\n# vectorstore = Chroma.from_texts(docs, embedding=embeddings_model)\n# retriever = vectorstore.as_retriever()\n# qa_chain = RetrievalQA.from_chain_type(llm=llm, retriever=retriever)\n# answer = qa_chain.run(\"What is Python?\")\\n```",
+      },
+    ],
+  },
+  194: {
+    topicTitle: "RAG: RAG - Chunking Strategies",
+    mcqs: [
+      {
+        questionText: "Why must documents typically be split into smaller \"chunks\" before being indexed in a RAG (Retrieval-Augmented Generation) pipeline?",
+        options: ["Embedding models and retrieval systems work best on manageable text sizes, and smaller chunks improve retrieval precision compared to indexing entire long documents at once", "Chunking is unnecessary; entire documents are always embedded directly with no downside", "Chunking is only relevant for image data, not text", "Chunks must always be exactly 1 sentence long by definition"],
+        correctOption: 0,
+        explanation: "The correct answer is: Embedding models and retrieval systems work best on manageable text sizes, and smaller chunks improve retrieval precision compared to indexing entire long documents at once",
+      },
+      {
+        questionText: "What is a common risk of chunking documents with too small a chunk size?",
+        options: ["Important context may be split across chunks, causing retrieved pieces to lack sufficient surrounding context to answer a question fully", "Small chunks always retrieve perfectly with no downsides", "Small chunks eliminate the need for an embedding model", "Chunk size has no effect on retrieval quality"],
+        correctOption: 0,
+        explanation: "The correct answer is: Important context may be split across chunks, causing retrieved pieces to lack sufficient surrounding context to answer a question fully",
+      },
+      {
+        questionText: "What is a common risk of chunking documents with too large a chunk size?",
+        options: ["Each chunk may contain a lot of irrelevant content alongside the relevant part, diluting the embedding's ability to represent the specific information needed, and increasing token usage", "Large chunks always improve retrieval precision with no downside", "Large chunk size has no effect on cost", "Large chunks eliminate the need for any retrieval step"],
+        correctOption: 0,
+        explanation: "The correct answer is: Each chunk may contain a lot of irrelevant content alongside the relevant part, diluting the embedding's ability to represent the specific information needed, and increasing token usage",
+      },
+      {
+        questionText: "What is \"chunk overlap,\" and why is it often used?",
+        options: ["Including some overlapping text between consecutive chunks to reduce the chance that important context is cut off at chunk boundaries", "Ensuring every chunk is completely unique with zero shared text", "A technique that only applies to image chunking", "A method for removing all context between chunks"],
+        correctOption: 0,
+        explanation: "The correct answer is: Including some overlapping text between consecutive chunks to reduce the chance that important context is cut off at chunk boundaries",
+      },
+      {
+        questionText: "What is the difference between fixed-size chunking and semantic/structure-aware chunking (e.g., splitting by paragraphs or sections)?",
+        options: ["Fixed-size chunking splits text by a set number of characters/tokens regardless of content structure, while semantic chunking respects natural boundaries like paragraphs or headings", "They are identical approaches with no differences", "Semantic chunking always ignores document structure entirely", "Fixed-size chunking always produces better results in every case"],
+        correctOption: 0,
+        explanation: "The correct answer is: Fixed-size chunking splits text by a set number of characters/tokens regardless of content structure, while semantic chunking respects natural boundaries like paragraphs or headings",
+      },
+      {
+        questionText: "Why might chunking strategy need to differ for structured documents (e.g., code, tables) versus unstructured prose?",
+        options: ["Structured content often has meaningful units (e.g., functions, table rows) that should ideally not be split arbitrarily, unlike free-flowing prose", "All document types should always use identical chunking rules with no exceptions", "Structured documents never need to be chunked at all", "Chunking strategy has no relationship to content type"],
+        correctOption: 0,
+        explanation: "The correct answer is: Structured content often has meaningful units (e.g., functions, table rows) that should ideally not be split arbitrarily, unlike free-flowing prose",
+      },
+      {
+        questionText: "How does the choice of embedding model's typical/maximum input length relate to chunk size decisions?",
+        options: ["Chunks are usually sized to fit well within the embedding model's context limit while still capturing coherent, meaningful content", "Embedding models have no input length limitations of any kind", "Chunk size is always independent of the embedding model used", "Chunks must always exceed the embedding model's maximum input length"],
+        correctOption: 0,
+        explanation: "The correct answer is: Chunks are usually sized to fit well within the embedding model's context limit while still capturing coherent, meaningful content",
+      },
+      {
+        questionText: "What metadata is commonly stored alongside each chunk (e.g., source document, page number) in a RAG system?",
+        options: ["Metadata that helps trace a retrieved chunk back to its original source, useful for citations and filtering", "No metadata is ever stored with chunks in RAG systems", "Only the raw chunk text is stored, with no other information", "Metadata replaces the need for the chunk's embedding vector"],
+        correctOption: 0,
+        explanation: "The correct answer is: Metadata that helps trace a retrieved chunk back to its original source, useful for citations and filtering",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python function 'chunk_text(text, chunk_size, overlap)' that splits a long string into overlapping chunks of approximately 'chunk_size' characters, with the specified character 'overlap' between consecutive chunks.",
+        starterCode: "# Write a Python function 'chunk_text(text, chunk_size, overla\n\ndef chunk_text():\n    pass",
+        expectedKeywords: ["def", "return", "while"],
+        solutionDescription: "```python\\ndef chunk_text(text, chunk_size, overlap):\n    chunks = []\n    start = 0\n    while start < len(text):\n        end = start + chunk_size\n        chunks.append(text[start:end])\n        start += chunk_size - overlap\n    return chunks\n\nprint(chunk_text(\"a\" * 100, 30, 5))\\n```",
+      },
+      {
+        questionText: "Using the 'langchain' library's 'RecursiveCharacterTextSplitter' (or similar), write code to split a sample document into chunks of a specified size, printing the number of resulting chunks and the first chunk's content.",
+        starterCode: "# Using the 'langchain' library's 'RecursiveCharacterTextSplit\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nfrom langchain.text_splitter import RecursiveCharacterTextSplitter\nsplitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=20)\ndocument = \"This is a long sample document. \" * 50\nchunks = splitter.split_text(document)\nprint(len(chunks), chunks[0])\\n```",
+      },
+    ],
+  },
+  195: {
+    topicTitle: "RAG: RAG - Embedding Models for Retrieval",
+    mcqs: [
+      {
+        questionText: "What role do embedding models play in a RAG pipeline?",
+        options: ["They convert text (queries and document chunks) into dense numeric vectors that capture semantic meaning, enabling similarity-based retrieval", "They generate the final natural language answer directly", "They only remove stopwords from text", "They are used exclusively for image processing, not text retrieval"],
+        correctOption: 0,
+        explanation: "The correct answer is: They convert text (queries and document chunks) into dense numeric vectors that capture semantic meaning, enabling similarity-based retrieval",
+      },
+      {
+        questionText: "Why is it important that the same (or a compatible) embedding model is used to embed both the documents and the incoming user query in a RAG system?",
+        options: ["Embeddings from different models generally exist in different vector spaces, so comparing them directly for similarity would not produce meaningful results", "Different embedding models always produce identical, directly comparable vectors", "The embedding model used for queries never matters", "Document and query embeddings never need to be compared to each other"],
+        correctOption: 0,
+        explanation: "The correct answer is: Embeddings from different models generally exist in different vector spaces, so comparing them directly for similarity would not produce meaningful results",
+      },
+      {
+        questionText: "What does \"semantic search\" using embeddings allow, compared to traditional keyword search?",
+        options: ["Finding relevant content based on meaning/similarity even if the exact keywords don't match, since embeddings capture semantic relationships", "Semantic search only works when the exact keywords are present, just like keyword search", "Semantic search always performs worse than keyword search in every case", "Semantic search requires no embedding model at all"],
+        correctOption: 0,
+        explanation: "The correct answer is: Finding relevant content based on meaning/similarity even if the exact keywords don't match, since embeddings capture semantic relationships",
+      },
+      {
+        questionText: "What is a common choice for a general-purpose text embedding model used in RAG pipelines?",
+        options: ["Models such as OpenAI's 'text-embedding-3' family or open-source sentence-transformer models", "A standard image classification CNN with no text capability", "A simple bag-of-words counter with no learned representation", "A basic regex pattern matcher"],
+        correctOption: 0,
+        explanation: "The correct answer is: Models such as OpenAI's 'text-embedding-3' family or open-source sentence-transformer models",
+      },
+      {
+        questionText: "What does the dimensionality of an embedding vector (e.g., 768, 1536) represent?",
+        options: ["The number of numeric values used to represent each piece of text in the vector space", "The number of documents indexed", "The number of tokens in the input text", "The maximum context window of the model"],
+        correctOption: 0,
+        explanation: "The correct answer is: The number of numeric values used to represent each piece of text in the vector space",
+      },
+      {
+        questionText: "Why might a domain-specific embedding model (e.g., fine-tuned for legal or medical text) outperform a general-purpose embedding model for a specialized RAG application?",
+        options: ["It can better capture the nuanced semantic relationships and terminology specific to that domain, improving retrieval relevance", "Domain-specific models always perform worse than general-purpose models in every case", "Embedding models cannot be specialized for any particular domain", "Domain has no relationship to embedding quality"],
+        correctOption: 0,
+        explanation: "The correct answer is: It can better capture the nuanced semantic relationships and terminology specific to that domain, improving retrieval relevance",
+      },
+      {
+        questionText: "What trade-off might exist between using a larger, more accurate embedding model versus a smaller, faster one in a production RAG system?",
+        options: ["Larger embedding models may produce more accurate/nuanced representations but at higher computational cost and latency for embedding generation", "Larger embedding models are always faster and cheaper than smaller ones", "There is no trade-off; bigger is always strictly better with no cost", "Embedding model size has no effect on latency or cost"],
+        correctOption: 0,
+        explanation: "The correct answer is: Larger embedding models may produce more accurate/nuanced representations but at higher computational cost and latency for embedding generation",
+      },
+      {
+        questionText: "What does \"re-embedding\" a knowledge base become necessary for, if you switch to a different embedding model?",
+        options: ["Since a new model produces vectors in a different space, all previously indexed content must be re-embedded with the new model for consistent similarity comparisons", "Re-embedding is never required when switching embedding models", "Old embeddings always remain directly compatible with any new model", "Switching embedding models has no effect on an existing vector index"],
+        correctOption: 0,
+        explanation: "The correct answer is: Since a new model produces vectors in a different space, all previously indexed content must be re-embedded with the new model for consistent similarity comparisons",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using the 'sentence-transformers' library, write code to embed a list of sample document chunks and a user query, then compute cosine similarity between the query embedding and each document embedding to rank them.",
+        starterCode: "# Using the 'sentence-transformers' library, write code to emb\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sentence_transformers import SentenceTransformer\nimport numpy as np\nmodel = SentenceTransformer('all-MiniLM-L6-v2')\ndocs = [\"Python is great for data science\", \"Dogs are loyal pets\", \"Machine learning uses Python\"]\nquery = \"Which language is used for data science?\"\ndoc_embeddings = model.encode(docs)\nquery_embedding = model.encode(query)\nsimilarities = np.dot(doc_embeddings, query_embedding) / (np.linalg.norm(doc_embeddings, axis=1) * np.linalg.norm(query_embedding))\nranked = sorted(zip(docs, similarities), key=lambda x: -x[1])\nprint(ranked)\\n```",
+      },
+      {
+        questionText: "Using the OpenAI embeddings API (or a similar provider), write code to generate an embedding for a sample text string and print the resulting vector's dimensionality.",
+        starterCode: "# Using the OpenAI embeddings API (or a similar provider), wri\n\ndef API():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom openai import OpenAI\nclient = OpenAI()\nresponse = client.embeddings.create(model='text-embedding-3-small', input='Sample text for embedding')\nvector = response.data[0].embedding\nprint(len(vector))\\n```",
+      },
+    ],
+  },
+  196: {
+    topicTitle: "RAG: RAG - Advanced RAG (Hybrid Search, Reranking)",
+    mcqs: [
+      {
+        questionText: "What is \"hybrid search\" in the context of RAG systems?",
+        options: ["Combining semantic (vector/embedding-based) search with traditional keyword-based search (e.g., BM25) to leverage the strengths of both", "Using only a single search method with no combination of techniques", "A technique used exclusively for image retrieval", "Searching across exactly two unrelated databases with no ranking involved"],
+        correctOption: 0,
+        explanation: "The correct answer is: Combining semantic (vector/embedding-based) search with traditional keyword-based search (e.g., BM25) to leverage the strengths of both",
+      },
+      {
+        questionText: "Why might pure semantic (embedding) search sometimes underperform on queries containing specific rare terms, like exact product codes or names?",
+        options: ["Dense embeddings can sometimes miss exact keyword matches that are crucial for such queries, which keyword-based search handles well", "Semantic search always perfectly captures every exact keyword with no limitations", "Rare terms have no impact on embedding-based retrieval quality", "Keyword search is never useful for any type of query"],
+        correctOption: 0,
+        explanation: "The correct answer is: Dense embeddings can sometimes miss exact keyword matches that are crucial for such queries, which keyword-based search handles well",
+      },
+      {
+        questionText: "What is \"reranking\" in an advanced RAG pipeline?",
+        options: ["Using a separate, often more computationally expensive model to re-score and reorder an initial set of retrieved candidates for improved relevance before passing them to the LLM", "Randomly shuffling the order of retrieved documents", "Removing all retrieved documents and starting over", "A step that happens before the initial retrieval, not after"],
+        correctOption: 0,
+        explanation: "The correct answer is: Using a separate, often more computationally expensive model to re-score and reorder an initial set of retrieved candidates for improved relevance before passing them to the LLM",
+      },
+      {
+        questionText: "Why is a two-stage retrieve-then-rerank approach often used instead of relying solely on a single retrieval step?",
+        options: ["An initial fast retrieval step narrows down candidates from a large corpus, and a more precise (but slower) reranking model refines the final selection, balancing speed and accuracy", "Reranking is always slower and less accurate than a single retrieval step with no benefit", "Two-stage retrieval always retrieves fewer relevant documents than a single stage", "Rerankers cannot improve retrieval quality in any scenario"],
+        correctOption: 0,
+        explanation: "The correct answer is: An initial fast retrieval step narrows down candidates from a large corpus, and a more precise (but slower) reranking model refines the final selection, balancing speed and accuracy",
+      },
+      {
+        questionText: "What type of model is commonly used as a reranker, such as a cross-encoder?",
+        options: ["A model that jointly processes the query and each candidate document together to produce a more accurate relevance score, as opposed to comparing separately computed embeddings", "A model that only works with images", "A model identical in architecture and function to a bi-encoder embedding model with no differences", "A rule-based keyword matcher only"],
+        correctOption: 0,
+        explanation: "The correct answer is: A model that jointly processes the query and each candidate document together to produce a more accurate relevance score, as opposed to comparing separately computed embeddings",
+      },
+      {
+        questionText: "What does \"query expansion\" or \"query rewriting\" aim to improve in a RAG pipeline?",
+        options: ["Reformulating or expanding the user's original query (e.g., adding synonyms or context) to improve the chances of retrieving relevant documents", "It aims to shorten every query to a single word", "It has no impact on retrieval quality", "It replaces the need for any retrieval step"],
+        correctOption: 0,
+        explanation: "The correct answer is: Reformulating or expanding the user's original query (e.g., adding synonyms or context) to improve the chances of retrieving relevant documents",
+      },
+      {
+        questionText: "What is \"Maximal Marginal Relevance\" (MMR) used for in retrieval result selection?",
+        options: ["Balancing relevance and diversity among retrieved results, avoiding returning multiple near-duplicate chunks", "Maximizing only relevance with no consideration of diversity", "A technique used exclusively for image deduplication", "A method for ranking documents purely alphabetically"],
+        correctOption: 0,
+        explanation: "The correct answer is: Balancing relevance and diversity among retrieved results, avoiding returning multiple near-duplicate chunks",
+      },
+      {
+        questionText: "Why might filtering retrieved results by metadata (e.g., date range, document type) be a useful addition to a RAG pipeline?",
+        options: ["It allows narrowing results to more relevant, appropriately scoped content beyond pure semantic similarity, improving precision for certain queries", "Metadata filtering always reduces retrieval quality with no benefit", "Metadata has no practical use in retrieval pipelines", "Filtering by metadata replaces the need for any embedding-based search"],
+        correctOption: 0,
+        explanation: "The correct answer is: It allows narrowing results to more relevant, appropriately scoped content beyond pure semantic similarity, improving precision for certain queries",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python function 'hybrid_search(query, documents, embeddings, bm25_index, alpha)' (pseudocode acceptable) that combines a BM25 keyword search score and a cosine similarity embedding score using a weighting factor 'alpha' to produce a final ranked list of documents.",
+        starterCode: "# Write a Python function 'hybrid_search(query, documents, emb\n\ndef hybrid_search():\n    pass",
         expectedKeywords: ["def", "for", "return"],
-        solutionDescription: "# Reference solution not pre-authored for this question.\n# Please add a model solution for: Using LangChain (or a similar framework) and an LLM, write code to build a simpl...",
+        solutionDescription: "```python\\ndef hybrid_search(query, documents, embeddings, bm25_index, alpha=0.5):\n    bm25_scores = bm25_index.get_scores(query.split())\n    embedding_scores = compute_cosine_scores(query, embeddings)\n    final_scores = [alpha*b + (1-alpha)*e for b, e in zip(bm25_scores, embedding_scores)]\n    ranked = sorted(zip(documents, final_scores), key=lambda x: -x[1])\n    return ranked\\n```",
+      },
+      {
+        questionText: "Using the 'sentence-transformers' 'CrossEncoder' class, write code to rerank a list of initially retrieved candidate passages against a query, printing the passages sorted by the reranker's relevance scores.",
+        starterCode: "# Using the 'sentence-transformers' 'CrossEncoder' class, writ\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sentence_transformers import CrossEncoder\nreranker = CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')\nquery = \"What is machine learning?\"\npassages = [\"ML is a subset of AI\", \"Cats are pets\", \"Machine learning uses data to learn patterns\"]\nscores = reranker.predict([(query, p) for p in passages])\nranked = sorted(zip(passages, scores), key=lambda x: -x[1])\nprint(ranked)\\n```",
+      },
+    ],
+  },
+  197: {
+    topicTitle: "RAG: RAG - Evaluating RAG Pipelines",
+    mcqs: [
+      {
+        questionText: "Why does evaluating a RAG pipeline typically require assessing both the retrieval component and the generation component separately?",
+        options: ["Poor answers can result from either retrieving irrelevant/insufficient context or from the LLM failing to use good context well, so isolating each component helps diagnose issues", "RAG pipelines never have any retrieval-related failures", "The generation component is always solely responsible for any errors", "Evaluation only ever needs to consider the final answer with no component-level breakdown"],
+        correctOption: 0,
+        explanation: "The correct answer is: Poor answers can result from either retrieving irrelevant/insufficient context or from the LLM failing to use good context well, so isolating each component helps diagnose issues",
+      },
+      {
+        questionText: "What does \"context relevance\" measure when evaluating the retrieval component of a RAG system?",
+        options: ["Whether the retrieved chunks are actually relevant to answering the user's query", "Whether the final generated answer is grammatically correct", "The total number of chunks in the vector database", "The embedding model's training time"],
+        correctOption: 0,
+        explanation: "The correct answer is: Whether the retrieved chunks are actually relevant to answering the user's query",
+      },
+      {
+        questionText: "What does \"faithfulness\" (or \"groundedness\") measure when evaluating the generation component of a RAG system?",
+        options: ["Whether the generated answer is actually supported by and consistent with the retrieved context, rather than introducing unsupported/hallucinated claims", "Whether the answer is written in a formal tone", "The total length of the generated answer", "The number of documents retrieved"],
+        correctOption: 0,
+        explanation: "The correct answer is: Whether the generated answer is actually supported by and consistent with the retrieved context, rather than introducing unsupported/hallucinated claims",
+      },
+      {
+        questionText: "What does \"answer relevance\" measure in RAG evaluation?",
+        options: ["Whether the generated answer actually addresses the user's original question, regardless of whether it's grounded in the retrieved context", "Whether the retrieved documents are relevant to the general topic", "The embedding dimensionality used", "The chunk size used during indexing"],
+        correctOption: 0,
+        explanation: "The correct answer is: Whether the generated answer actually addresses the user's original question, regardless of whether it's grounded in the retrieved context",
+      },
+      {
+        questionText: "What common retrieval metrics, borrowed from information retrieval research, are used to evaluate whether relevant documents were retrieved (and ranked well)?",
+        options: ["Precision@k and Recall@k (and related metrics like Mean Reciprocal Rank)", "Only classification accuracy", "Only BLEU score", "Only training loss"],
+        correctOption: 0,
+        explanation: "The correct answer is: Precision@k and Recall@k (and related metrics like Mean Reciprocal Rank)",
+      },
+      {
+        questionText: "What is the purpose of creating a labeled evaluation dataset of (query, relevant documents, expected answer) triples for a RAG system?",
+        options: ["It provides ground truth to systematically measure retrieval and generation quality, rather than relying solely on ad hoc/manual spot-checks", "Labeled evaluation data is never useful for RAG systems", "RAG systems require no evaluation dataset since they are trained end-to-end automatically", "Evaluation datasets are only useful for image-based models"],
+        correctOption: 0,
+        explanation: "The correct answer is: It provides ground truth to systematically measure retrieval and generation quality, rather than relying solely on ad hoc/manual spot-checks",
+      },
+      {
+        questionText: "What is the RAGAS framework (or similar RAG-specific evaluation frameworks) designed to provide?",
+        options: ["A set of automated metrics (e.g., faithfulness, context relevance, answer relevance) specifically tailored to evaluate RAG pipeline quality, often using an LLM as a judge", "A tool exclusively for training embedding models", "A framework unrelated to retrieval or generation evaluation", "A database indexing engine with no evaluation capability"],
+        correctOption: 0,
+        explanation: "The correct answer is: A set of automated metrics (e.g., faithfulness, context relevance, answer relevance) specifically tailored to evaluate RAG pipeline quality, often using an LLM as a judge",
+      },
+      {
+        questionText: "Why is ongoing evaluation important even after a RAG system is deployed to production?",
+        options: ["The underlying knowledge base, user query patterns, and model behavior can change over time, so continued monitoring helps catch degradation in quality", "Once deployed, a RAG system's quality never changes and requires no further evaluation", "Evaluation is only relevant before deployment, never after", "Production RAG systems are exempt from any quality monitoring"],
+        correctOption: 0,
+        explanation: "The correct answer is: The underlying knowledge base, user query patterns, and model behavior can change over time, so continued monitoring helps catch degradation in quality",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python function 'compute_recall_at_k(retrieved_doc_ids, relevant_doc_ids, k)' that computes the Recall@k metric given a list of retrieved document IDs (in ranked order) and a set of ground-truth relevant document IDs.",
+        starterCode: "# Write a Python function 'compute_recall_at_k(retrieved_doc_i\n\ndef compute_recall_at_k():\n    pass",
+        expectedKeywords: ["def", "return"],
+        solutionDescription: "```python\\ndef compute_recall_at_k(retrieved_doc_ids, relevant_doc_ids, k):\n    top_k = retrieved_doc_ids[:k]\n    hits = len(set(top_k) & set(relevant_doc_ids))\n    return hits / len(relevant_doc_ids)\n\nprint(compute_recall_at_k(['d1','d2','d3','d4'], {'d2','d5'}, 3))\\n```",
+      },
+      {
+        questionText: "Using the 'ragas' library (pseudocode acceptable), write code sketching how to evaluate a set of RAG pipeline outputs (questions, retrieved contexts, generated answers, and ground truths) for faithfulness and answer relevance.",
+        starterCode: "# Using the 'ragas' library (pseudocode acceptable), write cod\n\ndef library():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\n# Pseudocode using ragas\n# from ragas import evaluate\n# from ragas.metrics import faithfulness, answer_relevancy\n# results = evaluate(dataset, metrics=[faithfulness, answer_relevancy])\n# print(results)\\n```",
+      },
+    ],
+  },
+  198: {
+    topicTitle: "RAG: Introduction to Vector DB",
+    mcqs: [
+      {
+        questionText: "A vector database is primarily designed to:",
+        options: ["Store and efficiently search high-dimensional numeric vector embeddings, typically via similarity search", "Store only relational tables with foreign keys", "Replace all traditional file systems", "Store only image files directly"],
+        correctOption: 0,
+        explanation: "The correct answer is: Store and efficiently search high-dimensional numeric vector embeddings, typically via similarity search",
+      },
+      {
+        questionText: "How does a vector database primarily differ from a traditional SQL database?",
+        options: ["There is no meaningful difference", "Vector databases are optimized for similarity search over embeddings (e.g., nearest-neighbor search), while SQL databases are optimized for structured, exact-match relational queries", "SQL databases cannot store any numbers", "Vector databases cannot store any metadata"],
+        correctOption: 1,
+        explanation: "The correct answer is: Vector databases are optimized for similarity search over embeddings (e.g., nearest-neighbor search), while SQL databases are optimized for structured, exact-match relational queries",
+      },
+      {
+        questionText: "Which algorithm family is commonly used internally by vector databases to speed up approximate nearest-neighbor search?",
+        options: ["HNSW (Hierarchical Navigable Small World) graphs, or similar ANN algorithms", "Standard B-tree indexes only", "Bubble sort", "Linear regression"],
+        correctOption: 0,
+        explanation: "The correct answer is: HNSW (Hierarchical Navigable Small World) graphs, or similar ANN algorithms",
+      },
+      {
+        questionText: "Which of these is a popular vector database/library used in AI applications?",
+        options: ["FAISS, Pinecone, Chroma, Weaviate, or Milvus (any of these)", "MySQL only", "Redis only, with no vector-specific features", "Excel"],
+        correctOption: 0,
+        explanation: "The correct answer is: FAISS, Pinecone, Chroma, Weaviate, or Milvus (any of these)",
+      },
+      {
+        questionText: "What is typically stored alongside each vector embedding in a vector database to make results interpretable?",
+        options: ["Nothing else is ever stored", "Metadata (e.g., original text, document ID, source) associated with that vector, retrievable alongside search results", "Only a random number", "A separate unrelated SQL table with no link"],
+        correctOption: 1,
+        explanation: "The correct answer is: Metadata (e.g., original text, document ID, source) associated with that vector, retrievable alongside search results",
+      },
+      {
+        questionText: "Why can't a traditional SQL database efficiently perform semantic similarity search over embeddings without specialized extensions?",
+        options: ["SQL databases are not designed for computing distance/similarity metrics (e.g., cosine similarity) across high-dimensional vectors at scale efficiently", "SQL databases cannot store numbers", "SQL databases cannot store any data types other than text", "SQL is incapable of any mathematical operation"],
+        correctOption: 0,
+        explanation: "The correct answer is: SQL databases are not designed for computing distance/similarity metrics (e.g., cosine similarity) across high-dimensional vectors at scale efficiently",
+      },
+      {
+        questionText: "In the context of Retrieval-Augmented Generation (RAG), a vector database is primarily used to:",
+        options: ["Store the LLM's weights directly", "Retrieve the most relevant document chunks (via embedding similarity) to provide as context to the LLM", "Replace the LLM entirely", "Store the final generated output only"],
+        correctOption: 1,
+        explanation: "The correct answer is: Retrieve the most relevant document chunks (via embedding similarity) to provide as context to the LLM",
+      },
+      {
+        questionText: "What does \"vector search with NoSQL databases\" typically mean, as some NoSQL databases now offer vector search capabilities?",
+        options: ["NoSQL databases can never support vector operations", "Some NoSQL databases (e.g., MongoDB Atlas, Redis) have added vector indexing/search features alongside their traditional document/key-value capabilities", "It means converting NoSQL databases into SQL databases", "It means vectors must always be stored in plain text files instead"],
+        correctOption: 1,
+        explanation: "The correct answer is: Some NoSQL databases (e.g., MongoDB Atlas, Redis) have added vector indexing/search features alongside their traditional document/key-value capabilities",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python program using the FAISS library to create a simple flat vector index, add 5 sample embeddings (random vectors), and perform a nearest-neighbor search for a given query vector, printing the closest matches.",
+        starterCode: "# Write a Python program using the FAISS library to create a s\n\ndef embeddings():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport faiss\nimport numpy as np\nnp.random.seed(42)\nembeddings = np.random.rand(5, 16).astype('float32')\nindex = faiss.IndexFlatL2(16)\nindex.add(embeddings)\nquery = np.random.rand(1, 16).astype('float32')\ndistances, indices = index.search(query, 3)\nprint(indices, distances)\\n```",
+      },
+      {
+        questionText: "Write a Python program using the Chroma vector database (or a simple in-memory cosine-similarity function if Chroma isn't available) to store a few text documents with their embeddings (using a sentence-transformer model) and retrieve the most similar document to a given query text.",
+        starterCode: "# Write a Python program using the Chroma vector database (or \n\ndef database():\n    pass",
+        expectedKeywords: ["def", "for", "import"],
+        solutionDescription: "```python\\nfrom sentence_transformers import SentenceTransformer\nimport numpy as np\ndocs = [\"Python programming\", \"Cooking recipes\", \"Machine learning basics\"]\nmodel = SentenceTransformer('all-MiniLM-L6-v2')\ndoc_embeddings = model.encode(docs)\nquery_embedding = model.encode([\"How to code in Python\"])\nsimilarities = np.dot(doc_embeddings, query_embedding.T).ravel()\nprint(docs[np.argmax(similarities)])\\n```",
+      },
+    ],
+  },
+  199: {
+    topicTitle: "RAG: Vector DB - Indexing Algorithms (HNSW, IVF)",
+    mcqs: [
+      {
+        questionText: "Why do vector databases use specialized indexing algorithms instead of comparing a query vector against every stored vector (brute-force search)?",
+        options: ["Brute-force search becomes computationally expensive at scale, so approximate nearest neighbor (ANN) indexes trade a small amount of accuracy for much faster search", "Brute-force search is always faster than any indexing algorithm at any scale", "Indexing algorithms are only used for image data, not vectors", "Vector databases never need to search efficiently"],
+        correctOption: 0,
+        explanation: "The correct answer is: Brute-force search becomes computationally expensive at scale, so approximate nearest neighbor (ANN) indexes trade a small amount of accuracy for much faster search",
+      },
+      {
+        questionText: "What does HNSW (Hierarchical Navigable Small World) build to enable fast approximate nearest neighbor search?",
+        options: ["A multi-layer graph structure where nodes are connected to their approximate nearest neighbors, allowing efficient graph traversal to find close vectors", "A single flat list sorted alphabetically", "A relational SQL table with foreign keys", "A simple hash table with no graph structure"],
+        correctOption: 0,
+        explanation: "The correct answer is: A multi-layer graph structure where nodes are connected to their approximate nearest neighbors, allowing efficient graph traversal to find close vectors",
+      },
+      {
+        questionText: "What does IVF (Inverted File Index) do to speed up approximate nearest neighbor search?",
+        options: ["It partitions the vector space into clusters (via something like k-means), then only searches within the most relevant cluster(s) for a given query, rather than the entire dataset", "It stores vectors in a single unpartitioned list with no clustering", "It requires no clustering or partitioning step at all", "It performs an exhaustive search of every vector every time"],
+        correctOption: 0,
+        explanation: "The correct answer is: It partitions the vector space into clusters (via something like k-means), then only searches within the most relevant cluster(s) for a given query, rather than the entire dataset",
+      },
+      {
+        questionText: "What is the fundamental trade-off involved in approximate nearest neighbor (ANN) search, as opposed to exact nearest neighbor search?",
+        options: ["ANN search sacrifices some accuracy/recall (it may occasionally miss the true nearest neighbor) in exchange for significantly faster query speed at scale", "ANN search always finds the exact same results as brute-force with zero trade-off", "ANN search is always slower than brute-force search", "There is no meaningful trade-off; ANN methods are strictly superior in every way"],
+        correctOption: 0,
+        explanation: "The correct answer is: ANN search sacrifices some accuracy/recall (it may occasionally miss the true nearest neighbor) in exchange for significantly faster query speed at scale",
+      },
+      {
+        questionText: "What does the term \"recall\" mean when evaluating an ANN index's quality?",
+        options: ["The fraction of true nearest neighbors that the approximate search actually returns, compared to an exact search", "The total number of vectors stored in the index", "The dimensionality of the embedding vectors", "The physical memory usage of the index"],
+        correctOption: 0,
+        explanation: "The correct answer is: The fraction of true nearest neighbors that the approximate search actually returns, compared to an exact search",
+      },
+      {
+        questionText: "What is Product Quantization (PQ), sometimes combined with IVF (as in IVFPQ), used for?",
+        options: ["Compressing vectors into smaller representations to reduce memory usage, at some cost to search accuracy", "Increasing the dimensionality of every vector", "Removing the need for any indexing structure", "A method used only for text tokenization"],
+        correctOption: 0,
+        explanation: "The correct answer is: Compressing vectors into smaller representations to reduce memory usage, at some cost to search accuracy",
+      },
+      {
+        questionText: "Why might tuning parameters like the number of clusters (in IVF) or graph connectivity (in HNSW) matter in practice?",
+        options: ["These parameters directly affect the trade-off between search speed, memory usage, and recall/accuracy for a given dataset and use case", "These parameters have no effect on search performance", "All vector databases use identical fixed parameters regardless of dataset", "Tuning is unnecessary since default parameters are always optimal for every dataset"],
+        correctOption: 0,
+        explanation: "The correct answer is: These parameters directly affect the trade-off between search speed, memory usage, and recall/accuracy for a given dataset and use case",
+      },
+      {
+        questionText: "Why is HNSW widely used in many popular vector database implementations?",
+        options: ["It generally offers a strong balance of high recall and fast query speed for many practical workloads, though at higher memory cost than some alternatives", "It is always the slowest indexing method available", "It cannot be used for any real-time search applications", "It requires no memory to store the graph structure"],
+        correctOption: 0,
+        explanation: "The correct answer is: It generally offers a strong balance of high recall and fast query speed for many practical workloads, though at higher memory cost than some alternatives",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Using the 'faiss' library, write code to build an 'IndexFlatL2' (brute-force) index and an 'IndexIVFFlat' index for a set of random vectors, and compare their search results for a sample query vector.",
+        starterCode: "# Using the 'faiss' library, write code to build an 'IndexFlat\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport faiss\nimport numpy as np\nd = 32\nvectors = np.random.rand(1000, d).astype('float32')\nflat_index = faiss.IndexFlatL2(d)\nflat_index.add(vectors)\nquantizer = faiss.IndexFlatL2(d)\nivf_index = faiss.IndexIVFFlat(quantizer, d, 10)\nivf_index.train(vectors)\nivf_index.add(vectors)\nquery = np.random.rand(1, d).astype('float32')\nprint(\"Flat:\", flat_index.search(query, 3))\nprint(\"IVF:\", ivf_index.search(query, 3))\\n```",
+      },
+      {
+        questionText: "Using the 'hnswlib' (or 'faiss' HNSW) library, write code to build an HNSW index over a set of sample embedding vectors and perform a k-nearest-neighbor search for a query vector, printing the returned indices and distances.",
+        starterCode: "# Using the 'hnswlib' (or 'faiss' HNSW) library, write code to\n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\nimport hnswlib\nimport numpy as np\nd = 32\nvectors = np.random.rand(1000, d).astype('float32')\nindex = hnswlib.Index(space='l2', dim=d)\nindex.init_index(max_elements=1000, ef_construction=200, M=16)\nindex.add_items(vectors)\nlabels, distances = index.knn_query(np.random.rand(1, d), k=5)\nprint(labels, distances)\\n```",
+      },
+    ],
+  },
+  200: {
+    topicTitle: "RAG: Vector DB - Similarity Metrics (Cosine, Euclidean, Dot Product)",
+    mcqs: [
+      {
+        questionText: "What does cosine similarity measure between two vectors?",
+        options: ["The cosine of the angle between two vectors, capturing how similar their direction is regardless of their magnitude", "The straight-line distance between two points", "The number of matching dimensions between two vectors", "The sum of all values in both vectors"],
+        correctOption: 0,
+        explanation: "The correct answer is: The cosine of the angle between two vectors, capturing how similar their direction is regardless of their magnitude",
+      },
+      {
+        questionText: "Why is cosine similarity often preferred for comparing text embeddings, where absolute vector magnitude may not carry meaningful information?",
+        options: ["It focuses purely on the direction/orientation of the vectors, which often better reflects semantic similarity for normalized embeddings", "Cosine similarity is only usable for image data", "Cosine similarity always produces the exact same ranking as Euclidean distance in every case", "Cosine similarity requires vectors of different dimensionalities"],
+        correctOption: 0,
+        explanation: "The correct answer is: It focuses purely on the direction/orientation of the vectors, which often better reflects semantic similarity for normalized embeddings",
+      },
+      {
+        questionText: "What does Euclidean distance measure between two vectors?",
+        options: ["The straight-line (\"as the crow flies\") distance between two points in vector space", "The angle between the two vectors", "A normalized similarity score between -1 and 1", "The number of shared non-zero elements"],
+        correctOption: 0,
+        explanation: "The correct answer is: The straight-line (\"as the crow flies\") distance between two points in vector space",
+      },
+      {
+        questionText: "How does the dot product similarity metric relate to cosine similarity when vectors are normalized to unit length?",
+        options: ["For unit-normalized vectors, the dot product is mathematically equivalent to the cosine similarity", "The dot product and cosine similarity are always completely unrelated", "Dot product can only be computed for vectors with negative values", "Dot product similarity requires vectors of different lengths"],
+        correctOption: 0,
+        explanation: "The correct answer is: For unit-normalized vectors, the dot product is mathematically equivalent to the cosine similarity",
+      },
+      {
+        questionText: "Why might a vector database ask you to specify a \"distance metric\" (e.g., cosine, L2, dot product) when creating an index?",
+        options: ["Different metrics can produce different similarity rankings, and the index needs to know which metric to optimize for during approximate search", "The distance metric has no effect on search results", "All distance metrics always produce identical rankings", "Vector databases never require specifying a distance metric"],
+        correctOption: 0,
+        explanation: "The correct answer is: Different metrics can produce different similarity rankings, and the index needs to know which metric to optimize for during approximate search",
+      },
+      {
+        questionText: "In what scenario might Euclidean distance be more appropriate than cosine similarity?",
+        options: ["When the actual magnitude of vectors carries meaningful information relevant to the similarity you want to capture (not just their direction)", "Euclidean distance is never appropriate for any real use case", "Euclidean distance can only be used with image data", "Euclidean distance is identical to cosine similarity in all cases"],
+        correctOption: 0,
+        explanation: "The correct answer is: When the actual magnitude of vectors carries meaningful information relevant to the similarity you want to capture (not just their direction)",
+      },
+      {
+        questionText: "Why is it important to use the same similarity metric that an embedding model was designed/trained to work well with?",
+        options: ["Some embedding models are specifically optimized for a particular metric (e.g., cosine similarity), and using a mismatched metric can lead to less meaningful similarity rankings", "The choice of metric never has any effect on retrieval quality", "All embedding models work equally well with every possible similarity metric", "Similarity metrics are unrelated to how embedding models are trained"],
+        correctOption: 0,
+        explanation: "The correct answer is: Some embedding models are specifically optimized for a particular metric (e.g., cosine similarity), and using a mismatched metric can lead to less meaningful similarity rankings",
+      },
+      {
+        questionText: "What does a cosine similarity score of 1 indicate between two vectors?",
+        options: ["The two vectors point in exactly the same direction (maximally similar in orientation)", "The two vectors are completely orthogonal (unrelated)", "The two vectors point in exactly opposite directions", "The two vectors have identical magnitude but unrelated direction"],
+        correctOption: 0,
+        explanation: "The correct answer is: The two vectors point in exactly the same direction (maximally similar in orientation)",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python function 'cosine_similarity(vec1, vec2)' using NumPy that computes the cosine similarity between two vectors without using a specialized library.",
+        starterCode: "# Write a Python function 'cosine_similarity(vec1, vec2)' usin\n\ndef cosine_similarity():\n    pass",
+        expectedKeywords: ["def", "import", "return"],
+        solutionDescription: "```python\\nimport numpy as np\ndef cosine_similarity(vec1, vec2):\n    return np.dot(vec1, vec2) / (np.linalg.norm(vec1) * np.linalg.norm(vec2))\n\nprint(cosine_similarity(np.array([1,2,3]), np.array([2,4,6])))\\n```",
+      },
+      {
+        questionText: "Write a Python function 'rank_by_similarity(query_vector, candidate_vectors, metric='cosine')' that ranks a list of candidate vectors by their similarity to a query vector, supporting both 'cosine' and 'euclidean' as the metric option.",
+        starterCode: "# Write a Python function 'rank_by_similarity(query_vector, ca\n\ndef rank_by_similarity():\n    pass",
+        expectedKeywords: ["def", "for", "import", "return"],
+        solutionDescription: "```python\\nimport numpy as np\ndef rank_by_similarity(query_vector, candidate_vectors, metric='cosine'):\n    scores = []\n    for v in candidate_vectors:\n        if metric == 'cosine':\n            score = np.dot(query_vector, v) / (np.linalg.norm(query_vector) * np.linalg.norm(v))\n        else:\n            score = -np.linalg.norm(query_vector - v)\n        scores.append(score)\n    ranked_idx = np.argsort(scores)[::-1]\n    return ranked_idx, [scores[i] for i in ranked_idx]\n\nq = np.array([1,0,0])\ncands = [np.array([1,0,0]), np.array([0,1,0]), np.array([0.9,0.1,0])]\nprint(rank_by_similarity(q, cands))\\n```",
+      },
+    ],
+  },
+  201: {
+    topicTitle: "RAG: Vector DB - Popular Vector Database Platforms Comparison",
+    mcqs: [
+      {
+        questionText: "What is Pinecone, in the context of vector databases?",
+        options: ["A fully managed, cloud-hosted vector database service designed for scalable similarity search in production applications", "An open-source relational database with no vector search capability", "A programming language for data science", "A text tokenization library"],
+        correctOption: 0,
+        explanation: "The correct answer is: A fully managed, cloud-hosted vector database service designed for scalable similarity search in production applications",
+      },
+      {
+        questionText: "What is a key characteristic of FAISS (developed by Meta) compared to a fully managed vector database service?",
+        options: ["FAISS is an open-source library for efficient similarity search that you typically integrate and manage yourself, rather than a hosted database-as-a-service", "FAISS is a fully managed cloud service requiring no setup", "FAISS can only be used for image classification, not vector search", "FAISS is a relational database engine"],
+        correctOption: 0,
+        explanation: "The correct answer is: FAISS is an open-source library for efficient similarity search that you typically integrate and manage yourself, rather than a hosted database-as-a-service",
+      },
+      {
+        questionText: "What is Chroma commonly known for in the vector database ecosystem?",
+        options: ["Being a lightweight, developer-friendly open-source vector database often used for local development and smaller-scale RAG applications", "Being a proprietary hardware accelerator chip", "Being a spreadsheet application", "Being a video streaming service"],
+        correctOption: 0,
+        explanation: "The correct answer is: Being a lightweight, developer-friendly open-source vector database often used for local development and smaller-scale RAG applications",
+      },
+      {
+        questionText: "What is Weaviate, as a vector database option?",
+        options: ["An open-source vector database that supports hybrid search (combining vector and keyword search) and can be self-hosted or used as a managed cloud service", "A closed-source, API-only text generation service", "A tool exclusively for tabular data analysis", "A programming language for building neural networks"],
+        correctOption: 0,
+        explanation: "The correct answer is: An open-source vector database that supports hybrid search (combining vector and keyword search) and can be self-hosted or used as a managed cloud service",
+      },
+      {
+        questionText: "What consideration might lead a team to choose a self-hosted open-source vector database over a fully managed cloud service?",
+        options: ["Greater control over data residency/privacy, potential cost savings at certain scales, and customization flexibility", "Self-hosted options are always strictly more expensive with no benefits", "Self-hosted vector databases cannot be used in any production system", "There is never a valid reason to self-host a vector database"],
+        correctOption: 0,
+        explanation: "The correct answer is: Greater control over data residency/privacy, potential cost savings at certain scales, and customization flexibility",
+      },
+      {
+        questionText: "What consideration might lead a team to choose a fully managed cloud vector database service instead of self-hosting?",
+        options: ["Reduced operational overhead, built-in scalability, and managed infrastructure without needing to maintain the system themselves", "Managed services always perform worse than self-hosted options", "Managed services never support production-scale workloads", "There is no operational benefit to using a managed service"],
+        correctOption: 0,
+        explanation: "The correct answer is: Reduced operational overhead, built-in scalability, and managed infrastructure without needing to maintain the system themselves",
+      },
+      {
+        questionText: "Why might some traditional databases (e.g., PostgreSQL with the 'pgvector' extension) also be used for vector search rather than a dedicated vector database?",
+        options: ["It can be convenient to add vector search capability to an existing relational database infrastructure without introducing an entirely separate specialized system", "Traditional databases can never support any form of vector search", "'pgvector' has no relationship to similarity search", "Adding vector capability to existing infrastructure is always technically impossible"],
+        correctOption: 0,
+        explanation: "The correct answer is: It can be convenient to add vector search capability to an existing relational database infrastructure without introducing an entirely separate specialized system",
+      },
+      {
+        questionText: "What is an important factor to evaluate when choosing between different vector database platforms for a specific application?",
+        options: ["Factors like expected scale, latency requirements, hybrid search support, hosting preferences, and cost", "Vector database choice has no meaningful impact on an application's performance or cost", "All vector database platforms are functionally identical with no differences", "Only the platform's name and popularity matter, with no other technical considerations"],
+        correctOption: 0,
+        explanation: "The correct answer is: Factors like expected scale, latency requirements, hybrid search support, hosting preferences, and cost",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write Python code demonstrating how to connect to a Pinecone (or Chroma) index, upsert a batch of sample vectors with metadata, and perform a similarity search query, using pseudocode/comments where an actual API key would be required.",
+        starterCode: "# Write Python code demonstrating how to connect to a Pinecone\n\ndef Pinecone():\n    pass",
+        expectedKeywords: ["def", "import"],
+        solutionDescription: "```python\\n# Pseudocode (requires API key)\n# import pinecone\n# pinecone.init(api_key='YOUR_KEY', environment='us-west1-gcp')\n# index = pinecone.Index('my-index')\n# index.upsert(vectors=[('id1', [0.1]*128, {'text': 'doc1'}), ('id2', [0.2]*128, {'text': 'doc2'})])\n# results = index.query(vector=[0.1]*128, top_k=3)\n# print(results)\\n```",
+      },
+      {
+        questionText: "Write a comparison table (as a Python dictionary or printed output) summarizing at least 3 vector database platforms (e.g., Pinecone, FAISS, Chroma, Weaviate) across dimensions like \"managed vs. self-hosted\", \"hybrid search support\", and \"typical use case\".",
+        starterCode: "# Write a comparison table (as a Python dictionary or printed \n\ndef table():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\ncomparison = {\n    'Pinecone': {'hosting': 'managed', 'hybrid_search': True, 'use_case': 'production-scale, low-ops'},\n    'FAISS': {'hosting': 'self-hosted (library)', 'hybrid_search': False, 'use_case': 'research, local prototyping'},\n    'Chroma': {'hosting': 'self-hosted or managed', 'hybrid_search': True, 'use_case': 'lightweight app-embedded RAG'},\n    'Weaviate': {'hosting': 'managed or self-hosted', 'hybrid_search': True, 'use_case': 'enterprise semantic search'},\n}\nfor name, info in comparison.items():\n    print(name, info)\\n```",
+      },
+    ],
+  },
+  202: {
+    topicTitle: "RAG: Vector DB - Scaling & Production Considerations",
+    mcqs: [
+      {
+        questionText: "Why does the choice of ANN indexing algorithm and its parameters become increasingly important as a vector database scales to millions or billions of vectors?",
+        options: ["At large scale, the trade-offs between search speed, memory usage, and recall become much more significant, and poor choices can severely impact performance or cost", "Indexing choices have no impact on performance at any scale", "All indexing algorithms perform identically regardless of dataset size", "Scaling has no relationship to indexing algorithm choice"],
+        correctOption: 0,
+        explanation: "The correct answer is: At large scale, the trade-offs between search speed, memory usage, and recall become much more significant, and poor choices can severely impact performance or cost",
+      },
+      {
+        questionText: "What does \"sharding\" typically refer to in the context of scaling a vector database?",
+        options: ["Partitioning the vector data across multiple nodes/machines to distribute storage and query load", "Compressing all vectors into a single file", "Removing duplicate vectors from the index", "A technique used only for text tokenization"],
+        correctOption: 0,
+        explanation: "The correct answer is: Partitioning the vector data across multiple nodes/machines to distribute storage and query load",
+      },
+      {
+        questionText: "Why might a production vector database need to support \"metadata filtering\" alongside vector similarity search?",
+        options: ["To allow queries that combine semantic similarity with structured constraints (e.g., \"similar documents AND published after 2023\"), improving result relevance", "Metadata filtering is never useful in vector search applications", "Vector databases cannot support any form of filtering by design", "Metadata filtering always replaces the need for vector similarity entirely"],
+        correctOption: 0,
+        explanation: "The correct answer is: To allow queries that combine semantic similarity with structured constraints (e.g., \"similar documents AND published after 2023\"), improving result relevance",
+      },
+      {
+        questionText: "Why is handling \"upserts\" (updates/inserts) and deletions efficiently an important production consideration for a vector database powering a frequently changing knowledge base?",
+        options: ["Many RAG applications need the underlying data to stay current, so the vector index must support adding new content and removing outdated content without requiring a full rebuild each time", "Vector databases never need to be updated after initial creation", "Deletions are impossible in any vector database", "Updating a vector index always requires manually deleting the entire dataset from scratch"],
+        correctOption: 0,
+        explanation: "The correct answer is: Many RAG applications need the underlying data to stay current, so the vector index must support adding new content and removing outdated content without requiring a full rebuild each time",
+      },
+      {
+        questionText: "What is a common strategy to reduce memory footprint for very large vector indexes in production?",
+        options: ["Using vector compression/quantization techniques (e.g., Product Quantization) to reduce the memory needed per vector, at some accuracy cost", "Always storing vectors at maximum possible precision with no compression", "Memory footprint is never a concern for vector databases at any scale", "Removing all vectors from the index entirely"],
+        correctOption: 0,
+        explanation: "The correct answer is: Using vector compression/quantization techniques (e.g., Product Quantization) to reduce the memory needed per vector, at some accuracy cost",
+      },
+      {
+        questionText: "Why is monitoring query latency and recall over time important for a production vector search system?",
+        options: ["As data grows or query patterns shift, performance characteristics can degrade, so ongoing monitoring helps catch and address issues proactively", "Vector database performance never changes once deployed", "Monitoring has no practical value for vector search systems", "Latency and recall are fixed constants regardless of data or usage changes"],
+        correctOption: 0,
+        explanation: "The correct answer is: As data grows or query patterns shift, performance characteristics can degrade, so ongoing monitoring helps catch and address issues proactively",
+      },
+      {
+        questionText: "What is a consideration around \"multi-tenancy\" in a production vector database serving multiple customers/use cases?",
+        options: ["Ensuring proper data isolation between tenants (e.g., via namespaces or separate indexes) so one tenant's data/queries don't leak into or affect another's", "Multi-tenancy has no relevance to vector databases", "All tenants must always share a single unfiltered index with no isolation", "Multi-tenancy is only a concern for relational databases, never vector databases"],
+        correctOption: 0,
+        explanation: "The correct answer is: Ensuring proper data isolation between tenants (e.g., via namespaces or separate indexes) so one tenant's data/queries don't leak into or affect another's",
+      },
+      {
+        questionText: "Why might backup and disaster recovery planning be important for a production vector database powering a critical RAG application?",
+        options: ["Losing the vector index (and the significant compute/cost required to rebuild embeddings) could cause significant application downtime or data loss without a proper backup strategy", "Vector databases never require any backup strategy", "Rebuilding an entire vector index is always instantaneous and free", "Disaster recovery is irrelevant to any AI-powered application"],
+        correctOption: 0,
+        explanation: "The correct answer is: Losing the vector index (and the significant compute/cost required to rebuild embeddings) could cause significant application downtime or data loss without a proper backup strategy",
+      },
+    ],
+    coding: [
+      {
+        questionText: "Write a Python function 'batch_upsert(index_client, vectors_with_ids, batch_size)' (pseudocode acceptable) that upserts a large list of vectors into a vector database index in smaller batches, to avoid overwhelming the API in a single large request.",
+        starterCode: "# Write a Python function 'batch_upsert(index_client, vectors_\n\ndef batch_upsert():\n    pass",
+        expectedKeywords: ["def", "for"],
+        solutionDescription: "```python\\ndef batch_upsert(index_client, vectors_with_ids, batch_size):\n    for i in range(0, len(vectors_with_ids), batch_size):\n        batch = vectors_with_ids[i:i+batch_size]\n        index_client.upsert(vectors=batch)\n        print(f\"Upserted batch {i//batch_size + 1}\")\n\n# batch_upsert(index, [('id1', vec1), ('id2', vec2), ...], batch_size=100)\\n```",
+      },
+      {
+        questionText: "Write pseudocode-style Python outlining a simple monitoring script that periodically issues a set of test queries against a production vector index, measures response latency, and logs results for tracking performance over time.",
+        starterCode: "# Write pseudocode-style Python outlining a simple monitoring \n\ndef solution():\n    pass",
+        expectedKeywords: ["def", "for", "import", "while"],
+        solutionDescription: "```python\\n# Pseudocode monitoring script\nimport time\ndef monitor_index(index_client, test_queries, interval_seconds=3600):\n    while True:\n        for q in test_queries:\n            start = time.time()\n            index_client.query(vector=q, top_k=5)\n            latency = time.time() - start\n            log_metric('query_latency', latency)\n        time.sleep(interval_seconds)\\n```",
       },
     ],
   },
