@@ -177,23 +177,27 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
   const [sandboxComparisonData, setSandboxComparisonData] = useState<any | null>(null);
   const [sandboxViewMode, setSandboxViewMode] = useState<"code" | "comparison">("code");
   const turtleCanvasRef = useRef<HTMLDivElement | null>(null);
-  const [skulptReady, setSkulptReady] = useState<boolean>(false);
+  const [skulptStatus, setSkulptStatus] = useState<"loading" | "ready" | "failed">(
+    (window as any).__skulptStatus || "loading"
+  );
+  const skulptReady = skulptStatus === "ready";
 
-  // Poll for the Skulpt engine (loaded from CDN in index.html) so the Run button
-  // knows when real Python execution is actually available.
+  // Listen for the CDN loader's status changes (set in index.html) instead of polling forever
+  // with no way to detect a genuine failure — this way a blocked/slow CDN shows a real error
+  // with a working retry button rather than "still loading" indefinitely.
   useEffect(() => {
-    if ((window as any).Sk && (window as any).Sk.builtinFiles) {
-      setSkulptReady(true);
-      return;
-    }
-    const interval = setInterval(() => {
-      if ((window as any).Sk && (window as any).Sk.builtinFiles) {
-        setSkulptReady(true);
-        clearInterval(interval);
-      }
-    }, 400);
-    return () => clearInterval(interval);
+    const syncStatus = () => setSkulptStatus((window as any).__skulptStatus || "loading");
+    syncStatus();
+    window.addEventListener("skulpt-status-change", syncStatus);
+    return () => window.removeEventListener("skulpt-status-change", syncStatus);
   }, []);
+
+  const retrySkulptLoad = () => {
+    setSkulptStatus("loading");
+    if ((window as any).__skulptRetry) {
+      (window as any).__skulptRetry();
+    }
+  };
 
   const fetchVideos = async () => {
     try {
@@ -263,12 +267,16 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
   const handleRunCode = async (index: number, codeQ: any) => {
     const Sk = (window as any).Sk;
     if (!Sk || !skulptReady) {
+      const message =
+        skulptStatus === "failed"
+          ? "The Python engine couldn't load from any CDN mirror — this is usually a network/firewall block. Click 'Retry Python Engine' above the code area, or check your internet connection."
+          : "The Python engine is still loading. Please wait a moment and click Run again.";
       setCodeExecutionLogs((prev) => ({
         ...prev,
         [index]: {
           success: false,
           stdout: "",
-          error: "The Python engine is still loading from the CDN. Please wait a moment and click Run again.",
+          error: message,
           durationMs: 0,
           passedTests: false,
           testCaseResults: [],
@@ -804,11 +812,18 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
     const Sk = (window as any).Sk;
 
     if (!Sk || !skulptReady) {
-      setCompilerOutput([
-        "⏳ The Python engine is still loading from the CDN...",
-        "Please wait a couple of seconds and click 'Run Python Code' again.",
-        "(If this message doesn't go away, check your internet connection — the sandbox needs it once to download the Python interpreter.)"
-      ]);
+      setCompilerOutput(
+        skulptStatus === "failed"
+          ? [
+              "❌ The Python engine couldn't load from any CDN mirror.",
+              "This is usually a network or firewall block rather than a bug in your code.",
+              "Click 'Retry Python Engine' above, or check your internet connection and reload the page.",
+            ]
+          : [
+              "⏳ The Python engine is still loading...",
+              "Please wait a couple of seconds and click 'Run Python Code' again.",
+            ]
+      );
       return;
     }
 
@@ -1733,7 +1748,18 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
                                 </>
                               )}
                             </button>
-                            <span className="text-[8px] text-slate-500 font-mono uppercase tracking-wider">HackerRank Interactive Engine</span>
+                            <div className="flex items-center gap-1.5">
+                              {skulptStatus === "failed" && (
+                                <button
+                                  type="button"
+                                  onClick={retrySkulptLoad}
+                                  className="text-[8px] font-mono px-2 py-1 rounded bg-rose-950 hover:bg-rose-900 text-rose-300 border border-rose-900 transition uppercase cursor-pointer"
+                                >
+                                  ⟳ Retry Python Engine
+                                </button>
+                              )}
+                              <span className="text-[8px] text-slate-500 font-mono uppercase tracking-wider">Real Python 3 Engine</span>
+                            </div>
                           </div>
 
                           {/* Active Run logs */}
@@ -3750,9 +3776,25 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-900/50">
-                  {skulptReady ? "Real Python 3 Engine" : "Loading Engine…"}
+                <span
+                  className={`text-[9px] font-mono px-2 py-0.5 rounded-full border ${
+                    skulptStatus === "ready"
+                      ? "bg-emerald-950 text-emerald-400 border-emerald-900/50"
+                      : skulptStatus === "failed"
+                      ? "bg-rose-950 text-rose-400 border-rose-900/50"
+                      : "bg-amber-950 text-amber-400 border-amber-900/50"
+                  }`}
+                >
+                  {skulptStatus === "ready" ? "Real Python 3 Engine" : skulptStatus === "failed" ? "Engine Failed to Load" : "Loading Engine…"}
                 </span>
+                {skulptStatus === "failed" && (
+                  <button
+                    onClick={retrySkulptLoad}
+                    className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-indigo-650 hover:bg-indigo-600 text-white transition cursor-pointer"
+                  >
+                    Retry Python Engine
+                  </button>
+                )}
                 <button
                   onClick={() => setIsCompilerOpen(false)}
                   className="text-slate-400 hover:text-white p-1 rounded transition cursor-pointer"
