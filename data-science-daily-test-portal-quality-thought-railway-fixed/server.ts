@@ -4,7 +4,7 @@ import fs from "fs";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI, Type } from "@google/genai";
-import { generateQuizForDay, generateQuizFromMaterial } from "./src/quizGenerator.js";
+import { generateQuizForDay, generateQuizFromMaterial, generateQuizForTrackDay } from "./src/quizGenerator.js";
 import { DayQuiz, Student, CourseLockState, AIInterview, InterviewMessage, AttendanceLog } from "./src/types.js";
 import { initializeApp } from "firebase/app";
 import { getFirestore, doc, setDoc, getDocFromServer } from "firebase/firestore";
@@ -13,7 +13,12 @@ const app = express();
 app.set("trust proxy", true);
 const PORT = process.env.PORT ? Number(process.env.PORT) : 3000;
 
-app.use(express.json({ limit: "20mb" }));
+// Raised from 20mb: a full AI Interview session's webcam recording is sent to the
+// server as a base64 string inside the JSON body (see /api/interview/evaluate). Base64
+// encoding itself inflates size by ~33%, so a several-minute recording can easily exceed
+// 20mb — that request was being rejected outright by Express before evaluation ever ran,
+// which is what caused "Failed to synthesize the evaluation scorecard" on submit.
+app.use(express.json({ limit: "150mb" }));
 
 const DB_FILE = path.join(process.cwd(), "db.json");
 
@@ -21,6 +26,10 @@ const DB_FILE = path.join(process.cwd(), "db.json");
 let firebaseApp: any = null;
 let firestoreDb: any = null;
 let inMemoryDBCache: AppDatabase | null = null;
+// Chains background Firestore pushes so they always complete in the same order
+// writeDB() was called (see writeDB below) — this is what prevents newly added
+// students from silently disappearing after a server restart.
+let firestoreWriteQueue: Promise<void> = Promise.resolve();
 
 try {
   const firebaseConfigPath = path.join(process.cwd(), "firebase-applet-config.json");
@@ -84,7 +93,12 @@ interface AppDatabase {
   students: Student[];
   locks: Record<string, CourseLockState>;
   submissions: any[];
-  quizzes: Record<number, DayQuiz>;
+  // Keyed first by course track ("data-science" | "python" | "java"), then by day
+  // number. Kept separate per track so a Java batch never sees Data Science content
+  // (or vice versa) just because both happen to be on "Day 5".
+  quizzes: Record<string, Record<number, DayQuiz>>;
+  // Progress/status for the one-click "Import 200 Days" bulk generator, keyed by track.
+  trackImportStatus?: Record<string, { status: "idle" | "running" | "done" | "error"; completed: number; total: number; startedAt?: string; error?: string }>;
   interviews?: AIInterview[];
   assessments?: AssessmentSubmission[];
   overrides?: TeacherOverride[];
@@ -128,7 +142,11 @@ const DEFAULT_DB: AppDatabase = {
     }
   },
   submissions: [],
-  quizzes: {},
+  quizzes: { "data-science": {} },
+  trackImportStatus: {
+    python: { status: "idle", completed: 0, total: 200 },
+    java: { status: "idle", completed: 0, total: 200 },
+  },
   interviews: [],
   assessments: [],
   overrides: [],
@@ -216,6 +234,28 @@ function readLocalDB(): AppDatabase {
             s.interviewPermission = false;
           }
         });
+      }
+      // Migrate the old flat quizzes format ({ [day]: DayQuiz }) into the new
+      // per-track format ({ "data-science": { [day]: DayQuiz }, python: {...}, java: {...} }).
+      // All previously-generated quizzes were Data Science content, so they're moved
+      // into that bucket untouched.
+      if (data.quizzes && typeof data.quizzes === "object") {
+        const keys = Object.keys(data.quizzes);
+        const looksLegacyFlat = keys.length > 0 && keys.every((k) => !isNaN(Number(k)));
+        if (looksLegacyFlat) {
+          data.quizzes = { "data-science": data.quizzes };
+        }
+      } else {
+        data.quizzes = {};
+      }
+      if (!data.quizzes["data-science"]) data.quizzes["data-science"] = {};
+      if (!data.quizzes["python"]) data.quizzes["python"] = {};
+      if (!data.quizzes["java"]) data.quizzes["java"] = {};
+      if (!data.trackImportStatus) {
+        data.trackImportStatus = {
+          python: { status: "idle", completed: 0, total: 200 },
+          java: { status: "idle", completed: 0, total: 200 },
+        };
       }
       return data;
     }
@@ -330,11 +370,20 @@ function writeDB(data: AppDatabase) {
   } catch (err) {
     console.error("Error writing to database file:", err);
   }
-  
+
   if (firestoreDb) {
-    syncPushToFirestore(data).catch((err) => {
-      console.error("[Firebase] Asynchronous background sync failed:", err);
-    });
+    // IMPORTANT: chain background Firestore pushes one after another instead of firing
+    // them all in parallel. Without this, a slightly slower earlier push (e.g. from
+    // adding Student A) could finish AFTER a slightly faster later push (e.g. from
+    // adding Student B), overwriting Firestore with the older snapshot and silently
+    // erasing Student A/B the next time the server restarts and pulls from Firestore.
+    // Chaining guarantees the very last local write always ends up as the very last
+    // thing written to Firestore too.
+    firestoreWriteQueue = firestoreWriteQueue
+      .then(() => syncPushToFirestore(data))
+      .catch((err) => {
+        console.error("[Firebase] Asynchronous background sync failed:", err);
+      });
   }
 }
 
@@ -606,25 +655,31 @@ app.delete("/api/students/:id", (req, res) => {
 app.get("/api/quiz/:day", async (req, res) => {
   const day = parseInt(req.params.day, 10);
   const regenerate = req.query.regenerate === "true";
-  
+  const track = (typeof req.query.track === "string" && ["python", "java", "data-science"].includes(req.query.track))
+    ? req.query.track
+    : "data-science";
+
   if (isNaN(day) || day < 1 || day > 200) {
     res.status(400).json({ error: "Day must be between 1 and 200" });
     return;
   }
 
   const db = readDB();
-  if (!regenerate && db.quizzes && db.quizzes[day]) {
-    res.json(db.quizzes[day]);
+  if (!db.quizzes) db.quizzes = {};
+  if (!db.quizzes[track]) db.quizzes[track] = {};
+
+  if (!regenerate && db.quizzes[track][day]) {
+    res.json(db.quizzes[track][day]);
     return;
   }
 
-  // Make sure quizzes is defined
-  if (!db.quizzes) db.quizzes = {};
-
   try {
-    // Generate dynamically using Gemini or Fallback
-    const quiz = await generateQuizForDay(day);
-    db.quizzes[day] = quiz;
+    // Generate dynamically using Gemini or Fallback — Python/Java tracks use their own
+    // single-language generator; Data Science keeps its original staged generator.
+    const quiz = track === "python" || track === "java"
+      ? await generateQuizForTrackDay(track, day)
+      : await generateQuizForDay(day);
+    db.quizzes[track][day] = quiz;
     writeDB(db);
     res.json(quiz);
   } catch (error) {
@@ -729,82 +784,26 @@ Determine:
 app.post("/api/quiz/:day/override", (req, res) => {
   const day = parseInt(req.params.day, 10);
   const quizData = req.body;
+  const track = (typeof req.body?.track === "string" && ["python", "java", "data-science"].includes(req.body.track))
+    ? req.body.track
+    : "data-science";
   if (isNaN(day) || day < 1 || day > 200) {
     res.status(400).json({ error: "Day must be between 1 and 200" });
     return;
   }
   const db = readDB();
   if (!db.quizzes) db.quizzes = {};
-  db.quizzes[day] = quizData;
+  if (!db.quizzes[track]) db.quizzes[track] = {};
+  db.quizzes[track][day] = quizData;
   writeDB(db);
   res.json({ success: true, quiz: quizData });
 });
 
-// Bulk import an entire syllabus of quizzes in one shot (Teacher panel "Import All Syllabus" action).
-// Accepts either:
-//   { quizzes: { "1": {dayNumber, courseSlug, topicTitle, mcqs, coding}, "2": {...}, ... } }
-//   { quizzes: [ {dayNumber: 1, ...}, {dayNumber: 2, ...}, ... ] }
-app.post("/api/quiz/bulk-import", (req, res) => {
-  const payload = req.body?.quizzes ?? req.body;
-
-  if (!payload || typeof payload !== "object") {
-    res.status(400).json({ error: "Request body must contain a 'quizzes' map or array of day quiz objects." });
-    return;
-  }
-
-  // Normalize input (object keyed by day, or array of quiz objects) into a list of [day, quiz] entries.
-  const entries: [number, any][] = Array.isArray(payload)
-    ? payload.map((quiz: any) => [parseInt(quiz?.dayNumber, 10), quiz])
-    : Object.entries(payload).map(([key, quiz]: [string, any]) => [
-        parseInt(quiz?.dayNumber ?? key, 10),
-        quiz
-      ]);
-
-  const imported: number[] = [];
-  const skipped: { day: any; reason: string }[] = [];
-
-  const db = readDB();
-  if (!db.quizzes) db.quizzes = {};
-
-  for (const [day, quiz] of entries) {
-    if (isNaN(day) || day < 1 || day > 200) {
-      skipped.push({ day: quiz?.dayNumber, reason: "Day number missing or out of range (1-200)." });
-      continue;
-    }
-    if (!quiz || !Array.isArray(quiz.mcqs) || !Array.isArray(quiz.coding)) {
-      skipped.push({ day, reason: "Entry is missing required 'mcqs' or 'coding' arrays." });
-      continue;
-    }
-
-    db.quizzes[day] = {
-      dayNumber: day,
-      courseSlug: quiz.courseSlug || "python",
-      topicTitle: quiz.topicTitle || `Day ${day}`,
-      mcqs: quiz.mcqs,
-      coding: quiz.coding
-    };
-    imported.push(day);
-  }
-
-  if (imported.length === 0) {
-    res.status(400).json({ error: "No valid quiz entries found to import.", skipped });
-    return;
-  }
-
-  writeDB(db);
-  res.json({
-    success: true,
-    importedCount: imported.length,
-    importedDays: imported.sort((a, b) => a - b),
-    skippedCount: skipped.length,
-    skipped
-  });
-});
-
 // Dynamic generation of 10 questions from user course material document
 app.post("/api/quiz/generate-from-material", async (req, res) => {
-  const { materialText, dayNumber, courseSlug, topicTitle } = req.body;
+  const { materialText, dayNumber, courseSlug, topicTitle, track } = req.body;
   const day = parseInt(dayNumber, 10);
+  const resolvedTrack = (typeof track === "string" && ["python", "java", "data-science"].includes(track)) ? track : "data-science";
 
   if (!materialText || !materialText.trim()) {
     res.status(400).json({ error: "Course content material text is required to generate questions." });
@@ -825,7 +824,8 @@ app.post("/api/quiz/generate-from-material", async (req, res) => {
     // Auto persist into database for immediate availability
     const db = readDB();
     if (!db.quizzes) db.quizzes = {};
-    db.quizzes[day] = customQuiz;
+    if (!db.quizzes[resolvedTrack]) db.quizzes[resolvedTrack] = {};
+    db.quizzes[resolvedTrack][day] = customQuiz;
     writeDB(db);
 
     res.json({ success: true, quiz: customQuiz });
@@ -833,6 +833,87 @@ app.post("/api/quiz/generate-from-material", async (req, res) => {
     console.error("Failed generating material quiz:", error);
     res.status(500).json({ error: error.message || "Failed to parse or generate quiz from supplied teaching content." });
   }
+});
+
+// One-click bulk import: generates and stores all 200 days of daily test content for
+// the Python-only or Java-only track. Runs in the background (the HTTP request returns
+// immediately) since generating 200 days sequentially can take a while; progress can be
+// polled via GET /api/curriculum/:track/import-status. Safe to call again later — any
+// day that's already been generated is skipped, so it only fills in the gaps.
+app.post("/api/curriculum/:track/import-200", async (req, res) => {
+  const { track } = req.params;
+  if (track !== "python" && track !== "java") {
+    res.status(400).json({ error: "Track must be 'python' or 'java'." });
+    return;
+  }
+
+  const db = readDB();
+  if (!db.trackImportStatus) {
+    db.trackImportStatus = { python: { status: "idle", completed: 0, total: 200 }, java: { status: "idle", completed: 0, total: 200 } };
+  }
+  if (db.trackImportStatus[track]?.status === "running") {
+    res.json({ started: false, message: "An import for this track is already running.", status: db.trackImportStatus[track] });
+    return;
+  }
+
+  if (!db.quizzes) db.quizzes = {};
+  if (!db.quizzes[track]) db.quizzes[track] = {};
+  const alreadyDone = Object.keys(db.quizzes[track]).length;
+
+  db.trackImportStatus[track] = { status: "running", completed: alreadyDone, total: 200, startedAt: new Date().toISOString() };
+  writeDB(db);
+  res.json({ started: true, status: db.trackImportStatus[track] });
+
+  // Run the 200-day generation loop in the background, after responding.
+  (async () => {
+    for (let day = 1; day <= 200; day++) {
+      const current = readDB();
+      if (current.quizzes?.[track]?.[day]) {
+        continue; // already generated (e.g. from a previous partial import)
+      }
+      try {
+        const quiz = await generateQuizForTrackDay(track as "python" | "java", day);
+        const latest = readDB();
+        if (!latest.quizzes) latest.quizzes = {};
+        if (!latest.quizzes[track]) latest.quizzes[track] = {};
+        latest.quizzes[track][day] = quiz;
+        if (!latest.trackImportStatus) latest.trackImportStatus = {} as any;
+        latest.trackImportStatus[track] = {
+          status: "running",
+          completed: Object.keys(latest.quizzes[track]).length,
+          total: 200,
+          startedAt: latest.trackImportStatus[track]?.startedAt || new Date().toISOString(),
+        };
+        writeDB(latest);
+      } catch (err) {
+        console.error(`[Import 200 Days] Failed generating ${track} Day ${day}:`, err);
+      }
+    }
+    const finalDb = readDB();
+    if (!finalDb.trackImportStatus) finalDb.trackImportStatus = {} as any;
+    finalDb.trackImportStatus[track] = {
+      status: "done",
+      completed: Object.keys(finalDb.quizzes?.[track] || {}).length,
+      total: 200,
+      startedAt: finalDb.trackImportStatus[track]?.startedAt,
+    };
+    writeDB(finalDb);
+    console.log(`[Import 200 Days] Finished importing ${track} track.`);
+  })().catch((err) => {
+    console.error(`[Import 200 Days] Background import crashed for ${track}:`, err);
+    const errDb = readDB();
+    if (!errDb.trackImportStatus) errDb.trackImportStatus = {} as any;
+    errDb.trackImportStatus[track] = { status: "error", completed: errDb.trackImportStatus[track]?.completed || 0, total: 200, error: String(err) };
+    writeDB(errDb);
+  });
+});
+
+// Poll the progress of the one-click 200-day import for a track.
+app.get("/api/curriculum/:track/import-status", (req, res) => {
+  const { track } = req.params;
+  const db = readDB();
+  const status = db.trackImportStatus?.[track] || { status: "idle", completed: 0, total: 200 };
+  res.json({ status });
 });
 
 // 6. Submissions/Attendance actions
@@ -1045,13 +1126,52 @@ app.post("/api/lock-status", (req, res) => {
   }
 
   const db = readDB();
+  const existing = db.locks[batchName];
   db.locks[batchName] = {
     batchName,
     unlockedCourses: unlockedCourses || [],
     unlockedDays: unlockedDays || [],
-    courseLockState: courseLockState || {}
+    courseLockState: courseLockState || {},
+    // Preserve fields owned by other endpoints (course track, per-feature locks) so
+    // saving day/course unlocks here doesn't silently reset them.
+    courseTrack: existing?.courseTrack,
+    featureLocks: existing?.featureLocks,
   };
 
+  writeDB(db);
+  res.json({ success: true, locks: db.locks });
+});
+
+// Sets which curriculum/AI-interview track a batch follows: "data-science" (default),
+// "python", or "java". Drives both the AI Interview subject pool and which daily-test
+// quiz content set students in that batch are served.
+app.post("/api/batches/:batchName/course-track", (req, res) => {
+  const { batchName } = req.params;
+  const { courseTrack } = req.body;
+  if (!batchName) {
+    res.status(400).json({ error: "Batch name is required" });
+    return;
+  }
+  if (!["data-science", "python", "java"].includes(courseTrack)) {
+    res.status(400).json({ error: "courseTrack must be one of: data-science, python, java" });
+    return;
+  }
+
+  const db = readDB();
+  if (!db.batches.includes(batchName)) {
+    res.status(404).json({ error: `Batch "${batchName}" does not exist.` });
+    return;
+  }
+
+  if (!db.locks[batchName]) {
+    db.locks[batchName] = {
+      batchName,
+      unlockedCourses: ["python"],
+      unlockedDays: [1, 2, 3],
+      courseLockState: { python: false, numpy: true, pandas: true, ml: true },
+    };
+  }
+  db.locks[batchName].courseTrack = courseTrack;
   writeDB(db);
   res.json({ success: true, locks: db.locks });
 });
@@ -2120,25 +2240,33 @@ app.post("/api/careers/live-jobs", async (req, res) => {
 
   // If the student hasn't filled in any portal profiles yet, fall back to a broad default
   // set so the search still works — filled-in portals are simply prioritized, never required.
-  const portalsToSearch = filledPortals.length > 0
-    ? filledPortals
-    : ["LinkedIn", "Naukri.com", "Indeed", "Instahyre", "Wellfound (AngelList)"];
+  const ALL_DEFAULT_PORTALS = ["LinkedIn", "Naukri.com", "Indeed", "Glassdoor", "Foundit", "Shine.com", "TimesJobs", "Internshala", "Wellfound (AngelList)", "Instahyre"];
+  const MIN_PORTALS_TO_SEARCH = 8;
+  // Always search at least MIN_PORTALS_TO_SEARCH portals: whatever the student has filled in
+  // (even if it's just 1 or 2) is searched first/prioritized, then topped up with defaults so
+  // the search is never narrowed down to only what they've listed.
+  const portalsToSearch = [
+    ...filledPortals,
+    ...ALL_DEFAULT_PORTALS.filter((p) => !filledPortals.includes(p)),
+  ].slice(0, Math.max(MIN_PORTALS_TO_SEARCH, filledPortals.length));
 
+  const nowStr = new Date().toISOString();
   const prompt = `You are a live job-search research assistant for "Quality Thought Academy" students.
 
-Use Google Search to find 6-8 REAL job postings that were posted or updated WITHIN THE LAST 48 HOURS ONLY, matching this candidate profile:
+Today's date/time (UTC) is ${nowStr}.
+
+Use Google Search to find 8-10 REAL job postings that were posted or re-posted within the LAST 62 HOURS ONLY, and that closely match this candidate profile:
 - Target role / keywords: "${focusQuery}"
 - Skills: ${skillsList || "Python, Data Science fundamentals"}
 - Location preference: "${targetLocation}" (include a couple of remote/India-wide roles too if relevant)
 ${resumeText ? `- Additional resume context: """${String(resumeText).slice(0, 1500)}"""` : ""}
 
-STRICT FRESHNESS RULE: Only include postings explicitly dated, or clearly indicated by the search result, as posted within the last 48 hours (e.g. "Posted today", "Posted yesterday", "1 day ago", "2 days ago", or an explicit date within that window). If you cannot verify a posting is that recent, DO NOT include it — return fewer results instead of including anything older or undated.
+Search across at least ${Math.min(portalsToSearch.length, 8)} of these portals${filledPortals.length > 0 ? " (the student's own filled-in profiles are listed first and should be prioritized, topped up with other major portals so the search is never narrowed to just 1-2 sites)" : " (default broad set, since the student hasn't listed specific profiles yet)"}: ${portalsToSearch.join(", ")}, plus official company career pages.
 
-Search across these portals the student has active profiles on${filledPortals.length > 0 ? "" : " (default set, since the student hasn't listed specific profiles yet)"}: ${portalsToSearch.join(", ")}, plus official company career pages. It is completely fine if the student only listed one or two portals — search thoroughly across exactly the ones given rather than expecting a full list.
+Freshness rule: only include postings dated, or clearly indicated as posted, within the last 62 hours (e.g. "posted today", "1 day ago", "24 hours ago", "2 days ago", "2.5 days ago"). If a posting's date cannot be confirmed as within the last 62 hours, leave it out.
+Coverage rule: try to include at least one result from as many of the listed portals as you can find fresh postings on — do not concentrate all results on a single portal if others also have fresh matches.
 
-AVOID aggregator/mirror sites that frequently show stale or already-expired listings even when they rank well in search (examples: bebee.com, jooble, jobrapido, and similar third-party re-posting aggregators). Prefer the original source: the company's own careers page, or the primary job board (LinkedIn, Naukri, Indeed, Instahyre, Wellfound) where the listing was actually first posted.
-
-For every result you include, you MUST have actually found it via search — do not invent postings or URLs. Prefer the most direct link available: the company's own careers-page listing if you can find it, otherwise the specific job-board listing page for that exact posting (never a generic search-results page).
+For every result you include, you MUST have actually found it via search — do not invent postings, dates, or URLs. Prefer the most direct link available: the company's own careers-page listing if you can find it, otherwise the specific job-board listing page for that exact posting (never a generic search-results page).
 
 Respond with ONLY a JSON array (no markdown fences, no commentary) where each item strictly matches:
 {
@@ -2146,15 +2274,15 @@ Respond with ONLY a JSON array (no markdown fences, no commentary) where each it
   "title": string,          // Job title as posted
   "location": string,       // City/Remote as posted
   "source": string,         // e.g. "LinkedIn", "Naukri", "Indeed", "Company Careers Page", "Instahyre", "Wellfound"
-  "applyUrl": string,        // The exact, direct URL to that specific posting/apply page found via search
-  "postedWithin": string     // How recent, exactly as indicated by the source, e.g. "Posted today", "1 day ago", "2 days ago"
+  "postedWithin": string,   // How recently it was posted, as stated on the source, e.g. "1 day ago", "Today"
+  "applyUrl": string         // The exact, direct URL to that specific posting/apply page found via search
 }
 
-If you cannot find enough verifiably real postings from the last 48 hours, return fewer items rather than inventing any or including older ones.`;
+If you cannot find 8-10 postings from the last 62 hours, return however many you can verifiably confirm (even just 1-2) rather than inventing any, and widen the search to nearby dates only as a last resort while noting that in "postedWithin".`;
 
   try {
     const response = await generateContentWithRetry(ai, {
-      model: "gemini-2.5-flash",
+      model: "gemini-3.5-flash",
       contents: prompt,
       config: {
         tools: [{ googleSearch: {} }]
@@ -2778,8 +2906,24 @@ async function startServer() {
 
   // Initial database synchronization from Google Cloud Firestore
   try {
+    const localBeforePull = readLocalDB();
     const cloudData = await syncPullFromFirestore();
     if (cloudData) {
+      // Safety merge: never let a stale Firestore snapshot silently delete a student
+      // (or other record) that already exists in the on-disk file. This can happen if
+      // the server restarts moments after a write, before the background Firestore
+      // push for that write has finished — the cloud pull below would otherwise be
+      // "behind" the local file and would look like data loss.
+      const mergeById = (localList: any[] = [], cloudList: any[] = []) => {
+        const map = new Map<string, any>();
+        localList.forEach((item) => item?.id && map.set(item.id, item));
+        cloudList.forEach((item) => item?.id && map.set(item.id, item));
+        return Array.from(map.values());
+      };
+      cloudData.students = mergeById(localBeforePull.students, cloudData.students);
+      cloudData.submissions = mergeById(localBeforePull.submissions, cloudData.submissions);
+      cloudData.interviews = mergeById(localBeforePull.interviews, cloudData.interviews);
+
       inMemoryDBCache = cloudData;
       fs.writeFileSync(DB_FILE, JSON.stringify(cloudData, null, 2), "utf-8");
       console.log("[Firebase] Successfully synchronized and warmed up in-memory cache from Firestore.");
