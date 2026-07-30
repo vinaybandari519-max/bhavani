@@ -2493,6 +2493,14 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
                 <div className="flex gap-3 flex-col sm:flex-row items-stretch sm:items-center">
                   <button
                     type="button"
+                    onClick={() => setActiveTab("resume")}
+                    className="bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold font-mono text-xs py-2 px-4 rounded-xl transition flex items-center justify-center gap-2 cursor-pointer shadow-sm border border-emerald-400/25"
+                  >
+                    <FileText className="w-3.5 h-3.5" />
+                    <span>Build Your ATS Resume</span>
+                  </button>
+                  <button
+                    type="button"
                     onClick={() => {
                       setPlacementForm({
                         linkedin: currentStudentObj.placementDetails?.linkedin || "",
@@ -2716,16 +2724,18 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {activeRolesList.map((role: any, idx: number) => {
-                          // Recency filters, tuned to ~62 hours per portal's own granularity:
-                          // - LinkedIn's f_TPR takes exact seconds, so we can hit 62h precisely.
-                          // - Indeed and Naukri only support whole-day filters, so we round to
-                          //   the nearest day (3 days ≈ 72h) since there's no "last 3 days" that
-                          //   maps exactly to 62h — this is the closest they support.
+                          // Recency filters, tuned to 48 hours per portal's own granularity:
+                          // - LinkedIn's f_TPR takes exact seconds, so 48h is exact.
+                          // - Indeed's fromage and Naukri's jobAge are whole-day only — 48h
+                          //   happens to be exactly 2 days, so both are exact matches too.
+                          // - f_AL=true on LinkedIn filters to "Easy Apply" listings only, so
+                          //   that link doubles as a real one-click apply gateway, not just search.
                           // - Wellfound/AngelList has no public recency query param.
-                          const RECENCY_SECONDS_62H = 62 * 60 * 60; // 223200
-                          const linkedinUrl = `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(role.searchQuery)}&location=${encodeURIComponent(jobLocation)}&f_TPR=r${RECENCY_SECONDS_62H}`;
-                          const indeedUrl = `https://www.indeed.com/jobs?q=${encodeURIComponent(role.searchQuery)}&l=${encodeURIComponent(jobLocation)}&fromage=3`;
-                          const naukriUrl = `https://www.naukri.com/${encodeURIComponent(role.searchQuery.replace(/\s+/g, '-'))}-jobs-in-${encodeURIComponent(jobLocation.split(',')[0].trim().toLowerCase())}?jobAge=3`;
+                          const RECENCY_SECONDS_48H = 48 * 60 * 60; // 172800
+                          const linkedinUrl = `https://www.linkedin.com/jobs/search/?keywords=${encodeURIComponent(role.searchQuery)}&location=${encodeURIComponent(jobLocation)}&f_TPR=r${RECENCY_SECONDS_48H}`;
+                          const linkedinEasyApplyUrl = `${linkedinUrl}&f_AL=true`;
+                          const indeedUrl = `https://www.indeed.com/jobs?q=${encodeURIComponent(role.searchQuery)}&l=${encodeURIComponent(jobLocation)}&fromage=2`;
+                          const naukriUrl = `https://www.naukri.com/${encodeURIComponent(role.searchQuery.replace(/\s+/g, '-'))}-jobs-in-${encodeURIComponent(jobLocation.split(',')[0].trim().toLowerCase())}?jobAge=2`;
                           const wellfoundUrl = `https://wellfound.com/jobs?q=${encodeURIComponent(role.searchQuery)}&l=${encodeURIComponent(jobLocation)}`;
                           const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(role.searchQuery + ' jobs in ' + jobLocation)}&ibp=htl;jobs`;
 
@@ -2753,8 +2763,17 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
                               {(role.isUnlocked || isResumeMode) ? (
                                 <div className="mt-4 space-y-2 pt-3 border-t border-white/5">
                                   <span className="text-[9px] uppercase font-mono font-bold text-indigo-300 block">
-                                    Search Live Jobs on Portals <span className="text-emerald-400">(posted in last 62h)</span>:
+                                    Search Live Jobs on Portals <span className="text-emerald-400">(posted in last 48h)</span>:
                                   </span>
+                                  <a
+                                    href={linkedinEasyApplyUrl}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="bg-emerald-600 hover:bg-emerald-500 border border-emerald-400/30 text-white text-[10px] font-extrabold py-2 px-2.5 rounded-lg flex items-center justify-center gap-1.5 transition w-full focus:outline-none"
+                                  >
+                                    <span>⚡ Apply Now (LinkedIn Easy Apply)</span>
+                                    <ExternalLink className="w-2.5 h-2.5 shrink-0" />
+                                  </a>
                                   <div className="grid grid-cols-2 gap-1.5">
                                     <a 
                                       href={linkedinUrl}
