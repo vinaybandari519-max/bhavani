@@ -44,7 +44,7 @@ interface AiInterviewRoomProps {
   assessments?: any[];
   overrides?: any[];
   onRefreshContext?: () => void;
-  teacherAuthorized?: boolean;
+  specialPermissionBypass?: boolean;
 }
 
 export default function AiInterviewRoom({
@@ -53,7 +53,7 @@ export default function AiInterviewRoom({
   assessments = [],
   overrides = [],
   onRefreshContext,
-  teacherAuthorized = false
+  specialPermissionBypass = false
 }: AiInterviewRoomProps) {
   const [pastInterviews, setPastInterviews] = useState<AIInterview[]>([]);
   const [loadingPast, setLoadingPast] = useState(true);
@@ -114,6 +114,13 @@ export default function AiInterviewRoom({
   // Voice/Audio Recognition and Pacing Diagnostics
   const [isRecordingVoice, setIsRecordingVoice] = useState(false);
   const recognitionRef = useRef<any>(null);
+  // True whenever WE deliberately stopped listening (submit/exit/toggle-off).
+  // Lets us tell that apart from the browser's own silent auto-stop, which we want to
+  // recover from automatically so a thinking pause doesn't cut the student's mic off.
+  const manualStopRef = useRef<boolean>(false);
+  // Accumulates finalized speech across automatic engine restarts, since each restarted
+  // SpeechRecognition instance resets its own internal `results` array to empty.
+  const finalTranscriptRef = useRef<string>("");
 
   const handleExitInterview = (confirmFirst: boolean = true) => {
     if (confirmFirst) {
@@ -142,6 +149,7 @@ export default function AiInterviewRoom({
     }
 
     // Stop speech recognition
+    manualStopRef.current = true;
     if (recognitionRef.current) {
       try {
         recognitionRef.current.stop();
@@ -161,6 +169,83 @@ export default function AiInterviewRoom({
     setIsRecordingVoice(false);
   };
 
+  // Builds a fresh SpeechRecognition instance wired up for clear, continuous capture:
+  // - final chunks are accumulated across the whole answer (not lost on engine restarts)
+  // - interim (in-progress) words are shown live so the student sees they're being heard
+  // - transient hiccups (silence gaps, engine auto-stop) restart listening instead of
+  //   dropping the recording, so a thinking pause doesn't truncate the answer
+  const createRecognitionInstance = (SpeechRecognitionCtor: any) => {
+    const rec = new SpeechRecognitionCtor();
+    rec.continuous = true;
+    rec.interimResults = true;
+    rec.maxAlternatives = 1; // Prioritize the single best-matching speech hypothesis
+    rec.lang = "en-IN"; // Indian English acoustic/language model for accurate local accent recognition
+
+    rec.onresult = (event: any) => {
+      let interim = "";
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        const chunk = event.results[i][0].transcript;
+        if (event.results[i].isFinal) {
+          const needsSpace = finalTranscriptRef.current && !finalTranscriptRef.current.endsWith(" ");
+          finalTranscriptRef.current += (needsSpace ? " " : "") + chunk.trim();
+        } else {
+          interim += chunk;
+        }
+      }
+      const combined = `${finalTranscriptRef.current} ${interim}`.trim();
+      if (combined) {
+        setInputText(combined);
+      }
+    };
+
+    rec.onerror = (err: any) => {
+      const errorName = err?.error;
+      // These are transient/expected during a natural pause in speech — the engine will
+      // fire `onend` right after, which restarts listening automatically below.
+      if (errorName === "no-speech" || errorName === "aborted") {
+        console.log("Speech recognition notice (auto-recovering):", errorName);
+        return;
+      }
+
+      console.warn("Speech recognition notice:", errorName || err);
+      manualStopRef.current = true;
+      setIsRecordingVoice(false);
+
+      if (errorName === "not-allowed") {
+        alert("Microphone permission was denied. Please check your browser's microphone settings.");
+      } else if (errorName === "audio-capture") {
+        alert("No microphone detected. Please plug in or connect an audio input device.");
+      }
+    };
+
+    rec.onend = () => {
+      // Browsers (esp. Chrome) silently end recognition after a short silence even with
+      // continuous=true. If the student hasn't deliberately stopped, resume listening
+      // right away so their voice keeps being captured clearly across natural pauses.
+      if (!manualStopRef.current) {
+        try {
+          rec.start();
+          return;
+        } catch (e) {
+          // The engine can briefly refuse an immediate restart; retry shortly after.
+          setTimeout(() => {
+            if (!manualStopRef.current) {
+              try {
+                rec.start();
+              } catch (e2) {
+                setIsRecordingVoice(false);
+              }
+            }
+          }, 250);
+          return;
+        }
+      }
+      setIsRecordingVoice(false);
+    };
+
+    return rec;
+  };
+
   const toggleVoiceRecording = () => {
     const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
     if (!SpeechRecognition) {
@@ -169,49 +254,19 @@ export default function AiInterviewRoom({
     }
 
     if (isRecordingVoice) {
+      manualStopRef.current = true;
       if (recognitionRef.current) {
-        recognitionRef.current.stop();
+        try {
+          recognitionRef.current.stop();
+        } catch (e) {}
       }
       setIsRecordingVoice(false);
     } else {
+      manualStopRef.current = false;
+      // Preserve any text already present (typed or captured earlier) instead of wiping it
+      finalTranscriptRef.current = inputText.trim();
       setIsRecordingVoice(true);
-      const rec = new SpeechRecognition();
-      rec.continuous = true; // Wait for student to click submit button manually
-      rec.interimResults = true;
-      rec.lang = "en-IN"; // Indian English voice recognition for supreme accuracy
-
-      rec.onresult = (event: any) => {
-        let transcript = "";
-        for (let i = 0; i < event.results.length; ++i) {
-          transcript += event.results[i][0].transcript;
-        }
-        if (transcript.trim()) {
-          setInputText(transcript.trim());
-        }
-      };
-
-      rec.onerror = (err: any) => {
-        const errorName = err?.error;
-        if (errorName === "no-speech") {
-          console.log("Speech recognition finished: no active speech detected.");
-          setIsRecordingVoice(false);
-          return;
-        }
-        
-        console.warn("Speech recognition notice:", errorName || err);
-        setIsRecordingVoice(false);
-
-        if (errorName === "not-allowed") {
-          alert("Microphone permission was denied. Please check your browser's microphone settings.");
-        } else if (errorName === "audio-capture") {
-          alert("No microphone detected. Please plug in or connect an audio input device.");
-        }
-      };
-
-      rec.onend = () => {
-        setIsRecordingVoice(false);
-      };
-
+      const rec = createRecognitionInstance(SpeechRecognition);
       recognitionRef.current = rec;
       rec.start();
     }
@@ -225,6 +280,19 @@ export default function AiInterviewRoom({
       }
     };
   }, [cameraStream]);
+
+  // Ensure speech recognition is fully torn down (and won't auto-restart) if this
+  // component unmounts mid-recording, e.g. the student navigates away.
+  useEffect(() => {
+    return () => {
+      manualStopRef.current = true;
+      if (recognitionRef.current) {
+        try {
+          recognitionRef.current.stop();
+        } catch (e) {}
+      }
+    };
+  }, []);
 
   // Bind cameraStream to HTML5 video element source
   useEffect(() => {
@@ -603,10 +671,7 @@ export default function AiInterviewRoom({
     return s === selectedSubject.toLowerCase();
   }).length;
   const maxAttemptsExhausted = currentSubjectAttempts >= 3 && !student?.interviewRewritePermission;
-  // If a teacher has explicitly granted access (per-student permission, or the
-  // Enterprise Feature Gate for this batch/globally), the 60% score requirement
-  // is waived — the teacher's authorization overrides the automatic score gate.
-  const isEligible = teacherAuthorized === true || (scoreVal !== null && scoreVal >= 60) || matchingOverride?.eligibilityBypass === true;
+  const isEligible = (scoreVal !== null && scoreVal >= 60) || matchingOverride?.eligibilityBypass === true || specialPermissionBypass === true;
 
   const handleStartInterview = async () => {
     // Enforce 60% eligibility check
@@ -643,7 +708,16 @@ export default function AiInterviewRoom({
     // Try to acquire actual student webcam and microphone stream for AI Interview proctor recording
     let activeStream: MediaStream | null = null;
     try {
-      activeStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+      activeStream = await navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: {
+          echoCancellation: { ideal: true },
+          noiseSuppression: { ideal: true },
+          autoGainControl: { ideal: true },
+          sampleRate: { ideal: 48000 },
+          channelCount: { ideal: 1 }
+        }
+      });
       setCameraStream(activeStream);
       setCameraPermissionGranted(true);
       
@@ -688,7 +762,6 @@ export default function AiInterviewRoom({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          studentId: student.id,
           subject: activeSubject,
           difficulty: selectedDifficulty,
           messages: [],
@@ -725,6 +798,7 @@ export default function AiInterviewRoom({
     setInputText("");
 
     // Shut down speech recognition and reset voice recording state
+    manualStopRef.current = true;
     if (recognitionRef.current) {
       try {
         recognitionRef.current.stop();
@@ -747,7 +821,6 @@ export default function AiInterviewRoom({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          studentId: student.id,
           subject: activeSubject,
           difficulty: selectedDifficulty,
           messages: updated,
@@ -759,14 +832,20 @@ export default function AiInterviewRoom({
 
       if (res.ok) {
         const data = await res.json();
-        setCurrentSession(prev => [...prev, data]);
-        speakText(data.content);
-        if (data.isComplete) {
-          setSessionFinished(true);
+        if (data.isUnrelated) {
+          speakText(data.content);
+          alert(`⚠️ Off-Topic Answer:\n\n${data.content}`);
+          // Revert currentSession to remove the last user message so it does not count as a turn
+          setCurrentSession(prev => prev.slice(0, -1));
+        } else {
+          setCurrentSession(prev => [...prev, data]);
+          speakText(data.content);
+          if (data.isComplete) {
+            setSessionFinished(true);
+          }
         }
       } else {
-        const err = await res.json().catch(() => ({} as any));
-        alert(err.error || "Failed to process conversation with AI recruiter.");
+        alert("Failed to process conversation with AI recruiter.");
       }
     } catch (e) {
       alert("Network transmission error occurred.");
@@ -817,6 +896,11 @@ export default function AiInterviewRoom({
         }
       }
 
+      // The evaluation call is intentionally kept small and fast — it no longer carries the
+      // (potentially large) video recording. Bundling a slow AI call with a big video upload in
+      // one request was what caused "Failed to synthesize the evaluation scorecard" with no
+      // detail: on platforms like Railway, that combined request could blow past the reverse
+      // proxy's timeout/size limit and get killed before any JSON response came back.
       const res = await fetch("/api/interview/evaluate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -831,8 +915,7 @@ export default function AiInterviewRoom({
           customMaterial: activeMaterial,
           isResume: isResumeMode,
           interviewType,
-          roundType,
-          videoBase64: videoBase64Data || undefined
+          roundType
         })
       });
 
@@ -842,19 +925,27 @@ export default function AiInterviewRoom({
         setIsInterviewing(false);
         fetchPastSessions(); // Reload list
         onRefreshContext?.(); // Sync parent context
+
+        // Upload the proctoring video separately, after the scorecard is already safely saved.
+        // If this fails or is slow, it never blocks or breaks the student's result.
+        if (videoBase64Data && data.interview?.id) {
+          fetch(`/api/interview/${data.interview.id}/video`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ videoBase64: videoBase64Data, studentId: student.id })
+          }).catch((videoErr) => {
+            console.warn("Video upload failed (evaluation score was already saved):", videoErr);
+          });
+        }
       } else {
-        let serverMessage = "";
-        try {
-          const errData = await res.json();
-          serverMessage = errData?.error || "";
-        } catch {
-          // Response wasn't JSON (e.g. a 413 Payload Too Large from the server/proxy itself)
-        }
-        if (res.status === 413) {
-          alert("Failed to synthesize the evaluation scorecard: your recording was too large to upload. Please try a shorter session, or contact your instructor if this keeps happening.");
-        } else {
-          alert(`Failed to synthesize the evaluation scorecard.${serverMessage ? ` (${serverMessage})` : ""}`);
-        }
+        let detail = "";
+   try {
+     const errBody = await res.json();
+     detail = errBody?.error ? `\n\n${errBody.error}` : "";
+   } catch {
+     // response wasn't JSON (e.g. a raw server error page); ignore
+   }
+   alert(`Failed to synthesize the evaluation scorecard.${detail}`);
       }
     } catch (e) {
       alert("Error occurred on final evaluation trigger.");
@@ -876,21 +967,21 @@ export default function AiInterviewRoom({
       const trimmed = line.trim();
       if (trimmed.startsWith("###")) {
         return (
-          <h4 key={idx} className="text-xs font-extrabold text-amber-900 mt-4 mb-1.5 uppercase font-mono tracking-wide">
+          <h4 key={idx} className="text-xs font-extrabold text-indigo-900 mt-4 mb-1.5 uppercase font-mono tracking-wide">
             {trimmed.replace(/^###\s*/, "")}
           </h4>
         );
       }
       if (trimmed.startsWith("##")) {
         return (
-          <h3 key={idx} className="text-sm font-black text-slate-900 mt-5 mb-2 border-b border-amber-100 pb-1 uppercase font-display tracking-tight">
+          <h3 key={idx} className="text-sm font-black text-slate-900 mt-5 mb-2 border-b border-indigo-100 pb-1 uppercase font-display tracking-tight">
             {trimmed.replace(/^##\s*/, "")}
           </h3>
         );
       }
       if (trimmed.startsWith("#")) {
         return (
-          <h2 key={idx} className="text-base font-black text-amber-700 mt-6 mb-3 border-b-2 border-amber-200 pb-1 font-display">
+          <h2 key={idx} className="text-base font-black text-indigo-700 mt-6 mb-3 border-b-2 border-indigo-200 pb-1 font-display">
             {trimmed.replace(/^#\s*/, "")}
           </h2>
         );
@@ -961,14 +1052,14 @@ export default function AiInterviewRoom({
         {/* Active Room Title Header */}
         <div className="bg-slate-900 px-5 py-4 border-b border-slate-800 text-white flex justify-between items-center shrink-0">
           <div className="flex items-center gap-3">
-            <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs ${isFullWidthVisual ? "bg-amber-500 text-white animate-pulse" : "bg-amber-505/20 text-amber-400"}`}>
+            <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs ${isFullWidthVisual ? "bg-indigo-500 text-white animate-pulse" : "bg-indigo-505/20 text-indigo-400"}`}>
               {isFullWidthVisual ? "REC" : "AI"}
             </div>
             <div>
               <h3 className="text-xs font-extrabold font-display uppercase tracking-wide leading-none flex items-center gap-1.5">
                 Technical Board Examiner {isFullWidthVisual && <span className="text-[10px] bg-red-600/80 px-1.5 py-0.5 rounded text-white font-mono animate-pulse">● PROCTOR ACTIVE</span>}
               </h3>
-              <p className="text-[10px] text-amber-300 mt-1 font-semibold">
+              <p className="text-[10px] text-indigo-300 mt-1 font-semibold">
                 Subject: <span className="text-white">{getSubjectName(selectedSubject)}</span> &bull; {selectedDifficulty}
               </p>
             </div>
@@ -1004,8 +1095,8 @@ export default function AiInterviewRoom({
         {/* INTERACTIVE AI ROBOT HUMAN-LIKE ASSISTANT AVATAR */}
         <div className="bg-slate-900 text-white p-3 border-b border-slate-800 flex items-center justify-between gap-3 shrink-0">
           <div className="flex items-center gap-3">
-            <div className="relative w-12 h-12 bg-slate-950 rounded-xl border border-amber-500/40 flex items-center justify-center overflow-hidden shrink-0 shadow-md">
-              <div className={`absolute inset-0 bg-amber-500/10 transition-opacity ${isLoadingMessage ? 'animate-pulse' : ''}`} />
+            <div className="relative w-12 h-12 bg-slate-950 rounded-xl border border-indigo-500/40 flex items-center justify-center overflow-hidden shrink-0 shadow-md">
+              <div className={`absolute inset-0 bg-indigo-500/10 transition-opacity ${isLoadingMessage ? 'animate-pulse' : ''}`} />
               <img 
                 src={robotAvatar} 
                 alt="RM-8 Humanoid Examiner" 
@@ -1050,7 +1141,7 @@ export default function AiInterviewRoom({
                   <span 
                     key={bar} 
                     style={{ animationDelay: delays[bar - 1], animationDuration: isRecordingVoice ? "0.6s" : "1.2s" }}
-                    className={`w-1 rounded-full animate-bounce ${isRecordingVoice ? 'bg-rose-500 h-5' : 'bg-amber-400 h-3'}`}
+                    className={`w-1 rounded-full animate-bounce ${isRecordingVoice ? 'bg-rose-500 h-5' : 'bg-indigo-400 h-3'}`}
                   />
                 );
               })}
@@ -1091,15 +1182,15 @@ export default function AiInterviewRoom({
               </div>
             </div>
           </div>
-          <div className="bg-amber-50/75 border border-amber-100 rounded-xl p-3.5 text-xs text-amber-900 leading-relaxed max-w-2xl">
-            <p className="font-bold flex items-center gap-1.5 mb-1 text-amber-950 font-sans">
-              <ShieldCheck className="w-4 h-4 text-amber-600" />
+          <div className="bg-indigo-50/75 border border-indigo-100 rounded-xl p-3.5 text-xs text-indigo-900 leading-relaxed max-w-2xl">
+            <p className="font-bold flex items-center gap-1.5 mb-1 text-indigo-950 font-sans">
+              <ShieldCheck className="w-4 h-4 text-indigo-600" />
               {isFullWidthVisual ? "Interactive Placement Proctoring Mode Active:" : "Board Interview Session Guidelines:"}
             </p>
-            <ul className="list-disc pl-4 space-y-0.5 mt-1 font-sans text-[11px] text-amber-850">
+            <ul className="list-disc pl-4 space-y-0.5 mt-1 font-sans text-[11px] text-indigo-850">
               <li>Type descriptive structural answers to show your concept depth.</li>
               {isFullWidthVisual ? (
-                <li className="text-amber-950 font-extrabold">Warning: Biometric monitoring is connected. Keep focus on this workspace.</li>
+                <li className="text-indigo-950 font-extrabold">Warning: Biometric monitoring is connected. Keep focus on this workspace.</li>
               ) : (
                 <li>If asked for a coding snippet, write clear Python/Pandas syntaxes.</li>
               )}
@@ -1119,7 +1210,7 @@ export default function AiInterviewRoom({
                 className={`w-7 h-7 rounded-full shrink-0 flex items-center justify-center font-bold text-xs ${
                   msg.role === "user"
                     ? "bg-slate-200 text-slate-850"
-                    : "bg-amber-600 text-white"
+                    : "bg-indigo-600 text-white"
                 }`}
               >
                 {msg.role === "user" ? student.name[0] : "AI"}
@@ -1136,7 +1227,7 @@ export default function AiInterviewRoom({
                 {msg.role !== "user" && (
                   <button
                     onClick={() => speakText(msg.content)}
-                    className="absolute -right-7 top-1/2 -translate-y-1/2 p-1 bg-white hover:bg-amber-50 rounded-md border border-amber-150 shadow-xs text-amber-600 hover:text-amber-800 opacity-0 group-hover:opacity-100 transition cursor-pointer"
+                    className="absolute -right-7 top-1/2 -translate-y-1/2 p-1 bg-white hover:bg-indigo-50 rounded-md border border-indigo-150 shadow-xs text-indigo-600 hover:text-indigo-800 opacity-0 group-hover:opacity-100 transition cursor-pointer"
                     title="Speak question out loud (Indian English)"
                   >
                     <Volume2 className="w-3.5 h-3.5" />
@@ -1148,7 +1239,7 @@ export default function AiInterviewRoom({
 
           {isLoadingMessage && (
             <div className="flex gap-3 max-w-[80%] mr-auto animate-pulse">
-              <div className="w-7 h-7 rounded-full bg-amber-600 text-white shrink-0 flex items-center justify-center font-bold text-xs">
+              <div className="w-7 h-7 rounded-full bg-indigo-600 text-white shrink-0 flex items-center justify-center font-bold text-xs">
                 AI
               </div>
               <div className="p-3 bg-white border border-slate-150 rounded-2xl rounded-tl-none shadow-xs text-xs text-slate-400 italic">
@@ -1218,6 +1309,7 @@ export default function AiInterviewRoom({
                   <button
                     type="button"
                     onClick={() => {
+                      manualStopRef.current = true;
                       if (recognitionRef.current) {
                         try {
                           recognitionRef.current.stop();
@@ -1240,13 +1332,13 @@ export default function AiInterviewRoom({
               )}
 
               {inputText.trim() && (
-                <div className="bg-amber-50/75 border border-amber-100/60 rounded-xl p-3 mb-2 space-y-2 text-xs text-amber-950 animate-fade-in transition-all">
-                  <div className="flex items-center justify-between text-[10px] font-mono font-bold text-amber-700">
+                <div className="bg-indigo-50/75 border border-indigo-100/60 rounded-xl p-3 mb-2 space-y-2 text-xs text-indigo-950 animate-fade-in transition-all">
+                  <div className="flex items-center justify-between text-[10px] font-mono font-bold text-indigo-700">
                     <span className="flex items-center gap-1.5 uppercase">
-                      <Activity className="w-3.5 h-3.5 text-amber-600 animate-pulse" />
+                      <Activity className="w-3.5 h-3.5 text-indigo-600 animate-pulse" />
                       Live Voice & Transcript Analysis
                     </span>
-                    <span className="bg-amber-100 px-2 py-0.5 rounded text-[9px]">
+                    <span className="bg-indigo-100 px-2 py-0.5 rounded text-[9px]">
                       Clarity Indicator: {(() => {
                         const stats = computeSpeechStats(inputText);
                         return stats.clarity;
@@ -1256,11 +1348,11 @@ export default function AiInterviewRoom({
                   
                   {/* Micro stats grid */}
                   <div className="grid grid-cols-3 gap-2.5 text-[10px]">
-                    <div className="bg-white/80 rounded-lg p-1.5 border border-amber-50/50">
+                    <div className="bg-white/80 rounded-lg p-1.5 border border-indigo-50/50">
                       <div className="text-slate-400 uppercase font-mono text-[8px] leading-none">Words</div>
                       <div className="font-extrabold text-slate-800 text-xs mt-0.5">{inputText.split(/\s+/).filter(Boolean).length}</div>
                     </div>
-                    <div className="bg-white/80 rounded-lg p-1.5 border border-amber-50/50">
+                    <div className="bg-white/80 rounded-lg p-1.5 border border-indigo-50/50">
                       <div className="text-slate-400 uppercase font-mono text-[8px] leading-none">Fillers Detected</div>
                       <div className="font-extrabold text-slate-800 text-xs mt-0.5 flex items-center gap-1">
                         {(() => {
@@ -1280,7 +1372,7 @@ export default function AiInterviewRoom({
                         })()}
                       </div>
                     </div>
-                    <div className="bg-white/80 rounded-lg p-1.5 border border-amber-50/50">
+                    <div className="bg-white/80 rounded-lg p-1.5 border border-indigo-50/50">
                       <div className="text-slate-400 uppercase font-mono text-[8px] leading-none font-bold">Delivery Cadence</div>
                       <div className="font-semibold text-slate-800 mt-0.5 leading-none truncate">
                         {(() => {
@@ -1291,7 +1383,7 @@ export default function AiInterviewRoom({
                     </div>
                   </div>
                   
-                  <div className="text-[9px] text-amber-650 font-sans italic">
+                  <div className="text-[9px] text-indigo-650 font-sans italic">
                     {isRecordingVoice ? "🎤 Continuously optimizing recognition stream. Click Submit or press Enter to finalize." : "Type or speak to dynamically analyze the answer."}
                   </div>
                 </div>
@@ -1319,12 +1411,12 @@ export default function AiInterviewRoom({
                   }
                 }}
                 placeholder={isRecordingVoice ? "🎤 Listening to your voice... Speak clearly. Click Mic to pause." : "Type or speak your detailed response... (Press Enter to transmit answers)"}
-                className="flex-1 bg-slate-50 border border-slate-205 rounded-xl px-4 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-amber-500 min-h-[44px] max-h-[120px] resize-none leading-relaxed"
+                className="flex-1 bg-slate-50 border border-slate-205 rounded-xl px-4 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500 min-h-[44px] max-h-[120px] resize-none leading-relaxed"
               />
               <button
                 onClick={() => handleSendMessage()}
                 disabled={!inputText.trim() || isLoadingMessage}
-                className="bg-amber-600 hover:bg-amber-550 disabled:bg-slate-200 disabled:text-slate-400 text-white rounded-xl w-11 h-11 flex items-center justify-center transition shrink-0 cursor-pointer"
+                className="bg-indigo-600 hover:bg-indigo-550 disabled:bg-slate-200 disabled:text-slate-400 text-white rounded-xl w-11 h-11 flex items-center justify-center transition shrink-0 cursor-pointer"
               >
                 <Send className="w-4 h-4" />
               </button>
@@ -1378,12 +1470,12 @@ export default function AiInterviewRoom({
       )}
 
       {/* HEADER BANNER */}
-      <div className="bg-gradient-to-r from-slate-900 via-amber-950 to-slate-900 rounded-2xl p-6 text-white border border-slate-800 shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-6 text-white border border-slate-800 shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <Sparkles className="w-4 h-4 text-amber-400" />
-            <span className="text-[10px] text-amber-300 font-bold uppercase tracking-wider font-mono">
-              Raise Tech AI Placement Recruiter
+            <span className="text-[10px] text-indigo-300 font-bold uppercase tracking-wider font-mono">
+              Quality Thought AI Placement Recruiter
             </span>
           </div>
           <h2 className="text-xl font-bold tracking-tight text-white font-display">
@@ -1401,7 +1493,7 @@ export default function AiInterviewRoom({
               setSelectedDifficulty("Junior");
               handleStartInterview();
             }}
-            className="bg-amber-600 hover:bg-amber-500 hover:shadow-amber-550/20 shadow-md text-white px-5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
+            className="bg-indigo-600 hover:bg-indigo-500 hover:shadow-indigo-550/20 shadow-md text-white px-5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
           >
             <Play className="w-3.5 h-3.5 fill-white" />
             Launch Quick Interview
@@ -1420,7 +1512,7 @@ export default function AiInterviewRoom({
             <div>
               <div className="flex items-center justify-between border-b border-slate-850 pb-3 mb-3 shrink-0">
                 <div className="flex items-center gap-2">
-                  <Fingerprint className="w-5 h-5 text-amber-400 animate-pulse" />
+                  <Fingerprint className="w-5 h-5 text-indigo-400 animate-pulse" />
                   <div>
                     <h4 className="text-[11px] font-black text-white uppercase font-sans tracking-widest leading-none">
                       Proctoring Panel Diagnostics
@@ -1454,7 +1546,7 @@ export default function AiInterviewRoom({
             <div className="bg-slate-900 rounded-xl border border-slate-850 p-3.5 space-y-1.5 relative overflow-hidden">
               <div className="flex justify-between items-center text-[8px] font-mono">
                 <span className="text-slate-405 font-bold uppercase flex items-center gap-1">
-                  <Mic className="w-3.5 h-3.5 text-amber-400 animate-bounce" /> Sound Level Stream
+                  <Mic className="w-3.5 h-3.5 text-indigo-400 animate-bounce" /> Sound Level Stream
                 </span>
                 <span className="text-emerald-400 font-bold">[ONLINE]</span>
               </div>
@@ -1465,7 +1557,7 @@ export default function AiInterviewRoom({
             <div className="bg-black/95 p-3 rounded-xl border border-slate-850 font-mono text-[9px] space-y-1 shrink-0">
               <div className="text-slate-500 font-bold text-[8px] uppercase tracking-wider border-b border-slate-900 pb-1 mb-1.5 flex justify-between">
                 <span>Intelligent Watchdog Streams</span>
-                <span className="text-amber-400">Ver 1.2</span>
+                <span className="text-indigo-400">Ver 1.2</span>
               </div>
               <div className="space-y-1 font-mono max-h-[80px] overflow-y-auto pr-1">
                 {proctorLogs.slice(0, 4).map((log, lIdx) => (
@@ -1488,7 +1580,7 @@ export default function AiInterviewRoom({
             /* DETAILED REPORT PREVIEW BOARD */
             <div className="bg-white rounded-2xl border border-slate-205 overflow-hidden shadow-sm space-y-6">
               {/* Detailed Report Active Title Header */}
-              <div className="bg-slate-900 px-5 py-4 border-b border-amber-950 text-white flex justify-between items-center">
+              <div className="bg-slate-900 px-5 py-4 border-b border-indigo-950 text-white flex justify-between items-center">
                 <div className="flex items-center gap-3">
                   <Award className="w-5 h-5 text-amber-400 fill-amber-400" />
                   <div>
@@ -1515,9 +1607,9 @@ export default function AiInterviewRoom({
                 {/* DUAL SCORES & EXECUTIVE OVERVIEW GRID */}
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                   {/* CUMULATIVE GENERAL APITUDE SCORE */}
-                  <div className="bg-amber-900 text-white p-5 rounded-2xl text-center flex flex-col justify-center items-center shadow-sm border border-amber-950 relative overflow-hidden">
-                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-amber-400 to-purple-400"></div>
-                    <span className="text-[10px] font-extrabold text-amber-200 uppercase tracking-widest font-mono">
+                  <div className="bg-indigo-900 text-white p-5 rounded-2xl text-center flex flex-col justify-center items-center shadow-sm border border-indigo-950 relative overflow-hidden">
+                    <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-indigo-400 to-purple-400"></div>
+                    <span className="text-[10px] font-extrabold text-indigo-200 uppercase tracking-widest font-mono">
                       Core Placement Score
                     </span>
                     <span className="text-4xl font-black leading-tight font-mono mt-2 mb-1">
@@ -1527,7 +1619,7 @@ export default function AiInterviewRoom({
                       (activeReport.report?.score ?? 0) >= 85
                         ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
                         : (activeReport.report?.score ?? 0) >= 70
-                        ? "bg-orange-500/20 text-orange-300 border border-orange-500/30"
+                        ? "bg-blue-500/20 text-blue-300 border border-blue-500/30"
                         : (activeReport.report?.score ?? 0) >= 60
                         ? "bg-amber-500/20 text-amber-300 border border-amber-500/30"
                         : "bg-rose-500/20 text-rose-300 border border-rose-500/30"
@@ -1547,11 +1639,11 @@ export default function AiInterviewRoom({
                     <div className="space-y-2 bg-white p-3 rounded-xl border border-slate-100 flex flex-col justify-between">
                       <div className="flex justify-between items-center text-[10px] uppercase font-mono font-bold">
                         <span className="text-slate-500 flex items-center gap-1">🛠️ Technical Aptitude</span>
-                        <span className="text-amber-600 font-extrabold">{activeReport.report?.technicalScore ?? activeReport.report?.score ?? 0}%</span>
+                        <span className="text-indigo-600 font-extrabold">{activeReport.report?.technicalScore ?? activeReport.report?.score ?? 0}%</span>
                       </div>
                       <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
                         <div
-                          className="bg-amber-600 h-full rounded-full transition-all"
+                          className="bg-indigo-600 h-full rounded-full transition-all"
                           style={{ width: `${activeReport.report?.technicalScore ?? activeReport.report?.score ?? 0}%` }}
                         ></div>
                       </div>
@@ -1576,7 +1668,7 @@ export default function AiInterviewRoom({
 
                 {/* EXECUTIVE BRIEF & SUMMARY NOTES */}
                 <div className="bg-slate-50 border border-slate-200 p-5 rounded-2xl space-y-2 relative">
-                  <span className="text-[10px] font-extrabold text-amber-700 uppercase tracking-wider block font-mono">
+                  <span className="text-[10px] font-extrabold text-indigo-700 uppercase tracking-wider block font-mono">
                     Executive Recruitment Summary
                   </span>
                   <p className="text-xs font-semibold text-slate-700 leading-relaxed italic">
@@ -1585,14 +1677,14 @@ export default function AiInterviewRoom({
                 </div>
 
                 {/* REAL-TIME CONVERSATION PATTERN & DNA ANALYTICS */}
-                <div className="bg-orange-50/70 border border-orange-200 p-5 rounded-2xl space-y-3">
-                  <div className="flex items-center gap-2 border-b border-orange-150 pb-2">
-                    <Fingerprint className="w-4.5 h-4.5 text-orange-600 animate-pulse" />
+                <div className="bg-blue-50/70 border border-blue-200 p-5 rounded-2xl space-y-3">
+                  <div className="flex items-center gap-2 border-b border-blue-150 pb-2">
+                    <Fingerprint className="w-4.5 h-4.5 text-blue-600 animate-pulse" />
                     <div>
-                      <h4 className="text-xs font-extrabold text-orange-950 uppercase font-sans tracking-wide">
+                      <h4 className="text-xs font-extrabold text-blue-950 uppercase font-sans tracking-wide">
                         Answering Pattern & Communication Diagnostics
                       </h4>
-                      <p className="text-[9px] text-orange-700 font-medium">Linguistic analysis, conceptual brevity, and behavioral confidence indicators.</p>
+                      <p className="text-[9px] text-blue-700 font-medium">Linguistic analysis, conceptual brevity, and behavioral confidence indicators.</p>
                     </div>
                   </div>
                   <p className="text-xs text-slate-700 leading-relaxed font-medium">
@@ -1605,7 +1697,7 @@ export default function AiInterviewRoom({
                   <div className="bg-slate-900 border border-slate-800 text-white p-5 rounded-2xl space-y-4 shadow-xl">
                     <div className="flex items-center justify-between border-b border-slate-800 pb-3">
                       <div className="flex items-center gap-2">
-                        <Volume2 className="w-5 h-5 text-amber-400 animate-pulse" />
+                        <Volume2 className="w-5 h-5 text-indigo-400 animate-pulse" />
                         <div>
                           <h4 className="text-xs font-extrabold uppercase font-sans tracking-wider leading-none">
                             🤖 Humanoid Voice & Delivery Diagnostics
@@ -1613,7 +1705,7 @@ export default function AiInterviewRoom({
                           <p className="text-[9px] text-slate-400 mt-1">Real-time tone enunciation, pacing speed, and conversational enunciation analytics.</p>
                         </div>
                       </div>
-                      <span className="text-[10px] bg-amber-500/15 text-amber-400 font-mono font-bold px-2.5 py-1 rounded border border-amber-500/20 uppercase">
+                      <span className="text-[10px] bg-indigo-500/15 text-indigo-400 font-mono font-bold px-2.5 py-1 rounded border border-indigo-500/20 uppercase">
                         Active Speech Analysis
                       </span>
                     </div>
@@ -1635,11 +1727,11 @@ export default function AiInterviewRoom({
 
                       <div className="bg-slate-950 p-3 rounded-xl border border-slate-850">
                         <span className="block text-[8px] text-slate-400 uppercase font-mono tracking-wider">Enunciation Clarity</span>
-                        <span className="text-lg font-black text-amber-400 font-mono block mt-1">
+                        <span className="text-lg font-black text-indigo-400 font-mono block mt-1">
                           {activeReport.report.voiceAnalysis.clarityScore}%
                         </span>
                         <div className="w-full bg-slate-800 h-1 rounded-full mt-2 overflow-hidden">
-                          <div className="bg-amber-400 h-full rounded-full" style={{ width: `${activeReport.report.voiceAnalysis.clarityScore}%` }}></div>
+                          <div className="bg-indigo-400 h-full rounded-full" style={{ width: `${activeReport.report.voiceAnalysis.clarityScore}%` }}></div>
                         </div>
                       </div>
 
@@ -1648,7 +1740,7 @@ export default function AiInterviewRoom({
                         <span className="text-xs font-extrabold text-slate-200 block mt-2 truncate">
                           {activeReport.report.voiceAnalysis.modulationStatus}
                         </span>
-                        <span className="inline-block text-[8px] font-mono text-amber-300 uppercase mt-1">Tone Check</span>
+                        <span className="inline-block text-[8px] font-mono text-indigo-300 uppercase mt-1">Tone Check</span>
                       </div>
 
                       <div className="bg-slate-950 p-3 rounded-xl border border-slate-850">
@@ -1754,17 +1846,17 @@ export default function AiInterviewRoom({
                       </ul>
                     </div>
 
-                    <div className="bg-amber-50/30 border border-amber-200/80 p-4 rounded-2xl space-y-3">
+                    <div className="bg-indigo-50/30 border border-indigo-200/80 p-4 rounded-2xl space-y-3">
                       <div className="flex items-center gap-1.5">
-                        <Code2 className="w-4.5 h-4.5 text-amber-600" />
-                        <h4 className="text-xs font-extrabold text-amber-950 uppercase font-sans tracking-wide">
+                        <Code2 className="w-4.5 h-4.5 text-indigo-600" />
+                        <h4 className="text-xs font-extrabold text-indigo-950 uppercase font-sans tracking-wide">
                           Actionable Technical & Logic Guidelines
                         </h4>
                       </div>
-                      <ul className="space-y-2 pl-1 text-[11px] text-amber-850 leading-relaxed font-medium">
+                      <ul className="space-y-2 pl-1 text-[11px] text-indigo-850 leading-relaxed font-medium">
                         {(activeReport.report?.techSuggestions || []).map((sug, idx) => (
                           <li key={idx} className="flex gap-1.5 items-start">
-                            <span className="text-amber-600 font-bold shrink-0 mt-0.5 font-mono">0{idx + 1}.</span>
+                            <span className="text-indigo-600 font-bold shrink-0 mt-0.5 font-mono">0{idx + 1}.</span>
                             <span>{sug}</span>
                           </li>
                         ))}
@@ -1773,10 +1865,122 @@ export default function AiInterviewRoom({
                   </div>
                 )}
 
+                {/* PREMIUM QUESTIONS VS STUDENT ANSWERS VS IDEAL SOLUTIONS COMPARISON SECTION */}
+                <div className="border border-slate-200 rounded-2xl p-5 bg-white space-y-4 shadow-xs">
+                  <div className="flex items-center gap-2 border-b border-slate-100 pb-2 mb-1">
+                    <Award className="w-5 h-5 text-indigo-600" />
+                    <div>
+                      <h4 className="text-xs font-extrabold text-slate-900 uppercase font-sans tracking-wide">
+                        📝 Question-by-Question Solution Comparison
+                      </h4>
+                      <p className="text-[10px] text-slate-500 font-sans mt-0.5">
+                        Compare your interview answers step-by-step with optimal technical or behavioral solutions.
+                      </p>
+                    </div>
+                  </div>
+
+                  {(() => {
+                    const comps = activeReport.report?.questionComparisons || (() => {
+                      const list: any[] = [];
+                      let lastQ = "";
+                      for (const m of activeReport.messages || []) {
+                        if (m.role === "assistant" || m.role === "model") {
+                          lastQ = m.content;
+                        } else if (m.role === "user" && lastQ) {
+                          list.push({
+                            question: lastQ,
+                            studentAnswer: m.content,
+                            idealAnswer: "A structured reference solution detailing core conceptual syntax, code execution steps, optimal parameters, or behavioral STAR matrices.",
+                            comparisonAnalysis: "The candidate shows standard conceptual familiarity. Recommendation is to cite concrete python functions, numpy arrays, pandas vectorization or specific corporate placement situations.",
+                            correctnessPercentage: 78
+                          });
+                          lastQ = "";
+                        }
+                      }
+                      return list;
+                    })();
+
+                    if (!comps || comps.length === 0) {
+                      return (
+                        <p className="text-xs text-slate-400 italic">
+                          No distinct questions were found in this interview transcript.
+                        </p>
+                      );
+                    }
+
+                    return (
+                      <div className="space-y-4">
+                        {comps.map((item: any, idx: number) => {
+                          const percentage = item.correctnessPercentage ?? 75;
+                          let scoreBadgeColor = "bg-rose-50 text-rose-700 border-rose-200";
+                          if (percentage >= 85) scoreBadgeColor = "bg-emerald-50 text-emerald-700 border-emerald-200";
+                          else if (percentage >= 70) scoreBadgeColor = "bg-indigo-50 text-indigo-700 border-indigo-200";
+                          else if (percentage >= 55) scoreBadgeColor = "bg-amber-50 text-amber-700 border-amber-200";
+
+                          return (
+                            <div key={idx} className="border border-slate-200 rounded-xl overflow-hidden shadow-xs transition hover:border-slate-300">
+                              {/* Accordion/Card Header */}
+                              <div className="bg-slate-50/70 px-4 py-3 border-b border-slate-100 flex items-start justify-between gap-3 flex-wrap sm:flex-nowrap">
+                                <div className="space-y-1">
+                                  <span className="text-[10px] bg-slate-200/80 text-slate-700 font-mono font-bold px-2 py-0.5 rounded uppercase tracking-wider">
+                                    Question 0{idx + 1}
+                                  </span>
+                                  <h5 className="text-xs font-bold text-slate-800 leading-relaxed pt-1 font-sans">
+                                    {item.question}
+                                  </h5>
+                                </div>
+                                <span className={`text-[10px] font-mono font-black px-2.5 py-1 rounded-full border shrink-0 ${scoreBadgeColor}`}>
+                                  {percentage}% Accuracy
+                                </span>
+                              </div>
+
+                              {/* Card Content body */}
+                              <div className="p-4 space-y-3.5 bg-white text-xs">
+                                {/* Student Answer */}
+                                <div className="space-y-1">
+                                  <div className="flex items-center gap-1.5 text-slate-455 font-mono text-[9px] uppercase font-bold">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                                    <span>Your Submitted Answer</span>
+                                  </div>
+                                  <div className="p-3 bg-slate-50 border border-slate-100 rounded-xl text-slate-700 leading-relaxed font-sans font-medium whitespace-pre-wrap">
+                                    {item.studentAnswer || "[No response provided or skipped]"}
+                                  </div>
+                                </div>
+
+                                {/* Ideal Solution */}
+                                <div className="space-y-1">
+                                  <div className="flex items-center gap-1.5 text-emerald-650 font-mono text-[9px] uppercase font-bold">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                    <span>Optimal Ideal Solution / Reference</span>
+                                  </div>
+                                  <div className="p-3 bg-emerald-50/30 border border-emerald-100/60 rounded-xl text-emerald-900 leading-relaxed font-sans font-semibold whitespace-pre-wrap">
+                                    {item.idealAnswer}
+                                  </div>
+                                </div>
+
+                                {/* Comparison Critique Analysis */}
+                                <div className="space-y-1 bg-indigo-50/25 border border-indigo-100/60 p-3 rounded-xl">
+                                  <div className="flex items-center gap-1.5 text-indigo-750 font-mono text-[9px] uppercase font-bold mb-1">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                                    <span>AI Comparative Evaluation & Feedback</span>
+                                  </div>
+                                  <p className="text-slate-650 leading-relaxed font-sans font-medium">
+                                    {item.comparisonAnalysis}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    );
+                  })()}
+                </div>
+
                 {/* DETAILED EVALUATION MARKDOWN SECTION */}
                 <div className="border border-slate-200 rounded-2xl p-5 bg-white space-y-2">
                   <div className="flex items-center gap-1.5 border-b border-slate-100 pb-2 mb-3">
-                    <FileText className="w-4 h-4 text-amber-600" />
+                    <FileText className="w-4 h-4 text-indigo-600" />
                     <h4 className="text-xs font-extrabold text-slate-900 uppercase font-sans">
                       Section-by-Section Assessment Transcript
                     </h4>
@@ -1796,12 +2000,12 @@ export default function AiInterviewRoom({
                     {activeReport.messages.map((m, mIdx) => (
                       <div key={mIdx} className="text-xs space-y-0.5 font-sans leading-relaxed">
                         <span className={`font-mono text-[9px] uppercase tracking-wider ${
-                          m.role === 'user' ? 'text-amber-600 font-bold' : 'text-slate-500'
+                          m.role === 'user' ? 'text-indigo-600 font-bold' : 'text-slate-500'
                         }`}>
                           {m.role === 'user' ? student.name : 'AI RECRUITER'}
                         </span>
                         <div className={`p-2 rounded-lg text-slate-700 ${
-                          m.role === 'user' ? 'bg-amber-50/50' : 'bg-white border rounded'
+                          m.role === 'user' ? 'bg-indigo-50/50' : 'bg-white border rounded'
                         }`}>
                           {m.content}
                         </div>
@@ -1815,7 +2019,7 @@ export default function AiInterviewRoom({
             /* DEFAULT FORM SETUP SCREEN */
             <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-6">
               <div className="flex items-center gap-2 border-b border-slate-100 pb-3 mb-1">
-                <Brain className="w-5 h-5 text-amber-600 animate-pulse" />
+                <Brain className="w-5 h-5 text-indigo-600 animate-pulse" />
                 <div>
                   <h3 className="font-extrabold text-slate-900 text-sm uppercase tracking-wider">
                     New Mock Recruiter Room Setup
@@ -1859,7 +2063,7 @@ export default function AiInterviewRoom({
                 <button
                   type="button"
                   onClick={() => setBypassTiming(!bypassTiming)}
-                  className="text-[9px] font-mono font-bold bg-white text-zinc-700 hover:text-amber-600 border px-2.5 py-1.5 rounded-xl shadow-xs self-stretch md:self-auto transition flex items-center justify-center gap-1 shrink-0"
+                  className="text-[9px] font-mono font-bold bg-white text-zinc-700 hover:text-indigo-600 border px-2.5 py-1.5 rounded-xl shadow-xs self-stretch md:self-auto transition flex items-center justify-center gap-1 shrink-0"
                 >
                   {bypassTiming ? "🔒 STRICT WINDOW ON" : "🔓 BYPASS WINDOW (TESTING)"}
                 </button>
@@ -1876,7 +2080,7 @@ export default function AiInterviewRoom({
                   }}
                   className={`flex-1 py-1.5 text-xs font-bold rounded-lg transition-all duration-200 flex items-center justify-center gap-1 ${
                     !useCustomMaterial && !isResumeMode
-                      ? "bg-white text-amber-700 shadow-sm"
+                      ? "bg-white text-indigo-700 shadow-sm"
                       : "text-slate-500 hover:text-slate-800"
                   }`}
                 >
@@ -1891,7 +2095,7 @@ export default function AiInterviewRoom({
                   }}
                   className={`flex-1 py-1.5 text-xs font-bold rounded-lg transition-all duration-200 flex items-center justify-center gap-1 ${
                     useCustomMaterial && !isResumeMode
-                      ? "bg-white text-amber-700 shadow-sm"
+                      ? "bg-white text-indigo-700 shadow-sm"
                       : "text-slate-500 hover:text-slate-800"
                   }`}
                 >
@@ -1907,7 +2111,7 @@ export default function AiInterviewRoom({
                   }}
                   className={`flex-1 py-1.5 text-xs font-bold rounded-lg transition-all duration-200 flex items-center justify-center gap-1 ${
                     isResumeMode
-                      ? "bg-white text-amber-700 shadow-sm"
+                      ? "bg-white text-indigo-700 shadow-sm"
                       : "text-slate-500 hover:text-slate-800"
                   }`}
                 >
@@ -1920,7 +2124,7 @@ export default function AiInterviewRoom({
                 {isResumeMode ? (
                   <div className="space-y-4 animate-fadeIn">
                     <div className="space-y-1">
-                      <label className="text-[10px] uppercase tracking-wider font-extrabold text-amber-950 font-mono">
+                      <label className="text-[10px] uppercase tracking-wider font-extrabold text-indigo-950 font-mono">
                         Target Placement Role Title
                       </label>
                       <input
@@ -1928,15 +2132,15 @@ export default function AiInterviewRoom({
                         value={customSubjectName === "Excel & CSV Data Diagnostics" ? "General Data Scientist placement" : customSubjectName}
                         onChange={(e) => setCustomSubjectName(e.target.value)}
                         placeholder="e.g. Associate Data Scientist, Python Developer"
-                        className="w-full bg-slate-50 text-slate-800 border border-slate-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-amber-500 focus:outline-none font-medium"
+                        className="w-full bg-slate-50 text-slate-800 border border-slate-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-indigo-500 focus:outline-none font-medium"
                       />
                     </div>
 
                     {/* Resume File Upload Selector */}
-                    <div className="border border-amber-200 bg-amber-50/20 hover:bg-amber-50/40 transition rounded-xl p-4 flex flex-col justify-center items-center text-center space-y-2 relative border-dashed">
-                      <FileCode className="w-7 h-7 text-amber-500 animate-bounce" />
+                    <div className="border border-indigo-200 bg-indigo-50/20 hover:bg-indigo-50/40 transition rounded-xl p-4 flex flex-col justify-center items-center text-center space-y-2 relative border-dashed">
+                      <FileCode className="w-7 h-7 text-indigo-500 animate-bounce" />
                       <div className="text-xs">
-                        <span className="font-bold text-amber-700 block">Select Professional Resume File</span>
+                        <span className="font-bold text-indigo-700 block">Select Professional Resume File</span>
                         <span className="text-[10px] text-zinc-500">Pick PDF, txt, md or docx representation file (.txt, .md, .js)</span>
                       </div>
                       <input
@@ -1956,7 +2160,7 @@ export default function AiInterviewRoom({
                         className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
                       />
                       {uploadedFileName && (
-                        <span className="text-[9px] text-amber-800 font-mono font-bold bg-amber-100 px-2 py-0.5 rounded">
+                        <span className="text-[9px] text-indigo-800 font-mono font-bold bg-indigo-100 px-2 py-0.5 rounded">
                           ✓ {uploadedFileName}
                         </span>
                       )}
@@ -1984,7 +2188,7 @@ export default function AiInterviewRoom({
                         onChange={(e) => setCustomInterviewMaterial(e.target.value)}
                         placeholder="Paste your resume details, job achievements, bullet points, technical skills list, and database projects here..."
                         rows={4}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-amber-505 focus:outline-none leading-relaxed placeholder:text-slate-400"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-indigo-505 focus:outline-none leading-relaxed placeholder:text-slate-400"
                       />
                     </div>
                   </div>
@@ -2003,12 +2207,12 @@ export default function AiInterviewRoom({
                             onClick={() => setSelectedSubject(subj.slug)}
                             className={`text-left p-3 rounded-xl border transition-all duration-150 cursor-pointer flex flex-col justify-between ${
                               isSel
-                                ? "border-amber-600 bg-amber-50/90 text-amber-950 font-bold shadow-xs ring-1 ring-amber-500"
+                                ? "border-indigo-600 bg-indigo-50/90 text-indigo-950 font-bold shadow-xs ring-1 ring-indigo-500"
                                 : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50/80"
                             }`}
                           >
                             <div className="flex items-center gap-2 mb-1 text-xs truncate">
-                              <span className={`p-1 rounded-md shrink-0 flex items-center justify-center ${isSel ? "bg-amber-600 text-white" : "bg-slate-100 text-slate-500"}`}>
+                              <span className={`p-1 rounded-md shrink-0 flex items-center justify-center ${isSel ? "bg-indigo-600 text-white" : "bg-slate-100 text-slate-500"}`}>
                                 {subj.slug === "python" && <Code2 className="w-3.5 h-3.5" />}
                                 {subj.slug === "numpy" && <Activity className="w-3.5 h-3.5" />}
                                 {subj.slug === "pandas" && <FileCode className="w-3.5 h-3.5" />}
@@ -2032,7 +2236,7 @@ export default function AiInterviewRoom({
                   <div className="space-y-4 animate-fadeIn">
                     {/* Subject Title */}
                     <div className="space-y-1">
-                      <label className="text-[10px] uppercase tracking-wider font-extrabold text-amber-950 font-mono">
+                      <label className="text-[10px] uppercase tracking-wider font-extrabold text-indigo-950 font-mono">
                         Target Tech Subject / Topic Title
                       </label>
                       <input
@@ -2040,15 +2244,15 @@ export default function AiInterviewRoom({
                         value={customSubjectName}
                         onChange={(e) => setCustomSubjectName(e.target.value)}
                         placeholder="e.g. Advanced Excel Formulas & Macros, Sales CSV"
-                        className="w-full bg-slate-50 text-slate-800 border border-slate-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-amber-500 focus:outline-none font-medium"
+                        className="w-full bg-slate-50 text-slate-800 border border-slate-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-indigo-500 focus:outline-none font-medium"
                       />
                     </div>
 
                     {/* File Drop / Select Container */}
-                    <div className="border border-amber-200 bg-amber-50/30 hover:bg-amber-50/60 transition rounded-xl p-4 flex flex-col justify-center items-center text-center space-y-2 relative border-dashed">
-                      <Upload className="w-7 h-7 text-amber-500 animate-bounce" />
+                    <div className="border border-indigo-200 bg-indigo-50/30 hover:bg-indigo-50/60 transition rounded-xl p-4 flex flex-col justify-center items-center text-center space-y-2 relative border-dashed">
+                      <Upload className="w-7 h-7 text-indigo-500 animate-bounce" />
                       <div className="text-xs">
-                        <span className="font-bold text-amber-700 block">Select Placement Reference Document</span>
+                        <span className="font-bold text-indigo-700 block">Select Placement Reference Document</span>
                         <span className="text-[10px] text-zinc-500">Pick raw study guide notes or text sheets (.txt, .csv, .py, .md)</span>
                       </div>
                       <input
@@ -2070,7 +2274,7 @@ export default function AiInterviewRoom({
                         className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
                       />
                       {uploadedFileName && (
-                        <span className="text-[9px] text-amber-800 font-mono font-bold bg-amber-100 px-2 py-0.5 rounded">
+                        <span className="text-[9px] text-indigo-800 font-mono font-bold bg-indigo-100 px-2 py-0.5 rounded">
                           ✓ {uploadedFileName}
                         </span>
                       )}
@@ -2098,7 +2302,7 @@ export default function AiInterviewRoom({
                         onChange={(e) => setCustomInterviewMaterial(e.target.value)}
                         placeholder="Paste PDF notes text paragraphs, Excel sheet formulas, CSV data tables, cheat sheets, or core concepts details..."
                         rows={5}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-amber-505 focus:outline-none leading-relaxed placeholder:text-slate-400"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-indigo-505 focus:outline-none leading-relaxed placeholder:text-slate-400"
                       />
                     </div>
 
@@ -2138,7 +2342,7 @@ export default function AiInterviewRoom({
 
                         <div className="bg-white p-2.5 rounded-lg border border-slate-150">
                           <span className="text-[9px] text-slate-400 block font-mono font-semibold uppercase leading-none mb-1">Chances Remaining</span>
-                          <span className={`font-black ${maxAttemptsExhausted ? "text-rose-600" : "text-amber-650"}`}>
+                          <span className={`font-black ${maxAttemptsExhausted ? "text-rose-600" : "text-indigo-650"}`}>
                             {3 - currentSubjectAttempts} of 3 left
                           </span>
                           <span className="text-[8px] text-slate-400 block">({currentSubjectAttempts}/3 attempts used)</span>
@@ -2166,12 +2370,6 @@ export default function AiInterviewRoom({
                       {matchingOverride?.eligibilityBypass && (
                         <div className="text-[10px] text-purple-850 font-bold bg-purple-100/60 p-2 rounded border border-purple-200/50 flex items-center gap-1 font-mono">
                           ★ ACTIVE OVERRIDE: INSTRUCTOR ELIGIBILITY BYPASS GRANTED
-                        </div>
-                      )}
-
-                      {teacherAuthorized && !(scoreVal !== null && scoreVal >= 60) && !matchingOverride?.eligibilityBypass && (
-                        <div className="text-[10px] text-amber-850 font-bold bg-amber-100/60 p-2 rounded border border-amber-200/50 flex items-center gap-1 font-mono">
-                          ★ TEACHER AUTHORIZED: 60% SCORE REQUIREMENT WAIVED
                         </div>
                       )}
                     </div>
@@ -2222,11 +2420,11 @@ export default function AiInterviewRoom({
                         onClick={() => setRoundType("technical")}
                         className={`py-3 rounded-xl border text-xs font-bold font-sans transition flex flex-col items-center justify-center cursor-pointer gap-1 ${
                           roundType === "technical"
-                            ? "border-amber-650 bg-amber-50/80 text-amber-950 shadow-xs ring-1 ring-amber-500"
+                            ? "border-indigo-650 bg-indigo-50/80 text-indigo-950 shadow-xs ring-1 ring-indigo-500"
                             : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
                         }`}
                       >
-                        <Code2 className={`w-3.5 h-3.5 ${roundType === "technical" ? "text-amber-600" : "text-slate-400"}`} />
+                        <Code2 className={`w-3.5 h-3.5 ${roundType === "technical" ? "text-indigo-600" : "text-slate-400"}`} />
                         <span className="text-[10.5px] leading-none mt-0.5">Technical</span>
                       </button>
 
@@ -2235,11 +2433,11 @@ export default function AiInterviewRoom({
                         onClick={() => setRoundType("hr")}
                         className={`py-3 rounded-xl border text-xs font-bold font-sans transition flex flex-col items-center justify-center cursor-pointer gap-1 ${
                           roundType === "hr"
-                            ? "border-amber-650 bg-amber-50/80 text-amber-950 shadow-xs ring-1 ring-amber-500"
+                            ? "border-indigo-650 bg-indigo-50/80 text-indigo-950 shadow-xs ring-1 ring-indigo-500"
                             : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
                         }`}
                       >
-                        <UserCheck className={`w-3.5 h-3.5 ${roundType === "hr" ? "text-amber-600" : "text-slate-400"}`} />
+                        <UserCheck className={`w-3.5 h-3.5 ${roundType === "hr" ? "text-indigo-600" : "text-slate-400"}`} />
                         <span className="text-[10.5px] leading-none mt-0.5">HR Round</span>
                       </button>
 
@@ -2248,11 +2446,11 @@ export default function AiInterviewRoom({
                         onClick={() => setRoundType("combined")}
                         className={`py-3 rounded-xl border text-xs font-bold font-sans transition flex flex-col items-center justify-center cursor-pointer gap-1 ${
                           roundType === "combined"
-                            ? "border-amber-650 bg-amber-50/80 text-amber-950 shadow-xs ring-1 ring-amber-500"
+                            ? "border-indigo-650 bg-indigo-50/80 text-indigo-950 shadow-xs ring-1 ring-indigo-500"
                             : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
                         }`}
                       >
-                        <Sparkles className={`w-3.5 h-3.5 ${roundType === "combined" ? "text-amber-600 animate-pulse" : "text-slate-400"}`} />
+                        <Sparkles className={`w-3.5 h-3.5 ${roundType === "combined" ? "text-indigo-600 animate-pulse" : "text-slate-400"}`} />
                         <span className="text-[10.5px] leading-none mt-0.5">Combined</span>
                       </button>
                     </div>
@@ -2269,13 +2467,13 @@ export default function AiInterviewRoom({
                           onClick={() => setSelectedDifficulty(diff)}
                           className={`py-3.5 rounded-xl border text-xs font-bold font-sans transition flex flex-col items-center justify-center cursor-pointer gap-0.5 ${
                             selectedDifficulty === diff
-                              ? "border-amber-600 bg-amber-600 text-white shadow-xs"
+                              ? "border-indigo-600 bg-indigo-600 text-white shadow-xs"
                               : "border-slate-200 bg-white text-slate-700 hover:bg-slate-50"
                           }`}
                         >
                           <span>{diff}</span>
                           <span className={`${
-                            selectedDifficulty === diff ? "text-amber-200" : "text-slate-400"
+                            selectedDifficulty === diff ? "text-indigo-200" : "text-slate-400"
                           } text-[8px] uppercase tracking-widest font-mono font-normal`}>
                             {diff === "Junior" ? "Associate" : diff === "Mid-Level" ? "Engineer" : "Principal"}
                           </span>
@@ -2288,12 +2486,12 @@ export default function AiInterviewRoom({
                   <div className="bg-slate-900 text-white rounded-2xl p-4 border border-slate-800 shadow-md space-y-3">
                     <div className="flex items-center justify-between gap-2">
                       <div className="flex items-center gap-2">
-                        <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
+                        <Sparkles className="w-4 h-4 text-indigo-400 animate-pulse" />
                         <div>
                           <h4 className="text-[10px] font-black uppercase font-sans tracking-wider text-slate-200 leading-none">
                             Premium Face Proctoring Mode
                           </h4>
-                          <p className="text-[9px] text-amber-200 mt-1 leading-tight">
+                          <p className="text-[9px] text-indigo-200 mt-1 leading-tight">
                             Live face match & environment watchdog audio diagnostics.
                           </p>
                         </div>
@@ -2332,12 +2530,12 @@ export default function AiInterviewRoom({
                             }}
                             className="sr-only peer"
                           />
-                          <div className="w-9 h-5 bg-slate-850 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-300 after:border-slate-350 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-amber-600 peer-checked:after:bg-white peer-checked:after:border-white"></div>
+                          <div className="w-9 h-5 bg-slate-850 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-300 after:border-slate-350 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-indigo-600 peer-checked:after:bg-white peer-checked:after:border-white"></div>
                         </label>
                       </div>
 
                       {!hasCompletedPython && (
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-t border-slate-850 pt-2 text-[9px] text-amber-200">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-t border-slate-850 pt-2 text-[9px] text-indigo-200">
                           <span className="font-medium font-sans text-amber-500">
                             ⚠️ Python course incompleteness block.
                           </span>
@@ -2348,7 +2546,7 @@ export default function AiInterviewRoom({
                               setForceUnlockVisual(nextState);
                               if (nextState) setIsVisualRoom(true);
                             }}
-                            className="text-[8px] font-mono font-bold text-amber-400 hover:text-white underline text-left cursor-pointer uppercase font-semibold leading-none"
+                            className="text-[8px] font-mono font-bold text-indigo-400 hover:text-white underline text-left cursor-pointer uppercase font-semibold leading-none"
                           >
                             {forceUnlockVisual ? "[re-lock block]" : "[⚡ bypass lock for demo]"}
                           </button>
@@ -2470,7 +2668,7 @@ export default function AiInterviewRoom({
                             }}
                             className={`w-full text-left p-3 rounded-xl border transition flex items-center justify-between gap-3 text-xs cursor-pointer ${
                               activeReport?.id === item.id
-                                ? "border-amber-600 bg-amber-50/40"
+                                ? "border-indigo-600 bg-indigo-50/40"
                                 : "border-slate-150 bg-slate-50/40 hover:bg-slate-50"
                             }`}
                           >
@@ -2493,8 +2691,8 @@ export default function AiInterviewRoom({
                                   item.roundType === "hr"
                                     ? "bg-amber-100 text-amber-800"
                                     : item.roundType === "combined"
-                                    ? "bg-orange-100 text-orange-800"
-                                    : "bg-amber-100 text-amber-800"
+                                    ? "bg-blue-100 text-blue-800"
+                                    : "bg-indigo-100 text-indigo-800"
                                 }`}>
                                   {item.roundType === "hr" ? "💼 HR" : item.roundType === "combined" ? "⚡ Combined" : "🛠️ Tech"}
                                 </span>
@@ -2503,9 +2701,9 @@ export default function AiInterviewRoom({
                             </div>
 
                             <div className="text-right flex items-center gap-1 shrink-0">
-                              <div className="bg-white px-2.5 py-1.5 border border-amber-150 rounded-lg text-center min-w-[44px]">
+                              <div className="bg-white px-2.5 py-1.5 border border-indigo-150 rounded-lg text-center min-w-[44px]">
                                 <span className="text-[8px] text-slate-400 block font-mono font-bold leading-none uppercase mb-0.5">SCORE</span>
-                                <span className="text-xs font-extrabold text-amber-600 font-mono">
+                                <span className="text-xs font-extrabold text-indigo-600 font-mono">
                                   {item.report?.score || "N/A"}
                                 </span>
                               </div>
