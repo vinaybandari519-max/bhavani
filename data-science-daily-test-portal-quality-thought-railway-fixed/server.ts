@@ -3,15 +3,20 @@ import express from "express";
 import fs from "fs";
 import path from "path";
 import { createServer as createViteServer } from "vite";
-import { fileURLToPath } from "url";
 import { GoogleGenAI, Type } from "@google/genai";
 import { generateQuizForDay, generateQuizFromMaterial } from "./src/quizGenerator.js";
 import { DayQuiz, Student, CourseLockState, AIInterview, InterviewMessage, AttendanceLog } from "./src/types.js";
 import { initializeApp } from "firebase/app";
 import { getFirestore, doc, setDoc, getDocFromServer } from "firebase/firestore";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// NOTE: this file intentionally does not define __filename/__dirname via import.meta.url.
+// That pattern is ESM-only — when this file gets bundled as CJS (dist/server.cjs), esbuild
+// can't resolve import.meta.url inside a bundled/concatenated file, so it becomes undefined,
+// and fileURLToPath(undefined) crashes the whole server on boot with:
+//   TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string ... Received undefined
+// Every path in this file already uses process.cwd() instead (see saveInterviewVideo, etc.),
+// which works identically under both ESM and CJS bundling — so there was never a need for
+// __dirname here in the first place.
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
