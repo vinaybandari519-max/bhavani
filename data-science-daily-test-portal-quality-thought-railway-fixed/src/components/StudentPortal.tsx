@@ -2737,6 +2737,7 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
                           const indeedUrl = `https://www.indeed.com/jobs?q=${encodeURIComponent(role.searchQuery)}&l=${encodeURIComponent(jobLocation)}&fromage=2`;
                           const naukriUrl = `https://www.naukri.com/${encodeURIComponent(role.searchQuery.replace(/\s+/g, '-'))}-jobs-in-${encodeURIComponent(jobLocation.split(',')[0].trim().toLowerCase())}?jobAge=2`;
                           const wellfoundUrl = `https://wellfound.com/jobs?q=${encodeURIComponent(role.searchQuery)}&l=${encodeURIComponent(jobLocation)}`;
+                          const glassdoorUrl = `https://www.glassdoor.com/Job/jobs.htm?sc.keyword=${encodeURIComponent(role.searchQuery)}&locKeyword=${encodeURIComponent(jobLocation)}&fromAge=2`;
                           const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(role.searchQuery + ' jobs in ' + jobLocation)}&ibp=htl;jobs`;
 
                           return (
@@ -2820,6 +2821,15 @@ export default function StudentPortal({ student, onLogout }: StudentPortalProps)
                                   >
                                     <span>Google Careers Results</span>
                                     <Search className="w-2.5 h-2.5 shrink-0" />
+                                  </a>
+                                  <a 
+                                    href={glassdoorUrl}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="bg-emerald-650 hover:bg-emerald-600 border border-emerald-500/25 text-white text-[9px] font-bold py-1.5 px-2.5 rounded-lg flex items-center justify-center gap-1.5 transition w-full focus:outline-none"
+                                  >
+                                    <Briefcase className="w-2.5 h-2.5 shrink-0" />
+                                    <span>Find Real Job Openings</span>
                                   </a>
                                 </div>
                               ) : (
