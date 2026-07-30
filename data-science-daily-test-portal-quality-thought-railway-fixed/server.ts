@@ -44,6 +44,77 @@ app.get("/api/health", (_req, res) => {
   res.status(200).json({ status: "ok", uptime: process.uptime() });
 });
 
+// Real, legitimate job listings from Adzuna's free public API — it aggregates real postings
+// from Indeed, Glassdoor, Workday, and 30+ other job boards/ATS platforms into one search, and
+// returns a genuine apply link per listing. This is the honest alternative to scraping
+// LinkedIn/Indeed/Naukri/Glassdoor directly, which would violate their Terms of Service, get
+// blocked almost immediately by their anti-bot systems, and break constantly as their HTML
+// changes. Free tier: ~1,000 calls/month. Sign up at https://developer.adzuna.com to get
+// ADZUNA_APP_ID and ADZUNA_APP_KEY, then set them as environment variables.
+app.get("/api/careers/live-jobs", async (req, res) => {
+  const appId = process.env.ADZUNA_APP_ID;
+  const appKey = process.env.ADZUNA_APP_KEY;
+
+  if (!appId || !appKey) {
+    res.status(503).json({
+      error: "Live job listings aren't configured yet. Sign up for a free Adzuna API key at https://developer.adzuna.com and set ADZUNA_APP_ID and ADZUNA_APP_KEY as environment variables.",
+      configured: false
+    });
+    return;
+  }
+
+  const query = String(req.query.query || "").trim();
+  const location = String(req.query.location || "India").trim();
+  // Country code for Adzuna's per-country index. Defaults to India; can be overridden via
+  // query param for students searching outside India.
+  const country = String(req.query.country || "in").trim();
+
+  if (!query) {
+    res.status(400).json({ error: "A search query is required." });
+    return;
+  }
+
+  try {
+    const params = new URLSearchParams({
+      app_id: appId,
+      app_key: appKey,
+      results_per_page: "8",
+      what: query,
+      where: location,
+      sort_by: "date",
+      max_days_old: "2" // matches the "posted in last 48h" filter used elsewhere in the portal
+    });
+
+    const adzunaRes = await fetch(`https://api.adzuna.com/v1/api/jobs/${encodeURIComponent(country)}/search/1?${params.toString()}`);
+
+    if (!adzunaRes.ok) {
+      const errText = await adzunaRes.text().catch(() => "");
+      console.error("[Adzuna] API error:", adzunaRes.status, errText);
+      res.status(502).json({ error: "Couldn't fetch live job listings right now. Please try again shortly." });
+      return;
+    }
+
+    const data: any = await adzunaRes.json();
+    const jobs = (data.results || []).map((job: any) => ({
+      id: job.id,
+      title: job.title,
+      company: job.company?.display_name || "Unlisted Company",
+      location: job.location?.display_name || location,
+      salaryMin: job.salary_min || null,
+      salaryMax: job.salary_max || null,
+      salaryIsPredicted: job.salary_is_predicted === "1",
+      postedAt: job.created,
+      description: (job.description || "").slice(0, 220),
+      applyUrl: job.redirect_url
+    }));
+
+    res.json({ configured: true, count: jobs.length, jobs });
+  } catch (err: any) {
+    console.error("[Adzuna] Live jobs fetch failed:", err);
+    res.status(500).json({ error: "Couldn't fetch live job listings right now. Please try again shortly." });
+  }
+});
+
 const DB_FILE = path.join(process.cwd(), "db.json");
 
 // Initialize Firebase & Google Cloud Firestore database
